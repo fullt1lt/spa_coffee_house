@@ -3,3 +3,4 @@ migrations
 static_source
 .vscode
 media
+.env

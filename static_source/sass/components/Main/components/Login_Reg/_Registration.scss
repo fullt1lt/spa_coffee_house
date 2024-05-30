@@ -11,7 +11,7 @@
   background-color: var(--white-color);
   padding: 15px;
   width: 300px;
-  height: 350px;
+  height: 400px;
   .register_header {
     display: flex;
     flex-direction: column;
@@ -21,6 +21,13 @@
     .register_header_name {
       font-size: 25px;
       color: var(--black-color);
+    }
+  }
+  .register_text_list {
+    margin: 10px 0;
+    .register_text {
+      font-size: 12px;
+      color: gray;
     }
   }
   .register_form_list {
@@ -53,12 +60,38 @@
     }
   }
   .register_login_list {
-    margin-top: 15px;
+    margin: 15px 0;
     .register_login_span {
       color: var(--black-color);
       .register_login_link {
         color: blue;
         margin-left: 10px;
+      }
+    }
+  }
+  .provider_list {
+    margin-top: 20px;
+    .provider_form {
+      .provider_button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: medium none;
+        width: 250px;
+        background-image: none;
+        background: transparent;
+        float: left;
+        border: 1px #ebebeb solid;
+        padding: 5px;
+        .provider_img {
+          width: 30px;
+          height: 30px;
+        }
+        .provider_text {
+          color: #4285f4;
+          margin-left: 15px;
+          font-size: 18px;
+        }
       }
     }
   }

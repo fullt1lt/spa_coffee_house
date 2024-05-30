@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load socialaccount %}
 {% load static %}
 
 {%block style %}
@@ -19,6 +20,12 @@
     </li>
     <li class="login_register_list">
         <span class="login_register_span">Don't have an account?<a href="{% url 'register' %}" class="login_register_link">Register</a></span>
+    </li>
+    <li class="provider_list">
+        <form action="{% provider_login_url 'google' %}" method="post" class="provider_form">
+            {% csrf_token %}
+        <button type="submit" class="provider_button"><span class="provider_text">Continue with</span><img src="{%static 'icon/google.svg'%}" alt="" class="provider_img"></button>
+        </form>
     </li>
 </ul>
 {% endblock %}

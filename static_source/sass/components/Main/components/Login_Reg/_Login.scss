@@ -62,4 +62,30 @@
       }
     }
   }
+  .provider_list {
+    margin-top: 20px;
+    .provider_form {
+      .provider_button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: medium none;
+        width: 250px;
+        background-image: none;
+        background: transparent;
+        float: left;
+        border: 1px #ebebeb solid;
+        padding: 5px;
+        .provider_img {
+          width: 30px;
+          height: 30px;
+        }
+        .provider_text {
+          color: #4285f4;
+          margin-right: 15px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
 }
