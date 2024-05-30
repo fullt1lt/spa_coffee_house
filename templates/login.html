@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block style %}
+    <link rel="stylesheet" href="{%static 'css/index.css'%}">
+{% endblock %}
+
+{% block content %}
+<ul class="login_list">
+    <li class="login_header">
+        <h1 class="login_header_name">Login</h1>
+    </li>
+    <li class="login_form_list">
+        <form method="post" class="login_form">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Login" class="login_input">
+    </form>
+    </li>
+    <li class="login_register_list">
+        <span class="login_register_span">Don't have an account?<a href="{% url 'register' %}" class="login_register_link">Register</a></span>
+    </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {%block style %}
+    {% load static %}
+    {% endblock %}
+    <title>Dansite</title>
+</head>
+<body>
+    <header>
+        <ul class="Header_list">
+            <li class="Header-logo">
+                <img src="{%static 'icon/logo.svg'%}" alt="" class="logo">
+                <span class="Header_name">DanStore</span>
+            </li>
+            <li class="Header-menu">
+                <ul class="Menu_list">
+                    {% if user.is_superuser %}
+                        <li class="menu_item"><a href="{% url 'index' %}" class="menu_item_link">Home</a></li>
+                        <li class="menu_item"><a href="{% url 'index' %}" class="menu_item_link">Home</a></li>
+                        <li class="menu_item"><a href="{% url 'index' %}" class="menu_item_link">Home</a></li>
+                        <li class="menu_item"><a href="{% url 'index' %}" class="menu_item_link">Home</a></li>
+                    {% else %}
+                        <li class="menu_item"><a href="{% url 'index' %}" class="menu_item_link">Home</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+            <li class="Header_authorization">
+                <ul class="authorization_list">
+                    {% if request.user.is_authenticated %}
+                        <li class="authorization"> 
+                            <ul class="user_info">
+                                <li>{{request.user.username}}</li>
+                                <li>{{request.user.wallet}}</li>
+                            </ul>
+                            <form method="post" action="{% url 'logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="button_logout">Logout</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="authorization"><a href="{% url 'login' %}" class="authorization_link">Login</a> | <a href="{% url 'register' %}" class="authorization_link">Sign Up</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <main class="Main">
+        <section class="Block_content">
+            {% block content %}
+            {% endblock %}
+        </section>
+    </main>
+    <footer class="Footer">
+        <ul class="Footer_list">
+            <li class="Header-logo">
+                <img src="../static/logo.svg" alt="" class="logo">
+            </li>
+            <li>
+                <ul class="Menu_list">
+                    {% if user.is_superuser %}
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                    {% else %}
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                    {% endif %}
+                </ul>
+            </li>
+        </ul>
+        <ul class="FooterEnd_List">
+            <li>
+                <span>© 2024 All Rights Reserved | DanStore</span>
+            </li>
+            <li>
+                <span>Company Site   |   Privacy Policy</span>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>
