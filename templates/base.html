@@ -31,8 +31,11 @@
                     {% if request.user.is_authenticated %}
                         <li class="authorization"> 
                             <ul class="user_info">
-                                <li>{{request.user.username}}</li>
-                                <li>{{request.user.wallet}}</li>
+                                {% if request.user.profile_image %}
+                                    <li class="user_info_image"><img src="{{request.user.profile_image.url}}" alt="" class="user_image"></li>
+                                {% else %}
+                                    <li class="user_info_image"><img src="{%static 'icon/profile.png'%}" alt="" class="user_image"></li>
+                                {% endif %}
                             </ul>
                             <form method="post" action="{% url 'logout' %}">
                             {% csrf_token %}

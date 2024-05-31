@@ -4,4 +4,4 @@ from django.db import models
 
 # Create your models here.
 class SpaUser(AbstractUser):
-    wallet = models.DecimalField(max_digits=10, decimal_places=2, default=10000)
+    profile_image = models.ImageField(upload_to='profile_image/', blank=True, null=True)

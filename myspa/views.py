@@ -6,6 +6,8 @@ from forms.forms import LoginUserForm, RegisterUserForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DeleteView, UpdateView,CreateView
 
+from myspa.models import SpaUser
+
 class Login(LoginView):
     form_class = LoginUserForm
     template_name = 'login.html'
@@ -23,9 +25,10 @@ class Register(CreateView):
     success_url = '/'
     
     def form_valid(self, form):
-        result = super().form_valid(form=form)
-        login(self.request, self.object)
-        return result
+        response = super().form_valid(form)
+        user = self.object
+        login(self.request, user, backend='django.contrib.auth.backends.ModelBackend')
+        return response
     
      
 class HomePage(View):
