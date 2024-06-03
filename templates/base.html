@@ -18,9 +18,7 @@
                 <ul class="Menu_list">
                     {% if user.is_superuser %}
                         <li class="menu_item"><a href="{% url 'index' %}" class="menu_item_link">Home</a></li>
-                        <li class="menu_item"><a href="{% url 'index' %}" class="menu_item_link">Home</a></li>
-                        <li class="menu_item"><a href="{% url 'index' %}" class="menu_item_link">Home</a></li>
-                        <li class="menu_item"><a href="{% url 'index' %}" class="menu_item_link">Home</a></li>
+                        <li class="menu_item"><a href="{% url 'create_massage_therapist' %}" class="menu_item_link">Therapist</a></li>
                     {% else %}
                         <li class="menu_item"><a href="{% url 'index' %}" class="menu_item_link">Home</a></li>
                     {% endif %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block style %}
+    <link rel="stylesheet" href="{%static 'css/index.css'%}">
+{% endblock %}
+
+{% block content %}
+<ul class="create_massage_therapist_list">
+    <li class="create_massage_therapist_header">
+        <h1 class="create_massage_therapist_name">Сreate a massage therapist</h1>
+    </li>
+    <li class="create_massage_therapist_form_list">
+        <form method="post" enctype="multipart/form-data" class="create_massage_therapist_form">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ therapist_form.as_p }}
+            <button type="submit" class="create_input">Create</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}
