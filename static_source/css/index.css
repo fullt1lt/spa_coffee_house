@@ -23,7 +23,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   height: 100vh;
-  background-color: rgb(53, 53, 53);
+  background-color: rgb(255, 255, 255);
 }
 
 .Main {
@@ -184,6 +184,7 @@ a {
   padding: 15px;
   width: 300px;
   height: 350px;
+  border: 1px black solid;
 }
 .login_list .login_header {
   display: -webkit-box;
@@ -319,6 +320,7 @@ a {
   padding: 15px;
   width: 300px;
   height: 480px;
+  border: 1px black solid;
 }
 .registration_list .register_header {
   display: -webkit-box;
@@ -482,6 +484,7 @@ a {
   padding: 15px;
   width: 300px;
   height: 480px;
+  border: 1px black solid;
 }
 .create_massage_therapist_list .create_massage_therapist_header {
   display: -webkit-box;
