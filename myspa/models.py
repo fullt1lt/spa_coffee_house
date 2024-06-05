@@ -12,6 +12,7 @@ class Salon(models.Model):
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=15)
+    # categories = models.ForeignKey('SpaСategories', on_delete=models.CASCADE, related_name='categories')
     
     def __str__(self):
         return self.name
@@ -51,6 +52,18 @@ class SpaСategories(models.Model):
     def __str__(self):
         return self.name
     
-    
+class Day(models.Model):
+    name = models.DateField(auto_now_add=True) 
 
-    
+    def __str__(self):
+        return self.name
+
+
+class TherapistAvailability(models.Model):
+    therapist = models.ForeignKey(MassageTherapist, on_delete=models.CASCADE)
+    day = models.ForeignKey(Day, on_delete=models.CASCADE)
+    start_time = models.TimeField()
+    end_time = models.TimeField()
+
+    def __str__(self):
+        return f"{self.therapist.user.username} - {self.day.name} ({self.start_time} - {self.end_time})"

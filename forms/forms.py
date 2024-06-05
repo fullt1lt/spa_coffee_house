@@ -14,15 +14,12 @@ class RegisterUserForm(UserCreationForm):
         model = SpaUser
         fields = ('username', 'phone', 'email', 'password1', 'password2', 'profile_image')
         
-    def save(self, commit=True):
+    def save(self):
         user = super().save(commit=False)
-        user.email = self.cleaned_data['email']
-        if commit:
-            user.save()
-            profile_image = self.cleaned_data.get('profile_image')
-            if profile_image:
-                user.profile_image = profile_image
-                user.save()
+        profile_image = self.cleaned_data.get('profile_image')
+        if profile_image:
+            user.profile_image = profile_image
+        user.save()
         return user
         
         
