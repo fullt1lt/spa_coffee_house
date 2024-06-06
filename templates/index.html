@@ -4,6 +4,21 @@
 {%block style %}
     <link rel="stylesheet" href="{%static 'css/index.css'%}">
 {% endblock %}
-
 {% block content %}
+    <ul class = "SpaСategories_list">
+        {% for item in object_list %}
+            <li class="SpaСategori_item">
+                <ul class="SpaСategori_item_list">
+                    <li class="SpaСategori_item_image">
+                        {% if item.categories_image %}
+                            <img src="{{item.categories_image.url}}" alt="" class="SpaСategori_image">
+                        {% else%}
+                            <img src="{%static 'icon/logo.svg'%}" alt="">
+                        {% endif %}
+                    </li>
+                    <li class="SpaСategori_name">{{item.name}}</li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

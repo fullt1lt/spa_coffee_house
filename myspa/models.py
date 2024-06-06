@@ -32,6 +32,13 @@ class Composition(models.Model):
     def __str__(self):
         return f"{self.name} - {self.description[:40]}"
 
+class SpaСategories(models.Model):
+    name = models.CharField(max_length=100)
+    categories_image = models.ImageField(upload_to='categories_image/', blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
 class TypeCategories(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=1000)
@@ -39,18 +46,11 @@ class TypeCategories(models.Model):
     duration = models.DurationField()
     composition = models.ForeignKey(Composition, on_delete=models.CASCADE, related_name='composition')
     type_categories_image = models.ImageField(upload_to='type_categories_image/', blank=True, null=True)
+    categories = models.ForeignKey(SpaСategories, on_delete=models.CASCADE, related_name='type_categories', default=1)
     
     def __str__(self):
         return self.name
     
-
-class SpaСategories(models.Model):
-    name = models.CharField(max_length=100)
-    type_categories = models.ForeignKey(TypeCategories, on_delete=models.CASCADE, related_name='type_categories')
-    categories_image = models.ImageField(upload_to='categories_image/', blank=True, null=True)
-
-    def __str__(self):
-        return self.name
     
 class Day(models.Model):
     name = models.DateField(auto_now_add=True) 
@@ -67,3 +67,18 @@ class TherapistAvailability(models.Model):
 
     def __str__(self):
         return f"{self.therapist.user.username} - {self.day.name} ({self.start_time} - {self.end_time})"
+
+
+# class Appointment(models.Model):
+#     client = models.ForeignKey(SpaUser, on_delete=models.CASCADE)
+#     therapist = models.ForeignKey(MassageTherapist, on_delete=models.CASCADE)
+#     massage_type = models.ForeignKey(TypeCategories, on_delete=models.CASCADE)
+#     date = models.DateField()
+#     start_time = models.TimeField()
+#     salon = models.ForeignKey(Salon, on_delete=models.CASCADE, related_name='appointments')
+
+#     class Meta:
+#         unique_together = ('therapist', 'date', 'start_time')
+
+#     def __str__(self):
+#         return f"{self.client.user.username} - {self.massage_type.name} with {self.therapist.user.username} on {self.date} at {self.start_time}"

@@ -6,7 +6,7 @@ from forms.forms import LoginUserForm, MassageTherapistForm, RegisterUserForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DeleteView, UpdateView,CreateView
 
-from myspa.models import MassageTherapist, SpaUser
+from myspa.models import MassageTherapist, SpaUser, SpaСategories
 from spa.mixins import SuperUserRequiredMixin
 
 class Login(LoginView):
@@ -32,10 +32,15 @@ class Register(CreateView):
         return response
     
      
-class HomePage(View):
+class HomePage(ListView):
+    template_name = 'index.html'
+    queryset = SpaСategories.objects.all()
+    ordering = ['-name']
     
-    def get(self, request, *args, **kwargs):
-        return render(request, 'index.html')
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['another_model_list'] = MassageTherapist.objects.all()
+        return context
 
 
 class CreateMassageTherapistView(SuperUserRequiredMixin, CreateView):
