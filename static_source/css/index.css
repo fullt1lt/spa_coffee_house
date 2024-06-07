@@ -572,3 +572,263 @@ a {
   padding: 5px;
   margin-top: 15px;
 }
+
+.Categories_main_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 100px 0 auto;
+  width: 100%;
+}
+.Categories_main_list .prev {
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  float: left;
+  margin-right: 15px;
+}
+.Categories_main_list .next {
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  float: left;
+  margin-left: 15px;
+}
+.Categories_main_list .Categories_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  max-width: 1250px;
+  margin: 0 auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding: 10px;
+}
+.Categories_main_list .Categories_list .Categories_Title {
+  margin: 0 auto;
+}
+.Categories_main_list .Categories_list .Categories_Title .Categories_Title_list li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Categories_main_list .Categories_list .Categories_Title .Categories_Title_list li span {
+  font-family: "Forum", sans-serif;
+  color: var(--black-color);
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+}
+.Categories_main_list .Categories_list .Categories_Galery .Categories_Galery_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 auto;
+  gap: 10px;
+}
+.Categories_main_list .Categories_list .Categories_Galery .Categories_Galery_list .Categories_Galery_items {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 12px;
+  position: relative;
+  padding: 5px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0 auto;
+  font-size: var(--header-font-size);
+  font-weight: var(--header-font-weight);
+  text-transform: var(--header-text-transform);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.Categories_main_list .Categories_list .Categories_Galery .Categories_Galery_list .Categories_Galery_items:hover {
+  -webkit-transform: scale(1.02);
+          transform: scale(1.02);
+}
+.Categories_main_list .Categories_list .Categories_Galery .Categories_Galery_list .Categories_Galery_items .Categories_img {
+  width: 458px;
+  height: 306px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 12px;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.Categories_main_list .Categories_list .Categories_Galery .Categories_Galery_list .Categories_Galery_items .Categories_img:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+.Categories_main_list .Categories_list .Categories_Galery .Categories_Galery_list .Categories_Galery_items ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--white-color);
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.Categories_main_list .Categories_list .Categories_Galery .Categories_Galery_list .Categories_Galery_items ul:hover {
+  -webkit-animation: shake 4s infinite;
+          animation: shake 4s infinite;
+}
+.Categories_main_list .Categories_list .Categories_Galery .Categories_Galery_list .Categories_Galery_items ul .Categories_rhombus {
+  width: 70px;
+  height: 140px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-filter: opacity(50%);
+          filter: opacity(50%);
+  cursor: pointer;
+}
+.Categories_main_list .Categories_list .Categories_Galery .Categories_Galery_list .Categories_Galery_items ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.Categories_main_list .Categories_list .Categories_Galery .Categories_Galery_list .Categories_Galery_items ul li span {
+  font-style: normal;
+  font-weight: 400;
+  line-height: 98.5%;
+  font-size: 44px;
+}
+
+@-webkit-keyframes shake {
+  0% {
+    -webkit-transform: translate(1px, 1px) rotate(0deg);
+            transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    -webkit-transform: translate(-1px, -2px) rotate(-1deg);
+            transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    -webkit-transform: translate(-3px, 0px) rotate(1deg);
+            transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    -webkit-transform: translate(3px, 2px) rotate(0deg);
+            transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    -webkit-transform: translate(1px, -1px) rotate(1deg);
+            transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    -webkit-transform: translate(-1px, 2px) rotate(-1deg);
+            transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    -webkit-transform: translate(-3px, 1px) rotate(0deg);
+            transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    -webkit-transform: translate(3px, 1px) rotate(-1deg);
+            transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    -webkit-transform: translate(-1px, -1px) rotate(1deg);
+            transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    -webkit-transform: translate(1px, 2px) rotate(0deg);
+            transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translate(1px, -2px) rotate(-1deg);
+            transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+
+@keyframes shake {
+  0% {
+    -webkit-transform: translate(1px, 1px) rotate(0deg);
+            transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    -webkit-transform: translate(-1px, -2px) rotate(-1deg);
+            transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    -webkit-transform: translate(-3px, 0px) rotate(1deg);
+            transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    -webkit-transform: translate(3px, 2px) rotate(0deg);
+            transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    -webkit-transform: translate(1px, -1px) rotate(1deg);
+            transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    -webkit-transform: translate(-1px, 2px) rotate(-1deg);
+            transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    -webkit-transform: translate(-3px, 1px) rotate(0deg);
+            transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    -webkit-transform: translate(3px, 1px) rotate(-1deg);
+            transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    -webkit-transform: translate(-1px, -1px) rotate(1deg);
+            transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    -webkit-transform: translate(1px, 2px) rotate(0deg);
+            transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    -webkit-transform: translate(1px, -2px) rotate(-1deg);
+            transform: translate(1px, -2px) rotate(-1deg);
+  }
+}

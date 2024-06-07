@@ -1,0 +1,78 @@
+.create_massage_therapist_list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  color: var(--white-color);
+  border-radius: 12px;
+  background-color: var(--white-color);
+  padding: 15px;
+  width: 300px;
+  height: 480px;
+  border: 1px black solid;
+  .create_massage_therapist_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 5px;
+    .create_massage_therapist_name {
+      font-size: 25px;
+      color: var(--black-color);
+      text-align: center;
+    }
+  }
+  .create_massage_therapist_form_list {
+    margin-top: 15px;
+    .create_massage_therapist_form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      background-image: none;
+      color: red;
+      .form-input {
+        margin-top: 15px;
+        text-align: center;
+        height: 30px;
+        width: 250px;
+        background-color: #ebebeb;
+        border: none;
+        &::placeholder {
+          color: rgb(105, 105, 105);
+          text-align: center;
+        }
+      }
+      .create_image {
+        width: 250px;
+        background-color: #ebebeb;
+        border: 1px whitesmoke solid;
+        color: var(--black-color);
+        margin-top: 15px;
+        .file-upload-button {
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin: 0;
+          padding: 6px 12px;
+          background-color: #007bff;
+          color: #fff;
+          border: none;
+          border-radius: 0 4px 4px 0;
+          cursor: pointer;
+        }
+      }
+      .create_input {
+        width: 250px;
+        background-color: rgb(0, 217, 120);
+        border: 1px whitesmoke solid;
+        color: var(--white-color);
+        padding: 5px;
+        margin-top: 15px;
+      }
+    }
+  }
+}

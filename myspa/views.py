@@ -35,7 +35,7 @@ class Register(CreateView):
 class HomePage(ListView):
     template_name = 'index.html'
     queryset = SpaСategories.objects.all()
-    ordering = ['-name']
+    ordering = ['name']
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
