@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="TypeCategories_main_list">
+    <ul class="Categories_header_list">
+        {% for item in another_model_list %}
+            <li class="Categories_header_item">
+                {% if category_pk == item.pk %}
+                    <a href="{% url 'categories' item.id %}" class="Active">{{item.name}}</a>
+                {%else%}
+                    <a href="{% url 'categories' item.id %}">{{item.name}}</a>
+                {%endif%}
+            </li>
+        {%endfor%}
+    </ul>
+    <ul class="TypeCategories_list">
+        {% for type_category in type_categories %}
+            <li class="TypeCategory_item">
+                <ul class="TypeCategory_item_list">
+                    <li class="item_image">
+                        {% if type_category.type_categories_image %}
+                            <img src="{{ type_category.type_categories_image.url }}" alt="" class="TypeCategory_img">
+                        {% else %}
+                            <img src="{% static 'icon/logo.svg' %}" alt="">
+                        {% endif %}
+                    </li>
+                    <li class="item_header">
+                        <h2>{{ type_category.name }}</h2>
+                    </li>
+                    <li class="item_description">
+                        <span>{{ type_category.description }}</span>
+                    </li>
+                    <li class="item_price_duration">
+                        <ul class="item_price_duration_list">
+                            <li class="item_ifo">
+                                <span>Тривалість: {{ type_category.duration }}</span>
+                            </li>
+                            <li class="item_ifo">
+                                <span>Цiна: {{ type_category.price }}</span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

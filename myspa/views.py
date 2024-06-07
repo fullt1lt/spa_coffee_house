@@ -6,7 +6,7 @@ from forms.forms import LoginUserForm, MassageTherapistForm, RegisterUserForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DeleteView, UpdateView,CreateView
 
-from myspa.models import MassageTherapist, SpaUser, SpaСategories
+from myspa.models import MassageTherapist, SpaUser, TypeCategories, SpaСategories
 from spa.mixins import SuperUserRequiredMixin
 
 class Login(LoginView):
@@ -67,3 +67,19 @@ class CreateMassageTherapistView(SuperUserRequiredMixin, CreateView):
             return redirect(self.success_url)
 
         return self.render_to_response({'user_form': user_form, 'therapist_form': therapist_form})
+    
+
+class TypeCategoriesListView(ListView):
+    model = TypeCategories
+    ordering = ['name']
+    template_name = 'categories.html'
+    context_object_name = 'type_categories'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['another_model_list'] = SpaСategories.objects.all().order_by('name')
+        context['category_pk'] = self.kwargs['pk']
+        return context
+    
+    def get_queryset(self):
+        return TypeCategories.objects.filter(categories__id=self.kwargs['pk'])

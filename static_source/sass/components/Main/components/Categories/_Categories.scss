@@ -48,64 +48,68 @@
         display: flex;
         margin: 0 auto;
         gap: 10px;
-        .Categories_Galery_items {
-          display: flex;
-          flex-direction: column;
-          border-radius: 12px;
-          position: relative;
-          padding: 5px;
-          box-sizing: border-box;
-          margin: 0 auto;
-          font-size: var(--header-font-size);
-          font-weight: var(--header-font-weight);
-          text-transform: var(--header-text-transform);
-          justify-content: center;
-          align-items: center;
-          cursor: pointer;
-          transition: all 0.3s ease;
-          &:hover {
-            transform: scale(1.02);
-          }
-          .Categories_img {
-            width: 458px;
-            height: 306px;
-            object-fit: cover;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.5s ease;
-            &:hover {
-              transform: scale(1.05);
-            }
-          }
-          ul {
+        a {
+          text-decoration: none;
+          color: var(--white-color);
+          .Categories_Galery_items {
             display: flex;
-            color: var(--white-color);
-            position: absolute;
+            flex-direction: column;
+            border-radius: 12px;
+            position: relative;
+            padding: 5px;
+            box-sizing: border-box;
+            margin: 0 auto;
+            font-size: var(--header-font-size);
+            font-weight: var(--header-font-weight);
+            text-transform: var(--header-text-transform);
             justify-content: center;
             align-items: center;
-            transition: all 0.5s ease;
+            cursor: pointer;
+            transition: all 0.3s ease;
             &:hover {
-              animation: shake 4s infinite;
+              transform: scale(1.02);
             }
-            .Categories_rhombus {
-              width: 70px;
-              height: 140px;
-              transform: rotate(90deg);
+            .Categories_img {
+              width: 458px;
+              height: 306px;
               object-fit: cover;
-              filter: opacity(50%);
+              border-radius: 12px;
               cursor: pointer;
+              transition: all 0.5s ease;
+              &:hover {
+                transform: scale(1.05);
+              }
             }
-            li {
+            ul {
               display: flex;
-              flex-direction: column;
-              align-items: center;
+              color: var(--white-color);
               position: absolute;
               justify-content: center;
-              span {
-                font-style: normal;
-                font-weight: 400;
-                line-height: 98.5%;
-                font-size: 44px;
+              align-items: center;
+              transition: all 0.5s ease;
+              &:hover {
+                animation: shake 4s infinite;
+              }
+              .Categories_rhombus {
+                width: 70px;
+                height: 140px;
+                transform: rotate(90deg);
+                object-fit: cover;
+                filter: opacity(50%);
+                cursor: pointer;
+              }
+              li {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                position: absolute;
+                justify-content: center;
+                span {
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 98.5%;
+                  font-size: 44px;
+                }
               }
             }
           }

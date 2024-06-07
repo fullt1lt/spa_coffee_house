@@ -11,11 +11,12 @@
         <li class="Categories_Galery">
             <ul class="Categories_Galery_list">
                 {% for item in object_list %}
+                <a href="{% url 'categories' item.id %}">
                     <li class="Categories_Galery_items">
                         {% if item.categories_image %}
-                            <img src="{{ item.categories_image.url }}" alt="" class="Categories_img">
+                        <img src="{{ item.categories_image.url }}" alt="" class="Categories_img">
                         {% else %}
-                            <img src="{% static 'icon/logo.svg' %}" alt="">
+                        <img src="{% static 'icon/logo.svg' %}" alt="">
                         {% endif %}
                         <ul>
                             <img src="{% static 'icon/Vector_blur.png' %}" alt="Vector" class="Categories_rhombus">
@@ -24,6 +25,7 @@
                             </li>
                         </ul>
                     </li>
+                </a>
                 {% endfor %}
             </ul>
         </li>

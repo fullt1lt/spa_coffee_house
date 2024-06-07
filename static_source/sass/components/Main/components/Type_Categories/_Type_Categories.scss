@@ -1,0 +1,81 @@
+.TypeCategories_main_list {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  margin-top: 50px;
+  .Categories_header_list {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    .Categories_header_item {
+      margin-right: 15px;
+      a {
+        color: rgba(60, 47, 37, 0.65);
+        text-transform: uppercase;
+        font-family: var(--font-family-comic);
+        font-size: 25px;
+      }
+    }
+  }
+  .TypeCategories_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    align-items: start;
+    justify-content: flex-start;
+    width: 100%;
+    .TypeCategory_item {
+      display: flex;
+      flex-direction: column;
+      border: 1px gray solid;
+      padding: 10px;
+      background-color: whitesmoke;
+      border-radius: 12px;
+      width: 45%;
+      box-shadow: 10px 5px 5px rgb(192, 192, 192);
+      .TypeCategory_item_list {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .item_image {
+          .TypeCategory_img {
+            width: 100%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover {
+              transform: scale(1.02);
+            }
+          }
+        }
+        .item_header {
+          margin-top: 20px;
+          h2 {
+            font-family: var(--font-family-comic);
+            font-size: 25px;
+          }
+        }
+        .item_description {
+          margin-top: 20px;
+          span {
+            font-size: 18px;
+          }
+        }
+        .item_price_duration {
+          margin-top: 20px;
+          .item_price_duration_list {
+            display: flex;
+            justify-content: space-between;
+            .item_ifo {
+              span {
+                font-size: 20px;
+                font-weight: 500;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
