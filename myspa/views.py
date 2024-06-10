@@ -31,7 +31,13 @@ class Register(CreateView):
         login(self.request, user, backend='django.contrib.auth.backends.ModelBackend')
         return response
     
-     
+
+class MainPage(ListView):
+    template_name = 'new_index.html'
+    queryset = SpaСategories.objects.all()
+    ordering = ['name']
+    
+    
 class HomePage(ListView):
     template_name = 'index.html'
     queryset = SpaСategories.objects.all()
