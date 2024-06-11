@@ -33,6 +33,12 @@ body {
           flex: 1 1 auto;
 }
 
+.Main_Page {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
 li {
   list-style: none;
 }
@@ -951,6 +957,127 @@ a {
 .TypeCategories_main_list .TypeCategories_list .TypeCategory_item .TypeCategory_item_list .item_price_duration .item_price_duration_list .item_ifo span {
   font-size: 20px;
   font-weight: 500;
+}
+
+.Main_About_Us {
+  margin-top: 80px;
+}
+.Main_About_Us .Main_About_Us_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_header h1 {
+  color: var(--black-color);
+  text-align: center;
+  font-family: Manrope;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_header hr {
+  height: 3px;
+  width: 60%;
+  background-color: #141414;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_info {
+  width: 100%;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_info .Main_About_Us_info_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_info .Main_About_Us_info_list .Main_About_Us_info_text {
+  width: 55%;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_info .Main_About_Us_info_list .Main_About_Us_info_text .info_text_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_info .Main_About_Us_info_list .Main_About_Us_info_text .info_text_list .info_text_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-top: 50px;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_info .Main_About_Us_info_list .Main_About_Us_info_text .info_text_list .info_text_item img {
+  width: 55px;
+  height: 55px;
+  margin-right: 55px;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_info .Main_About_Us_info_list .Main_About_Us_info_text .info_text_list .info_text_item span {
+  width: 90%;
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_info .Main_About_Us_info_list .Main_About_Us_info_text .info_text_list .info_text_item .empty_box {
+  margin-right: 55px;
+  width: 55px;
+  height: 55px;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_info .Main_About_Us_info_list .Main_About_Us_info_gallery {
+  width: 45%;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_info .Main_About_Us_info_list .Main_About_Us_info_gallery .Main_About_Us_info_gallery_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 100%;
+  width: 70%;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_info .Main_About_Us_info_list .Main_About_Us_info_gallery .Main_About_Us_info_gallery_list .info_text_item img {
+  height: 185px;
+  border-radius: 5px;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_info .Main_About_Us_info_list .Main_About_Us_info_gallery .Main_About_Us_info_gallery_list .info_gallery_item:nth-child(1) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_info .Main_About_Us_info_list .Main_About_Us_info_gallery .Main_About_Us_info_gallery_list .info_gallery_item:nth-child(2) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.Main_About_Us .Main_About_Us_list .Main_About_Us_info .Main_About_Us_info_list .Main_About_Us_info_gallery .Main_About_Us_info_gallery_list .info_gallery_item:nth-child(3) {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .Main_Header {

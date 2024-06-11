@@ -1,0 +1,89 @@
+.Main_About_Us {
+  margin-top: 80px;
+  .Main_About_Us_list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .Main_About_Us_header {
+      h1 {
+        color: var(--black-color);
+        text-align: center;
+        font-family: Manrope;
+        font-size: 48px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      hr {
+        height: 3px;
+        width: 60%;
+        background-color: #141414;
+      }
+    }
+    .Main_About_Us_info {
+      width: 100%;
+      .Main_About_Us_info_list {
+        display: flex;
+        .Main_About_Us_info_text {
+          width: 55%;
+          .info_text_list {
+            display: flex;
+            flex-direction: column;
+            .info_text_item {
+              display: flex;
+              justify-content: flex-end;
+              margin-top: 50px;
+              img {
+                width: 55px;
+                height: 55px;
+                margin-right: 55px;
+              }
+              span {
+                width: 90%;
+                color: #000;
+                font-family: Manrope;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 28px;
+              }
+              .empty_box {
+                margin-right: 55px;
+                width: 55px;
+                height: 55px;
+              }
+            }
+          }
+        }
+        .Main_About_Us_info_gallery {
+          width: 45%;
+          .Main_About_Us_info_gallery_list {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            width: 70%;
+            .info_text_item {
+              img {
+                height: 185px;
+                border-radius: 5px;
+              }
+            }
+            .info_gallery_item:nth-child(1) {
+              display: flex;
+              justify-content: flex-end;
+            }
+            .info_gallery_item:nth-child(2) {
+              display: flex;
+              justify-content: center;
+            }
+            .info_gallery_item:nth-child(3) {
+              display: flex;
+              justify-content: flex-start;
+            }
+          }
+        }
+      }
+    }
+  }
+}
