@@ -37,7 +37,12 @@ class MainPage(ListView):
     queryset = SpaСategories.objects.all()
     ordering = ['name']
     
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['another_model_list'] = MassageTherapist.objects.all()
+        return context
     
+
 class HomePage(ListView):
     template_name = 'index.html'
     queryset = SpaСategories.objects.all()

@@ -35,6 +35,7 @@ class Composition(models.Model):
 class SpaСategories(models.Model):
     name = models.CharField(max_length=100)
     categories_image = models.ImageField(upload_to='categories_image/', blank=True, null=True)
+    description = models.TextField(max_length=1000, blank=True, null=True)
 
     def __str__(self):
         return self.name

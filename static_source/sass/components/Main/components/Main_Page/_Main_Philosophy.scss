@@ -1,0 +1,45 @@
+.Main_Philosophy {
+  margin-top: 80px;
+  .Main_Philosophy_list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .Main_Philosophy_content {
+      margin-top: 45px;
+      .Main_Philosophy_content_list {
+        display: flex;
+        width: 100%;
+        .Content_item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-right: 25px;
+          width: 33%;
+          img {
+            width: 90px;
+            height: 90px;
+          }
+          h2 {
+            margin-top: 25px;
+            color: #000;
+            text-align: center;
+            font-family: var(--font-family-Manrope);
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+          }
+          span {
+            margin-top: 10px;
+            color: #000;
+            font-family: var(--font-family-Manrope);
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+          }
+        }
+      }
+    }
+  }
+}

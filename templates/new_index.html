@@ -104,7 +104,7 @@
     <main class="Main_Page">
         <section class="Main_About_Us Block_content">
             <ul class="Main_About_Us_list">
-                <li class="Main_About_Us_header">
+                <li class="Main_headers">
                     <h1>
                         Про нас
                     </h1>
@@ -157,6 +157,73 @@
                             </ul>
                         </li>
                     </ul>
+                </li>
+            </ul>
+        </section>
+        <section class="Main_Philosophy Block_content">
+            <ul class="Main_Philosophy_list">
+                <li class="Main_headers">
+                    <h1>
+                        Філософія
+                    </h1>
+                    <hr>
+                </li>
+                <li class="Main_Philosophy_content">
+                    <ul class="Main_Philosophy_content_list">
+                        <li class="Content_item">
+                            <img src="{% static 'icon/eco_strategies.svg' %}" alt="">
+                            <h2>Еко стратегії</h2>
+                            <span>Ми впроваджуємо екологічно чисті технології та використовуємо натуральні, органічні продукти, щоб забезпечити не лише ефективність процедур, а й безпеку для навколишнього середовища. Наші інноваційні рішення допомагають зменшити вплив на природу, зберігаючи її красу для майбутніх поколінь.</span>
+                        </li>
+                        <li class="Content_item">
+                            <img src="{% static 'icon/professional_care.svg' %}" alt="">
+                            <h2>Професійний догляд</h2>
+                            <span>Кваліфіковані спеціалісти в курсі останніх тенденцій і технік. Вони розуміють унікальні потреби клієнта і завжди готові надати індивідуальні рекомендації та високоякісний сервіс. Працюють з великим старанням, щоб забезпечити вам найкращі результати і незабутні враження від кожного візиту до нашого спа-салону.</span>
+                        </li>
+                        <li class="Content_item">
+                            <img src="{% static 'icon/individual_approach.svg' %}" alt="">
+                            <h2>Індивідуальний підхід</h2>
+                            <span>Наші спеціалісти пропонують індивідуальний підхід до кожного клієнта, враховуючи всі особливості вашої шкіри та розробляючи унікальні програми догляду, адаптовані до ваших потреб. Це поєднання дозволяє досягти найкращих результатів і забезпечує максимальний ефект від процедур.</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section class="Main_Spa_Categories Block_content">
+            <ul class="Main_Spa_Categories_list">
+                <li class="Main_headers">
+                    <h1>
+                        Послуги
+                    </h1>
+                    <hr>
+                </li>
+                <li class="Main_Spa_Categories_content">
+                    <ul class="Main_Spa_Categories_content_list">
+                        {% for category in object_list %}
+                            <li class="Main_Spa_Categories_content_item">
+                                <ul class="Categories_content_item_list">
+                                    <li class="item_image">
+                                        {% if category.categories_image %}
+                                            <img src="{{ category.categories_image.url }}" alt="" class="Category_img">
+                                        {% else %}
+                                            <img src="{% static 'icon/logo.svg' %}" alt="">
+                                        {% endif %}
+                                    </li>
+                                    <li class="item_header">
+                                        <h2>{{ category.name }}</h2>
+                                    </li>
+                                    <li class="item_description">
+                                        <span>{{ category.description }}</span>
+                                    </li>
+                                    <li class="item_info">
+                                        <a href="{% url 'categories' category.id %}">Дізнатися більше</a>
+                                        <a href="#" class="Category_Link_Sign_Up">Записатись</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
                 </li>
             </ul>
         </section>
