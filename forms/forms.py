@@ -1,5 +1,5 @@
 from django import forms
-from myspa.models import MassageTherapist, Salon, SpaUser
+from myspa.models import MassageTherapist, Position, Salon, SpaUser, TypeCategories
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
       
 class RegisterUserForm(UserCreationForm):
@@ -34,9 +34,10 @@ class LoginUserForm(AuthenticationForm):
 
 class MassageTherapistForm(forms.ModelForm):
     salon = forms.ModelChoiceField(queryset=Salon.objects.all(), label='', widget=forms.Select(attrs={'class': 'form-input'}))
+    position = forms.ModelMultipleChoiceField(queryset=Position.objects.all(), label='', widget=forms.SelectMultiple(attrs={'class': 'form-input select', 'size': '10'}))
 
     class Meta:
         model = MassageTherapist
-        fields = ('salon',)
+        fields = ('salon', 'position')
         
         

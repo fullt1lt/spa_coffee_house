@@ -1,0 +1,58 @@
+.Main_Massage_Therapist {
+  margin-top: 80px;
+  .Main_Massage_Therapist_list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .Main_Massage_Therapist_content {
+      margin-top: 50px;
+      .Main_Massage_Therapist_content_list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: start;
+        justify-content: flex-start;
+        width: 100%;
+        .Massage_Therapist_content_item {
+          display: flex;
+          flex-direction: column;
+          width: 30%;
+          border: 1px gray solid;
+          padding: 10px;
+          background-color: #fff;
+          border-radius: 16px;
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          .Massage_Therapist_img {
+            width: 100%;
+            border-radius: 15px;
+          }
+          .content_item_name {
+            margin-top: 8px;
+            color: #000;
+            font-family: var(--font-family-Manrope);
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+          }
+          .content_item_position_list {
+            display: flex;
+            justify-content: flex-start;
+            margin-top: 8px;
+            .content_item_position {
+              margin-right: 15px;
+              span {
+                color: rgba(0, 0, 0, 0.56);
+                font-family: Manrope;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -4,7 +4,7 @@ from django.db import models
 
 
 class SpaUser(AbstractUser):
-    phone = models.CharField(max_length=15, blank=True, null=True) 
+    phone = models.CharField(max_length=16, blank=True, null=True) 
     profile_image = models.ImageField(upload_to='profile_image/', blank=True, null=True)
     
 
@@ -17,13 +17,22 @@ class Salon(models.Model):
     def __str__(self):
         return self.name
 
+class Position(models.Model):
+    name = models.CharField(max_length=20)
+    type_categories = models.ManyToManyField('TypeCategories', related_name='type_categories')
+    
+    def __str__(self):
+        return self.name
 
 class MassageTherapist(models.Model):
     user = models.OneToOneField(SpaUser, on_delete=models.CASCADE)
     salon = models.ForeignKey(Salon, on_delete=models.CASCADE, related_name='therapists')
-    
+    position = models.ManyToManyField(Position, related_name='position')
+    average_rating = models.FloatField(default=5.0)
+
     def __str__(self):
-        return f"{self.user.username} {self.salon}"
+        positions = ', '.join([position.name for position in self.position.all()])
+        return f"{self.user.username} - {self.salon.name} - {positions}"
     
 class Composition(models.Model):
     name = models.CharField(max_length=50)
@@ -69,6 +78,29 @@ class TherapistAvailability(models.Model):
     def __str__(self):
         return f"{self.therapist.user.username} - {self.day.name} ({self.start_time} - {self.end_time})"
 
+class Review(models.Model):
+    user = models.ForeignKey(SpaUser, on_delete=models.CASCADE)
+    therapist = models.ForeignKey(MassageTherapist, on_delete=models.CASCADE, related_name='reviews')
+    rating = models.IntegerField()
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        self.update_average_rating()
+
+    def update_average_rating(self):
+        therapist_reviews = self.therapist.reviews.all()
+        total_rating = sum(review.rating for review in therapist_reviews)
+        average_rating = total_rating / therapist_reviews.count()
+        self.therapist.average_rating = average_rating
+        self.therapist.save()
+
+    def __str__(self):
+        return f"{self.therapist} - {self.rating}"
+    
+
+     
 
 # class Appointment(models.Model):
 #     client = models.ForeignKey(SpaUser, on_delete=models.CASCADE)

@@ -39,7 +39,7 @@ class MainPage(ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['another_model_list'] = MassageTherapist.objects.all()
+        context['massage_therapist'] = MassageTherapist.objects.all()
         return context
     
 
@@ -50,7 +50,7 @@ class HomePage(ListView):
     
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['another_model_list'] = MassageTherapist.objects.all()
+        context['massage_therapist'] = MassageTherapist.objects.all()
         return context
 
 

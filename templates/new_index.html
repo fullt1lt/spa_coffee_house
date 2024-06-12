@@ -213,7 +213,7 @@
                                         <h2>{{ category.name }}</h2>
                                     </li>
                                     <li class="item_description">
-                                        <span>{{ category.description }}</span>
+                                        <span class="item_description_text">{{ category.description }}</span>
                                     </li>
                                     <li class="item_info">
                                         <a href="{% url 'categories' category.id %}">Дізнатися більше</a>
@@ -222,8 +222,42 @@
                                 </ul>
                             </li>
                         {% endfor %}
+                        <script src="{% static 'js/max_height_category.js' %}"></script>
                     </ul>
 
+                </li>
+            </ul>
+        </section>
+        <section class="Main_Massage_Therapist Block_content">
+            <ul class="Main_Massage_Therapist_list">
+                <li class="Main_headers">
+                    <h1>
+                        Спеціалісти
+                    </h1>
+                    <hr>
+                </li>
+                <li class="Main_Massage_Therapist_content">
+                    <ul class="Main_Massage_Therapist_content_list">
+                        {% for therapist in massage_therapist %}
+                            <li class="Massage_Therapist_content_item">
+                                {% if therapist.user.profile_image %}
+                                    <img src="{{ therapist.user.profile_image.url }}" alt="" class="Massage_Therapist_img">
+                                {% else %}
+                                    <img src="{% static 'icon/logo.svg' %}" alt="">
+                                {% endif %}
+                                <span class="content_item_name">{{therapist.user.username}}</span>
+                                <ul class="content_item_position_list">
+                                    {% for position in therapist.position.all %}
+                                        <li class="content_item_position">
+                                            <span>
+                                                {{ position.name }}
+                                            </span>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
                 </li>
             </ul>
         </section>
