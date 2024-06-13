@@ -1,12 +1,14 @@
-from django.shortcuts import redirect, render
-from django.urls import reverse_lazy
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.contrib.auth import login
-from forms.forms import LoginUserForm, MassageTherapistForm, RegisterUserForm
+from forms.forms import LoginUserForm, MassageTherapistForm, RegisterUserForm, ReviewForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DeleteView, UpdateView,CreateView
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required 
 
-from myspa.models import MassageTherapist, SpaUser, TypeCategories, SpaСategories
+from myspa.models import MassageTherapist, Review, SpaUser, TypeCategories, SpaСategories
 from spa.mixins import SuperUserRequiredMixin
 
 class Login(LoginView):
@@ -16,9 +18,9 @@ class Login(LoginView):
     def get_success_url(self):
         user = self.request.user
         if user.is_staff:
-            return reverse_lazy('index')
+            return reverse_lazy('new_index')
         else:
-            return reverse_lazy('index')
+            return reverse_lazy('new_index')
         
 class Register(CreateView):
     form_class = RegisterUserForm
@@ -31,17 +33,48 @@ class Register(CreateView):
         login(self.request, user, backend='django.contrib.auth.backends.ModelBackend')
         return response
     
-
-class MainPage(ListView):
+class MainPage(View):
     template_name = 'new_index.html'
-    queryset = SpaСategories.objects.all()
-    ordering = ['name']
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['massage_therapist'] = MassageTherapist.objects.all()
-        return context
-    
+
+    def get(self, request, *args, **kwargs):
+        spa_categories = SpaСategories.objects.all().order_by('name')
+        massage_therapists = MassageTherapist.objects.all().order_by('-average_rating')
+        review_form = ReviewForm()
+        context = {
+            'spa_categories': spa_categories,
+            'massage_therapists': massage_therapists,
+            'review_form': review_form,
+        }
+        return render(request, self.template_name, context)
+
+    @method_decorator(login_required)
+    def post(self, request, *args, **kwargs):
+        therapist_id = request.POST.get('therapist')
+        therapist = get_object_or_404(MassageTherapist, id=therapist_id)
+        form = ReviewForm(request.POST)
+        
+        if form.is_valid():
+            rating = form.cleaned_data['rating']
+            comment = form.cleaned_data['comment']
+            review = Review.objects.create(
+                therapist=therapist,
+                user=request.user,
+                rating=rating,
+                comment=comment
+            )
+            review.save()
+            return redirect('/')  # Перенаправляем на главную страницу или другую нужную
+
+        # Если форма не валидна, показываем её с ошибками
+        spa_categories = SpaСategories.objects.all()
+        massage_therapists = MassageTherapist.objects.all()
+        context = {
+            'spa_categories': spa_categories,
+            'massage_therapists': massage_therapists,
+            'review_form': form,
+        }
+        return render(request, self.template_name, context)
+
 
 class HomePage(ListView):
     template_name = 'index.html'
@@ -94,3 +127,4 @@ class TypeCategoriesListView(ListView):
     
     def get_queryset(self):
         return TypeCategories.objects.filter(categories__id=self.kwargs['pk'])
+    

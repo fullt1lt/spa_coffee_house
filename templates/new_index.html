@@ -199,7 +199,7 @@
                 </li>
                 <li class="Main_Spa_Categories_content">
                     <ul class="Main_Spa_Categories_content_list">
-                        {% for category in object_list %}
+                        {% for category in spa_categories %}
                             <li class="Main_Spa_Categories_content_item">
                                 <ul class="Categories_content_item_list">
                                     <li class="item_image">
@@ -238,29 +238,91 @@
                 </li>
                 <li class="Main_Massage_Therapist_content">
                     <ul class="Main_Massage_Therapist_content_list">
-                        {% for therapist in massage_therapist %}
+                        {% for therapist in massage_therapists %}
                             <li class="Massage_Therapist_content_item">
                                 {% if therapist.user.profile_image %}
                                     <img src="{{ therapist.user.profile_image.url }}" alt="" class="Massage_Therapist_img">
                                 {% else %}
                                     <img src="{% static 'icon/logo.svg' %}" alt="">
                                 {% endif %}
-                                <span class="content_item_name">{{therapist.user.username}}</span>
-                                <ul class="content_item_position_list">
-                                    {% for position in therapist.position.all %}
+                                <ul class="content_item_info_list">
+                                    <li class="content_item_info">
+                                        <span class="content_item_name">{{therapist.user.username}}</span>
+                                        <ul class="content_item_position_list">
+                                            {% for position in therapist.position.all %}
                                         <li class="content_item_position">
                                             <span>
                                                 {{ position.name }}
-                                            </span>
-                                        </li>
-                                    {% endfor %}
+                                                    </span>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                        <ul class="rating_list"> 
+                                            <li class="rating" data-rating="{{therapist.average_rating}}">
+
+                                            </li>
+                                            <li class="average_rating">
+                                                <span>
+                                                    {{therapist.average_rating}}
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="content_item_sign_up">
+                                        <a href="#" class="therapist_link_sign_up">Записатись</a>
+                                    </li>
                                 </ul>
                             </li>
                         {% endfor %}
+                        <script src="{% static 'js/add_stars.js' %}"></script>
                     </ul>
                 </li>
             </ul>
         </section>
+        <section class="Main_Why_Us">
+            <ul class="Main_Why_Us_list">
+                <li class="Main_Why_Us_header">
+                    <h1>
+                        Чому саме ми?
+                    </h1>
+                    <hr>
+                </li>
+                <li class="Main_Why_Us_content">
+                    <ul class="Main_Why_Us_content_list">
+                        <li class="Main_Why_Us_content_item">
+                            <h2>Якість</h2>
+                            <span>Наш спа-салон забезпечує найвищу якість послуг завдяки кваліфікованим спеціалістам, індивідуальному підходу та використанню новітніх технологій і органічних продуктів.</span>
+                        </li>
+                        <li class="Main_Why_Us_content_item">
+                            <h2>Ефективність</h2>
+                            <span>Ефективність наших спа-процедур полягає в поєднанні передових методик, індивідуально підібраних програм і ретельно відібраних продуктів, що гарантують тривалі та помітні результати.</span>
+                        </li>
+                        <li class="Main_Why_Us_content_item">
+                            <h2>Безпека</h2>
+                            <span>Безпека нашого спа-салону забезпечується дотриманням найвищих стандартів гігієни, використанням екологічно чистих продуктів і суворим контролем якості процедур</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+<section class="review-section">
+<h2>Отзывы</h2>
+    <!-- Форма для создания отзыва -->
+    <form method="post" action="{% url 'new_index' %}">
+        {% csrf_token %}
+        {{ review_form.as_p }}
+        <div class="rating-stars">
+            <span class="star" data-value="1">☆</span>
+            <span class="star" data-value="2">☆</span>
+            <span class="star" data-value="3">☆</span>
+            <span class="star" data-value="4">☆</span>
+            <span class="star" data-value="5">☆</span>
+        </div>
+        <button type="submit">Оставить отзыв</button>
+    </form>
+<script src="{% static 'js/rating.js' %}"></script>
+</section>
+
     </main>
 </body>
 </html>

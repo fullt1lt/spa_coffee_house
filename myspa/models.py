@@ -30,6 +30,10 @@ class MassageTherapist(models.Model):
     position = models.ManyToManyField(Position, related_name='position')
     average_rating = models.FloatField(default=5.0)
 
+    def save(self, *args, **kwargs):
+        self.average_rating = round(self.average_rating, 1)
+        super().save(*args, **kwargs)
+
     def __str__(self):
         positions = ', '.join([position.name for position in self.position.all()])
         return f"{self.user.username} - {self.salon.name} - {positions}"

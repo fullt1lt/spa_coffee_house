@@ -1,5 +1,5 @@
 from django import forms
-from myspa.models import MassageTherapist, Position, Salon, SpaUser, TypeCategories
+from myspa.models import MassageTherapist, Position, Review, Salon, SpaUser, TypeCategories
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
       
 class RegisterUserForm(UserCreationForm):
@@ -40,4 +40,19 @@ class MassageTherapistForm(forms.ModelForm):
         model = MassageTherapist
         fields = ('salon', 'position')
         
+
+class ReviewForm(forms.ModelForm):
+    therapist = forms.ModelChoiceField(queryset=MassageTherapist.objects.all(), empty_label="Выберите массажиста")
+    rating = forms.IntegerField(widget=forms.HiddenInput(), required=False, min_value=1, max_value=5)
+    comment = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
+
+    class Meta:
+        model = Review
+        fields = ['therapist', 'rating', 'comment']
         
+    def clean(self):
+        cleaned_data = super().clean()
+        rating = cleaned_data.get('rating')
+
+        if rating is None:
+            raise forms.ValidationError("Пожалуйста, выберите рейтинг")
