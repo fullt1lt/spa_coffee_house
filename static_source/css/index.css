@@ -12,7 +12,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: var(--font-family-Manrope);
 }
 
 body {
@@ -1199,6 +1199,9 @@ a {
           flex-direction: column;
   width: 100%;
 }
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .Categories_content_item_list .item_image {
+  overflow: hidden;
+}
 .Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .Categories_content_item_list .item_image .Category_img {
   width: 100%;
   border-radius: 8px;
@@ -1479,6 +1482,189 @@ a {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.Main_Review {
+  margin-top: 80px;
+}
+.Main_Review .Main_Review_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.Main_Review .Main_Review_list .Block_review {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin-top: 50px;
+}
+.Main_Review .Main_Review_list .Block_review .Review_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 100%;
+  gap: 24px;
+}
+.Main_Review .Main_Review_list .Block_review .Review_list .review_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 40%;
+  padding: 16px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border-radius: 16px;
+  background: #fff;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.Main_Review .Main_Review_list .Block_review .Review_list .review_item .review_user_info_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  display: flex;
+}
+.Main_Review .Main_Review_list .Block_review .Review_list .review_item .review_user_info_list .user_image {
+  width: 95px;
+  height: 95px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 8px;
+}
+.Main_Review .Main_Review_list .Block_review .Review_list .review_item .review_user_info_list .review_user_name {
+  color: #000;
+  font-size: 26px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-left: 16px;
+}
+.Main_Review .Main_Review_list .Block_review .Review_list .review_item .review_commit {
+  margin-top: 24px;
+  color: #000;
+  font-family: "Spline Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Main_Review .Main_Review_list .Block_review .Review_list .review_item .rating_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Main_Review .Main_Review_list .Block_review .Review_list .review_item .rating_list .rating {
+  margin-right: 10px;
+}
+.Main_Review .Main_Review_list .Block_review .Review_list .review_item .rating_list .rating .star {
+  color: gold;
+  font-size: 25px;
+  display: inline-block;
+}
+.Main_Review .Main_Review_list .Review_form_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-top: 90px;
+}
+.Main_Review .Main_Review_list .Review_form_list .review_form_header {
+  color: #000;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.Main_Review .Main_Review_list .Review_form_list .review_form {
+  margin-top: 65px;
+}
+.Main_Review .Main_Review_list .Review_form_list .review_form p label {
+  display: none;
+}
+.Main_Review .Main_Review_list .Review_form_list .review_form p #id_therapist {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  padding: 15px 16px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 16px;
+  border-radius: 5px;
+  border: 1px solid #030303;
+  color: #181719;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 137.5% */
+  letter-spacing: 0.16px;
+}
+.Main_Review .Main_Review_list .Review_form_list .review_form p .form-control {
+  border-radius: 5px;
+  padding: 15px 16px;
+  margin-top: 16px;
+  width: 590px;
+  height: 144px;
+  border: 2px solid #030303;
+  color: #181719;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px; /* 137.5% */
+  letter-spacing: 0.16px;
+  resize: none;
+}
+.Main_Review .Main_Review_list .Review_form_list .review_form .rating-stars .star_rating {
+  color: gold;
+  font-size: 45px;
+  display: inline-block;
+  cursor: default;
+}
+.Main_Review .Main_Review_list .Review_form_list .review_form .rating_button {
+  margin-top: 25px;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  background-image: none;
+  background: transparent;
 }
 
 .Main_Header {

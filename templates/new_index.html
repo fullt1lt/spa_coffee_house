@@ -305,23 +305,61 @@
                 </li>
             </ul>
         </section>
-<section class="review-section">
-<h2>Отзывы</h2>
-    <!-- Форма для создания отзыва -->
-    <form method="post" action="{% url 'new_index' %}">
-        {% csrf_token %}
-        {{ review_form.as_p }}
-        <div class="rating-stars">
-            <span class="star" data-value="1">☆</span>
-            <span class="star" data-value="2">☆</span>
-            <span class="star" data-value="3">☆</span>
-            <span class="star" data-value="4">☆</span>
-            <span class="star" data-value="5">☆</span>
-        </div>
-        <button type="submit">Оставить отзыв</button>
-    </form>
-<script src="{% static 'js/rating.js' %}"></script>
-</section>
+        <section class="Main_Review Block_content">
+            <ul class="Main_Review_list">
+                <li class="Main_headers">
+                    <h1>
+                        Відгуки
+                    </h1>
+                    <hr>
+                </li>
+                <li class="Block_review">
+                    <ul class="Review_list">
+                        {% for review in reviews %}
+                            <li class="review_item">
+                                <ul class="review_user_info_list">
+                                    <li class="review_user_image">
+                                        {% if review.user.profile_image %}
+                                            <img src="{{review.user.profile_image.url}}" alt="" class="user_image">
+                                        {% else %}
+                                            <img src="{%static 'icon/profile.png'%}" alt="" class="user_image">
+                                        {% endif %}
+                                    </li>
+                                    <li class="review_user_name">
+                                        {{ review.user.username}}
+                                    </li>
+                                </ul>
+                                <span class="review_commit">
+                                    {{review.comment}}
+                                </span>
+                                <ul class="rating_list"> 
+                                    <li class="rating" data-rating="{{review.rating}}">
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li class="Review_form_list">
+                    <h2 class="review_form_header">
+                        Ви можете залишити свій відгук на нашому сайті
+                    </h2>
+                    <form method="post" action="{% url 'new_index' %}" class="review_form">
+                        {% csrf_token %}
+                        {{ review_form.as_p }}
+                        <div class="rating-stars">
+                            <span class="star_rating" data-value="1">☆</span>
+                            <span class="star_rating" data-value="2">☆</span>
+                            <span class="star_rating" data-value="3">☆</span>
+                            <span class="star_rating" data-value="4">☆</span>
+                            <span class="star_rating" data-value="5">☆</span>
+                        </div>
+                        <button type="submit" class="rating_button">Відправити</button>
+                    </form>
+                </li>
+            </ul>
+            <script src="{% static 'js/rating.js' %}"></script>
+        </section>
 
     </main>
 </body>

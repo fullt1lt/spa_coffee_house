@@ -36,7 +36,7 @@ class MassageTherapist(models.Model):
 
     def __str__(self):
         positions = ', '.join([position.name for position in self.position.all()])
-        return f"{self.user.username} - {self.salon.name} - {positions}"
+        return f"{self.user.username} - {positions}"
     
 class Composition(models.Model):
     name = models.CharField(max_length=50)
@@ -52,6 +52,10 @@ class SpaСategories(models.Model):
 
     def __str__(self):
         return self.name
+
+CATEGORY_TIME = (
+    
+)
 
 class TypeCategories(models.Model):
     name = models.CharField(max_length=100)
@@ -82,6 +86,7 @@ class TherapistAvailability(models.Model):
     def __str__(self):
         return f"{self.therapist.user.username} - {self.day.name} ({self.start_time} - {self.end_time})"
 
+
 class Review(models.Model):
     user = models.ForeignKey(SpaUser, on_delete=models.CASCADE)
     therapist = models.ForeignKey(MassageTherapist, on_delete=models.CASCADE, related_name='reviews')
@@ -105,7 +110,6 @@ class Review(models.Model):
     
 
      
-
 # class Appointment(models.Model):
 #     client = models.ForeignKey(SpaUser, on_delete=models.CASCADE)
 #     therapist = models.ForeignKey(MassageTherapist, on_delete=models.CASCADE)

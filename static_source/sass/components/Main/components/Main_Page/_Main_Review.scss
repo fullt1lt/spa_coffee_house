@@ -1,0 +1,148 @@
+.Main_Review {
+  margin-top: 80px;
+
+  .Main_Review_list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .Block_review {
+      display: flex;
+      width: 100%;
+      margin-top: 50px;
+      .Review_list {
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 100%;
+        gap: 24px;
+        .review_item {
+          display: flex;
+          flex-direction: column;
+          width: 40%;
+          padding: 16px;
+          align-items: flex-start;
+          border-radius: 16px;
+          background: #fff;
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+          .review_user_info_list {
+            display: flex;
+            width: 100%;
+            justify-content: flex-start;
+            display: flex;
+            .user_image {
+              width: 95px;
+              height: 95px;
+              object-fit: cover;
+              border-radius: 8px;
+            }
+            .review_user_name {
+              color: #000;
+              font-size: 26px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              margin-left: 16px;
+            }
+          }
+          .review_commit {
+            margin-top: 24px;
+            color: #000;
+            font-family: "Spline Sans";
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+          }
+          .rating_list {
+            display: flex;
+            align-items: center;
+            .rating {
+              margin-right: 10px;
+              .star {
+                color: gold;
+                font-size: 25px;
+                display: inline-block;
+              }
+            }
+          }
+        }
+      }
+    }
+    .Review_form_list {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 90px;
+      .review_form_header {
+        color: #000;
+        text-align: center;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+      .review_form {
+        margin-top: 65px;
+        p {
+          label {
+            display: none;
+          }
+          #id_therapist {
+            display: flex;
+            width: 100%;
+            padding: 15px 16px;
+            align-items: center;
+            gap: 16px;
+            border-radius: 5px;
+            border: 1px solid #030303;
+            color: #181719;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 22px; /* 137.5% */
+            letter-spacing: 0.16px;
+          }
+
+          .form-control {
+            border-radius: 5px;
+            padding: 15px 16px;
+            margin-top: 16px;
+            width: 590px;
+            height: 144px;
+            border: 2px solid #030303;
+            color: #181719;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 22px; /* 137.5% */
+            letter-spacing: 0.16px;
+            resize: none;
+          }
+        }
+        .rating-stars {
+          .star_rating {
+            color: gold;
+            font-size: 45px;
+            display: inline-block;
+            cursor: default;
+          }
+        }
+        .rating_button {
+          margin-top: 25px;
+          border: 2px solid #0c0c0c;
+          padding: 15px 30px;
+          color: #141414;
+          text-align: center;
+          font-size: 13px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 19.5px;
+          letter-spacing: 1.56px;
+          text-transform: uppercase;
+          background-image: none;
+          background: transparent;
+        }
+      }
+    }
+  }
+}

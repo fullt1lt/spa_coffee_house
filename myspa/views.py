@@ -4,9 +4,10 @@ from django.views import View
 from django.contrib.auth import login
 from forms.forms import LoginUserForm, MassageTherapistForm, RegisterUserForm, ReviewForm
 from django.contrib.auth.views import LoginView
-from django.views.generic import ListView, DeleteView, UpdateView,CreateView
+from django.views.generic import ListView, DeleteView, UpdateView, CreateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required 
+from django.core.paginator import Paginator
 
 from myspa.models import MassageTherapist, Review, SpaUser, TypeCategories, SpaСategories
 from spa.mixins import SuperUserRequiredMixin
@@ -40,10 +41,17 @@ class MainPage(View):
         spa_categories = SpaСategories.objects.all().order_by('name')
         massage_therapists = MassageTherapist.objects.all().order_by('-average_rating')
         review_form = ReviewForm()
+        reviews = Review.objects.all().order_by('-created_at')
+        
+        paginator = Paginator(reviews, 4)
+        page_number = request.GET.get('page')
+        page_reviews = paginator.get_page(page_number)
+        
         context = {
             'spa_categories': spa_categories,
             'massage_therapists': massage_therapists,
             'review_form': review_form,
+            'reviews': page_reviews,
         }
         return render(request, self.template_name, context)
 
@@ -63,9 +71,8 @@ class MainPage(View):
                 comment=comment
             )
             review.save()
-            return redirect('/')  # Перенаправляем на главную страницу или другую нужную
+            return redirect('/')
 
-        # Если форма не валидна, показываем её с ошибками
         spa_categories = SpaСategories.objects.all()
         massage_therapists = MassageTherapist.objects.all()
         context = {
