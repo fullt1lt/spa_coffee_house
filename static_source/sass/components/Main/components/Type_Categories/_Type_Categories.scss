@@ -31,10 +31,10 @@
       flex-direction: column;
       border: 1px gray solid;
       padding: 10px;
-      background-color: whitesmoke;
       border-radius: 12px;
       width: 45%;
-      box-shadow: 10px 5px 5px rgb(192, 192, 192);
+      background: #FFF;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
       .TypeCategory_item_list {
         display: flex;
         flex-direction: column;
@@ -52,14 +52,23 @@
         .item_header {
           margin-top: 20px;
           h2 {
-            font-family: var(--font-family-comic);
-            font-size: 25px;
+            color: #000;
+            font-family: "Playfair Display";
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
           }
         }
         .item_description {
           margin-top: 20px;
           span {
+            color: #000;
+            font-family: Manrope;
             font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
           }
         }
         .item_price_duration {
@@ -69,8 +78,12 @@
             justify-content: space-between;
             .item_ifo {
               span {
-                font-size: 20px;
-                font-weight: 500;
+                color: #000;
+                font-family: "Spline Sans";
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
               }
             }
           }

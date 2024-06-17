@@ -1,7 +1,13 @@
+from datetime import timedelta
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+
+CATEGORY_TIME = (
+    (timedelta(minutes=60), "Regular"),
+    (timedelta(minutes=90), "Long"),
+)
 
 class SpaUser(AbstractUser):
     phone = models.CharField(max_length=16, blank=True, null=True) 
@@ -53,15 +59,12 @@ class SpaСategories(models.Model):
     def __str__(self):
         return self.name
 
-CATEGORY_TIME = (
-    
-)
 
 class TypeCategories(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=1000)
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    duration = models.DurationField()
+    duration = models.DurationField(choices=CATEGORY_TIME)
     composition = models.ForeignKey(Composition, on_delete=models.CASCADE, related_name='composition')
     type_categories_image = models.ImageField(upload_to='type_categories_image/', blank=True, null=True)
     categories = models.ForeignKey(SpaСategories, on_delete=models.CASCADE, related_name='type_categories', default=1)

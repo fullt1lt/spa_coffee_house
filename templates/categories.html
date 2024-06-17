@@ -5,11 +5,10 @@
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 
-{% block content %}
-<div class="TypeCategories_main_list">
-    <ul class="Categories_header_list">
+
+{% block header %}
         {% for item in another_model_list %}
-            <li class="Categories_header_item">
+            <li class="Main_Header_navigation_item">
                 {% if category_pk == item.pk %}
                     <a href="{% url 'categories' item.id %}" class="Active">{{item.name}}</a>
                 {%else%}
@@ -17,7 +16,10 @@
                 {%endif%}
             </li>
         {%endfor%}
-    </ul>
+{% endblock %}
+
+{% block content %}
+<div class="TypeCategories_main_list">
     <ul class="TypeCategories_list">
         {% for type_category in type_categories %}
             <li class="TypeCategory_item">

@@ -1,36 +1,438 @@
-{% extends 'base.html' %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%block style %}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    {% endblock %}
+    <title>TCSpa</title>
+    <style>
+        .Main_Header {
+            background: url('{% static 'img/header.png' %}');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center -50px;
 
-{%block style %}
-    <link rel="stylesheet" href="{%static 'css/index.css'%}">
-{% endblock %}
-{% block content %}
-<div class="Categories_main_list">
-    <button class="prev" id="leftBtn"><img src="{% static 'icon/arrow_left.png' %}" alt="left"></button>
-    <ul class="Categories_list">
-        <li class="Categories_Galery">
-            <ul class="Categories_Galery_list">
-                {% for item in object_list %}
-                <a href="{% url 'categories' item.id %}">
-                    <li class="Categories_Galery_items">
-                        {% if item.categories_image %}
-                        <img src="{{ item.categories_image.url }}" alt="" class="Categories_img">
-                        {% else %}
-                        <img src="{% static 'icon/logo.svg' %}" alt="">
-                        {% endif %}
-                        <ul>
-                            <img src="{% static 'icon/Vector_blur.png' %}" alt="Vector" class="Categories_rhombus">
-                            <li>
-                                <span>{{ item.name }}</span>
+        }
+    </style>
+</head>
+<body>
+    <header class="Main_Header">
+        <ul class="Main_Header_list">
+            <li class="Main_Header_info">
+                <ul class="Main_Header_info_list">
+                    <li class="Main_info_logo">
+                        <a href="{% url 'index' %}" class="Main_info_link">
+                            <img src="{%static 'icon/logo.svg'%}" alt="" class="logo">
+                        </a>
+                        <span class="Main_info_link">
+                            Theraphy Cup Spa
+                        </span>
+                    </li>
+                    <li class="Main_Header_autorization">
+                        <ul class="authorization_list">
+                            {% if request.user.is_authenticated %}
+                                <li class="authorization"> 
+                                    <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="button_logout">Вийти</button>
+                                    </form>
+                                </li>
+                            {% else %}
+                                <li class="authorization"><a href="{% url 'login' %}" class="authorization_link">Вхiд</a> | <a href="{% url 'register' %}" class="authorization_link">Зареєструватися</a></li>
+                            {% endif %}
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="Main_Header_navigation">
+                <ul class="Main_Header_navigation_list">
+                    <li class="Navigation_list_nav">
+                        <ul class="navigation_list_nav_list">
+                            <li class="Main_Header_navigation_item">
+                                <a href="#">Новини</a>
+                            </li>
+                            <li class="Main_Header_navigation_item">
+                                <a href="#">Акції та пропозиції </a>
+                            </li>
+                            <li class="Main_Header_navigation_item">
+                                <a href="#">Блог</a>
+                            </li>
+                            <li class="Main_Header_navigation_item">
+                                <a href="#">Фотогалерея</a>
+                            </li>
+                            <li class="Main_Header_navigation_item">
+                                <a href="#">Кав’ярня</a>
                             </li>
                         </ul>
                     </li>
-                </a>
-                {% endfor %}
+                    <li class="Main_Header_navigation_contacts">
+                        <ul class="Navigation_contacts_list">
+                            <li class="contacts_item">
+                                <a href="#" class="contacts_item_link">
+                                    <img src="{%static 'icon/facebook.svg'%}" alt="" class="contacts_item_img">
+                                </a>
+                            </li>
+                            <li class="contacts_item">
+                                <a href="#" class="contacts_item_link">
+                                    <img src="{%static 'icon/instagram.svg'%}" alt="" class="contacts_item_img">
+                                </a>
+                            </li>
+                            <li class="contacts_item">
+                                <a href="#" class="contacts_item_link">
+                                    <img src="{%static 'icon/wats_up.svg'%}" alt="" class="contacts_item_img">
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="Main_Header_text">
+                <ul class="Main_Header_text_list">
+                    <li class="Main_Header_text_item">
+                        <h1>SPA-терапія</h1>
+                    </li>
+                    <li class="Main_Header_text_item">
+                        <h1>Подаруйте собі миті насолоди </h1>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <main class="Main_Page">
+        <section class="Main_About_Us Block_content">
+            <ul class="Main_About_Us_list">
+                <li class="Main_headers">
+                    <h1>
+                        Про нас
+                    </h1>
+                    <hr>
+                </li>
+                <li class="Main_About_Us_info">
+                    <ul class="Main_About_Us_info_list">
+                        <li class="Main_About_Us_info_text">
+                            <ul class="info_text_list">
+                                <li class="info_text_item">
+                                    <span class="empty_box"></span>
+                                    <span>Вітаємо вас у нашому унікальному закладі, де кожен куток пронизаний атмосферою затишку та релаксу.
+                                        Тут ви зможете забути про гамір міста та щоденні турботи, поринаючи у світ бажань і задоволення.
+                                         Наша місія - дарувати вам не лише приємні моменти, а й дбати про ваше благополуччя та здоров'я.
+                                          Ви гість у нашому світі і ми готові зробити все для вашої гармонії та насолоди.</span>
+                                </li>
+                                <li class="info_text_item">
+                                    <img src="{% static 'icon/checkmark.svg' %}" alt="">
+                                    <span>Ми створили атмосферу, де ви відчуєте себе особливим,
+                                         де кожен ковток кави і спа-ритуал стане чарівною миттю для вас.
+                                    </span>
+                                </li>
+                                <li class="info_text_item">
+                                    <img src="{% static 'icon/checkmark.svg' %}" alt="">
+                                    <span>
+                                        Для нас кожен гість унікальний,
+                                        тому пропонуємо індивідуальні програми спа-процедур та персоналізовані кавові напої.
+                                    </span>
+                                </li>
+                                <li class="info_text_item">
+                                    <img src="{% static 'icon/checkmark.svg' %}" alt="">
+                                    <span>
+                                        Ми пропонуємо широкий спектр спа-процедур,
+                                        від масажів до ексклюзивних обгортань, а також різноманітні пропарки та церемонії.
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="Main_About_Us_info_gallery">
+                            <ul class="Main_About_Us_info_gallery_list">
+                                <li class="info_gallery_item">
+                                    <img src="{% static 'img/info_gallery_1.png' %}" alt="">
+                                </li>
+                                <li class="info_gallery_item">
+                                    <img src="{% static 'img/info_gallery_2.png' %}" alt="">
+                                </li>
+                                <li class="info_gallery_item">
+                                    <img src="{% static 'img/info_gallery_3.png' %}" alt="">
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
             </ul>
-        </li>
-    </ul>
-    <button class="next" id="rightBtn"><img src="{% static 'icon/arrow_right.png' %}" alt="right"></button>
-</div>
-    <script src="{% static 'js/scroll_categories.js' %}"></script>
-{% endblock %}
+        </section>
+        <section class="Main_Philosophy Block_content">
+            <ul class="Main_Philosophy_list">
+                <li class="Main_headers">
+                    <h1>
+                        Філософія
+                    </h1>
+                    <hr>
+                </li>
+                <li class="Main_Philosophy_content">
+                    <ul class="Main_Philosophy_content_list">
+                        <li class="Content_item">
+                            <img src="{% static 'icon/eco_strategies.svg' %}" alt="">
+                            <h2>Еко стратегії</h2>
+                            <span>Ми впроваджуємо екологічно чисті технології та використовуємо натуральні, органічні продукти, щоб забезпечити не лише ефективність процедур, а й безпеку для навколишнього середовища. Наші інноваційні рішення допомагають зменшити вплив на природу, зберігаючи її красу для майбутніх поколінь.</span>
+                        </li>
+                        <li class="Content_item">
+                            <img src="{% static 'icon/professional_care.svg' %}" alt="">
+                            <h2>Професійний догляд</h2>
+                            <span>Кваліфіковані спеціалісти в курсі останніх тенденцій і технік. Вони розуміють унікальні потреби клієнта і завжди готові надати індивідуальні рекомендації та високоякісний сервіс. Працюють з великим старанням, щоб забезпечити вам найкращі результати і незабутні враження від кожного візиту до нашого спа-салону.</span>
+                        </li>
+                        <li class="Content_item">
+                            <img src="{% static 'icon/individual_approach.svg' %}" alt="">
+                            <h2>Індивідуальний підхід</h2>
+                            <span>Наші спеціалісти пропонують індивідуальний підхід до кожного клієнта, враховуючи всі особливості вашої шкіри та розробляючи унікальні програми догляду, адаптовані до ваших потреб. Це поєднання дозволяє досягти найкращих результатів і забезпечує максимальний ефект від процедур.</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section class="Main_Spa_Categories Block_content">
+            <ul class="Main_Spa_Categories_list">
+                <li class="Main_headers">
+                    <h1>
+                        Послуги
+                    </h1>
+                    <hr>
+                </li>
+                <li class="Main_Spa_Categories_content">
+                    <ul class="Main_Spa_Categories_content_list">
+                        {% for category in spa_categories %}
+                            <li class="Main_Spa_Categories_content_item">
+                                <ul class="Categories_content_item_list">
+                                    <li class="item_image">
+                                        {% if category.categories_image %}
+                                            <img src="{{ category.categories_image.url }}" alt="" class="Category_img">
+                                        {% else %}
+                                            <img src="{% static 'icon/logo.svg' %}" alt="">
+                                        {% endif %}
+                                    </li>
+                                    <li class="item_header">
+                                        <h2>{{ category.name }}</h2>
+                                    </li>
+                                    <li class="item_description">
+                                        <span class="item_description_text">{{ category.description }}</span>
+                                    </li>
+                                    <li class="item_info">
+                                        <a href="{% url 'categories' category.id %}">Дізнатися більше</a>
+                                        <a href="#" class="Category_Link_Sign_Up">Записатись</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endfor %}
+                        <script src="{% static 'js/max_height_category.js' %}"></script>
+                    </ul>
+
+                </li>
+            </ul>
+        </section>
+        <section class="Main_Massage_Therapist Block_content">
+            <ul class="Main_Massage_Therapist_list">
+                <li class="Main_headers">
+                    <h1>
+                        Спеціалісти
+                    </h1>
+                    <hr>
+                </li>
+                <li class="Main_Massage_Therapist_content">
+                    <ul class="Main_Massage_Therapist_content_list">
+                        {% for therapist in massage_therapists %}
+                            <li class="Massage_Therapist_content_item">
+                                {% if therapist.user.profile_image %}
+                                    <img src="{{ therapist.user.profile_image.url }}" alt="" class="Massage_Therapist_img">
+                                {% else %}
+                                    <img src="{% static 'icon/logo.svg' %}" alt="">
+                                {% endif %}
+                                <ul class="content_item_info_list">
+                                    <li class="content_item_info">
+                                        <span class="content_item_name">{{therapist.user.username}}</span>
+                                        <ul class="content_item_position_list">
+                                            {% for position in therapist.position.all %}
+                                        <li class="content_item_position">
+                                            <span>
+                                                {{ position.name }}
+                                                    </span>
+                                                </li>
+                                            {% endfor %}
+                                        </ul>
+                                        <ul class="rating_list"> 
+                                            <li class="rating" data-rating="{{therapist.average_rating}}">
+
+                                            </li>
+                                            <li class="average_rating">
+                                                <span>
+                                                    {{therapist.average_rating}}
+                                                </span>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="content_item_sign_up">
+                                        <a href="#" class="therapist_link_sign_up">Записатись</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endfor %}
+                        <script src="{% static 'js/add_stars.js' %}"></script>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section class="Main_Why_Us">
+            <ul class="Main_Why_Us_list">
+                <li class="Main_Why_Us_header">
+                    <h1>
+                        Чому саме ми?
+                    </h1>
+                    <hr>
+                </li>
+                <li class="Main_Why_Us_content">
+                    <ul class="Main_Why_Us_content_list">
+                        <li class="Main_Why_Us_content_item">
+                            <h2>Якість</h2>
+                            <span>Наш спа-салон забезпечує найвищу якість послуг завдяки кваліфікованим спеціалістам, індивідуальному підходу та використанню новітніх технологій і органічних продуктів.</span>
+                        </li>
+                        <li class="Main_Why_Us_content_item">
+                            <h2>Ефективність</h2>
+                            <span>Ефективність наших спа-процедур полягає в поєднанні передових методик, індивідуально підібраних програм і ретельно відібраних продуктів, що гарантують тривалі та помітні результати.</span>
+                        </li>
+                        <li class="Main_Why_Us_content_item">
+                            <h2>Безпека</h2>
+                            <span>Безпека нашого спа-салону забезпечується дотриманням найвищих стандартів гігієни, використанням екологічно чистих продуктів і суворим контролем якості процедур</span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section class="Main_Review Block_content">
+            <ul class="Main_Review_list">
+                <li class="Main_headers">
+                    <h1>Відгуки</h1>
+                    <hr>
+                </li>
+                <li class="Block_review">
+                    <ul class="Review_list" id="review_list">
+                        {% for review in reviews %}
+                            <li class="review_item">
+                                <ul class="review_user_info_list">
+                                    <li class="review_user_image">
+                                        {% if review.user.profile_image %}
+                                            <img src="{{ review.user.profile_image.url }}" alt="" class="user_image">
+                                        {% else %}
+                                            <img src="{% static 'icon/profile.png' %}" alt="" class="user_image">
+                                        {% endif %}
+                                    </li>
+                                    <li class="review_user_name">{{ review.user.username }}</li>
+                                </ul>
+                                <span class="review_commit">{{ review.comment }}</span>
+                                <ul class="rating_list">
+                                    <li class="rating" data-rating="{{ review.rating }}"></li>
+                                    <li class="created_at_item">
+                                        <span>{{ review.created_at|date:"Y-m-d" }}</span>
+                                    </li>
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <button id="load_more_reviews" class="load_more_button"><img src="{% static 'icon/arrow_down.png' %}" alt=""></button>
+                </li>
+                <li class="Review_main_list">
+                    <ul class="Review_form_list">
+                        <li class="Review_form_item">
+                            <h2 class="review_form_header">Ви можете залишити свій відгук на нашому сайті</h2>
+                            <form method="post" action="{% url 'index' %}" class="review_form">
+                                {% csrf_token %}
+                                {{ review_form.as_p }}
+                                <div class="rating-stars">
+                                    <span class="star_rating" data-value="1">☆</span>
+                                    <span class="star_rating" data-value="2">☆</span>
+                                    <span class="star_rating" data-value="3">☆</span>
+                                    <span class="star_rating" data-value="4">☆</span>
+                                    <span class="star_rating" data-value="5">☆</span>
+                                </div>
+                                <button type="submit" class="rating_button">Відправити</button>
+                            </form>
+                        </li>
+                        <li class="Review_image_item">
+                            <img src="{% static 'icon/logo_black.svg' %}" alt="" class="Review_image">
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div id="loading" style="display: none;">Loading...</div>
+            <script src="{% static 'js/reviews.js' %}"></script>
+            <script src="{% static 'js/rating.js' %}"></script>
+        </section>
+    </main>
+    <footer class="Main_Footer">
+        <ul class="Main_Footer_list">
+            <li class="Main_Footer_headers">
+                <h1>Контакти</h1>
+                <hr>
+            </li>
+            <li class="Main_Footer_Info">
+                <span>Theraphy Cup Spa, s.r.o.</span>
+                <span>Recepce +420776652345</span>
+                <span>IČ: 05682606</span>
+                <span>DIČ: CZ05782303</span>
+                <span>Fakturační adresa: Na Lysině 678/25, 147 00, Praha 4, Česká republika</span>
+            </li>
+            <li class="Main_Footer_navigation">
+                <ul class="Main_Footer_navigation_list">
+                    <li class="Navigation_list_nav">
+                        <ul class="navigation_list_nav_list">
+                            <li class="Main_Footer_navigation_item">
+                                <a href="#">Новини</a>
+                            </li>
+                            <li class="Main_Footer_navigation_item">
+                                <a href="#">Акції та пропозиції </a>
+                            </li>
+                            <li class="Main_Footer_navigation_item">
+                                <a href="#">Блог</a>
+                            </li>
+                            <li class="Main_Footer_navigation_item">
+                                <a href="#">Фотогалерея</a>
+                            </li>
+                            <li class="Main_Footer_navigation_item">
+                                <a href="#">Кав’ярня</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="Main_Footer_navigation_contacts">
+                        <ul class="Navigation_contacts_list">
+                            <li class="contacts_item">
+                                <a href="#" class="contacts_item_link">
+                                    <img src="{%static 'icon/facebook.svg'%}" alt="" class="contacts_item_img">
+                                </a>
+                            </li>
+                            <li class="contacts_item">
+                                <a href="#" class="contacts_item_link">
+                                    <img src="{%static 'icon/instagram.svg'%}" alt="" class="contacts_item_img">
+                                </a>
+                            </li>
+                            <li class="contacts_item">
+                                <a href="#" class="contacts_item_link">
+                                    <img src="{%static 'icon/wats_up.svg'%}" alt="" class="contacts_item_img">
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="Main_Footer_info">
+                <ul class="Main_Footer_info_list">
+                    <li class="Main_info_logo">
+                        <a href="{% url 'index' %}" class="Main_info_link">
+                            <img src="{%static 'icon/logo.svg'%}" alt="" class="logo">
+                        </a>
+                        <span class="Main_info_link">
+                            Theraphy Cup Spa
+                        </span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </footer>
+</body>
+</html>

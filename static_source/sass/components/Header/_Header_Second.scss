@@ -1,0 +1,105 @@
+.Header_Second {
+  position: relative;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  .Header_Second_list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
+    .Header_Second_info {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      .Header_Second_info_list {
+        display: block;
+        width: 100%;
+        .Header_Second_logo {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .Header_Second_info_link {
+            margin-top: 10px;
+            color: var(--black-color);
+            font-family: "Playfair Display";
+            font-size: 32px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: normal;
+          }
+        }
+        .Header_Second_autorization {
+          position: relative;
+          top: -50px;
+          float: right;
+          margin-right: 50px;
+          .authorization_list {
+            display: flex;
+            .authorization {
+              display: flex;
+              align-items: center;
+              color: var(--black-color);
+              .authorization_link {
+                color: var(--black-color);
+                margin: 0 15px;
+                font-size: 18px;
+                &:hover {
+                  color: var(--button-hover);
+                }
+              }
+              .button_logout {
+                border: medium none;
+                background-image: none;
+                background: transparent;
+                float: left;
+                background-color: transparent;
+                color: var(--black-color);
+                margin-left: 15px;
+                font-size: 18px;
+                &:hover {
+                  color: var(--button-hover);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .Header_Second_navigation {
+      width: 100%;
+      padding: 15px;
+      border: 3px solid var(--black-color);
+      margin-top: 16px;
+      .Header_Second_navigation_list {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .Navigation_list_nav {
+          .navigation_list_nav_list {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            .Main_Header_navigation_item {
+              margin-right: 80px;
+              a {
+                color: var(--black-color);
+                color: #000;
+                font-family: Manrope;
+                font-size: 32px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                &:hover {
+                  color: var(--button-hover);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

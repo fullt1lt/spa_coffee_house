@@ -37,7 +37,7 @@ class Register(CreateView):
         return response
     
 class MainPage(View):
-    template_name = 'new_index.html'
+    template_name = 'index.html'
 
     def get(self, request, *args, **kwargs):
         spa_categories = SpaСategories.objects.all().order_by('name')
@@ -110,16 +110,6 @@ class GetReviews(View):
         
         return JsonResponse({'reviews': reviews_list, 'has_next': page_reviews.has_next()})
 
-
-class HomePage(ListView):
-    template_name = 'index.html'
-    queryset = SpaСategories.objects.all()
-    ordering = ['name']
-    
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['massage_therapist'] = MassageTherapist.objects.all()
-        return context
 
 
 class CreateMassageTherapistView(SuperUserRequiredMixin, CreateView):
