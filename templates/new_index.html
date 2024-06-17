@@ -308,59 +308,131 @@
         <section class="Main_Review Block_content">
             <ul class="Main_Review_list">
                 <li class="Main_headers">
-                    <h1>
-                        Відгуки
-                    </h1>
+                    <h1>Відгуки</h1>
                     <hr>
                 </li>
                 <li class="Block_review">
-                    <ul class="Review_list">
+                    <ul class="Review_list" id="review_list">
                         {% for review in reviews %}
                             <li class="review_item">
                                 <ul class="review_user_info_list">
                                     <li class="review_user_image">
                                         {% if review.user.profile_image %}
-                                            <img src="{{review.user.profile_image.url}}" alt="" class="user_image">
+                                            <img src="{{ review.user.profile_image.url }}" alt="" class="user_image">
                                         {% else %}
-                                            <img src="{%static 'icon/profile.png'%}" alt="" class="user_image">
+                                            <img src="{% static 'icon/profile.png' %}" alt="" class="user_image">
                                         {% endif %}
                                     </li>
-                                    <li class="review_user_name">
-                                        {{ review.user.username}}
-                                    </li>
+                                    <li class="review_user_name">{{ review.user.username }}</li>
                                 </ul>
-                                <span class="review_commit">
-                                    {{review.comment}}
-                                </span>
-                                <ul class="rating_list"> 
-                                    <li class="rating" data-rating="{{review.rating}}">
+                                <span class="review_commit">{{ review.comment }}</span>
+                                <ul class="rating_list">
+                                    <li class="rating" data-rating="{{ review.rating }}"></li>
+                                    <li class="created_at_item">
+                                        <span>{{ review.created_at|date:"Y-m-d" }}</span>
                                     </li>
                                 </ul>
                             </li>
                         {% endfor %}
                     </ul>
+                    <button id="load_more_reviews" class="load_more_button"><img src="{% static 'icon/arrow_down.png' %}" alt=""></button>
                 </li>
-                <li class="Review_form_list">
-                    <h2 class="review_form_header">
-                        Ви можете залишити свій відгук на нашому сайті
-                    </h2>
-                    <form method="post" action="{% url 'new_index' %}" class="review_form">
-                        {% csrf_token %}
-                        {{ review_form.as_p }}
-                        <div class="rating-stars">
-                            <span class="star_rating" data-value="1">☆</span>
-                            <span class="star_rating" data-value="2">☆</span>
-                            <span class="star_rating" data-value="3">☆</span>
-                            <span class="star_rating" data-value="4">☆</span>
-                            <span class="star_rating" data-value="5">☆</span>
-                        </div>
-                        <button type="submit" class="rating_button">Відправити</button>
-                    </form>
+                <li class="Review_main_list">
+                    <ul class="Review_form_list">
+                        <li class="Review_form_item">
+                            <h2 class="review_form_header">Ви можете залишити свій відгук на нашому сайті</h2>
+                            <form method="post" action="{% url 'new_index' %}" class="review_form">
+                                {% csrf_token %}
+                                {{ review_form.as_p }}
+                                <div class="rating-stars">
+                                    <span class="star_rating" data-value="1">☆</span>
+                                    <span class="star_rating" data-value="2">☆</span>
+                                    <span class="star_rating" data-value="3">☆</span>
+                                    <span class="star_rating" data-value="4">☆</span>
+                                    <span class="star_rating" data-value="5">☆</span>
+                                </div>
+                                <button type="submit" class="rating_button">Відправити</button>
+                            </form>
+                        </li>
+                        <li class="Review_image_item">
+                            <img src="{% static 'icon/logo_black.svg' %}" alt="" class="Review_image">
+                        </li>
+                    </ul>
                 </li>
             </ul>
+            <div id="loading" style="display: none;">Loading...</div>
+            <script src="{% static 'js/reviews.js' %}"></script>
             <script src="{% static 'js/rating.js' %}"></script>
         </section>
-
     </main>
+    <footer class="Main_Footer">
+        <ul class="Main_Footer_list">
+            <li class="Main_Footer_headers">
+                <h1>Контакти</h1>
+                <hr>
+            </li>
+            <li class="Main_Footer_Info">
+                <span>Theraphy Cup Spa, s.r.o.</span>
+                <span>Recepce +420776652345</span>
+                <span>IČ: 05682606</span>
+                <span>DIČ: CZ05782303</span>
+                <span>Fakturační adresa: Na Lysině 678/25, 147 00, Praha 4, Česká republika</span>
+            </li>
+            <li class="Main_Footer_navigation">
+                <ul class="Main_Footer_navigation_list">
+                    <li class="Navigation_list_nav">
+                        <ul class="navigation_list_nav_list">
+                            <li class="Main_Footer_navigation_item">
+                                <a href="#">Новини</a>
+                            </li>
+                            <li class="Main_Footer_navigation_item">
+                                <a href="#">Акції та пропозиції </a>
+                            </li>
+                            <li class="Main_Footer_navigation_item">
+                                <a href="#">Блог</a>
+                            </li>
+                            <li class="Main_Footer_navigation_item">
+                                <a href="#">Фотогалерея</a>
+                            </li>
+                            <li class="Main_Footer_navigation_item">
+                                <a href="#">Кав’ярня</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="Main_Footer_navigation_contacts">
+                        <ul class="Navigation_contacts_list">
+                            <li class="contacts_item">
+                                <a href="#" class="contacts_item_link">
+                                    <img src="{%static 'icon/facebook.svg'%}" alt="" class="contacts_item_img">
+                                </a>
+                            </li>
+                            <li class="contacts_item">
+                                <a href="#" class="contacts_item_link">
+                                    <img src="{%static 'icon/instagram.svg'%}" alt="" class="contacts_item_img">
+                                </a>
+                            </li>
+                            <li class="contacts_item">
+                                <a href="#" class="contacts_item_link">
+                                    <img src="{%static 'icon/wats_up.svg'%}" alt="" class="contacts_item_img">
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="Main_Footer_info">
+                <ul class="Main_Footer_info_list">
+                    <li class="Main_info_logo">
+                        <a href="{% url 'index' %}" class="Main_info_link">
+                            <img src="{%static 'icon/logo.svg'%}" alt="" class="logo">
+                        </a>
+                        <span class="Main_info_link">
+                            Theraphy Cup Spa
+                        </span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </footer>
 </body>
 </html>

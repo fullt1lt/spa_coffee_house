@@ -1,3 +1,5 @@
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import View
@@ -43,7 +45,7 @@ class MainPage(View):
         review_form = ReviewForm()
         reviews = Review.objects.all().order_by('-created_at')
         
-        paginator = Paginator(reviews, 4)
+        paginator = Paginator(reviews, 2)
         page_number = request.GET.get('page')
         page_reviews = paginator.get_page(page_number)
         
@@ -81,6 +83,32 @@ class MainPage(View):
             'review_form': form,
         }
         return render(request, self.template_name, context)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class GetReviews(View):
+
+    def get(self, request, *args, **kwargs):
+        page = request.GET.get('page', 1)
+        try:
+            page = int(page)
+        except ValueError:
+            page = 1
+        
+        reviews = Review.objects.all().order_by('-created_at')
+        paginator = Paginator(reviews, 2)
+        page_reviews = paginator.get_page(page)
+        
+        reviews_list = [{
+            'id': review.id,
+            'user': review.user.username,
+            'comment': review.comment,
+            'rating': review.rating,
+            'created_at': review.created_at.strftime('%Y-%m-%d %H:%M:%S'),
+            'profile_image': review.user.profile_image.url if review.user.profile_image else None
+        } for review in page_reviews]
+        
+        return JsonResponse({'reviews': reviews_list, 'has_next': page_reviews.has_next()})
 
 
 class HomePage(ListView):

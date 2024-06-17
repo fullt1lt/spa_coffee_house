@@ -7,18 +7,29 @@
     width: 100%;
     .Block_review {
       display: flex;
-      width: 100%;
+      flex-direction: column;
+      width: 80%;
       margin-top: 50px;
+      align-items: center;
+      .Review_list::-webkit-scrollbar {
+        display: none;
+      }
       .Review_list {
         display: flex;
         justify-content: flex-start;
         flex-wrap: wrap;
         width: 100%;
         gap: 24px;
+        max-height: 450px;
+        overflow-y: auto;
+        padding: 15px;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
         .review_item {
           display: flex;
           flex-direction: column;
-          width: 40%;
+          width: 45%;
+          flex-grow: 1;
           padding: 16px;
           align-items: flex-start;
           border-radius: 16px;
@@ -45,6 +56,7 @@
             }
           }
           .review_commit {
+            width: 100%;
             margin-top: 24px;
             color: #000;
             font-family: "Spline Sans";
@@ -52,10 +64,14 @@
             font-style: normal;
             font-weight: 400;
             line-height: normal;
+            overflow-wrap: break-word;
+            white-space: normal;
           }
           .rating_list {
             display: flex;
             align-items: center;
+            justify-content: space-between;
+            width: 100%;
             .rating {
               margin-right: 10px;
               .star {
@@ -64,83 +80,122 @@
                 display: inline-block;
               }
             }
+            .created_at_item {
+              color: rgba(0, 0, 0, 0.56);
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            }
           }
         }
       }
+      .load_more_button {
+        background-image: none;
+        background: transparent;
+        border: none;
+
+        img {
+          width: 25px;
+          height: 25px;
+        }
+      }
     }
-    .Review_form_list {
+    .Review_main_list {
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       margin-top: 90px;
-      .review_form_header {
-        color: #000;
-        text-align: center;
-        font-size: 24px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: normal;
-      }
-      .review_form {
-        margin-top: 65px;
-        p {
-          label {
-            display: none;
-          }
-          #id_therapist {
-            display: flex;
-            width: 100%;
-            padding: 15px 16px;
-            align-items: center;
-            gap: 16px;
-            border-radius: 5px;
-            border: 1px solid #030303;
-            color: #181719;
-            font-size: 16px;
+      width: 80%;
+      .Review_form_list {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        .Review_form_item {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          width: 50%;
+          .review_form_header {
+            color: #000;
+            text-align: center;
+            font-size: 24px;
             font-style: normal;
-            font-weight: 400;
-            line-height: 22px; /* 137.5% */
-            letter-spacing: 0.16px;
+            font-weight: 700;
+            line-height: normal;
           }
+          .review_form {
+            margin-top: 65px;
+            p {
+              label {
+                display: none;
+              }
+              #id_therapist {
+                display: flex;
+                width: 100%;
+                padding: 15px 16px;
+                align-items: center;
+                gap: 16px;
+                border-radius: 5px;
+                border: 1px solid #030303;
+                color: #181719;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 22px; /* 137.5% */
+                letter-spacing: 0.16px;
+              }
 
-          .form-control {
-            border-radius: 5px;
-            padding: 15px 16px;
-            margin-top: 16px;
-            width: 590px;
-            height: 144px;
-            border: 2px solid #030303;
-            color: #181719;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 22px; /* 137.5% */
-            letter-spacing: 0.16px;
-            resize: none;
+              .form-control {
+                border-radius: 5px;
+                padding: 15px 16px;
+                margin-top: 16px;
+                width: 590px;
+                height: 144px;
+                border: 2px solid #030303;
+                color: #181719;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 22px; /* 137.5% */
+                letter-spacing: 0.16px;
+                resize: none;
+              }
+            }
+            .rating-stars {
+              .star_rating {
+                color: gold;
+                font-size: 45px;
+                display: inline-block;
+                cursor: default;
+              }
+            }
+            .rating_button {
+              margin-top: 25px;
+              border: 2px solid #0c0c0c;
+              padding: 15px 30px;
+              color: #141414;
+              text-align: center;
+              font-size: 13px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 19.5px;
+              letter-spacing: 1.56px;
+              text-transform: uppercase;
+              background-image: none;
+              background: transparent;
+            }
           }
         }
-        .rating-stars {
-          .star_rating {
-            color: gold;
-            font-size: 45px;
-            display: inline-block;
-            cursor: default;
-          }
-        }
-        .rating_button {
-          margin-top: 25px;
-          border: 2px solid #0c0c0c;
-          padding: 15px 30px;
-          color: #141414;
-          text-align: center;
-          font-size: 13px;
-          font-style: normal;
-          font-weight: 400;
-          line-height: 19.5px;
-          letter-spacing: 1.56px;
-          text-transform: uppercase;
-          background-image: none;
-          background: transparent;
+      }
+      .Review_image_item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        .Review_image {
+          width: 300px;
+          height: 300px;
         }
       }
     }

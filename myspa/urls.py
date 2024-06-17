@@ -1,6 +1,6 @@
 from django.urls import include, path
 from django.contrib.auth.views import LogoutView
-from myspa.views import (CreateMassageTherapistView, HomePage, Login, MainPage, Register, TypeCategoriesListView)
+from myspa.views import (CreateMassageTherapistView, GetReviews, HomePage, Login, MainPage, Register, TypeCategoriesListView)
 
 
 urlpatterns = [
@@ -12,4 +12,5 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('create-massage-therapist/', CreateMassageTherapistView.as_view(), name='create_massage_therapist'),
     path('spa_category/<int:pk>/type_categories/', TypeCategoriesListView.as_view(), name='categories'),
+    path('get_reviews/', GetReviews.as_view(), name='get_reviews'),
 ]
