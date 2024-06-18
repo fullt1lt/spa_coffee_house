@@ -11,7 +11,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required 
 from django.core.paginator import Paginator
 
-from myspa.models import MassageTherapist, Review, SpaUser, TypeCategories, SpaСategories
+from myspa.models import MassageTherapist, Review, SpaUser, TypeCafeProduct, TypeCategories, SpaСategories
 from spa.mixins import SuperUserRequiredMixin
 
 class Login(LoginView):
@@ -167,3 +167,13 @@ class TypeCategoriesListView(ListView):
     def get_queryset(self):
         return TypeCategories.objects.filter(categories__id=self.kwargs['pk']).prefetch_related('sessions')
     
+
+class CafeView(View):
+    template_name = 'cafe_index.html'
+    
+    def get(self, request, *args, **kwargs):
+        type_cafe_product = TypeCafeProduct.objects.all().order_by('name')
+        context = {
+            'type_cafe_product': type_cafe_product,
+        }
+        return render(request, self.template_name, context)

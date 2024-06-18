@@ -1,0 +1,44 @@
+{% extends 'base_info.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <style>
+    .Cafe_main {
+        background: url('{% static 'img/bg_image_cafe.png' %}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+{% endblock %}
+
+
+{% block header %}
+    {% for item in type_cafe_product %}
+        {% if category_pk == item.pk %}
+            <li class="Main_Header_navigation_item Active">
+                <a href="{% url 'categories' item.id %}">{{ item.name }}</a>
+            </li>
+        {% else %}
+            <li class="Main_Header_navigation_item">
+                <a href="{% url 'categories' item.id %}">{{ item.name }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+<div class="Cafe_main">
+    <img src="{% static 'img/cafe_image.png' %}" alt="" class="Cafe_main_image">
+    <ul class="Cafe_main_list">
+        <li class="Cafe_main_header">
+            <h1>Ласкаво просимо до нашої кав'ярні у спа-салоні!</h1>
+        </li>
+        <li class="Cafe_main_info">
+            <!-- <img src="{% static 'img/image_coffe.png' %}" alt="" class="image_coffe_left"> -->
+            <span>Поглибіть своє відчуття розкоші та задоволення, насолоджуйтеся ароматним кавовим напоєм у затишній атмосфері нашого закладу. У нашій кав'ярні ви зможете насолодитися широким вибором свіжообсмажених кавових зерен, найкращими чаєвими сортами та апетитними десертами - все це для вашого відпочинку та задоволення. Завітайте до нас сьогодні та даруйте собі миті насолоди та розслаблення!</span>
+            <!-- <img src="{% static 'img/image_coffe.png' %}" alt="" class="image_coffe_right"> -->
+        </li>
+    </ul>
+</div>
+{% endblock %}

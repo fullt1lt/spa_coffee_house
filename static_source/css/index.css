@@ -24,7 +24,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   height: 100%;
-  background: #ADB59F;
+  background: #adb59f;
 }
 
 .Main {
@@ -51,6 +51,11 @@ a {
   margin: 0 auto;
   padding: 20px 0 20px 0;
   width: 80%;
+}
+
+.Block_info_content {
+  margin: 0 auto;
+  width: 100%;
 }
 
 .Active {
@@ -1817,6 +1822,76 @@ a {
 .Main_Review .Main_Review_list .Review_main_list .Review_image_item .Review_image {
   width: 300px;
   height: 300px;
+}
+
+.Cafe_main {
+  width: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  color: #fff;
+}
+.Cafe_main .Cafe_main_image {
+  width: 100%;
+  height: 424px;
+}
+.Cafe_main .Cafe_main_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Cafe_main .Cafe_main_list .Cafe_main_header {
+  margin-top: 54px;
+}
+.Cafe_main .Cafe_main_list .Cafe_main_header h1 {
+  color: #0c0c0c;
+  -webkit-text-stroke-width: 1;
+  -webkit-text-stroke-color: #0c0b0b;
+  font-family: Manrope;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+}
+.Cafe_main .Cafe_main_list .Cafe_main_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 54px;
+  margin-bottom: 125px;
+  width: 50%;
+  max-height: 318px;
+  background-color: var(--white-color);
+  border-radius: 16px;
+  padding: 45px;
+  background: #f8f6f4;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.Cafe_main .Cafe_main_list .Cafe_main_info span {
+  color: #000;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
 }
 
 .Main_Footer {
