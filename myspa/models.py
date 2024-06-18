@@ -71,7 +71,8 @@ class TypeCategories(models.Model):
     
     def __str__(self):
         return self.name
-    
+
+
 class CategoriesSession(models.Model):
     type_category = models.ForeignKey(TypeCategories, on_delete=models.CASCADE, related_name='sessions')
     duration = models.DurationField(choices=CATEGORY_TIME)
@@ -120,7 +121,6 @@ class Review(models.Model):
         return f"{self.therapist} - {self.rating}"
     
 
-     
 # class Appointment(models.Model):
 #     client = models.ForeignKey(SpaUser, on_delete=models.CASCADE)
 #     therapist = models.ForeignKey(MassageTherapist, on_delete=models.CASCADE)
@@ -134,3 +134,5 @@ class Review(models.Model):
 
 #     def __str__(self):
 #         return f"{self.client.user.username} - {self.massage_type.name} with {self.therapist.user.username} on {self.date} at {self.start_time}"
+
+
