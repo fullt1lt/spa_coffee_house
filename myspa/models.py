@@ -136,3 +136,12 @@ class Review(models.Model):
 #         return f"{self.client.user.username} - {self.massage_type.name} with {self.therapist.user.username} on {self.date} at {self.start_time}"
 
 
+    
+class CafeProduct(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(max_length=1000)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    product_image = models.ImageField(upload_to='product_image/', blank=True, null=True)
+    composition = models.TextField(max_length=250)
+    def __str__(self):
+        return self.name

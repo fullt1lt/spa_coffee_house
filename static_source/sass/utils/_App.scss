@@ -8,7 +8,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100%;
-  background-color: rgb(255, 255, 255);
+  // background-color: rgb(255, 255, 255);
+  background: #ADB59F;
 }
 
 .Main {
@@ -34,5 +35,10 @@ a {
 }
 
 .Active {
-  color: rgb(255, 111, 0) !important;
+  border-radius: 16px;
+  background: rgba(248, 246, 244, 0.5) !important;
+}
+
+.Backgraund_Categories {
+  background-color: #959a8a;
 }

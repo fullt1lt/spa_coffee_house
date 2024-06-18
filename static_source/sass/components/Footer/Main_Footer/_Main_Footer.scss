@@ -15,7 +15,7 @@
       margin-top: 24px;
       width: 80%;
       h1 {
-        color: #ffffff;
+        color: var(--black-color);
         text-align: center;
         font-family: var(--font-family-Manrope);
         font-size: 48px;
@@ -26,7 +26,7 @@
       hr {
         height: 3px;
         width: 60%;
-        background-color: #ffffff;
+        background-color: var(--black-color);
       }
     }
     .Main_Footer_Info {
@@ -35,7 +35,7 @@
       width: 80%;
       padding: 5px 0;
       span {
-        color: #fff;
+        color: var(--black-color);
         font-size: 16px;
         font-style: normal;
         font-weight: 400;
@@ -45,7 +45,7 @@
     .Main_Footer_navigation {
       width: 100%;
       padding: 15px;
-      border: 3px solid #ffffff;
+      border: 3px solid var(--black-color);
       .Main_Footer_navigation_list {
         display: flex;
         justify-content: center;
@@ -58,7 +58,7 @@
             .Main_Footer_navigation_item {
               margin-right: 80px;
               a {
-                color: #fff;
+                color: var(--black-color);
                 font-family: Manrope;
                 font-size: 16px;
                 font-style: normal;
@@ -98,7 +98,7 @@
         align-items: center;
         .Main_info_link {
           margin-top: 10px;
-          color: #fff;
+          color: var(--black-color);
           font-family: "Playfair Display";
           font-size: 32px;
           font-style: normal;

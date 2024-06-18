@@ -21,9 +21,9 @@ class Login(LoginView):
     def get_success_url(self):
         user = self.request.user
         if user.is_staff:
-            return reverse_lazy('new_index')
+            return reverse_lazy('index')
         else:
-            return reverse_lazy('new_index')
+            return reverse_lazy('index')
         
 class Register(CreateView):
     form_class = RegisterUserForm
@@ -109,7 +109,6 @@ class GetReviews(View):
         } for review in page_reviews]
         
         return JsonResponse({'reviews': reviews_list, 'has_next': page_reviews.has_next()})
-
 
 
 class CreateMassageTherapistView(SuperUserRequiredMixin, CreateView):

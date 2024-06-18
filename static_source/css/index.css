@@ -24,7 +24,7 @@ body {
       -ms-flex-direction: column;
           flex-direction: column;
   height: 100%;
-  background-color: rgb(255, 255, 255);
+  background: #ADB59F;
 }
 
 .Main {
@@ -54,7 +54,12 @@ a {
 }
 
 .Active {
-  color: rgb(255, 111, 0) !important;
+  border-radius: 16px;
+  background: rgba(248, 246, 244, 0.5) !important;
+}
+
+.Backgraund_Categories {
+  background-color: #959a8a;
 }
 
 .Header_list {
@@ -266,7 +271,6 @@ a {
 }
 .Header_Second .Header_Second_list .Header_Second_navigation {
   width: 100%;
-  padding: 15px;
   border: 3px solid var(--black-color);
   margin-top: 16px;
 }
@@ -294,6 +298,7 @@ a {
           justify-content: center;
 }
 .Header_Second .Header_Second_list .Header_Second_navigation .Header_Second_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Header_navigation_item {
+  padding: 15px;
   margin-right: 80px;
 }
 .Header_Second .Header_Second_list .Header_Second_navigation .Header_Second_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Header_navigation_item a {
@@ -304,9 +309,6 @@ a {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-}
-.Header_Second .Header_Second_list .Header_Second_navigation .Header_Second_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Header_navigation_item a:hover {
-  color: var(--button-hover);
 }
 
 .login_list {
@@ -1846,7 +1848,7 @@ a {
   width: 80%;
 }
 .Main_Footer .Main_Footer_list .Main_Footer_headers h1 {
-  color: #ffffff;
+  color: var(--black-color);
   text-align: center;
   font-family: var(--font-family-Manrope);
   font-size: 48px;
@@ -1857,7 +1859,7 @@ a {
 .Main_Footer .Main_Footer_list .Main_Footer_headers hr {
   height: 3px;
   width: 60%;
-  background-color: #ffffff;
+  background-color: var(--black-color);
 }
 .Main_Footer .Main_Footer_list .Main_Footer_Info {
   display: -webkit-box;
@@ -1871,7 +1873,7 @@ a {
   padding: 5px 0;
 }
 .Main_Footer .Main_Footer_list .Main_Footer_Info span {
-  color: #fff;
+  color: var(--black-color);
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
@@ -1880,7 +1882,7 @@ a {
 .Main_Footer .Main_Footer_list .Main_Footer_navigation {
   width: 100%;
   padding: 15px;
-  border: 3px solid #ffffff;
+  border: 3px solid var(--black-color);
 }
 .Main_Footer .Main_Footer_list .Main_Footer_navigation .Main_Footer_navigation_list {
   display: -webkit-box;
@@ -1909,7 +1911,7 @@ a {
   margin-right: 80px;
 }
 .Main_Footer .Main_Footer_list .Main_Footer_navigation .Main_Footer_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Footer_navigation_item a {
-  color: #fff;
+  color: var(--black-color);
   font-family: Manrope;
   font-size: 16px;
   font-style: normal;
@@ -1960,7 +1962,7 @@ a {
 }
 .Main_Footer .Main_Footer_info .Main_Footer_info_list .Main_info_logo .Main_info_link {
   margin-top: 10px;
-  color: #fff;
+  color: var(--black-color);
   font-family: "Playfair Display";
   font-size: 32px;
   font-style: normal;
@@ -2019,7 +2021,7 @@ a {
 }
 .Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_info_logo .Main_info_link {
   margin-top: 10px;
-  color: #fff;
+  color: var(--black-color);
   font-family: "Playfair Display";
   font-size: 32px;
   font-style: normal;
@@ -2044,10 +2046,10 @@ a {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: var(--white-color);
+  color: var(--black-color);
 }
 .Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .authorization_link {
-  color: var(--white-color);
+  color: var(--black-color);
   margin: 0 15px;
   font-size: 18px;
 }
@@ -2060,7 +2062,7 @@ a {
   background: transparent;
   float: left;
   background-color: transparent;
-  color: var(--white-color);
+  color: var(--black-color);
   margin-left: 15px;
   font-size: 18px;
 }
@@ -2070,7 +2072,7 @@ a {
 .Main_Header .Main_Header_list .Main_Header_navigation {
   width: 100%;
   padding: 15px;
-  border: 3px solid #ffffff;
+  border: 3px solid var(--black-color);
   margin-top: 16px;
 }
 .Main_Header .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list {
@@ -2100,7 +2102,7 @@ a {
   margin-right: 80px;
 }
 .Main_Header .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Header_navigation_item a {
-  color: #fff;
+  color: var(--black-color);
   font-family: Manrope;
   font-size: 16px;
   font-style: normal;
