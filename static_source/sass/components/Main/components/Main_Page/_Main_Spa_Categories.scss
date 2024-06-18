@@ -29,15 +29,17 @@
             width: 100%;
             .item_image {
               overflow: hidden;
+              border-radius: 8px;
               .Category_img {
                 width: 100%;
                 border-radius: 8px;
                 height: 265px;
-                object-position: 50%;
+                // object-position: 50%;
+                object-fit: cover;
                 cursor: pointer;
-                transition: all 0.3s ease;
+                transition: all 1s ease;
                 &:hover {
-                  transform: scale(1.02);
+                  transform: scale(1.2);
                 }
               }
             }

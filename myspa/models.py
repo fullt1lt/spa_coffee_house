@@ -5,8 +5,10 @@ from django.db import models
 
 
 CATEGORY_TIME = (
-    (timedelta(minutes=60), "Regular"),
-    (timedelta(minutes=90), "Long"),
+    (timedelta(minutes=30), "30"),
+    (timedelta(minutes=60), "60"),
+    (timedelta(minutes=90), "90"),
+    (timedelta(minutes=120), "120"),
 )
 
 class SpaUser(AbstractUser):
@@ -63,8 +65,6 @@ class SpaСategories(models.Model):
 class TypeCategories(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=1000)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
-    duration = models.DurationField(choices=CATEGORY_TIME)
     composition = models.ForeignKey(Composition, on_delete=models.CASCADE, related_name='composition')
     type_categories_image = models.ImageField(upload_to='type_categories_image/', blank=True, null=True)
     categories = models.ForeignKey(SpaСategories, on_delete=models.CASCADE, related_name='type_categories', default=1)
@@ -72,6 +72,14 @@ class TypeCategories(models.Model):
     def __str__(self):
         return self.name
     
+class CategoriesSession(models.Model):
+    type_category = models.ForeignKey(TypeCategories, on_delete=models.CASCADE, related_name='sessions')
+    duration = models.DurationField(choices=CATEGORY_TIME)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+
+    def __str__(self):
+        return f"{self.type_category.name} - {self.get_duration_display()} - {self.price}"
+
     
 class Day(models.Model):
     name = models.DateField(auto_now_add=True) 

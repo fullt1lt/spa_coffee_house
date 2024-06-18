@@ -956,7 +956,7 @@ a {
   padding: 10px;
   border-radius: 12px;
   width: 45%;
-  background: #FFF;
+  background: #fff;
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
@@ -970,15 +970,20 @@ a {
           flex-direction: column;
   width: 100%;
 }
+.TypeCategories_main_list .TypeCategories_list .TypeCategory_item .TypeCategory_item_list .item_image {
+  overflow: hidden;
+  border-radius: 8px;
+}
 .TypeCategories_main_list .TypeCategories_list .TypeCategory_item .TypeCategory_item_list .item_image .TypeCategory_img {
   width: 100%;
+  border-radius: 8px;
   cursor: pointer;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
 .TypeCategories_main_list .TypeCategories_list .TypeCategory_item .TypeCategory_item_list .item_image .TypeCategory_img:hover {
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 .TypeCategories_main_list .TypeCategories_list .TypeCategory_item .TypeCategory_item_list .item_header {
   margin-top: 20px;
@@ -1013,10 +1018,10 @@ a {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-.TypeCategories_main_list .TypeCategories_list .TypeCategory_item .TypeCategory_item_list .item_price_duration .item_price_duration_list .item_ifo span {
+.TypeCategories_main_list .TypeCategories_list .TypeCategory_item .TypeCategory_item_list .item_price_duration .item_price_duration_list .item_info span {
   color: #000;
   font-family: "Spline Sans";
-  font-size: 18px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -1264,20 +1269,21 @@ a {
 }
 .Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .Categories_content_item_list .item_image {
   overflow: hidden;
+  border-radius: 8px;
 }
 .Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .Categories_content_item_list .item_image .Category_img {
   width: 100%;
   border-radius: 8px;
   height: 265px;
-  -o-object-position: 50%;
-     object-position: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
   cursor: pointer;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: all 1s ease;
+  transition: all 1s ease;
 }
 .Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .Categories_content_item_list .item_image .Category_img:hover {
-  -webkit-transform: scale(1.02);
-          transform: scale(1.02);
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 .Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .Categories_content_item_list .item_header {
   margin-top: 20px;
@@ -1385,6 +1391,7 @@ a {
 .Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item .Massage_Therapist_img {
   width: 100%;
   border-radius: 15px;
+  height: 357px;
 }
 .Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item .content_item_info_list {
   display: -webkit-box;

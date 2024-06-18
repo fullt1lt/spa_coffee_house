@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
-
+{% load custom_filters %}
 {% block style %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
@@ -21,29 +21,29 @@
 {% block content %}
 <div class="TypeCategories_main_list">
     <ul class="TypeCategories_list">
-        {% for type_category in type_categories %}
+        {% for data in type_categories_data %}
             <li class="TypeCategory_item">
                 <ul class="TypeCategory_item_list">
                     <li class="item_image">
-                        {% if type_category.type_categories_image %}
-                            <img src="{{ type_category.type_categories_image.url }}" alt="" class="TypeCategory_img">
+                        {% if data.type_category.type_categories_image %}
+                            <img src="{{ data.type_category.type_categories_image.url }}" alt="" class="TypeCategory_img">
                         {% else %}
                             <img src="{% static 'icon/logo.svg' %}" alt="">
                         {% endif %}
                     </li>
                     <li class="item_header">
-                        <h2>{{ type_category.name }}</h2>
+                        <h2>{{ data.type_category.name }}</h2>
                     </li>
                     <li class="item_description">
-                        <span>{{ type_category.description }}</span>
+                        <span>{{ data.type_category.description }}</span>
                     </li>
                     <li class="item_price_duration">
                         <ul class="item_price_duration_list">
-                            <li class="item_ifo">
-                                <span>Тривалість: {{ type_category.duration }}</span>
+                            <li class="item_info">
+                                <span>Тривалість: {{ data.durations }} хв</span>
                             </li>
-                            <li class="item_ifo">
-                                <span>Цiна: {{ type_category.price }}</span>
+                            <li class="item_info">
+                                <span>Цiна: {{ data.prices }} грн</span>
                             </li>
                         </ul>
                     </li>

@@ -148,8 +148,23 @@ class TypeCategoriesListView(ListView):
         context = super().get_context_data(**kwargs)
         context['another_model_list'] = SpaСategories.objects.all().order_by('name')
         context['category_pk'] = self.kwargs['pk']
+
+        type_categories = self.get_queryset()
+
+        type_categories_data = []
+        for type_category in type_categories:
+            sessions = type_category.sessions.all()
+            durations = "/".join([str(int(session.duration.total_seconds() // 60)) for session in sessions])
+            prices = "/".join([str(int(session.price)) for session in sessions])
+            type_categories_data.append({
+                'type_category': type_category,
+                'durations': durations,
+                'prices': prices,
+            })
+
+        context['type_categories_data'] = type_categories_data
         return context
     
     def get_queryset(self):
-        return TypeCategories.objects.filter(categories__id=self.kwargs['pk'])
+        return TypeCategories.objects.filter(categories__id=self.kwargs['pk']).prefetch_related('sessions')
     
