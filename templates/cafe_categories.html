@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<style>
+    .TypeCafeCategories_main_list {
+        background: url('{% static 'img/bg_image_cafe.png' %}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+</style> 
+{% endblock %}
+
+
+{% block header %}
+    {% for item in type_cafe_product %}
+        {% if category_pk == item.pk %}
+            <li class="Main_Header_navigation_item Active">
+                <a href="{% url 'cafe_categories' item.id %}">{{ item.name }}</a>
+            </li>
+        {% else %}
+            <li class="Main_Header_navigation_item">
+                <a href="{% url 'cafe_categories' item.id %}">{{ item.name }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+<div class="TypeCafeCategories_main_list">
+    <ul class="TypeCafeCategories_list">
+        {% for product in type_product_categories %}
+            <li class="TypeCafeCategories_item">
+                <ul class="TypeCafeCategories_item_list">
+                    <li class="item_image">
+                        {% if product.product_image %}
+                            <img src="{{ product.product_image.url }}" alt="" class="TypeCafeCategories_img">
+                        {% else %}
+                            <img src="{% static 'icon/logo.svg' %}" alt="">
+                        {% endif %}
+                    </li>
+                    <li class="item_header">
+                        <h2>{{ product.name }}</h2>
+                        <h2> {{ product.price }} грн</h2>
+                    </li>
+                    <li class="item_composition">
+                        <span>{{ product.composition }}</span>
+                    </li>
+                    <li class="item_description">
+                        <span>{{ product.description }}</span>
+                    </li>
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

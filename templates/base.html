@@ -5,10 +5,11 @@
     {%block style %}
     {% load static %}
     {% endblock %}
+     <script src="{% static 'js/classChanger.js' %}" defer></script>
     <title>TCSpa</title>
 </head>
-<body class="Backgraund_Categories">
-    <header class="Header_Second Backgraund_Categories">
+<body>
+    <header class="Header_Second">
         <ul class="Header_Second_list">
             <li class="Header_Second_info">
                 <ul class="Header_Second_info_list">
@@ -49,12 +50,12 @@
         </ul>
     </header>
     <main class="Main">
-        <section class="Block_content">
+        <section id="Block_content">
             {% block content %}
             {% endblock %}
         </section>
     </main>
-   <footer class="Main_Footer Backgraund_Categories">
+   <footer class="Main_Footer" id="footer">
         <ul class="Main_Footer_list">
             <li class="Main_Footer_headers">
                 <h1>Контакти</h1>
@@ -72,19 +73,16 @@
                     <li class="Navigation_list_nav">
                         <ul class="navigation_list_nav_list">
                             <li class="Main_Footer_navigation_item">
-                                <a href="#">Новини</a>
+                                <a href="{% url 'blog_news' %}">Новини i блог</a>
                             </li>
                             <li class="Main_Footer_navigation_item">
                                 <a href="#">Акції та пропозиції </a>
                             </li>
                             <li class="Main_Footer_navigation_item">
-                                <a href="#">Блог</a>
-                            </li>
-                            <li class="Main_Footer_navigation_item">
                                 <a href="#">Фотогалерея</a>
                             </li>
                             <li class="Main_Footer_navigation_item">
-                                <a href="#">Кав’ярня</a>
+                                <a href="{% url 'cafe' %}">Кав’ярня</a>
                             </li>
                         </ul>
                     </li>

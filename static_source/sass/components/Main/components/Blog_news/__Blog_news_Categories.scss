@@ -1,0 +1,95 @@
+.BlogNewsCategories_main_list {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  align-items: center;
+  width: 100%;
+  font-family: var(--font-family-Manrope);
+  margin-top: 50px;
+  .BlogNewsCategories_list {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+    margin-bottom: 120px;
+    width: 80%;
+    .BlogNewsCategories_item {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      width: 100%;
+      margin-top: 38px;
+      align-items: center;
+      h1 {
+        color: #000;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 30.4px; /* 95% */
+      }
+      .BlogNewsCategories_item_list {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-top: 28px;
+        gap: 20px;
+        .item_image {
+          width: 541px;
+          height: 372px;
+          flex-shrink: 0;
+          border: 4px solid #000;
+          overflow: hidden;
+          border-radius: 8px;
+          .BlogNewsCategories_img {
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            &:hover {
+              transform: scale(1.2);
+            }
+          }
+        }
+        .item_description {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 45%;
+          span {
+            color: #000;
+            font-size: 24px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 30.4px;
+          }
+          .BlogNewsCategories_small_img {
+            margin-top: 28px;
+            width: 150px;
+            height: 99px;
+          }
+        }
+      }
+    }
+  }
+  .pagination {
+    padding: 5px;
+    .step-links {
+      display: flex;
+      align-items: center;
+      a {
+        text-decoration: none;
+      }
+      .page_obj {
+        padding: 5px;
+        color: #000;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 30.4px;
+      }
+      .pagination_arrow_right {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}

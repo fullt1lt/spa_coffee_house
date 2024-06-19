@@ -63,8 +63,20 @@ a {
   background: rgba(248, 246, 244, 0.5) !important;
 }
 
-.Backgraund_Categories {
+.Background_Categories {
   background-color: #959a8a;
+}
+
+.Background_Cafe_Categories {
+  background: rgb(149, 154, 138);
+}
+
+.Background_Main_Page_Footer {
+  background-color: rgba(149, 154, 138, 0.8);
+}
+
+.Background_Blog_News_Categories {
+  background: #AFB5A1;
 }
 
 .Header_list {
@@ -1617,9 +1629,6 @@ a {
       -ms-flex-direction: column;
           flex-direction: column;
   width: 45%;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
   padding: 16px;
   -webkit-box-align: start;
       -ms-flex-align: start;
@@ -1876,14 +1885,23 @@ a {
   display: flex;
   margin-top: 54px;
   margin-bottom: 125px;
+  position: relative;
   width: 50%;
-  max-height: 318px;
   background-color: var(--white-color);
   border-radius: 16px;
   padding: 45px;
   background: #f8f6f4;
   -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.Cafe_main .Cafe_main_list .Cafe_main_info .image_coffe_left {
+  position: absolute;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  left: -80px;
+  bottom: -20px;
+  width: 150px;
+  height: 150px;
 }
 .Cafe_main .Cafe_main_list .Cafe_main_info span {
   color: #000;
@@ -1892,6 +1910,356 @@ a {
   font-style: normal;
   font-weight: 200;
   line-height: normal;
+  text-align: start;
+  text-wrap: wrap;
+}
+.Cafe_main .Cafe_main_list .Cafe_main_info .image_coffe_right {
+  right: -100px;
+  top: -20px;
+  width: 82px;
+  position: absolute;
+  width: 150px;
+  height: 150px;
+}
+
+.TypeCafeCategories_main_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+.TypeCafeCategories_main_list .TypeCafeCategories_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 80%;
+}
+.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px gray solid;
+  padding: 10px;
+  border-radius: 12px;
+  width: 45%;
+  background: #fff;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_image {
+  overflow: hidden;
+  border-radius: 8px;
+}
+.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_image .TypeCafeCategories_img {
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_image .TypeCafeCategories_img:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_header {
+  width: 100%;
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_header h2 {
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_composition {
+  margin-top: 20px;
+}
+.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_composition span {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_description {
+  margin-top: 20px;
+}
+.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_description span {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.Blog_news_main {
+  width: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  color: #fff;
+}
+.Blog_news_main .Blog_news_main_image {
+  width: 100%;
+  height: 424px;
+}
+.Blog_news_main .Blog_news_main_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Blog_news_main .Blog_news_main_list .Blog_news_main_header {
+  margin-top: 54px;
+}
+.Blog_news_main .Blog_news_main_list .Blog_news_main_header h1 {
+  color: #0c0c0c;
+  -webkit-text-stroke-width: 1;
+  -webkit-text-stroke-color: #0c0b0b;
+  font-family: Manrope;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+}
+.Blog_news_main .Blog_news_main_list .Blog_news_main_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 54px;
+  margin-bottom: 125px;
+  position: relative;
+  width: 50%;
+  background-color: var(--white-color);
+  border-radius: 16px;
+  padding: 45px;
+  background: #f8f6f4;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.Blog_news_main .Blog_news_main_list .Blog_news_main_info .image_blog_news_left {
+  position: absolute;
+  left: -80px;
+  bottom: -75px;
+  width: 150px;
+  height: 150px;
+}
+.Blog_news_main .Blog_news_main_list .Blog_news_main_info span {
+  color: #000;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+  text-align: start;
+  text-wrap: wrap;
+}
+.Blog_news_main .Blog_news_main_list .Blog_news_main_info .image_blog_news_right {
+  right: -80px;
+  top: -20px;
+  width: 82px;
+  position: absolute;
+  width: 200px;
+  height: 250px;
+}
+
+.BlogNewsCategories_main_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  font-family: var(--font-family-Manrope);
+  margin-top: 50px;
+}
+.BlogNewsCategories_main_list .BlogNewsCategories_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-bottom: 120px;
+  width: 80%;
+}
+.BlogNewsCategories_main_list .BlogNewsCategories_list .BlogNewsCategories_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 10px;
+  width: 100%;
+  margin-top: 38px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.BlogNewsCategories_main_list .BlogNewsCategories_list .BlogNewsCategories_item h1 {
+  color: #000;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 30.4px; /* 95% */
+}
+.BlogNewsCategories_main_list .BlogNewsCategories_list .BlogNewsCategories_item .BlogNewsCategories_item_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  margin-top: 28px;
+  gap: 20px;
+}
+.BlogNewsCategories_main_list .BlogNewsCategories_list .BlogNewsCategories_item .BlogNewsCategories_item_list .item_image {
+  width: 541px;
+  height: 372px;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  border: 4px solid #000;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.BlogNewsCategories_main_list .BlogNewsCategories_list .BlogNewsCategories_item .BlogNewsCategories_item_list .item_image .BlogNewsCategories_img {
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.BlogNewsCategories_main_list .BlogNewsCategories_list .BlogNewsCategories_item .BlogNewsCategories_item_list .item_image .BlogNewsCategories_img:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+.BlogNewsCategories_main_list .BlogNewsCategories_list .BlogNewsCategories_item .BlogNewsCategories_item_list .item_description {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 45%;
+}
+.BlogNewsCategories_main_list .BlogNewsCategories_list .BlogNewsCategories_item .BlogNewsCategories_item_list .item_description span {
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30.4px;
+}
+.BlogNewsCategories_main_list .BlogNewsCategories_list .BlogNewsCategories_item .BlogNewsCategories_item_list .item_description .BlogNewsCategories_small_img {
+  margin-top: 28px;
+  width: 150px;
+  height: 99px;
+}
+.BlogNewsCategories_main_list .pagination {
+  padding: 5px;
+}
+.BlogNewsCategories_main_list .pagination .step-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.BlogNewsCategories_main_list .pagination .step-links a {
+  text-decoration: none;
+}
+.BlogNewsCategories_main_list .pagination .step-links .page_obj {
+  padding: 5px;
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30.4px;
+}
+.BlogNewsCategories_main_list .pagination .step-links .pagination_arrow_right {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .Main_Footer {
@@ -1901,7 +2269,6 @@ a {
           align-items: center;
   overflow: hidden;
   width: 100%;
-  background: rgba(149, 154, 138, 0.8);
 }
 .Main_Footer .Main_Footer_list {
   display: -webkit-box;

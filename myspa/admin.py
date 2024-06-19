@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CafeProduct, Composition, MassageTherapist, Position, Review, Salon, SpaUser, TypeCafeProduct, TypeCategories, SpaСategories, CategoriesSession
+from .models import (BlogAndNews, CafeProduct, Composition, MassageTherapist, Position, Review, Salon, SpaUser, TypeBlogAndNews,     TypeCafeProduct, TypeCategories, SpaСategories, CategoriesSession)
 
 admin.site.register(SpaUser)
 admin.site.register(Salon)
@@ -12,3 +12,5 @@ admin.site.register(Position)
 admin.site.register(CategoriesSession)
 admin.site.register(CafeProduct)
 admin.site.register(TypeCafeProduct)
+admin.site.register(BlogAndNews)
+admin.site.register(TypeBlogAndNews)

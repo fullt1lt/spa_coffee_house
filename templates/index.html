@@ -7,6 +7,7 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     {% endblock %}
+    <script src="{% static 'js/classChanger.js' %}" defer></script>
     <title>TCSpa</title>
     <style>
         .Main_Header {
@@ -52,13 +53,10 @@
                     <li class="Navigation_list_nav">
                         <ul class="navigation_list_nav_list">
                             <li class="Main_Header_navigation_item">
-                                <a href="#">Новини</a>
+                                <a href="{% url 'blog_news' %}">Новини i блог</a>
                             </li>
                             <li class="Main_Header_navigation_item">
                                 <a href="#">Акції та пропозиції </a>
-                            </li>
-                            <li class="Main_Header_navigation_item">
-                                <a href="#">Блог</a>
                             </li>
                             <li class="Main_Header_navigation_item">
                                 <a href="#">Фотогалерея</a>
@@ -365,7 +363,7 @@
             <script src="{% static 'js/rating.js' %}"></script>
         </section>
     </main>
-    <footer class="Main_Footer">
+    <footer class="Main_Footer Background_Main_Page_Footer" id="footer">
         <ul class="Main_Footer_list">
             <li class="Main_Footer_headers">
                 <h1>Контакти</h1>
@@ -383,13 +381,10 @@
                     <li class="Navigation_list_nav">
                         <ul class="navigation_list_nav_list">
                             <li class="Main_Footer_navigation_item">
-                                <a href="#">Новини</a>
+                                <a href="{% url 'blog_news' %}">Новини i блог</a>
                             </li>
                             <li class="Main_Footer_navigation_item">
                                 <a href="#">Акції та пропозиції </a>
-                            </li>
-                            <li class="Main_Footer_navigation_item">
-                                <a href="#">Блог</a>
                             </li>
                             <li class="Main_Footer_navigation_item">
                                 <a href="#">Фотогалерея</a>

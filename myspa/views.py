@@ -11,7 +11,7 @@ from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required 
 from django.core.paginator import Paginator
 
-from myspa.models import MassageTherapist, Review, SpaUser, TypeCafeProduct, TypeCategories, SpaСategories
+from myspa.models import BlogAndNews, CafeProduct, MassageTherapist, Review, SpaUser, TypeBlogAndNews, TypeCafeProduct, TypeCategories, SpaСategories
 from spa.mixins import SuperUserRequiredMixin
 
 class Login(LoginView):
@@ -168,12 +168,50 @@ class TypeCategoriesListView(ListView):
         return TypeCategories.objects.filter(categories__id=self.kwargs['pk']).prefetch_related('sessions')
     
 
-class CafeView(View):
+class CafeView(ListView):
+    model = CafeProduct
+    queryset = TypeCafeProduct.objects.all().order_by('name')
+    ordering = ['name']
     template_name = 'cafe_index.html'
+    context_object_name = "type_cafe_product"
+
+
+class CafeTypeProductListView(ListView):
+    model = CafeProduct
+    ordering = ['name']
+    template_name = 'cafe_categories.html'
+    context_object_name = 'type_product_categories'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['type_cafe_product'] = TypeCafeProduct.objects.all().order_by('name')
+        context['category_pk'] = self.kwargs['pk']
+        return context
+
+    def get_queryset(self):
+        return CafeProduct.objects.filter(type_cafe_product=self.kwargs['pk'])
     
-    def get(self, request, *args, **kwargs):
-        type_cafe_product = TypeCafeProduct.objects.all().order_by('name')
-        context = {
-            'type_cafe_product': type_cafe_product,
-        }
-        return render(request, self.template_name, context)
+
+class BlogNewsView(ListView):
+    model = BlogAndNews
+    queryset = TypeBlogAndNews.objects.all().order_by('name')
+    ordering = ['name']
+    template_name = 'blog_news.html'
+    context_object_name = "type_blog_news"
+    
+
+class TypeBlogNewsViewListView(ListView):
+    model = BlogAndNews
+    paginate_by = 2
+    ordering = ['name']
+    template_name = 'blog_news_categories.html'
+    context_object_name = 'type_blog_news_categories'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['type_blog_news'] = TypeBlogAndNews.objects.all().order_by('name')
+        context['category_pk'] = self.kwargs['pk']
+        return context
+
+    def get_queryset(self):
+        return BlogAndNews.objects.filter(type_blog_and_news=self.kwargs['pk'])

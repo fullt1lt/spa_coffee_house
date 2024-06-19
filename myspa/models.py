@@ -154,3 +154,22 @@ class TypeCafeProduct(models.Model):
     
     def __str__(self):
         return self.name
+    
+
+class BlogAndNews(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField(max_length=1000)
+    main_image = models.ImageField(upload_to='blog_image/', blank=True, null=True)
+    small_image = models.ImageField(upload_to='blog_image/', blank=True, null=True)
+    
+    type_blog_and_news = models.ForeignKey("TypeBlogAndNews", on_delete=models.CASCADE, related_name='type_blog_and_news', default=1)
+    
+    def __str__(self):
+        return self.name
+    
+
+class TypeBlogAndNews(models.Model):
+    name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.name

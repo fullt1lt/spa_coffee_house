@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+
+{% block header %}
+    {% for item in type_blog_news %}
+        {% if category_pk == item.pk %}
+            <li class="Main_Header_navigation_item Active">
+                <a href="{% url 'blog_news_categories' item.id %}">{{ item.name }}</a>
+            </li>
+        {% else %}
+            <li class="Main_Header_navigation_item">
+                <a href="{% url 'blog_news_categories' item.id %}">{{ item.name }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+<div class="Blog_news_main">
+    <img src="{% static 'img/blog_news/main_blog_news.png' %}" alt="" class="Blog_news_main_image">
+    <ul class="Blog_news_main_list">
+        <li class="Blog_news_main_header">
+            <h1>Життя в гармонії зі собою: Блог та Новини нашого СПА-салону</h1>
+        </li>
+        <li class="Blog_news_main_info">
+            <img src="{% static 'img/blog_news/blog_image_1.png' %}" alt="" class="image_blog_news_left">
+            <span>У нашому блозі та розділі новин ви знайдете найсвіжіші поради з догляду за собою, інсайти з мистецтва релаксу та всі найцікавіші новини з життя нашого СПА-салону. Діліться з нами вашими думками та враженнями, вивчайте та дізнавайтесь більше про світ краси та гармонії разом із нашим експертним командою.</span>
+            <img src="{% static 'img/blog_news/blog_image_2.png' %}" alt="" class="image_blog_news_right">
+        </li>
+    </ul>
+</div>
+{% endblock %}
