@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+
+{% block header %}
+    {% for item in type_gallery %}
+        {% if category_pk == item.pk %}
+            <li class="Main_Header_navigation_item Active">
+                <a href="{% url 'gallery_categories' item.id %}">{{ item.name }}</a>
+            </li>
+        {% else %}
+            <li class="Main_Header_navigation_item">
+                <a href="{% url 'gallery_categories' item.id %}">{{ item.name }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+<div class="Gallery_main">
+    <img src="{% static 'img/gallery/gallery_main.png' %}" alt="" class="Gallery_main_image">
+    <ul class="Gallery_main_list">
+        <li class="Gallery_main_header">
+            <h1>Занурьтеся в світ розкішної гармонії: Наша Фотогалерея СПА-процедур</h1>
+        </li>
+        <li class="Gallery_main_info">
+            <img src="{% static 'img/gallery/gallery_small_1.png' %}" alt="" class="image_gallery_left">
+            <span>Відчуйте емоцію розкоші та відпочинку, переглядаючи наші фотографії з обстановкою нашого СПА. Дозвольте собі відірватися від буденності та насолодитися красою і розкішшю кожної деталі наших процедур та облаштування.</span>
+            <img src="{% static 'img/gallery/gallery_small_2.png' %}" alt="" class="image_gallery_right">
+        </li>
+    </ul>
+</div>
+{% endblock %}

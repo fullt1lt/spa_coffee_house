@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+
+{% block header %}
+    {% for item in type_gallery %}
+        {% if category_pk == item.pk %}
+            <li class="Main_Header_navigation_item Active_Gallery">
+                <a href="{% url 'gallery_categories' item.id %}">{{ item.name }}</a>
+            </li>
+        {% else %}
+            <li class="Main_Header_navigation_item">
+                <a href="{% url 'gallery_categories' item.id %}">{{ item.name }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+<div class="GalleryCategories_main_list">
+    <ul class="GalleryCategories_list">
+        {% for item in type_gallery_categories %}
+            <li class="GalleryCategories_item">
+                {% if item.gallery_image %}
+                    <img src="{{ item.gallery_image.url }}" alt="" class="GalleryCategories_img">
+                {% else %}
+                    <img src="{% static 'icon/logo.svg' %}" alt="" class="GalleryCategories_img">
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" class="page_obj">1</a>
+            <a href="?page={{ page_obj.previous_page_number }}">
+                <img src="{% static 'icon/pagination_arrow.png' %}" alt="" class="pagination_arrow_left">
+            </a>
+        {% endif %}
+
+        <span class="page_obj">
+            {{ page_obj.number }}
+        </span>
+        <span class="page_obj">...</span>
+        <span class="page_obj">
+            {{ page_obj.paginator.num_pages }}
+        </span>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">
+                <img src="{% static 'icon/pagination_arrow.png' %}" alt="" class="pagination_arrow_right">
+            </a>
+            <a href="?page={{ page_obj.paginator.num_pages }}" class="page_obj">{{ page_obj.paginator.num_pages }}</a>
+        {% endif %}
+    </span>
+    </div>
+</div>
+{% endblock %}

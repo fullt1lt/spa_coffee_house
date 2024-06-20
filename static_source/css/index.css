@@ -63,6 +63,11 @@ a {
   background: rgba(248, 246, 244, 0.5) !important;
 }
 
+.Active_Gallery {
+  border-radius: 16px;
+  background: #C0A494 !important;
+}
+
 .Background_Categories {
   background-color: #959a8a;
 }
@@ -77,6 +82,10 @@ a {
 
 .Background_Blog_News_Categories {
   background: #AFB5A1;
+}
+
+.Background_Gallery_Categories {
+  background: #9C8273;
 }
 
 .Header_list {
@@ -345,13 +354,12 @@ a {
           align-items: center;
   margin-top: 50px;
   margin-bottom: 50px;
-  color: var(--white-color);
-  border-radius: 12px;
+  color: var(--black-color);
   background-color: var(--white-color);
   padding: 15px;
-  width: 300px;
-  height: 350px;
-  border: 1px black solid;
+  font-family: Manrope;
+  width: 646px;
+  height: 545px;
 }
 .login_list .login_header {
   display: -webkit-box;
@@ -368,8 +376,12 @@ a {
   padding: 5px;
 }
 .login_list .login_header .login_header_name {
-  font-size: 25px;
-  color: var(--black-color);
+  color: #000;
+  text-align: center;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 .login_list .login_form_list {
   margin-top: 15px;
@@ -389,52 +401,131 @@ a {
   background-image: none;
 }
 .login_list .login_form_list .login_form .form-input {
-  margin-bottom: 15px;
-  text-align: center;
-  height: 30px;
-  width: 250px;
-  background-color: #ebebeb;
+  margin-top: 32px;
+  border-radius: 5px;
+  padding: 0 15px;
+  text-align: start;
+  width: 543px;
+  height: 56px;
+  background-color: #e6e0e9;
   border: none;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
 }
 .login_list .login_form_list .login_form .form-input::-webkit-input-placeholder {
-  color: rgb(105, 105, 105);
-  text-align: center;
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 .login_list .login_form_list .login_form .form-input::-moz-placeholder {
-  color: rgb(105, 105, 105);
-  text-align: center;
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 .login_list .login_form_list .login_form .form-input:-ms-input-placeholder {
-  color: rgb(105, 105, 105);
-  text-align: center;
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 .login_list .login_form_list .login_form .form-input::-ms-input-placeholder {
-  color: rgb(105, 105, 105);
-  text-align: center;
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 .login_list .login_form_list .login_form .form-input::placeholder {
-  color: rgb(105, 105, 105);
-  text-align: center;
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 .login_list .login_form_list .login_form .login_input {
-  width: 250px;
-  background-color: rgb(0, 217, 120);
-  border: 1px whitesmoke solid;
-  color: var(--white-color);
+  width: 119px;
+  height: 31px;
+  margin-top: 32px;
+  background: #ced1c5;
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 16px;
   padding: 5px;
+  border: none;
+}
+.login_list .login_form_list .login_form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+}
+.login_list .login_form_list .login_form div .form-label {
+  margin-top: 5px;
+  color: #49454f;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 .login_list .login_register_list {
   margin-top: 15px;
 }
 .login_list .login_register_list .login_register_span {
-  color: var(--black-color);
+  color: #000;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 .login_list .login_register_list .login_register_span .login_register_link {
-  color: blue;
-  margin-left: 10px;
+  color: rgba(11, 145, 175, 0.72);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 .login_list .provider_list {
-  margin-top: 20px;
+  margin-top: 50px;
 }
 .login_list .provider_list .provider_form .provider_button {
   display: -webkit-box;
@@ -447,21 +538,27 @@ a {
       -ms-flex-align: center;
           align-items: center;
   border: medium none;
-  width: 250px;
+  width: 196px;
+  height: 40px;
   background-image: none;
-  background: transparent;
+  border-radius: 5px;
+  background: #3c94d3;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25) inset;
   float: left;
-  border: 1px #ebebeb solid;
   padding: 5px;
 }
 .login_list .provider_list .provider_form .provider_button .provider_img {
+  margin-left: 10px;
   width: 30px;
   height: 30px;
 }
 .login_list .provider_list .provider_form .provider_button .provider_text {
-  color: #4285f4;
-  margin-right: 15px;
-  font-size: 18px;
+  color: #fff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 
 .registration_list {
@@ -481,13 +578,11 @@ a {
           align-items: center;
   margin-top: 50px;
   margin-bottom: 50px;
-  color: var(--white-color);
-  border-radius: 12px;
+  color: var(--black-color);
   background-color: var(--white-color);
   padding: 15px;
-  width: 300px;
-  height: 480px;
-  border: 1px black solid;
+  font-family: Manrope;
+  width: 646px;
 }
 .registration_list .register_header {
   display: -webkit-box;
@@ -504,15 +599,12 @@ a {
   padding: 5px;
 }
 .registration_list .register_header .register_header_name {
-  font-size: 25px;
-  color: var(--black-color);
-}
-.registration_list .register_text_list {
-  margin: 10px 0;
-}
-.registration_list .register_text_list .register_text {
-  font-size: 12px;
-  color: gray;
+  color: #000;
+  text-align: center;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 .registration_list .register_form_list {
   margin-top: 15px;
@@ -530,102 +622,169 @@ a {
           align-items: center;
   width: 100%;
   background-image: none;
-  color: red;
 }
 .registration_list .register_form_list .registration_form .form-input {
-  margin-top: 15px;
-  text-align: center;
-  height: 30px;
-  width: 250px;
-  background-color: #ebebeb;
+  margin-top: 32px;
+  border-radius: 5px;
+  padding: 0 15px;
+  text-align: start;
+  width: 543px;
+  height: 56px;
+  background-color: #e6e0e9;
   border: none;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
 }
 .registration_list .register_form_list .registration_form .form-input::-webkit-input-placeholder {
-  color: rgb(105, 105, 105);
-  text-align: center;
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 .registration_list .register_form_list .registration_form .form-input::-moz-placeholder {
-  color: rgb(105, 105, 105);
-  text-align: center;
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 .registration_list .register_form_list .registration_form .form-input:-ms-input-placeholder {
-  color: rgb(105, 105, 105);
-  text-align: center;
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 .registration_list .register_form_list .registration_form .form-input::-ms-input-placeholder {
-  color: rgb(105, 105, 105);
-  text-align: center;
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 .registration_list .register_form_list .registration_form .form-input::placeholder {
-  color: rgb(105, 105, 105);
-  text-align: center;
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
-.registration_list .register_form_list .registration_form .create_image {
-  width: 250px;
-  background-color: #ebebeb;
-  border: 1px whitesmoke solid;
+.registration_list .register_form_list .registration_form .custom-file-upload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 32px;
+  overflow: hidden;
+  cursor: pointer;
+  width: 200px;
+  background-color: #e6e0e9;
   color: var(--black-color);
-  margin-top: 15px;
+  border-radius: 8px;
 }
-.registration_list .register_form_list .registration_form .create_image .file-upload-button {
+.registration_list .register_form_list .registration_form .custom-file-upload label {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  height: 56px;
+}
+.registration_list .register_form_list .registration_form .custom-file-upload input[type=file] {
   position: absolute;
   top: 0;
   right: 0;
   margin: 0;
-  padding: 6px 12px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 0 4px 4px 0;
+  padding: 0;
+  font-size: 20px;
   cursor: pointer;
+  opacity: 0;
 }
 .registration_list .register_form_list .registration_form .register_input {
-  width: 250px;
-  background-color: rgb(0, 217, 120);
-  border: 1px whitesmoke solid;
-  color: var(--white-color);
+  width: 139px;
+  height: 31px;
+  margin-top: 32px;
+  background: #ced1c5;
+  color: #000;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 16px;
   padding: 5px;
-  margin-top: 15px;
+  border: none;
+}
+.registration_list .register_form_list .registration_form div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+}
+.registration_list .register_form_list .registration_form div .form-label {
+  margin-top: 5px;
+  color: #49454f;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 .registration_list .register_login_list {
   margin: 15px 0;
 }
 .registration_list .register_login_list .register_login_span {
-  color: var(--black-color);
+  color: #000;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 .registration_list .register_login_list .register_login_span .register_login_link {
-  color: blue;
-  margin-left: 10px;
-}
-.registration_list .provider_list {
-  margin-top: 20px;
-}
-.registration_list .provider_list .provider_form .provider_button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border: medium none;
-  width: 250px;
-  background-image: none;
-  background: transparent;
-  float: left;
-  border: 1px #ebebeb solid;
-  padding: 5px;
-}
-.registration_list .provider_list .provider_form .provider_button .provider_img {
-  width: 30px;
-  height: 30px;
-}
-.registration_list .provider_list .provider_form .provider_button .provider_text {
-  color: #4285f4;
-  margin-left: 15px;
+  color: rgba(11, 145, 175, 0.72);
   font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .create_massage_therapist_list {
@@ -2258,6 +2417,177 @@ a {
   line-height: 30.4px;
 }
 .BlogNewsCategories_main_list .pagination .step-links .pagination_arrow_right {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.Gallery_main {
+  width: 100%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  color: #fff;
+}
+.Gallery_main .Gallery_main_image {
+  width: 100%;
+  height: 424px;
+}
+.Gallery_main .Gallery_main_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Gallery_main .Gallery_main_list .Gallery_main_header {
+  margin-top: 54px;
+}
+.Gallery_main .Gallery_main_list .Gallery_main_header h1 {
+  color: #0c0c0c;
+  -webkit-text-stroke-width: 1;
+  -webkit-text-stroke-color: #0c0b0b;
+  font-family: Manrope;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+}
+.Gallery_main .Gallery_main_list .Gallery_main_info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 54px;
+  margin-bottom: 125px;
+  position: relative;
+  width: 50%;
+  background-color: var(--white-color);
+  border-radius: 16px;
+  padding: 45px;
+  background: #bfb0a3;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.Gallery_main .Gallery_main_list .Gallery_main_info .image_gallery_left {
+  position: absolute;
+  left: -80px;
+  bottom: -75px;
+  width: 150px;
+  height: 150px;
+}
+.Gallery_main .Gallery_main_list .Gallery_main_info span {
+  color: #000;
+  font-family: Manrope;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 200;
+  line-height: normal;
+  text-align: start;
+  text-wrap: wrap;
+}
+.Gallery_main .Gallery_main_list .Gallery_main_info .image_gallery_right {
+  right: -30px;
+  top: -40px;
+  width: 82px;
+  position: absolute;
+  width: 78px;
+  height: 162px;
+}
+
+.GalleryCategories_main_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  font-family: var(--font-family-Manrope);
+  margin-top: 50px;
+  margin-bottom: 120px;
+}
+.GalleryCategories_main_list .GalleryCategories_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 120px;
+  margin-bottom: 50px;
+  width: 100%;
+}
+.GalleryCategories_main_list .GalleryCategories_list .GalleryCategories_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 305px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.GalleryCategories_main_list .GalleryCategories_list .GalleryCategories_item .GalleryCategories_img {
+  width: 305px;
+  height: 326px;
+  border: 4px solid #000;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.GalleryCategories_main_list .GalleryCategories_list .GalleryCategories_item .GalleryCategories_img:hover {
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+}
+.GalleryCategories_main_list .pagination {
+  padding: 5px;
+}
+.GalleryCategories_main_list .pagination .step-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.GalleryCategories_main_list .pagination .step-links a {
+  text-decoration: none;
+}
+.GalleryCategories_main_list .pagination .step-links .page_obj {
+  padding: 5px;
+  color: #000;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30.4px;
+}
+.GalleryCategories_main_list .pagination .step-links .pagination_arrow_right {
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }

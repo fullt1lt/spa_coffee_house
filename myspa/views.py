@@ -3,15 +3,14 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import View
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from forms.forms import LoginUserForm, MassageTherapistForm, RegisterUserForm, ReviewForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DeleteView, UpdateView, CreateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required 
 from django.core.paginator import Paginator
-
-from myspa.models import BlogAndNews, CafeProduct, MassageTherapist, Review, SpaUser, TypeBlogAndNews, TypeCafeProduct, TypeCategories, SpaСategories
+from myspa.models import BlogAndNews, CafeProduct, Gallery, MassageTherapist, Review, SpaUser, TypeBlogAndNews, TypeCafeProduct, TypeCategories, TypeGallery, SpaСategories
 from spa.mixins import SuperUserRequiredMixin
 
 class Login(LoginView):
@@ -215,3 +214,27 @@ class TypeBlogNewsViewListView(ListView):
 
     def get_queryset(self):
         return BlogAndNews.objects.filter(type_blog_and_news=self.kwargs['pk'])
+    
+    
+class GalleryView(ListView):
+    model = TypeGallery
+    ordering = ['name']
+    template_name = 'gallery.html'
+    context_object_name = 'type_gallery'
+
+
+class TypeGalleryListView(ListView):
+    model = Gallery
+    paginate_by = 3
+    ordering = ['name']
+    template_name = 'gallery_categories.html'
+    context_object_name = 'type_gallery_categories'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['type_gallery'] = TypeGallery.objects.all().order_by('name')
+        context['category_pk'] = self.kwargs['pk']
+        return context
+
+    def get_queryset(self):
+        return Gallery.objects.filter(type_gallery=self.kwargs['pk'])

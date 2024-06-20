@@ -14,6 +14,12 @@ CATEGORY_TIME = (
 class SpaUser(AbstractUser):
     phone = models.CharField(max_length=16, blank=True, null=True) 
     profile_image = models.ImageField(upload_to='profile_image/', blank=True, null=True)
+    email = models.EmailField(unique=True)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+    
+    def __str__(self):
+        return f"{self.username} - {self.email}"
     
 
 class Salon(models.Model):
@@ -169,6 +175,21 @@ class BlogAndNews(models.Model):
     
 
 class TypeBlogAndNews(models.Model):
+    name = models.CharField(max_length=100)
+    
+    def __str__(self):
+        return self.name
+
+
+class Gallery(models.Model):
+    gallery_image = models.ImageField(upload_to='gallery_image/', blank=True, null=True)
+    type_gallery = models.ForeignKey("TypeGallery", on_delete=models.CASCADE, related_name='type_gallery', default=1)
+    
+    def __str__(self):
+        return self.type_gallery.name
+
+
+class TypeGallery(models.Model):
     name = models.CharField(max_length=100)
     
     def __str__(self):

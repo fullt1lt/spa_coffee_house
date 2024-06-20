@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {%block style %}
     {% load static %}
+    {% load socialaccount %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
     {% endblock %}
     <script src="{% static 'js/classChanger.js' %}" defer></script>
@@ -56,10 +57,7 @@
                                 <a href="{% url 'blog_news' %}">Новини i блог</a>
                             </li>
                             <li class="Main_Header_navigation_item">
-                                <a href="#">Акції та пропозиції </a>
-                            </li>
-                            <li class="Main_Header_navigation_item">
-                                <a href="#">Фотогалерея</a>
+                                <a href="{% url 'gallery' %}">Фотогалерея</a>
                             </li>
                             <li class="Main_Header_navigation_item">
                                 <a href="{% url 'cafe' %}">Кав’ярня</a>
@@ -339,7 +337,7 @@
                     <ul class="Review_form_list">
                         <li class="Review_form_item">
                             <h2 class="review_form_header">Ви можете залишити свій відгук на нашому сайті</h2>
-                            <form method="post" action="{% url 'index' %}" class="review_form">
+                            <form method="post" action="{% url 'index' %}" name="therapist" class="review_form">
                                 {% csrf_token %}
                                 {{ review_form.as_p }}
                                 <div class="rating-stars">
@@ -384,10 +382,7 @@
                                 <a href="{% url 'blog_news' %}">Новини i блог</a>
                             </li>
                             <li class="Main_Footer_navigation_item">
-                                <a href="#">Акції та пропозиції </a>
-                            </li>
-                            <li class="Main_Footer_navigation_item">
-                                <a href="#">Фотогалерея</a>
+                                <a href="{% url 'gallery' %}">Фотогалерея</a>
                             </li>
                             <li class="Main_Footer_navigation_item">
                                 <a href="{% url 'cafe' %}">Кав’ярня</a>

@@ -36,6 +36,11 @@ function setBodyClass() {
     body.classList.add("Background_Blog_News_Categories");
     footer.classList.add("Background_Blog_News_Categories");
     footer.classList.add("Main_Footer");
+  } else if (url.includes("gallery")) {
+    section.classList.add("Block_info_content");
+    body.classList.add("Background_Gallery_Categories");
+    footer.classList.add("Background_Gallery_Categories");
+    footer.classList.add("Main_Footer");
   } else {
     footer.classList.add("Background_Main_Page_Footer");
     footer.classList.add("Main_Footer");
