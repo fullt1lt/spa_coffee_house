@@ -5,8 +5,8 @@ from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError  
     
 class RegisterUserForm(UserCreationForm):
-    name = forms.CharField(label="Iм'я", widget=forms.TextInput(attrs={'class': 'form-input-name', 'placeholder': "Iм'я"}))
-    surname = forms.CharField(label="Прізвище", widget=forms.TextInput(attrs={'class': 'form-input-name', 'placeholder': "Прізвище"}))
+    first_name = forms.CharField(label="Iм'я", widget=forms.TextInput(attrs={'class': 'form-input-name', 'placeholder': "Iм'я"}))
+    last_name = forms.CharField(label="Прізвище", widget=forms.TextInput(attrs={'class': 'form-input-name', 'placeholder': "Прізвище"}))
     phone = forms.CharField(label='Телефон',widget=forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Телефон', 'type': 'tel'}))
     email = forms.CharField(label='E-mail', widget=forms.EmailInput(attrs={'class': 'form-input', 'placeholder': 'E-mail'}))
     profile_image = forms.ImageField(label='', widget=forms.FileInput(attrs={'class': 'create_image'}), required=False)
@@ -15,14 +15,21 @@ class RegisterUserForm(UserCreationForm):
 
     class Meta:
         model = SpaUser
-        fields = ('name', 'surname', 'phone', 'email', 'password1', 'password2', 'profile_image')
+        fields = ('first_name', 'last_name', 'phone', 'email', 'password1', 'password2', 'profile_image')
 
-    def save(self):
-        user = super().save(commit=False)
+    def save(self, commit=True):
+        user = super(RegisterUserForm, self).save(commit=False)
+        user.first_name = self.cleaned_data['first_name']
+        user.last_name = self.cleaned_data['last_name']
+        user.phone = self.cleaned_data['phone']
+        user.email = self.cleaned_data['email']
+        
         profile_image = self.cleaned_data.get('profile_image')
         if profile_image:
             user.profile_image = profile_image
-        user.save()
+
+        if commit:
+            user.save()
         return user
         
 

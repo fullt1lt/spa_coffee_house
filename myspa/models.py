@@ -12,16 +12,14 @@ CATEGORY_TIME = (
 )
 
 class SpaUser(AbstractUser):
-    name = models.CharField(max_length=16, blank=True, null=True) 
-    surname = models.CharField(max_length=16, blank=True, null=True) 
     phone = models.CharField(max_length=16, blank=True, null=True) 
     profile_image = models.ImageField(upload_to='profile_image/', blank=True, null=True)
     email = models.EmailField(unique=True)
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name', 'last_name']
     
     def __str__(self):
-        return f"{self.name} {self.surname}"
+        return f"{self.first_name} {self.last_name}"
     
 
 class Salon(models.Model):

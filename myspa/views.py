@@ -61,7 +61,9 @@ class MainPage(View):
     def handle_register(self, request):
         register_form = RegisterUserForm(request.POST)
         if register_form.is_valid():
-            user = register_form.save()
+            user = register_form.save(commit=False)
+            user.username = user.email
+            user.save()
             login(request, user, backend='django.contrib.auth.backends.ModelBackend') 
             return redirect('/')
         # Передача формы с ошибками в контекст для вывода ошибок в шаблоне
@@ -141,8 +143,8 @@ class GetReviews(View):
         
         reviews_list = [{
             'id': review.id,
-            'name': review.user.name,
-            'surname': review.user.surname,
+            'name': review.user.first_name,
+            'surname': review.user.last_name,
             'comment': review.comment,
             'rating': review.rating,
             'created_at': review.created_at.strftime('%Y-%m-%d %H:%M:%S'),
