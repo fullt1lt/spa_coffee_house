@@ -5,7 +5,8 @@ from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError  
     
 class RegisterUserForm(UserCreationForm):
-    username = forms.CharField(label="Iм'я прізвище", widget=forms.TextInput(attrs={'class': 'form-input', 'placeholder': "Iм'я прізвище"}))
+    name = forms.CharField(label="Iм'я", widget=forms.TextInput(attrs={'class': 'form-input-name', 'placeholder': "Iм'я"}))
+    surname = forms.CharField(label="Прізвище", widget=forms.TextInput(attrs={'class': 'form-input-name', 'placeholder': "Прізвище"}))
     phone = forms.CharField(label='Телефон',widget=forms.TextInput(attrs={'class': 'form-input', 'placeholder': 'Телефон', 'type': 'tel'}))
     email = forms.CharField(label='E-mail', widget=forms.EmailInput(attrs={'class': 'form-input', 'placeholder': 'E-mail'}))
     profile_image = forms.ImageField(label='', widget=forms.FileInput(attrs={'class': 'create_image'}), required=False)
@@ -14,7 +15,7 @@ class RegisterUserForm(UserCreationForm):
 
     class Meta:
         model = SpaUser
-        fields = ('username', 'phone', 'email', 'password1', 'password2', 'profile_image')
+        fields = ('name', 'surname', 'phone', 'email', 'password1', 'password2', 'profile_image')
 
     def save(self):
         user = super().save(commit=False)

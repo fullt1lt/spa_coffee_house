@@ -1,6 +1,6 @@
 let page = 2;
 let loading = false;
-let hasNext = true; 
+let hasNext = true;
 
 function formatDate(dateString) {
   const options = { year: "numeric", month: "2-digit", day: "2-digit" };
@@ -53,7 +53,7 @@ function loadReviews() {
                             }
                         </li>
                         <li class="review_user_name">
-                            ${review.user}
+                            ${review.name} ${review.surname}
                         </li>
                     </ul>
                     <span class="review_commit">
@@ -99,7 +99,7 @@ document.getElementById("load_more_reviews").addEventListener("click", () => {
   loadReviews();
 });
 
-// Вызываем функцию для загрузки комментариев при загрузке страницы
+// Вызываем функцию для загрузки комментариев при загрузке страницы, если список пуст
 document.addEventListener("DOMContentLoaded", () => {
   if (document.getElementById("review_list").childElementCount === 0) {
     loadReviews();

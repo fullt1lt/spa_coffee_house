@@ -348,6 +348,7 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
   margin: 0 auto;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -508,7 +509,13 @@ a {
   line-height: 16px;
 }
 .login_list .login_register_list {
-  margin-top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 15px 0;
 }
 .login_list .login_register_list .login_register_span {
   color: #000;
@@ -517,12 +524,19 @@ a {
   font-weight: 400;
   line-height: normal;
 }
-.login_list .login_register_list .login_register_span .login_register_link {
+.login_list .login_register_list .button_login {
+  margin-left: 15px;
   color: rgba(11, 145, 175, 0.72);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border: medium none;
+  background-image: none;
+  float: left;
+  background-color: transparent;
+  margin-right: 15px;
+  font-size: 20px;
 }
 .login_list .provider_list {
   margin-top: 50px;
@@ -560,6 +574,22 @@ a {
   font-weight: 400;
   line-height: 16px;
 }
+.login_list .cloose_button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  float: left;
+  background-color: transparent;
+}
+.login_list .cloose_button img {
+  width: 100%;
+  height: 100%;
+}
 
 .registration_list {
   display: -webkit-box;
@@ -572,6 +602,7 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  position: relative;
   margin: 0 auto;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -622,6 +653,90 @@ a {
           align-items: center;
   width: 100%;
   background-image: none;
+}
+.registration_list .register_form_list .registration_form .UserNameSurname_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+.registration_list .register_form_list .registration_form .UserNameSurname_list .UserNameSurname_item .form-input-name {
+  margin-top: 32px;
+  border-radius: 5px;
+  padding: 0 15px;
+  text-align: start;
+  height: 56px;
+  background-color: #e6e0e9;
+  border: none;
+  font-family: Roboto;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.5px;
+}
+.registration_list .register_form_list .registration_form .UserNameSurname_list .UserNameSurname_item .form-input-name::-webkit-input-placeholder {
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+.registration_list .register_form_list .registration_form .UserNameSurname_list .UserNameSurname_item .form-input-name::-moz-placeholder {
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+.registration_list .register_form_list .registration_form .UserNameSurname_list .UserNameSurname_item .form-input-name:-ms-input-placeholder {
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+.registration_list .register_form_list .registration_form .UserNameSurname_list .UserNameSurname_item .form-input-name::-ms-input-placeholder {
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
+}
+.registration_list .register_form_list .registration_form .UserNameSurname_list .UserNameSurname_item .form-input-name::placeholder {
+  color: #49454f;
+  position: relative;
+  left: 0;
+  top: -15px;
+  padding: 0px;
+  font-family: Roboto;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px;
 }
 .registration_list .register_form_list .registration_form .form-input {
   margin-top: 32px;
@@ -703,22 +818,39 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   margin-top: 32px;
   overflow: hidden;
   cursor: pointer;
-  width: 200px;
-  background-color: #e6e0e9;
-  color: var(--black-color);
+  width: 100%;
   border-radius: 8px;
 }
-.registration_list .register_form_list .registration_form .custom-file-upload label {
+.registration_list .register_form_list .registration_form .custom-file-upload .create_image {
+  display: none;
+}
+.registration_list .register_form_list .registration_form .custom-file-upload .label_upload {
+  background-color: #e6e0e9;
+  color: var(--black-color);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  border-radius: 12px;
+  width: 250px;
+  height: 56px;
+}
+.registration_list .register_form_list .registration_form .custom-file-upload .custom-file-upload label {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -728,7 +860,7 @@ a {
   text-align: center;
   height: 56px;
 }
-.registration_list .register_form_list .registration_form .custom-file-upload input[type=file] {
+.registration_list .register_form_list .registration_form .custom-file-upload .custom-file-upload input[type=file] {
   position: absolute;
   top: 0;
   right: 0;
@@ -770,6 +902,12 @@ a {
   line-height: 16px;
 }
 .registration_list .register_login_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 15px 0;
 }
 .registration_list .register_login_list .register_login_span {
@@ -779,12 +917,35 @@ a {
   font-weight: 400;
   line-height: normal;
 }
-.registration_list .register_login_list .register_login_span .register_login_link {
+.registration_list .register_login_list .button_login {
+  margin-left: 15px;
   color: rgba(11, 145, 175, 0.72);
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  border: medium none;
+  background-image: none;
+  float: left;
+  background-color: transparent;
+  margin-right: 15px;
+  font-size: 20px;
+}
+.registration_list .cloose_button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 20px;
+  height: 20px;
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  float: left;
+  background-color: transparent;
+}
+.registration_list .cloose_button img {
+  width: 100%;
+  height: 100%;
 }
 
 .create_massage_therapist_list {
@@ -2764,7 +2925,6 @@ a {
           align-items: center;
   width: 100%;
   height: 100%;
-  margin-top: 20px;
 }
 .Main_Header .Main_Header_list .Main_Header_info {
   display: -webkit-box;
@@ -2820,12 +2980,30 @@ a {
           align-items: center;
   color: var(--black-color);
 }
-.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .authorization_link {
+.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_login {
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  float: left;
+  background-color: transparent;
   color: var(--black-color);
-  margin: 0 15px;
-  font-size: 18px;
+  margin-right: 15px;
+  font-size: 20px;
 }
-.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .authorization_link:hover {
+.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_login:hover {
+  color: var(--button-hover);
+}
+.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_register {
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  float: left;
+  background-color: transparent;
+  color: var(--black-color);
+  margin-left: 15px;
+  font-size: 20px;
+}
+.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_register:hover {
   color: var(--button-hover);
 }
 .Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_logout {
@@ -2836,7 +3014,7 @@ a {
   background-color: transparent;
   color: var(--black-color);
   margin-left: 15px;
-  font-size: 18px;
+  font-size: 20px;
 }
 .Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_logout:hover {
   color: var(--button-hover);
@@ -2896,6 +3074,24 @@ a {
 }
 .Main_Header .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Main_Header_navigation_contacts .Navigation_contacts_list .contacts_item {
   margin-right: 25px;
+}
+.Main_Header .Main_Header_list .Main_Header_login_form {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 2;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.Main_Header .Main_Header_list .Main_Header_register_form {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 2;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
 }
 .Main_Header .Main_Header_list .Main_Header_text {
   width: 80%;

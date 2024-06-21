@@ -43,7 +43,7 @@
                                     </form>
                                 </li>
                             {% else %}
-                                <li class="authorization"><a href="{% url 'login' %}" class="authorization_link">Вхiд</a> | <a href="{% url 'register' %}" class="authorization_link">Зареєструватися</a></li>
+                                <li class="authorization"><button type="submit" class="button_login" id="active_button_login">Вхiд</button> | <button type="submit" class="button_register" id="active_button_register">Зареєструватися</button></li>
                             {% endif %}
                         </ul>
                     </li>
@@ -83,6 +83,95 @@
                             </li>
                         </ul>
                     </li>
+                </ul>
+            </li>
+            <li class="Main_Header_login_form" id="login_form">
+                <ul class="login_list">
+                    <li class="login_header">
+                        <h1 class="login_header_name">Вхід</h1>
+                    </li>
+                    <li class="login_register_list">
+                        <span class="login_register_span">У вас немає акаунту, зайдіть</span>
+                        <button type="submit" class="button_login" id="active_button_register_in_login">тут</button>
+                    </li>
+                    <li class="login_form_list">
+                        <form method="post" class="login_form" action="{% url 'index' %}">
+                            {% csrf_token %}
+                            {{ form.errors}}
+                            {{ form.email }}
+                            <div>
+                                <label for="{{ form.email.id_for_label }}" class="form-label">{{ form.email.label }}</label>
+                            </div>
+                            {{ form.password }}
+                            <div>
+                                <label for="{{ form.password.id_for_label }}" class="form-label">{{ form.password.label }}</label>
+                            </div>
+                            <input type="submit" value="Вхiд" name="login" class="login_input">
+                        </form>
+                    </li>
+                    <li class="provider_list">
+                        <form action="{% provider_login_url 'google' %}" method="post" class="provider_form">
+                            {% csrf_token %}
+                        <button type="submit" class="provider_button"><span class="provider_text">Вхід через Google</span><img src="{%static 'icon/google.svg'%}" alt="" class="provider_img"></button>
+                        </form>
+                    </li>
+                    <button class="cloose_button" id="cloose_button_login"><img src="{%static 'icon/cloose.png'%}" alt=""></button>
+                    <script src="{% static 'js/login_form.js' %}"></script>
+                </ul>
+
+            </li>
+            <li class="Main_Header_register_form" id="register_form">
+                <ul class="registration_list">
+                    <Li class="register_header">
+                        <h1 class="register_header_name">Реєстрація</h1>
+                    </Li>
+                    <li class="register_form_list">
+                        <form method="post" enctype="multipart/form-data" class="registration_form">
+                            {% csrf_token %}
+                            {{ register_form.errors}}
+                            <ul class="UserNameSurname_list">
+                                <li class="UserNameSurname_item">
+                                    {{ register_form.name }}
+                                    <div>
+                                        <label for="{{ form.username.id_for_label }}" class="form-label">{{ register_form.name.label }}</label>
+                                    </div>
+                                </li>
+                                <li class="UserNameSurname_item">
+                                    {{ register_form.surname }}
+                                    <div>
+                                        <label for="{{ form.username.id_for_label }}" class="form-label">{{ register_form.surname.label }}</label>
+                                    </div>
+                                </li>
+                            </ul>
+                            {{ register_form.phone }}
+                            <div>
+                                <label for="{{ form.phone.id_for_label }}" class="form-label">{{ register_form.phone.label }}</label>
+                            </div>
+                            {{ register_form.email }}
+                            <div>
+                                <label for="{{ form.email.id_for_label }}" class="form-label">{{ register_form.email.label }}</label>
+                            </div>
+                            <div class="custom-file-upload">
+                                <label for="id_profile_image" class="label_upload">Вибрати зображення</label>
+                                {{ register_form.profile_image }}
+                            </div>
+                            {{ register_form.password1 }}
+                            <div>
+                                <label for="{{ register_form.password.id_for_label }}" class="form-label">{{ register_form.password1.label }}</label>
+                            </div>
+                            {{ register_form.password2 }}
+                            <div>
+                                <label for="{{ register_form.password.id_for_label }}" class="form-label">{{ register_form.password2.label }}</label>
+                            </div>
+                            <input type="submit" value="Зареєструватися" name="register" class="register_input">
+                        </form>
+                    </li>
+                    <li class="register_login_list">
+                        <span class="register_login_span">У вас вже є акаунт? </span>
+                        <button type="submit" class="button_login" id="active_button_login_in_registr">Вхiд</button>
+                    </li>
+                    <button class="cloose_button" id="cloose_button_register"><img src="{%static 'icon/cloose.png'%}" alt=""></button>
+                    <script src="{% static 'js/register_form.js' %}"></script>
                 </ul>
             </li>
             <li class="Main_Header_text">
@@ -319,7 +408,7 @@
                                             <img src="{% static 'icon/profile.png' %}" alt="" class="user_image">
                                         {% endif %}
                                     </li>
-                                    <li class="review_user_name">{{ review.user.username }}</li>
+                                    <li class="review_user_name">{{ review.user.name }} {{ review.user.surname }}</li>
                                 </ul>
                                 <span class="review_commit">{{ review.comment }}</span>
                                 <ul class="rating_list">
@@ -333,28 +422,30 @@
                     </ul>
                     <button id="load_more_reviews" class="load_more_button"><img src="{% static 'icon/arrow_down.png' %}" alt=""></button>
                 </li>
-                <li class="Review_main_list">
-                    <ul class="Review_form_list">
-                        <li class="Review_form_item">
-                            <h2 class="review_form_header">Ви можете залишити свій відгук на нашому сайті</h2>
-                            <form method="post" action="{% url 'index' %}" name="therapist" class="review_form">
-                                {% csrf_token %}
-                                {{ review_form.as_p }}
-                                <div class="rating-stars">
-                                    <span class="star_rating" data-value="1">☆</span>
-                                    <span class="star_rating" data-value="2">☆</span>
-                                    <span class="star_rating" data-value="3">☆</span>
-                                    <span class="star_rating" data-value="4">☆</span>
-                                    <span class="star_rating" data-value="5">☆</span>
-                                </div>
-                                <button type="submit" class="rating_button">Відправити</button>
-                            </form>
-                        </li>
-                        <li class="Review_image_item">
-                            <img src="{% static 'icon/logo_black.svg' %}" alt="" class="Review_image">
-                        </li>
-                    </ul>
-                </li>
+                {% if request.user.is_authenticated %}
+                    <li class="Review_main_list">
+                        <ul class="Review_form_list">
+                            <li class="Review_form_item">
+                                <h2 class="review_form_header">Ви можете залишити свій відгук на нашому сайті</h2>
+                                <form method="post" action="{% url 'index' %}" name="therapist" class="review_form">
+                                    {% csrf_token %}
+                                    {{ review_form.as_p }}
+                                    <div class="rating-stars">
+                                        <span class="star_rating" data-value="1">☆</span>
+                                        <span class="star_rating" data-value="2">☆</span>
+                                        <span class="star_rating" data-value="3">☆</span>
+                                        <span class="star_rating" data-value="4">☆</span>
+                                        <span class="star_rating" data-value="5">☆</span>
+                                    </div>
+                                    <button type="submit" class="rating_button">Відправити</button>
+                                </form>
+                            </li>
+                            <li class="Review_image_item">
+                                <img src="{% static 'icon/logo_black.svg' %}" alt="" class="Review_image">
+                            </li>
+                        </ul>
+                    </li>
+                {%endif%}
             </ul>
             <div id="loading" style="display: none;">Loading...</div>
             <script src="{% static 'js/reviews.js' %}"></script>

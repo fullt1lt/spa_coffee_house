@@ -10,7 +10,6 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    margin-top: 20px;
     .Main_Header_info {
       display: flex;
       justify-content: center;
@@ -43,10 +42,28 @@
               display: flex;
               align-items: center;
               color: var(--black-color);
-              .authorization_link {
+              .button_login {
+                border: medium none;
+                background-image: none;
+                background: transparent;
+                float: left;
+                background-color: transparent;
                 color: var(--black-color);
-                margin: 0 15px;
-                font-size: 18px;
+                margin-right: 15px;
+                font-size: 20px;
+                &:hover {
+                  color: var(--button-hover);
+                }
+              }
+              .button_register {
+                border: medium none;
+                background-image: none;
+                background: transparent;
+                float: left;
+                background-color: transparent;
+                color: var(--black-color);
+                margin-left: 15px;
+                font-size: 20px;
                 &:hover {
                   color: var(--button-hover);
                 }
@@ -59,7 +76,7 @@
                 background-color: transparent;
                 color: var(--black-color);
                 margin-left: 15px;
-                font-size: 18px;
+                font-size: 20px;
                 &:hover {
                   color: var(--button-hover);
                 }
@@ -110,6 +127,22 @@
           }
         }
       }
+    }
+    .Main_Header_login_form {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      z-index: 2;
+      backdrop-filter: blur(10px);
+    }
+    .Main_Header_register_form {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      z-index: 2;
+      backdrop-filter: blur(10px);
     }
     .Main_Header_text {
       width: 80%;

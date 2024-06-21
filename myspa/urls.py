@@ -1,11 +1,10 @@
 from django.urls import include, path
 from django.contrib.auth.views import LogoutView
-from myspa.views import (BlogNewsView, CafeTypeProductListView, CafeView, CreateMassageTherapistView, GalleryView, GetReviews, Login, MainPage, Register, TypeBlogNewsViewListView, TypeCategoriesListView, TypeGalleryListView)
+from myspa.views import (BlogNewsView, CafeTypeProductListView, CafeView, CreateMassageTherapistView, GalleryView, GetReviews, MainPage, Register, TypeBlogNewsViewListView, TypeCategoriesListView, TypeGalleryListView)
 
 
 urlpatterns = [
     path('', MainPage.as_view(), name='index'),
-    path('login/', Login.as_view(), name='login'),
     path('register/', Register.as_view(), name='register'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('accounts/', include('allauth.urls')),
