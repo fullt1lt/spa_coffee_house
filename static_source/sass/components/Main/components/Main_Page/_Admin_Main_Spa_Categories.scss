@@ -1,0 +1,145 @@
+.Main_Spa_Categories {
+  margin-top: 80px;
+  .Main_Spa_Categories_list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .Main_Spa_Categories_content {
+      margin-top: 50px;
+      .Main_Spa_Categories_content_list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 20px;
+        align-items: start;
+        justify-content: flex-start;
+        width: 100%;
+        .Main_Spa_Categories_content_item {
+          display: flex;
+          flex-direction: column;
+          border: 1px gray solid;
+          padding: 10px;
+          background-color: #fff;
+          border-radius: 16px;
+          width: 45%;
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          .spa_categories_wrapper {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            width: 100%;
+            .Categories_content_item_list {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              backface-visibility: hidden;
+              transition: all 0.5s ease;
+              .item_image {
+                overflow: hidden;
+                border-radius: 8px;
+                .Category_img {
+                  width: 100%;
+                  border-radius: 8px;
+                  height: 265px;
+                  // object-position: 50%;
+                  object-fit: cover;
+                  cursor: pointer;
+                  transition: all 1s ease;
+                  &:hover {
+                    transform: scale(1.2);
+                  }
+                }
+              }
+              .item_header {
+                margin-top: 20px;
+                h2 {
+                  color: #000;
+                  font-family: "Playfair Display";
+                  font-size: 24px;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: normal;
+                }
+              }
+              .item_description {
+                margin-top: 20px;
+                .item_description_text {
+                  color: #000;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                }
+              }
+              .item_info {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 20px;
+                align-items: center;
+                a {
+                  color: #000;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: 300;
+                  line-height: normal;
+                }
+                .Category_Link_Sign_Up {
+                  border: 2px solid #0c0c0c;
+                  padding: 15px 30px;
+                  color: #141414;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 13px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 19.5px;
+                  letter-spacing: 1.56px;
+                  text-transform: uppercase;
+                }
+              }
+              .Update_image {
+                width: 30px;
+                height: 30px;
+              }
+            }
+            .Categories_update_item_list {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              position: absolute;
+              top: 0;
+              left: 0;
+              transform: rotateY(180deg);
+              backface-visibility: hidden;
+              transition: all 0.5s ease;
+              .text {
+                border: 2px solid #0c0c0c;
+                padding: 15px 30px;
+                color: #141414;
+                text-align: center;
+                font-family: var(--font-family-Manrope);
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 19.5px;
+                letter-spacing: 1.56px;
+                text-transform: uppercase;
+              }
+              .Cloose_image_item {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                .Cloose_image {
+                  width: 30px;
+                  height: 30px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

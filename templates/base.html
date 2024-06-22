@@ -21,20 +21,6 @@
                             Theraphy Cup Spa
                         </span>
                     </li>
-                    <li class="Header_Second_autorization">
-                        <ul class="authorization_list">
-                            {% if request.user.is_authenticated %}
-                                <li class="authorization"> 
-                                    <form method="post" action="{% url 'logout' %}">
-                                    {% csrf_token %}
-                                    <button type="submit" class="button_logout">Вийти</button>
-                                    </form>
-                                </li>
-                            {% else %}
-                                <li class="authorization"><a href="{% url 'login' %}" class="authorization_link">Вхiд</a> | <a href="{% url 'register' %}" class="authorization_link">Зареєструватися</a></li>
-                            {% endif %}
-                        </ul>
-                    </li>
                 </ul>
             </li>
             <li class="Header_Second_navigation">

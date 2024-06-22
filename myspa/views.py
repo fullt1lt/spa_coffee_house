@@ -126,6 +126,106 @@ class MainPage(View):
         }
         return render(request, self.template_name, context)
 
+class AdminMainPage(View):
+    template_name = 'index_admin.html'
+
+    def get(self, request, *args, **kwargs):
+        spa_categories = SpaСategories.objects.all().order_by('name')
+        massage_therapists = MassageTherapist.objects.all().order_by('-average_rating')
+        review_form = ReviewForm()
+        reviews = Review.objects.all().order_by('-created_at')
+
+        paginator = Paginator(reviews, 2)
+        page_number = request.GET.get('page')
+        page_reviews = paginator.get_page(page_number)
+
+        context = {
+            'spa_categories': spa_categories,
+            'massage_therapists': massage_therapists,
+            'review_form': review_form,
+            'reviews': page_reviews,
+            'form': LoginUserForm(),
+            'register_form': RegisterUserForm(),
+        }
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        if 'register' in request.POST:
+            return self.handle_register(request)
+        elif 'login' in request.POST:
+            return self.handle_login(request)
+        elif 'therapist' in request.POST:
+            return self.handle_review(request)
+        return self.get(request, *args, **kwargs)
+
+    def handle_register(self, request):
+        register_form = RegisterUserForm(request.POST)
+        if register_form.is_valid():
+            user = register_form.save(commit=False)
+            user.username = user.email
+            user.save()
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend') 
+            return redirect('/')
+        # Передача формы с ошибками в контекст для вывода ошибок в шаблоне
+        context = {
+            'register_form': register_form,
+            'form': LoginUserForm(),
+            'review_form': ReviewForm(),
+            'spa_categories': SpaСategories.objects.all().order_by('name'),
+            'massage_therapists': MassageTherapist.objects.all().order_by('-average_rating'),
+            'reviews': Review.objects.select_related('user').all().order_by('-created_at'),
+        }
+        return render(request, self.template_name, context)
+
+    def handle_login(self, request):
+        login_form = LoginUserForm(data=request.POST)
+        if login_form.is_valid():
+            email = login_form.cleaned_data['email']
+            password = login_form.cleaned_data['password']
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                login(request, user, backend='django.contrib.auth.backends.ModelBackend')  # Указываем бэкенд явно
+                return redirect('/')
+        # Передача формы с ошибками в контекст для вывода ошибок в шаблоне
+        context = {
+            'register_form': RegisterUserForm(),
+            'form': login_form,
+            'review_form': ReviewForm(),
+            'spa_categories': SpaСategories.objects.all().order_by('name'),
+            'massage_therapists': MassageTherapist.objects.all().order_by('-average_rating'),
+            'reviews': Review.objects.select_related('user').all().order_by('-created_at'),
+        }
+        return render(request, self.template_name, context)
+
+    @method_decorator(login_required)
+    def handle_review(self, request):
+        therapist_id = request.POST.get('therapist')
+        therapist = get_object_or_404(MassageTherapist, id=therapist_id)
+        review_form = ReviewForm(request.POST)
+        
+        if review_form.is_valid():
+            rating = review_form.cleaned_data['rating']
+            comment = review_form.cleaned_data['comment']
+            review = Review.objects.create(
+                therapist=therapist,
+                user=request.user,
+                rating=rating,
+                comment=comment
+            )
+            review.save()
+            return redirect('/')
+        
+        # Передача формы с ошибками в контекст для вывода ошибок в шаблоне
+        context = {
+            'register_form': RegisterUserForm(),
+            'form': LoginUserForm(),
+            'review_form': review_form,
+            'spa_categories': SpaСategories.objects.all().order_by('name'),
+            'massage_therapists': MassageTherapist.objects.all().order_by('-average_rating'),
+            'reviews': Review.objects.select_related('user').all().order_by('-created_at'),
+        }
+        return render(request, self.template_name, context)
+
 
 @method_decorator(csrf_exempt, name='dispatch')
 class GetReviews(View):
