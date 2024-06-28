@@ -1695,6 +1695,19 @@ a {
 }
 .Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content {
   margin-top: 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list {
   display: -webkit-box;
@@ -1707,9 +1720,9 @@ a {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: start;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
 }
 .Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item {
@@ -1784,6 +1797,7 @@ a {
 }
 .Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_description {
   margin-top: 20px;
+  height: 150px;
 }
 .Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_description .item_description_text {
   color: #000;
@@ -1792,6 +1806,7 @@ a {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  word-break: break-all;
 }
 .Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_info {
   display: -webkit-box;
@@ -1826,7 +1841,17 @@ a {
   letter-spacing: 1.56px;
   text-transform: uppercase;
 }
-.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .Update_image {
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .admin_buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .admin_buttons .Update_image {
+  width: 30px;
+  height: 30px;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .admin_buttons .Basket_image {
+  margin-left: 30px;
   width: 30px;
   height: 30px;
 }
@@ -1849,7 +1874,111 @@ a {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .text {
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .Cloose_image_item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .Cloose_image_item .Cloose_image {
+  width: 15px;
+  height: 15px;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list {
+  margin-top: 20px;
+  width: 100%;
+  height: 100%;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .custom-file-upload {
+  position: relative;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  width: 100%;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .custom-file-upload .label_upload_block {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 8px;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .custom-file-upload .label_upload_block .label_upload {
+  color: var(--white-color);
+  font-family: var(--font-family-Manrope);
+  font-size: 24px;
+  text-align: center;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .custom-file-upload .img-preview {
+  width: 100%;
+  border-radius: 8px;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  cursor: pointer;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .create_name {
+  width: 100%;
+  margin-top: 20px;
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .create_description {
+  margin-top: 20px;
+  width: 100%;
+  height: 130px;
+  color: #000;
+  font-family: var(--font-family-Manrope);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  resize: none;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .update_categories_input {
+  width: 200px;
+  margin-top: 20px;
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  float: left;
+  background-color: transparent;
   border: 2px solid #0c0c0c;
   padding: 15px 30px;
   color: #141414;
@@ -1862,7 +1991,125 @@ a {
   letter-spacing: 1.56px;
   text-transform: uppercase;
 }
-.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .Cloose_image_item {
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_header h2 {
+  text-align: center;
+  color: #000;
+  font-family: var(--font-family-Manrope);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_choice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 15px;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_choice .delete_categories_form .delete_categories {
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  background-color: transparent;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_choice .cancel_delete {
+  margin-left: 40px;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Categories_button_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -webkit-animation: 5s show ease;
+          animation: 5s show ease;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px;
+  width: 45%;
+  -webkit-animation: 5s show ease;
+          animation: 5s show ease;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px gray solid;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 16px;
+  width: 100%;
+  -webkit-box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_close_button_item {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1871,11 +2118,158 @@ a {
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
-.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .Cloose_image_item .Cloose_image {
-  width: 30px;
-  height: 30px;
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_close_button_item .Add_Categories_close_button {
+  width: 15px;
+  height: 15px;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .error {
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  color: red;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload {
+  width: 100%;
+  height: 265px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 8px;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload .add_custom-file-upload_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload .add_custom-file-upload_block .add_image_custom-button {
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  background-color: transparent;
+  color: var(--white-color);
+  font-family: var(--font-family-Manrope);
+  font-size: 24px;
+  text-align: center;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload .add_custom-file-upload_block .add_image_custom_text {
+  margin-top: 15px;
+  color: var(--white-color);
+  font-family: var(--font-family-Manrope);
+  font-size: 18px;
+  text-align: center;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload .add_create_categories_image {
+  display: none;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_create_name {
+  width: 100%;
+  margin-top: 10px;
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_create_description {
+  margin-top: 20px;
+  width: 100%;
+  height: 130px;
+  color: #000;
+  font-family: var(--font-family-Manrope);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  resize: none;
+}
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_categories_input {
+  width: 200px;
+  margin-top: 20px;
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  float: left;
+  background-color: transparent;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
 }
 
+@-webkit-keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .Main_Massage_Therapist {
   margin-top: 80px;
 }

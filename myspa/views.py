@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.contrib.auth import login, authenticate
-from forms.forms import LoginUserForm, MassageTherapistForm, RegisterUserForm, ReviewForm
+from forms.forms import CategoriesAddForm, CategoriesUpdateForm, LoginUserForm, MassageTherapistForm, RegisterUserForm, ReviewForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DeleteView, UpdateView, CreateView
 from django.utils.decorators import method_decorator
@@ -126,27 +126,30 @@ class MainPage(View):
         }
         return render(request, self.template_name, context)
 
-class AdminMainPage(View):
+
+class AdminMainPage(SuperUserRequiredMixin, View):
     template_name = 'index_admin.html'
 
-    def get(self, request, *args, **kwargs):
-        spa_categories = SpaСategories.objects.all().order_by('name')
-        massage_therapists = MassageTherapist.objects.all().order_by('-average_rating')
-        review_form = ReviewForm()
-        reviews = Review.objects.all().order_by('-created_at')
+    def get_context_data(self, **kwargs):
+        context = {
+            'register_form': RegisterUserForm(),
+            'form': LoginUserForm(),
+            'review_form': ReviewForm(),
+            'spa_categories': SpaСategories.objects.all().order_by('name'),
+            'massage_therapists': MassageTherapist.objects.all().order_by('-average_rating'),
+            'reviews': Review.objects.select_related('user').all().order_by('-created_at'),
+            'categories_update_form': CategoriesUpdateForm(),
+            'categories_add_form': CategoriesAddForm(),
+        }
+        context.update(kwargs)
+        return context
 
-        paginator = Paginator(reviews, 2)
+    def get(self, request, *args, **kwargs):
+        paginator = Paginator(self.get_context_data()['reviews'], 2)
         page_number = request.GET.get('page')
         page_reviews = paginator.get_page(page_number)
-
-        context = {
-            'spa_categories': spa_categories,
-            'massage_therapists': massage_therapists,
-            'review_form': review_form,
-            'reviews': page_reviews,
-            'form': LoginUserForm(),
-            'register_form': RegisterUserForm(),
-        }
+        
+        context = self.get_context_data(reviews=page_reviews)
         return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
@@ -156,6 +159,11 @@ class AdminMainPage(View):
             return self.handle_login(request)
         elif 'therapist' in request.POST:
             return self.handle_review(request)
+        elif 'update_categories' in request.POST:
+            category_id = request.POST.get('category_id')
+            return self.update_categories(request, category_id)
+        elif 'add_categories' in request.POST:
+            return self.add_categories(request)
         return self.get(request, *args, **kwargs)
 
     def handle_register(self, request):
@@ -164,17 +172,9 @@ class AdminMainPage(View):
             user = register_form.save(commit=False)
             user.username = user.email
             user.save()
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend') 
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('/')
-        # Передача формы с ошибками в контекст для вывода ошибок в шаблоне
-        context = {
-            'register_form': register_form,
-            'form': LoginUserForm(),
-            'review_form': ReviewForm(),
-            'spa_categories': SpaСategories.objects.all().order_by('name'),
-            'massage_therapists': MassageTherapist.objects.all().order_by('-average_rating'),
-            'reviews': Review.objects.select_related('user').all().order_by('-created_at'),
-        }
+        context = self.get_context_data(register_form=register_form)
         return render(request, self.template_name, context)
 
     def handle_login(self, request):
@@ -184,17 +184,9 @@ class AdminMainPage(View):
             password = login_form.cleaned_data['password']
             user = authenticate(request, email=email, password=password)
             if user is not None:
-                login(request, user, backend='django.contrib.auth.backends.ModelBackend')  # Указываем бэкенд явно
+                login(request, user, backend='django.contrib.auth.backends.ModelBackend')
                 return redirect('/')
-        # Передача формы с ошибками в контекст для вывода ошибок в шаблоне
-        context = {
-            'register_form': RegisterUserForm(),
-            'form': login_form,
-            'review_form': ReviewForm(),
-            'spa_categories': SpaСategories.objects.all().order_by('name'),
-            'massage_therapists': MassageTherapist.objects.all().order_by('-average_rating'),
-            'reviews': Review.objects.select_related('user').all().order_by('-created_at'),
-        }
+        context = self.get_context_data(form=login_form)
         return render(request, self.template_name, context)
 
     @method_decorator(login_required)
@@ -215,17 +207,28 @@ class AdminMainPage(View):
             review.save()
             return redirect('/')
         
-        # Передача формы с ошибками в контекст для вывода ошибок в шаблоне
-        context = {
-            'register_form': RegisterUserForm(),
-            'form': LoginUserForm(),
-            'review_form': review_form,
-            'spa_categories': SpaСategories.objects.all().order_by('name'),
-            'massage_therapists': MassageTherapist.objects.all().order_by('-average_rating'),
-            'reviews': Review.objects.select_related('user').all().order_by('-created_at'),
-        }
+        context = self.get_context_data(review_form=review_form)
         return render(request, self.template_name, context)
 
+    def update_categories(self, request, category_id):
+        category = get_object_or_404(SpaСategories, id=category_id)
+        categories_update_form = CategoriesUpdateForm(data=request.POST, files=request.FILES, instance=category)
+        if categories_update_form.is_valid():
+            categories_update_form.save()
+            return redirect('/main/')
+        
+        context = self.get_context_data(categories_update_form=categories_update_form)
+        return render(request, self.template_name, context)
+
+    def add_categories(self, request):
+        categories_add_form = CategoriesAddForm(request.POST, request.FILES)
+        if categories_add_form.is_valid():
+            categories_add_form.save()
+            return redirect('/main/')
+        
+        context = self.get_context_data(categories_add_form=categories_add_form)
+        return render(request, self.template_name, context) 
+        
 
 @method_decorator(csrf_exempt, name='dispatch')
 class GetReviews(View):
@@ -253,6 +256,9 @@ class GetReviews(View):
         
         return JsonResponse({'reviews': reviews_list, 'has_next': page_reviews.has_next()})
 
+class DeleteSpaCategoriesView(SuperUserRequiredMixin, DeleteView):
+    model = SpaСategories
+    success_url = '/main/'
 
 class CreateMassageTherapistView(SuperUserRequiredMixin, CreateView):
     model = MassageTherapist

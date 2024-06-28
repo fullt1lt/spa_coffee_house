@@ -6,13 +6,17 @@
     width: 100%;
     .Main_Spa_Categories_content {
       margin-top: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       .Main_Spa_Categories_content_list {
         display: flex;
         flex-wrap: wrap;
         gap: 20px;
         padding: 20px;
         align-items: start;
-        justify-content: flex-start;
+        justify-content: center;
         width: 100%;
         .Main_Spa_Categories_content_item {
           display: flex;
@@ -63,6 +67,7 @@
               }
               .item_description {
                 margin-top: 20px;
+                height: 150px;
                 .item_description_text {
                   color: #000;
                   font-family: var(--font-family-Manrope);
@@ -70,6 +75,7 @@
                   font-style: normal;
                   font-weight: 400;
                   line-height: normal;
+                  word-break: break-all;
                 }
               }
               .item_info {
@@ -99,9 +105,17 @@
                   text-transform: uppercase;
                 }
               }
-              .Update_image {
-                width: 30px;
-                height: 30px;
+              .admin_buttons {
+                display: flex;
+                .Update_image {
+                  width: 30px;
+                  height: 30px;
+                }
+                .Basket_image {
+                  margin-left: 30px;
+                  width: 30px;
+                  height: 30px;
+                }
               }
             }
             .Categories_update_item_list {
@@ -114,7 +128,285 @@
               transform: rotateY(180deg);
               backface-visibility: hidden;
               transition: all 0.5s ease;
-              .text {
+              .Cloose_image_item {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                .Cloose_image {
+                  width: 15px;
+                  height: 15px;
+                }
+              }
+              .categories_update_form_list {
+                margin-top: 20px;
+                width: 100%;
+                height: 100%;
+                .categories_update_form {
+                  display: flex;
+                  flex-direction: column;
+                  width: 100%;
+                  align-items: center;
+                  justify-content: space-between;
+                  .custom-file-upload {
+                    position: relative;
+                    backface-visibility: hidden;
+                    width: 100%;
+                    .label_upload_block {
+                      position: absolute;
+                      width: 100%;
+                      height: 100%;
+                      display: flex;
+                      transform: rotateY(180deg);
+                      align-items: center;
+                      justify-content: center;
+                      border-radius: 8px;
+                      backdrop-filter: blur(4px);
+                      backface-visibility: hidden;
+                      .label_upload {
+                        color: var(--white-color);
+                        font-family: var(--font-family-Manrope);
+                        font-size: 24px;
+                        text-align: center;
+                      }
+                    }
+                    .img-preview {
+                      width: 100%;
+                      border-radius: 8px;
+                      height: 200px;
+                      object-fit: cover;
+                      cursor: pointer;
+                    }
+                  }
+                  .create_name {
+                    width: 100%;
+                    margin-top: 20px;
+                    color: #000;
+                    font-family: "Playfair Display";
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                  }
+                  .create_description {
+                    margin-top: 20px;
+                    width: 100%;
+                    height: 130px;
+                    color: #000;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    resize: none;
+                  }
+                  .update_categories_input {
+                    width: 200px;
+                    margin-top: 20px;
+                    border: medium none;
+                    background-image: none;
+                    background: transparent;
+                    float: left;
+                    background-color: transparent;
+                    border: 2px solid #0c0c0c;
+                    padding: 15px 30px;
+                    color: #141414;
+                    text-align: center;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 19.5px;
+                    letter-spacing: 1.56px;
+                    text-transform: uppercase;
+                  }
+                }
+              }
+            }
+            .Categories_delete_item_list {
+              display: none;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              position: absolute;
+              width: 100%;
+              height: 100%;
+              background-color: #fff;
+              .Categories_delete_item_header {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                h2 {
+                  text-align: center;
+                  color: #000;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 22px;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: normal;
+                }
+              }
+              .Categories_delete_item_choice {
+                display: flex;
+                margin-top: 15px;
+                .delete_categories_form {
+                  .delete_categories {
+                    border: medium none;
+                    background-image: none;
+                    background: transparent;
+                    background-color: transparent;
+                    border: 2px solid #0c0c0c;
+                    padding: 15px 30px;
+                    color: #141414;
+                    text-align: center;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 19.5px;
+                    letter-spacing: 1.56px;
+                    text-transform: uppercase;
+                  }
+                }
+                .cancel_delete {
+                  margin-left: 40px;
+                  border: 2px solid #0c0c0c;
+                  padding: 15px 30px;
+                  color: #141414;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 13px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 19.5px;
+                  letter-spacing: 1.56px;
+                  text-transform: uppercase;
+
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
+      .Add_Categories_button_block {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        animation: 5s show ease;
+      }
+      .Add_Spa_Categories_block {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        width: 45%;
+        animation: 5s show ease;
+        .Add_Spa_Categories_list {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          border: 1px gray solid;
+          padding: 10px;
+          background-color: #fff;
+          border-radius: 16px;
+          width: 100%;
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          .Add_Categories_close_button_item {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            .Add_Categories_close_button {
+              width: 15px;
+              height: 15px;
+            }
+          }
+          .Add_Categories_form_item {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            .categories_add_form {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              margin-top: 20px;
+              .error {
+                font-family: var(--font-family-Manrope);
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 19.5px;
+                letter-spacing: 1.56px;
+                text-transform: uppercase;
+                color: red;
+              }
+              .add_custom-file-upload {
+                width: 100%;
+                height: 265px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                .add_custom-file-upload_block {
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: center;
+                  align-items: center;
+                  width: 100%;
+                  height: 100%;
+                  backdrop-filter: blur(4px);
+                  .add_image_custom-button {
+                    border: medium none;
+                    background-image: none;
+                    background: transparent;
+                    background-color: transparent;
+                    color: var(--white-color);
+                    font-family: var(--font-family-Manrope);
+                    font-size: 24px;
+                    text-align: center;
+                  }
+                  .add_image_custom_text {
+                    margin-top: 15px;
+                    color: var(--white-color);
+                    font-family: var(--font-family-Manrope);
+                    font-size: 18px;
+                    text-align: center;
+                  }
+                }
+                .add_create_categories_image {
+                  display: none;
+                }
+              }
+              .add_create_name {
+                width: 100%;
+                margin-top: 10px;
+                color: #000;
+                font-family: "Playfair Display";
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+              }
+              .add_create_description {
+                margin-top: 20px;
+                width: 100%;
+                height: 130px;
+                color: #000;
+                font-family: var(--font-family-Manrope);
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                resize: none;
+              }
+              .add_categories_input {
+                width: 200px;
+                margin-top: 20px;
+                border: medium none;
+                background-image: none;
+                background: transparent;
+                float: left;
+                background-color: transparent;
                 border: 2px solid #0c0c0c;
                 padding: 15px 30px;
                 color: #141414;
@@ -127,19 +419,19 @@
                 letter-spacing: 1.56px;
                 text-transform: uppercase;
               }
-              .Cloose_image_item {
-                width: 100%;
-                display: flex;
-                justify-content: flex-end;
-                .Cloose_image {
-                  width: 30px;
-                  height: 30px;
-                }
-              }
             }
           }
         }
       }
     }
+  }
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

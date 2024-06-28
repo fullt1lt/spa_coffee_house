@@ -1,6 +1,6 @@
 from django.urls import include, path
 from django.contrib.auth.views import LogoutView
-from myspa.views import (AdminMainPage, BlogNewsView, CafeTypeProductListView, CafeView, CreateMassageTherapistView, GalleryView, GetReviews, MainPage, Register, TypeBlogNewsViewListView, TypeCategoriesListView, TypeGalleryListView)
+from myspa.views import (AdminMainPage, BlogNewsView, CafeTypeProductListView, CafeView, CreateMassageTherapistView, DeleteSpaCategoriesView, GalleryView, GetReviews, MainPage, Register, TypeBlogNewsViewListView, TypeCategoriesListView, TypeGalleryListView)
 
 
 urlpatterns = [
@@ -18,4 +18,5 @@ urlpatterns = [
     path('blog-news-categories/<int:pk>/type-blog-news/', TypeBlogNewsViewListView.as_view(), name='blog_news_categories'),
     path('gallery/', GalleryView.as_view(), name='gallery'),
     path('gallery-categories/<int:pk>/type-gallery/', TypeGalleryListView.as_view(), name='gallery_categories'),
+    path('category-delete/<int:pk>/', DeleteSpaCategoriesView.as_view(), name='category_delete'),
 ]

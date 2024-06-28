@@ -18,6 +18,12 @@
             background-position: center -50px;
 
         }
+        .add_custom-file-upload {
+            background: url('{% static 'img/add_categories_background.jpg' %}');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center -50px;
+        }
     </style>
 </head>
 <body>
@@ -287,7 +293,7 @@
                         {% for category in spa_categories %}
                             <li class="Main_Spa_Categories_content_item">
                                 <div class="spa_categories_wrapper">
-                                    <ul class="Categories_content_item_list" id="categories_front_{{ category.id }}">
+                                    <ul class="Categories_content_item_list" id="categories_front_{{ category.id }}" data-category='{"name": "{{ category.name }}", "description": "{{ category.description }}", "categories_image": "{% if category.categories_image %}{{ category.categories_image.url }}{% endif %}"}'>
                                         <li class="item_image">
                                             {% if category.categories_image %}
                                                 <img src="{{ category.categories_image.url }}" alt="" class="Category_img">
@@ -305,23 +311,109 @@
                                             <a href="{% url 'categories' category.id %}">Дізнатися більше</a>
                                             <a href="#" class="Category_Link_Sign_Up">Записатись</a>
                                         </li>
-                                        <img src="{% static 'icon/update_button.svg' %}" alt="" class="Update_image" update-category-id="{{ category.id }}">
+                                        <li class="admin_buttons">
+                                            <img src="{% static 'icon/update_button.svg' %}" alt="" class="Update_image" update-category-id="{{ category.id }}">
+                                            <img src="{% static 'icon/basket.svg' %}" alt="" class="Basket_image" delete-category-id="{{ category.id }}">
+                                        </li>
                                     </ul>
                                     <ul class="Categories_update_item_list" id="categories_back_{{ category.id }}">
                                         <li class="Cloose_image_item">
                                             <img src="{% static 'icon/cloose.png' %}" alt="" class="Cloose_image" close-category-id="{{ category.id }}">
                                         </li>
-                                        <li class="text">
-                                           Какойто текст!!!!
+                                        <li class="categories_update_form_list">
+                                           <form method="post" enctype="multipart/form-data" class="categories_update_form">
+                                                {% csrf_token %}
+                                                    <input type="hidden" name="category_id" value="{{ category.id }}">
+                                                    <div class="custom-file-upload">
+                                                        <div class="label_upload_block" id="label_upload_block_{{ category.id }}">
+                                                            <label for="categories_image_{{ category.id }}" class="label_upload">Вибрати зображення</label>
+                                                        </div>
+                                                         <!-- Скрытый input для выбора файла -->
+                                                        <input type="file" name="categories_image" id="categories_image_{{ category.id }}" class="create_categories_image" style="display: none;">
+                                                    </div>
+                                                    <input type="text" name="name" id="name_{{ category.id }}" placeholder="Назва категорії" class="create_name">
+                                                    <textarea name="description" id="description_{{ category.id }}" placeholder="Опис категорії" class="create_description"></textarea>
+                                                    <input type="submit" value="Оновити" name="update_categories" class="update_categories_input">
+                                            </form>
+                                        </li>
+                                    </ul>
+                                    <ul class="Categories_delete_item_list" id="categories_delete_{{ category.id }}">
+                                        <li class="Categories_delete_item_header">
+                                            <h2>Ви хочете видалити категорію?</h2>
+                                        </li>
+                                        <li class="Categories_delete_item_choice">
+                                            <form method="post" action="{% url 'category_delete' category.pk %}" class="delete_categories_form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="delete_id" value="{{ category.pk }}">
+                                                <input type="submit" value="Видалити" class="delete_categories">
+                                            </form>
+                                            <span class="cancel_delete" cancel-delete-category-id="{{ category.id }}">Закрити</span>
                                         </li>
                                     </ul>
                                 </div>
                             </li>
                         {% endfor %}
                        <script src="{% static 'js/spa_categories_rotate_card.js' %}"></script>
+                       <script src="{% static 'js/delete_categories.js' %}"></script>
                     </ul>
+                    <div class="Add_Categories_button_block">
+                        <img src="{% static 'icon/add_button.png' %}" alt="" class="Add_Categories_button" id="Add_Categories_button">
+                    </div>
+                    <div class="Add_Spa_Categories_block" id="Add_Spa_Categories_block">
+                        <ul class="Add_Spa_Categories_list">
+                            <li class="Add_Categories_close_button_item">
+                                <img src="{% static 'icon/cloose.png' %}" alt="" class="Add_Categories_close_button" id="Add_Categories_close_button">
+                            </li>
+                            <li class="Add_Categories_form_item">
+                                <form method="post" enctype="multipart/form-data" class="categories_add_form">
+                                    {% csrf_token %}
+                                    {{ categories_add_form.non_field_errors }}
 
+                                    <div class="add_custom-file-upload">
+                                        <div class="add_custom-file-upload_block">
+                                            <button type="button" id="custom-button" class="add_image_custom-button">Вибрати зображення</button>
+                                            <span id="custom-text" class="add_image_custom_text">Файл не вибран</span>
+                                        </div>
+                                        {{ categories_add_form.categories_image }}
+                                    </div>
+                                    {% if categories_add_form.categories_image.errors %}
+                                        <div class="error">{{ categories_add_form.categories_image.errors }}</div>
+                                    {% endif %}
+
+                                    <div>
+                                        {{ categories_add_form.name.label_tag }}
+                                        {{ categories_add_form.name }}
+                                        {% if categories_add_form.name.errors %}
+                                            <div class="error">{{ categories_add_form.name.errors }}</div>
+                                        {% endif %}
+                                    </div>
+
+                                    <div>
+                                        {{ categories_add_form.description.label_tag }}
+                                        {{ categories_add_form.description }}
+                                        {% if categories_add_form.description.errors %}
+                                            <div class="error">{{ categories_add_form.description.errors }}</div>
+                                        {% endif %}
+                                    </div>
+
+                                    <input type="submit" value="Додати" name="add_categories" class="add_categories_input">
+                                <form>
+
+                                <script>
+                                    document.getElementById("custom-button").addEventListener("click", function() {
+                                        document.getElementById("id_categories_image").click();
+                                    });
+                                
+                                    document.getElementById("id_categories_image").addEventListener("change", function() {
+                                        const fileName = document.getElementById("id_categories_image").files[0].name;
+                                        document.getElementById("custom-text").textContent = fileName;
+                                    });
+                                </script>
+                            </li>
+                        </ul>
+                    </div>
                 </li>
+                <script src="{% static 'js/add_categories.js' %}"></script>
             </ul>
         </section>
         <section class="Main_Massage_Therapist Block_content">
@@ -433,30 +525,6 @@
                     </ul>
                     <button id="load_more_reviews" class="load_more_button"><img src="{% static 'icon/arrow_down.png' %}" alt=""></button>
                 </li>
-                {% if request.user.is_authenticated %}
-                    <li class="Review_main_list">
-                        <ul class="Review_form_list">
-                            <li class="Review_form_item">
-                                <h2 class="review_form_header">Ви можете залишити свій відгук на нашому сайті</h2>
-                                <form method="post" action="{% url 'index' %}" name="therapist" class="review_form">
-                                    {% csrf_token %}
-                                    {{ review_form.as_p }}
-                                    <div class="rating-stars">
-                                        <span class="star_rating" data-value="1">☆</span>
-                                        <span class="star_rating" data-value="2">☆</span>
-                                        <span class="star_rating" data-value="3">☆</span>
-                                        <span class="star_rating" data-value="4">☆</span>
-                                        <span class="star_rating" data-value="5">☆</span>
-                                    </div>
-                                    <button type="submit" class="rating_button">Відправити</button>
-                                </form>
-                            </li>
-                            <li class="Review_image_item">
-                                <img src="{% static 'icon/logo_black.svg' %}" alt="" class="Review_image">
-                            </li>
-                        </ul>
-                    </li>
-                {%endif%}
             </ul>
             <div id="loading" style="display: none;">Loading...</div>
             <script src="{% static 'js/reviews.js' %}"></script>

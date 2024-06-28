@@ -1,5 +1,5 @@
 from django import forms
-from myspa.models import MassageTherapist, Position, Review, Salon, SpaUser
+from myspa.models import MassageTherapist, Position, Review, Salon, SpaUser, SpaСategories
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError  
@@ -79,3 +79,23 @@ class ReviewForm(forms.ModelForm):
 
         if rating is None:
             raise forms.ValidationError("Пожалуйста, выберите рейтинг")
+        
+        
+class CategoriesUpdateForm(forms.ModelForm):
+    name = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'create_name', 'placeholder': 'Name'}))
+    categories_image = forms.ImageField(label='', widget=forms.FileInput(attrs={'class': 'create_categories_image'}), required=False)
+    description = forms.CharField(label='', widget=forms.Textarea(attrs={'class': 'create_description', 'rows': 8, 'placeholder': 'Description'}))
+
+    class Meta:
+        model = SpaСategories
+        fields = ('categories_image', 'name', 'description')
+        
+
+class CategoriesAddForm(forms.ModelForm):
+    name = forms.CharField(label='', widget=forms.TextInput(attrs={'class': 'add_create_name', 'placeholder': 'Назва категорії'}), required=True)
+    categories_image = forms.ImageField(label='', widget=forms.FileInput(attrs={'class': 'add_create_categories_image'}), required=True)
+    description = forms.CharField(label='', widget=forms.Textarea(attrs={'class': 'add_create_description', 'rows': 8, 'placeholder': 'Опис категорії'}), required=True)
+
+    class Meta:
+        model = SpaСategories
+        fields = ('categories_image', 'name', 'description')
