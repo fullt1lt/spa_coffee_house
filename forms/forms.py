@@ -34,7 +34,7 @@ class RegisterUserForm(UserCreationForm):
         
 
 class LoginUserForm(AuthenticationForm):
-    email = forms.EmailField(label='Ваш e-mail', widget=forms.EmailInput(attrs={'class': 'form-input', 'placeholder': 'Ваш e-mail'}))
+    email = forms.EmailField(label='Ваш e-mail', widget=forms.EmailInput(attrs={'class': 'form-input', 'placeholder': 'Ваш e-mail', 'id': 'id_email_2'}))
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput(attrs={'class': 'form-input', 'placeholder': 'Пароль'}))
 
     def __init__(self, *args, **kwargs):
@@ -99,3 +99,25 @@ class CategoriesAddForm(forms.ModelForm):
     class Meta:
         model = SpaСategories
         fields = ('categories_image', 'name', 'description')
+        
+        
+class MassageTherapistUpdateForm(forms.ModelForm):
+    first_name = forms.CharField(label='First Name', max_length=100, required=True)
+    last_name = forms.CharField(label='Last Name', max_length=100, required=True)
+    position = forms.ModelMultipleChoiceField(queryset=Position.objects.all(), widget=forms.SelectMultiple(attrs={'class': 'form-input select', 'size': '4'}))
+    profile_image = forms.ImageField(label='Profile Image', required=False)
+
+    class Meta:
+        model = MassageTherapist
+        fields = ['first_name', 'last_name', 'position', 'profile_image']
+
+
+# class MassageTherapistUpdateForm(forms.ModelForm):
+#     first_name = forms.CharField(label='First Name', max_length=100, required=True)
+#     last_name = forms.CharField(label='Last Name', max_length=100, required=True)
+#     position = forms.ModelMultipleChoiceField(queryset=Position.objects.all(), widget=forms.SelectMultiple(attrs={'class': 'form-input select', 'size': '4'}))
+#     profile_image = forms.ImageField(label='Profile Image', required=False)
+
+#     class Meta:
+#         model = MassageTherapist
+#         fields = ['first_name', 'last_name', 'position', 'profile_image']

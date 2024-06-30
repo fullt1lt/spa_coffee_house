@@ -332,7 +332,8 @@
                                 {% endif %}
                                 <ul class="content_item_info_list">
                                     <li class="content_item_info">
-                                        <span class="content_item_name">{{therapist.user.username}}</span>
+                                        <span class="content_item_name">{{therapist.user.first_name}}</span>
+                                        <span class="content_item_name">{{therapist.user.last_name}}</span>
                                         <ul class="content_item_position_list">
                                             {% for position in therapist.position.all %}
                                         <li class="content_item_position">

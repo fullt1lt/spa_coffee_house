@@ -1,0 +1,247 @@
+.Main_Massage_Therapist {
+  margin-top: 80px;
+  .Main_Massage_Therapist_list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    .Main_Massage_Therapist_content {
+      margin-top: 50px;
+      .Main_Massage_Therapist_content_list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        align-items: start;
+        justify-content: flex-start;
+        width: 100%;
+        .Massage_Therapist_content_item {
+          display: flex;
+          width: 30%;
+          border: 1px gray solid;
+          padding: 10px;
+          background-color: #fff;
+          border-radius: 16px;
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          .Wrapper_Massage_Therapist_content_item {
+            display: flex;
+            position: relative;
+            width: 100%;
+            .Massage_Therapist_info {
+              display: flex;
+              flex-direction: column;
+              backface-visibility: hidden;
+              width: 100%;
+              transition: all 0.5s ease;
+              .Massage_Therapist_img {
+                width: 100%;
+                border-radius: 15px;
+                height: 357px;
+              }
+              .content_item_info_list {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 8px;
+                align-items: center;
+                .content_item_info {
+                  .content_item_name {
+                    color: #000;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                  }
+                  .content_item_position_list {
+                    display: flex;
+                    justify-content: flex-start;
+                    margin-top: 8px;
+                    .content_item_position {
+                      margin-right: 5px;
+                      span {
+                        color: rgba(0, 0, 0, 0.56);
+                        font-family: Manrope;
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                      }
+                    }
+                  }
+                  .rating_list {
+                    display: flex;
+                    align-items: center;
+                    .rating {
+                      margin-right: 10px;
+                      .star {
+                        color: gold;
+                        font-size: 25px;
+                        display: inline-block;
+                      }
+                    }
+                    .average_rating {
+                      span {
+                        color: rgba(0, 0, 0, 0.56);
+                        font-family: Manrope;
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                      }
+                    }
+                  }
+                }
+                .content_item_sign_up {
+                  .therapist_link_sign_up {
+                    border: 2px solid #0c0c0c;
+                    padding: 15px 30px;
+                    color: #141414;
+                    text-align: center;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 19.5px;
+                    letter-spacing: 1.56px;
+                    text-transform: uppercase;
+                  }
+                }
+              }
+              .admin_buttons {
+                display: flex;
+                margin-top: 15px;
+                .Update_therapist_image {
+                  width: 30px;
+                  height: 30px;
+                  cursor: pointer;
+                }
+                .Basket_therapist_image {
+                  margin-left: 30px;
+                  width: 30px;
+                  height: 30px;
+                  cursor: pointer;
+                }
+              }
+            }
+            .Massage_Therapist_update_item {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: #fff;
+              transform: rotateY(180deg);
+              backface-visibility: hidden;
+              transition: all 0.5s ease;
+              .Massage_Therapist_update_item_list {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                height: 100%;
+                .Cloose_therapist_image_item {
+                  display: flex;
+                  justify-content: flex-end;
+                  width: 100%;
+                  .Cloose_therapist_image {
+                    width: 15px;
+                    height: 15px;
+                    cursor: pointer;
+                  }
+                }
+                .Cloose_therapist_form_list {
+                  width: 100%;
+                  .therapist_form_update {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    .Update_therapist_block_image {
+                      position: relative;
+                      border-radius: 16px;
+                      width: 100%;
+                      height: 337px;
+                      .img-preview {
+                        width: 100%;
+                        height: 100%;
+                        filter: blur(4px);
+                      }
+                      .Update_custom-file-upload {
+                        top: -50%;
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 8px;
+                        color: var(--white-color);
+                        font-family: var(--font-family-Manrope);
+                        font-size: 24px;
+                        text-align: center;
+                        .file-button {
+                          color: var(--white-color);
+                          font-family: var(--font-family-Manrope);
+                          font-size: 24px;
+                          text-align: center;
+                          border: medium none;
+                          background-image: none;
+                          background: transparent;
+                          background-color: transparent;
+                          cursor: pointer;
+                        }
+                      }
+                    }
+                    .Update_therapist_info_list {
+                      display: flex;
+                      width: 100%;
+                      .Update_therapist_info_items {
+                        display: flex;
+                        flex-direction: column;
+                        width: 50%;
+                        input {
+                          margin-top: 10px;
+                          color: #000;
+                          font-family: var(--font-family-Manrope);
+                          font-size: 18px;
+                          font-style: normal;
+                          font-weight: 400;
+                          line-height: normal;
+                        }
+                        select {
+                          margin-top: 10px;
+                          color: #000;
+                          font-family: var(--font-family-Manrope);
+                          font-size: 18px;
+                          font-style: normal;
+                          font-weight: 400;
+                          line-height: normal;
+                          height: 50px;
+                        }
+                      }
+                      .Update_therapist_submit {
+                        display: flex;
+                        width: 50%;
+                        justify-content: flex-end;
+                        align-items: center;
+                        .update_therapist_input {
+                          border: 2px solid #0c0c0c;
+                          padding: 15px 30px;
+                          color: #141414;
+                          text-align: center;
+                          font-family: var(--font-family-Manrope);
+                          font-size: 13px;
+                          font-style: normal;
+                          font-weight: 400;
+                          line-height: 19.5px;
+                          letter-spacing: 1.56px;
+                          text-transform: uppercase;
+                          cursor: pointer;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

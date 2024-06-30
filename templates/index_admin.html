@@ -323,17 +323,17 @@
                                         <li class="categories_update_form_list">
                                            <form method="post" enctype="multipart/form-data" class="categories_update_form">
                                                 {% csrf_token %}
-                                                    <input type="hidden" name="category_id" value="{{ category.id }}">
-                                                    <div class="custom-file-upload">
-                                                        <div class="label_upload_block" id="label_upload_block_{{ category.id }}">
-                                                            <label for="categories_image_{{ category.id }}" class="label_upload">Вибрати зображення</label>
-                                                        </div>
-                                                         <!-- Скрытый input для выбора файла -->
-                                                        <input type="file" name="categories_image" id="categories_image_{{ category.id }}" class="create_categories_image" style="display: none;">
+                                                <input type="hidden" name="category_id" value="{{ category.id }}">
+                                                <div class="custom-file-upload">
+                                                    <div class="label_upload_block" id="label_upload_block_{{ category.id }}">
+                                                        <label for="categories_image_{{ category.id }}" class="label_upload">Вибрати зображення</label>
                                                     </div>
-                                                    <input type="text" name="name" id="name_{{ category.id }}" placeholder="Назва категорії" class="create_name">
-                                                    <textarea name="description" id="description_{{ category.id }}" placeholder="Опис категорії" class="create_description"></textarea>
-                                                    <input type="submit" value="Оновити" name="update_categories" class="update_categories_input">
+                                                     <!-- Скрытый input для выбора файла -->
+                                                    <input type="file" name="categories_image" id="categories_image_{{ category.id }}" class="create_categories_image" style="display: none;">
+                                                </div>
+                                                <input type="text" name="name" id="name_{{ category.id }}" placeholder="Назва категорії" class="create_name">
+                                                <textarea name="description" id="description_{{ category.id }}" placeholder="Опис категорії" class="create_description"></textarea>
+                                                <input type="submit" value="Оновити" name="update_categories" class="update_categories_input">
                                             </form>
                                         </li>
                                     </ul>
@@ -372,7 +372,7 @@
                                     <div class="add_custom-file-upload">
                                         <div class="add_custom-file-upload_block">
                                             <button type="button" id="custom-button" class="add_image_custom-button">Вибрати зображення</button>
-                                            <span id="custom-text" class="add_image_custom_text">Файл не вибран</span>
+                                            <span id="custom-text" class="add_image_custom_text">Файл не вибрано</span>
                                         </div>
                                         {{ categories_add_form.categories_image }}
                                     </div>
@@ -428,40 +428,79 @@
                     <ul class="Main_Massage_Therapist_content_list">
                         {% for therapist in massage_therapists %}
                             <li class="Massage_Therapist_content_item">
-                                {% if therapist.user.profile_image %}
-                                    <img src="{{ therapist.user.profile_image.url }}" alt="" class="Massage_Therapist_img">
-                                {% else %}
-                                    <img src="{% static 'icon/logo.svg' %}" alt="">
-                                {% endif %}
-                                <ul class="content_item_info_list">
-                                    <li class="content_item_info">
-                                        <span class="content_item_name">{{therapist.user.username}}</span>
-                                        <ul class="content_item_position_list">
-                                            {% for position in therapist.position.all %}
-                                        <li class="content_item_position">
-                                            <span>
-                                                {{ position.name }}
-                                                    </span>
-                                                </li>
-                                            {% endfor %}
-                                        </ul>
-                                        <ul class="rating_list"> 
-                                            <li class="rating" data-rating="{{therapist.average_rating}}">
-
+                                <div class="Wrapper_Massage_Therapist_content_item">
+                                    <div class="Massage_Therapist_info" id="therapist_front_{{ therapist.id }}" data-first-name="{{ therapist.user.first_name }}" data-last-name="{{ therapist.user.last_name }}" data-positions="{% for position in therapist.position.all %}{{ position.id }}{% if not forloop.last %},{% endif %}{% endfor %}">
+                                        {% if therapist.user.profile_image %}
+                                            <img src="{{ therapist.user.profile_image.url }}" alt="" class="Massage_Therapist_img">
+                                        {% else %}
+                                            <img src="{% static 'icon/logo.svg' %}" alt="">
+                                        {% endif %}
+                                        <ul class="content_item_info_list">
+                                            <li class="content_item_info">
+                                                <span class="content_item_name">{{ therapist.user.first_name }}</span>
+                                                <span class="content_item_name">{{ therapist.user.last_name }}</span>
+                                                <ul class="content_item_position_list">
+                                                    {% for position in therapist.position.all %}
+                                                        <li class="content_item_position">
+                                                            <span>{{ position.name }}</span>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                                <ul class="rating_list">
+                                                    <li class="rating" data-rating="{{ therapist.average_rating }}"></li>
+                                                    <li class="average_rating">
+                                                        <span>{{ therapist.average_rating }}</span>
+                                                    </li>
+                                                </ul>
                                             </li>
-                                            <li class="average_rating">
-                                                <span>
-                                                    {{therapist.average_rating}}
-                                                </span>
+                                            <li class="content_item_sign_up">
+                                                <a href="#" class="therapist_link_sign_up">Записатись</a>
                                             </li>
                                         </ul>
-                                    </li>
-                                    <li class="content_item_sign_up">
-                                        <a href="#" class="therapist_link_sign_up">Записатись</a>
-                                    </li>
-                                </ul>
+                                        <div class="admin_buttons">
+                                            <img src="{% static 'icon/update_button.svg' %}" alt="" class="Update_therapist_image" update-therapist-id="{{ therapist.id }}">
+                                            <img src="{% static 'icon/basket.svg' %}" alt="" class="Basket_therapist_image" delete-therapist-id="{{ therapist.id }}">
+                                        </div>
+                                    </div>
+                                    <div class="Massage_Therapist_update_item" id="therapist_back_{{ therapist.id }}">
+                                        <ul class="Massage_Therapist_update_item_list">
+                                            <li class="Cloose_therapist_image_item">
+                                                <img src="{% static 'icon/cloose.png' %}" alt="" class="Cloose_therapist_image" close-therapist-id="{{ therapist.id }}">
+                                            </li>
+                                            <li class="Cloose_therapist_form_list">
+                                                    {% csrf_token %}
+                                                    <input type="hidden" name="therapist_id" value="{{ therapist.id }}">
+                                                    <div class="Update_therapist_block_image">
+                                                        <img src="{{ therapist.user.profile_image.url }}" alt="Profile Image" class="img-preview" style="display: {% if therapist.user.profile_image %}block{% else %}none{% endif %};">
+                                                        <div class="Update_custom-file-upload" id="Update_custom-file-upload_{{ therapist.id }}">
+                                                            <input type="file" name="profile_image" id="profile_image_{{ therapist.id }}" class="file-input" style="display: none;">
+                                                            <button type="button" class="file-button" onclick="document.getElementById('profile_image_{{ therapist.id }}').click()">Вибрати зображення</button>
+                                                            <span class="file-name" id="file-name-{{ therapist.id }}">Файл не выбрано</span>
+                                                        </div>
+                                                    </div>
+                                                    <ul class="Update_therapist_info_list">
+                                                        <li class="Update_therapist_info_items">
+                                                            <input type="text" name="first_name" id="first_name_{{ therapist.id }}" value="{{ therapist.user.first_name }}" required>
+                                                            <input type="text" name="last_name" id="last_name_{{ therapist.id }}" value="{{ therapist.user.last_name }}" required>
+                                                            <select name="position" id="position_{{ therapist.id }}" multiple required>
+                                                                {% for pos in all_positions %}
+                                                                    <option value="{{ pos.id }}" {% if pos in therapist.position.all %}selected{% endif %}>{{ pos.name }}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </li>
+                                                        <li class="Update_therapist_submit">
+                                                            <input type="submit" value="Оновити" name="update_therapist" class="update_therapist_input">
+                                                        </li>
+                                                    </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </li>
                         {% endfor %}
+
+                        <script src="{% static 'js/therapist_rotate_card.js' %}"></script>
+                        <script src="{% static 'js/file-input-thearapist.js' %}"></script>
                         <script src="{% static 'js/add_stars.js' %}"></script>
                     </ul>
                 </li>

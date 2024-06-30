@@ -110,11 +110,13 @@
                 .Update_image {
                   width: 30px;
                   height: 30px;
+                  cursor: pointer;
                 }
                 .Basket_image {
                   margin-left: 30px;
                   width: 30px;
                   height: 30px;
+                  cursor: pointer;
                 }
               }
             }
@@ -135,6 +137,7 @@
                 .Cloose_image {
                   width: 15px;
                   height: 15px;
+                  cursor: pointer;
                 }
               }
               .categories_update_form_list {
@@ -218,6 +221,7 @@
                     line-height: 19.5px;
                     letter-spacing: 1.56px;
                     text-transform: uppercase;
+                    cursor: pointer;
                   }
                 }
               }
@@ -265,6 +269,7 @@
                     line-height: 19.5px;
                     letter-spacing: 1.56px;
                     text-transform: uppercase;
+                    cursor: pointer;
                   }
                 }
                 .cancel_delete {
@@ -280,7 +285,6 @@
                   line-height: 19.5px;
                   letter-spacing: 1.56px;
                   text-transform: uppercase;
-
                   cursor: pointer;
                 }
               }
@@ -293,6 +297,7 @@
         justify-content: center;
         width: 100%;
         animation: 5s show ease;
+        cursor: pointer;
       }
       .Add_Spa_Categories_block {
         display: none;
@@ -318,6 +323,7 @@
             .Add_Categories_close_button {
               width: 15px;
               height: 15px;
+              cursor: pointer;
             }
           }
           .Add_Categories_form_item {
@@ -364,6 +370,7 @@
                     font-family: var(--font-family-Manrope);
                     font-size: 24px;
                     text-align: center;
+                    cursor: pointer;
                   }
                   .add_image_custom_text {
                     margin-top: 15px;
@@ -418,6 +425,7 @@
                 line-height: 19.5px;
                 letter-spacing: 1.56px;
                 text-transform: uppercase;
+                cursor: pointer;
               }
             }
           }
