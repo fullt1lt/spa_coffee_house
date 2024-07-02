@@ -122,7 +122,7 @@
                         </form>
                     </li>
                     <button class="cloose_button" id="cloose_button_login"><img src="{%static 'icon/cloose.png'%}" alt=""></button>
-                    <script src="{% static 'js/login_form.js' %}"></script>
+                    <script src="{% static 'js/forms/login_form.js' %}"></script>
                 </ul>
 
             </li>
@@ -177,7 +177,7 @@
                         <button type="submit" class="button_login" id="active_button_login_in_registr">Вхiд</button>
                     </li>
                     <button class="cloose_button" id="cloose_button_register"><img src="{%static 'icon/cloose.png'%}" alt=""></button>
-                    <script src="{% static 'js/register_form.js' %}"></script>
+                    <script src="{% static 'js/forms/register_form.js' %}"></script>
                 </ul>
             </li>
             <li class="Main_Header_text">
@@ -353,8 +353,8 @@
                                 </div>
                             </li>
                         {% endfor %}
-                       <script src="{% static 'js/spa_categories_rotate_card.js' %}"></script>
-                       <script src="{% static 'js/delete_categories.js' %}"></script>
+                       <script src="{% static 'js/categories/spa_categories_rotate_card.js' %}"></script>
+                       <script src="{% static 'js/categories/delete_categories.js' %}"></script>
                     </ul>
                     <div class="Add_Categories_button_block">
                         <img src="{% static 'icon/add_button.png' %}" alt="" class="Add_Categories_button" id="Add_Categories_button">
@@ -413,7 +413,7 @@
                         </ul>
                     </div>
                 </li>
-                <script src="{% static 'js/add_categories.js' %}"></script>
+                <script src="{% static 'js/categories/add_categories.js' %}"></script>
             </ul>
         </section>
         <section class="Main_Massage_Therapist Block_content">
@@ -468,41 +468,80 @@
                                                 <img src="{% static 'icon/cloose.png' %}" alt="" class="Cloose_therapist_image" close-therapist-id="{{ therapist.id }}">
                                             </li>
                                             <li class="Cloose_therapist_form_list">
-                                                    {% csrf_token %}
-                                                    <input type="hidden" name="therapist_id" value="{{ therapist.id }}">
-                                                    <div class="Update_therapist_block_image">
-                                                        <img src="{{ therapist.user.profile_image.url }}" alt="Profile Image" class="img-preview" style="display: {% if therapist.user.profile_image %}block{% else %}none{% endif %};">
-                                                        <div class="Update_custom-file-upload" id="Update_custom-file-upload_{{ therapist.id }}">
-                                                            <input type="file" name="profile_image" id="profile_image_{{ therapist.id }}" class="file-input" style="display: none;">
-                                                            <button type="button" class="file-button" onclick="document.getElementById('profile_image_{{ therapist.id }}').click()">Вибрати зображення</button>
-                                                            <span class="file-name" id="file-name-{{ therapist.id }}">Файл не выбрано</span>
-                                                        </div>
+                                                {% csrf_token %}
+                                                <input type="hidden" name="therapist_id" value="{{ therapist.id }}">
+                                                <div class="Update_therapist_block_image">
+                                                    <img src="{{ therapist.user.profile_image.url }}" alt="Profile Image" class="img-preview" style="display: {% if therapist.user.profile_image %}block{% else %}none{% endif %};">
+                                                    <div class="Update_custom-file-upload" id="Update_custom-file-upload_{{ therapist.id }}">
+                                                        <input type="file" name="profile_image" id="profile_image_{{ therapist.id }}" class="file-input" style="display: none;">
+                                                        <button type="button" class="file-button" onclick="document.getElementById('profile_image_{{ therapist.id }}').click()">Вибрати зображення</button>
+                                                        <span class="file-name" id="file-name-{{ therapist.id }}">Файл не выбрано</span>
                                                     </div>
-                                                    <ul class="Update_therapist_info_list">
-                                                        <li class="Update_therapist_info_items">
-                                                            <input type="text" name="first_name" id="first_name_{{ therapist.id }}" value="{{ therapist.user.first_name }}" required>
-                                                            <input type="text" name="last_name" id="last_name_{{ therapist.id }}" value="{{ therapist.user.last_name }}" required>
-                                                            <select name="position" id="position_{{ therapist.id }}" multiple required>
-                                                                {% for pos in all_positions %}
-                                                                    <option value="{{ pos.id }}" {% if pos in therapist.position.all %}selected{% endif %}>{{ pos.name }}</option>
-                                                                {% endfor %}
-                                                            </select>
-                                                        </li>
-                                                        <li class="Update_therapist_submit">
-                                                            <input type="submit" value="Оновити" name="update_therapist" class="update_therapist_input">
-                                                        </li>
-                                                    </ul>
+                                                </div>
+                                                <ul class="Update_therapist_info_list">
+                                                    <li class="Update_therapist_info_items">
+                                                        <input type="text" name="first_name" id="first_name_{{ therapist.id }}" value="{{ therapist.user.first_name }}" required>
+                                                        <input type="text" name="last_name" id="last_name_{{ therapist.id }}" value="{{ therapist.user.last_name }}" required>
+                                                        <select name="position" id="position_{{ therapist.id }}" multiple required>
+                                                            {% for pos in all_positions %}
+                                                                <option value="{{ pos.id }}" {% if pos in therapist.position.all %}selected{% endif %}>{{ pos.name }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </li>
+                                                    <li class="Update_therapist_submit">
+                                                        <input type="submit" value="Оновити" name="update_therapist" class="update_therapist_input">
+                                                    </li>
+                                                </ul>
                                             </li>
                                         </ul>
                                     </div>
+                                    <ul class="Therapist_delete_item_list" id="therapist_delete_{{ therapist.id }}">
+                                        <li class="Therapist_delete_item_header">
+                                            <h2>Ви хочете видалити категорію?</h2>
+                                        </li>
+                                        <li class="Therapist_delete_item_choice">
+                                            <form method="post" action="{% url 'therapist_delete' therapist.pk %}" class="therapist_categories_form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="delete_id" value="{{ therapist.pk }}">
+                                                <input type="submit" value="Видалити" class="therapist_delete_button">
+                                            </form>
+                                            <span class="therapist_cancel_delete" cancel-delete-therapist-id="{{ therapist.id }}">Закрити</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </li>
                         {% endfor %}
 
-                        <script src="{% static 'js/therapist_rotate_card.js' %}"></script>
-                        <script src="{% static 'js/file-input-thearapist.js' %}"></script>
-                        <script src="{% static 'js/add_stars.js' %}"></script>
+                        <script src="{% static 'js/therapist/therapist_rotate_card.js' %}"></script>
+                        <script src="{% static 'js/therapist/delete_therapist.js' %}"></script>
+                        <script src="{% static 'js/therapist/file-input-thearapist.js' %}"></script>
+                        <script src="{% static 'js/therapist/add_stars.js' %}"></script>
                     </ul>
+                </li>
+                <li class="Add_Therapist_button_block">
+                    <img src="{% static 'icon/add_button.png' %}" alt="" class="Add_therapist_button" id="Add_therapist_button">
+                </li>
+                <li class="Add_Therapist_block" id="Add_Therapist_block">
+                    <ul class="Add_Therapist_list">
+                        <li class="Therapist_close_button_item">
+                            <img src="{% static 'icon/cloose.png' %}" alt="" class="Add_Therapist_close_button" id="Add_Therapist_close_button">
+                        </li>
+                        <li class="Add_Therapist_form_item">
+                            <form method="post" enctype="multipart/form-data" class="create_massage_therapist_form">
+                                {% csrf_token %}
+                                {{ register_form.as_p }}
+                                <div class="custom-file-input">
+                                    <input type="file" id="id_Therapist_image" name="profile_image" style="display: none;">
+                                    <button type="button" class="Add_Therapist_button" onclick="document.getElementById('id_Therapist_image').click()">Вибрати зображення</button>
+                                    <span id="file-name">Файл не выбрано</span>
+                                </div>
+                                {{ therapist_form.as_p }}
+                                <button type="submit" class="create_input" name="add_therapist">Додати</button>
+                            </form>
+                        </li>
+                    </ul>
+                    <script src="{% static 'js/therapist/file_add_therapist.js' %}"></script>
+                    <script src="{% static 'js/therapist/add_therapist.js' %}"></script>
                 </li>
             </ul>
         </section>
@@ -566,8 +605,8 @@
                 </li>
             </ul>
             <div id="loading" style="display: none;">Loading...</div>
-            <script src="{% static 'js/reviews.js' %}"></script>
-            <script src="{% static 'js/rating.js' %}"></script>
+            <script src="{% static 'js/reviews/reviews.js' %}"></script>
+            <script src="{% static 'js/reviews/rating.js' %}"></script>
         </section>
     </main>
     <footer class="Main_Footer Background_Main_Page_Footer" id="footer">

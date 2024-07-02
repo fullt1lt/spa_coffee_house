@@ -2302,12 +2302,12 @@ a {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 20px;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
 }
 .Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item {
@@ -2600,6 +2600,243 @@ a {
   text-transform: uppercase;
   cursor: pointer;
 }
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item .Wrapper_Massage_Therapist_content_item .Therapist_delete_item_list {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item .Wrapper_Massage_Therapist_content_item .Therapist_delete_item_list .Therapist_delete_item_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item .Wrapper_Massage_Therapist_content_item .Therapist_delete_item_list .Therapist_delete_item_header h2 {
+  text-align: center;
+  color: #000;
+  font-family: var(--font-family-Manrope);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item .Wrapper_Massage_Therapist_content_item .Therapist_delete_item_list .Therapist_delete_item_choice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 15px;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item .Wrapper_Massage_Therapist_content_item .Therapist_delete_item_list .Therapist_delete_item_choice .therapist_categories_form .therapist_delete_button {
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  background-color: transparent;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item .Wrapper_Massage_Therapist_content_item .Therapist_delete_item_list .Therapist_delete_item_choice .therapist_cancel_delete {
+  margin-left: 40px;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_button_block {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-animation: 5s show ease;
+          animation: 5s show ease;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+  -webkit-animation: 5s show ease;
+          animation: 5s show ease;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px gray solid;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 16px;
+  width: 30%;
+  -webkit-box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list .Therapist_close_button_item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list .Therapist_close_button_item .Add_Therapist_close_button {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list .Add_Therapist_form_item {
+  width: 100%;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list .Add_Therapist_form_item .create_massage_therapist_form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list .Add_Therapist_form_item .create_massage_therapist_form p {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list .Add_Therapist_form_item .create_massage_therapist_form p label {
+  display: none;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list .Add_Therapist_form_item .create_massage_therapist_form p .create_image {
+  display: none;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list .Add_Therapist_form_item .create_massage_therapist_form p input {
+  width: 100%;
+  margin-top: 10px;
+  color: #000;
+  font-family: var(--font-family-Manrope);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list .Add_Therapist_form_item .create_massage_therapist_form p select {
+  margin-top: 10px;
+  color: #000;
+  font-family: var(--font-family-Manrope);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list .Add_Therapist_form_item .create_massage_therapist_form p .select {
+  height: 50px;
+  width: 200px;
+  overflow: hidden;
+  text-align: center;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list .Add_Therapist_form_item .create_massage_therapist_form .custom-file-input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 10px;
+  width: 50%;
+  height: 50px;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list .Add_Therapist_form_item .create_massage_therapist_form .custom-file-input .Add_Therapist_button {
+  color: var(--black-color);
+  font-family: var(--font-family-Manrope);
+  font-size: 24px;
+  text-align: center;
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  background-color: transparent;
+  cursor: pointer;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list .Add_Therapist_form_item .create_massage_therapist_form .create_input {
+  width: 200px;
+  margin-top: 20px;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  background-color: transparent;
+  cursor: pointer;
+}
 
 .Main_Massage_Therapist {
   margin-top: 80px;
@@ -2624,12 +2861,12 @@ a {
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 20px;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: start;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 100%;
 }
 .Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item {

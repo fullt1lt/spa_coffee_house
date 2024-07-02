@@ -7,6 +7,7 @@
 body {
   display: flex;
   flex-direction: column;
+  width: 100%;
   height: 100%;
   // background-color: rgb(255, 255, 255);
   background: #adb59f;
@@ -46,7 +47,7 @@ a {
 
 .Active_Gallery {
   border-radius: 16px;
-  background: #C0A494 !important;
+  background: #c0a494 !important;
 }
 
 .Background_Categories {
@@ -62,9 +63,9 @@ a {
 }
 
 .Background_Blog_News_Categories {
-  background: #AFB5A1;
+  background: #afb5a1;
 }
 
 .Background_Gallery_Categories {
-  background: #9C8273;
+  background: #9c8273;
 }

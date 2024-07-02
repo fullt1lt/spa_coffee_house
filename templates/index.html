@@ -116,7 +116,7 @@
                         </form>
                     </li>
                     <button class="cloose_button" id="cloose_button_login"><img src="{%static 'icon/cloose.png'%}" alt=""></button>
-                    <script src="{% static 'js/login_form.js' %}"></script>
+                    <script src="{% static 'js/forms/login_form.js' %}"></script>
                 </ul>
 
             </li>
@@ -171,7 +171,7 @@
                         <button type="submit" class="button_login" id="active_button_login_in_registr">Вхiд</button>
                     </li>
                     <button class="cloose_button" id="cloose_button_register"><img src="{%static 'icon/cloose.png'%}" alt=""></button>
-                    <script src="{% static 'js/register_form.js' %}"></script>
+                    <script src="{% static 'js/forms/register_form.js' %}"></script>
                 </ul>
             </li>
             <li class="Main_Header_text">
@@ -360,7 +360,7 @@
                                 </ul>
                             </li>
                         {% endfor %}
-                        <script src="{% static 'js/add_stars.js' %}"></script>
+                        <script src="{% static 'js/therapist/add_stars.js' %}"></script>
                     </ul>
                 </li>
             </ul>
@@ -449,8 +449,8 @@
                 {%endif%}
             </ul>
             <div id="loading" style="display: none;">Loading...</div>
-            <script src="{% static 'js/reviews.js' %}"></script>
-            <script src="{% static 'js/rating.js' %}"></script>
+            <script src="{% static 'js/reviews/reviews.js' %}"></script>
+            <script src="{% static 'js/reviews/rating.js' %}"></script>
         </section>
     </main>
     <footer class="Main_Footer Background_Main_Page_Footer" id="footer">
