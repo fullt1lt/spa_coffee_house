@@ -1,5 +1,207 @@
-@media screen and (max-width: 1085px) {
-    .Book_With_Us__list {
-    margin: 100px auto 0px !important; 
-    }
+@media screen and (max-width: 1330px) {
+  .Main_Header {
+    height: 50vh !important;
+  }
+  .Main_Header_text {
+    margin-top: 150px !important;
+  }
+  .Main_About_Us_info_gallery {
+    margin-top: 50px;
+    justify-content: space-around !important;
+  }
+  .Main_Spa_Categories_content_item {
+    width: 100% !important;
+  }
+  .Add_Spa_Categories_block {
+    width: 100% !important;
+  }
+  .Massage_Therapist_content_item {
+    width: 45% !important;
+  }
+  .Add_Therapist_list {
+    width: 50% !important;
+  }
+  .Block_review {
+    width: 100% !important;
+  }
+  .Review_list {
+    width: 100% !important;
+    gap: 15px !important;
+  }
+  .review_form {
+    width: 100% !important;
+  }
+  .Review_main_list {
+    width: 100% !important;
+  }
+  .Review_form_item {
+    width: 45% !important;
+  }
+  .Review_image_item {
+    width: 45% !important;
+  }
+  .review_item {
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 865px) {
+  .Main_About_Us_info_list {
+    flex-direction: column;
+  }
+
+  .Main_About_Us_info_text {
+    width: 100% !important;
+  }
+  .Main_About_Us_info_gallery {
+    width: 100% !important;
+  }
+  .Main_About_Us_info_gallery_list {
+    width: 100% !important;
+    flex-direction: row !important;
+  }
+
+  .content_item_info_list {
+    flex-direction: column !important;
+    height: 130px;
+  }
+  .admin_buttons {
+    margin-top: 20px !important;
+    justify-content: center;
+  }
+  .Review_form_list {
+    flex-direction: column-reverse !important;
+  }
+
+  .Review_form_item {
+    width: 100% !important;
+  }
+  .Review_image_item {
+    width: 100% !important;
+  }
+  .Review_image {
+    width: 150px !important;
+    height: 150px !important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .Main_Header_info_list {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center;
+  }
+  .Main_Header_autorization {
+    top: 0 !important;
+    margin-right: 0 !important;
+  }
+  .Main_Header_login_form {
+    height: 100vh !important;
+    align-items: center;
+  }
+  .registration_list {
+    width: 80% !important;
+  }
+  .register_form_list {
+    display: flex;
+    width: 100%;
+  }
+  .UserNameSurname_list {
+    flex-direction: column !important;
+  }
+  .UserNameSurname_item {
+    width: 100%;
+  }
+  .form-input-name {
+    width: 90%;
+  }
+  .login_list {
+    width: 80% !important;
+  }
+  .form-input {
+    width: 100% !important;
+  }
+  .Main_Header_navigation_list {
+    flex-direction: column !important;
+  }
+  .Main_Footer_navigation_list {
+    flex-direction: column !important;
+  }
+
+  .Main_Header_text {
+    margin-top: 20px !important;
+  }
+  .Main_Header_text_item h1 {
+    font-size: 24px !important;
+  }
+  .navigation_list_nav_list {
+    margin-right: 15px;
+  }
+  .Main_Footer_navigation_item {
+    margin-right: 15px !important;
+  }
+  .Navigation_contacts_list {
+    margin-top: 10px;
+  }
+  .Main_Header_navigation_item {
+    margin-right: 10px !important;
+  }
+  .Main_About_Us {
+    margin-top: 30px !important;
+  }
+  .Main_Philosophy {
+    margin-top: 0px !important;
+  }
+  .Main_Spa_Categories {
+    margin-top: 0px !important;
+  }
+  .Main_Massage_Therapist {
+    margin-top: 0px !important;
+  }
+  .Main_Massage_Therapist {
+    margin-top: 0px !important;
+  }
+  .Main_About_Us_info_gallery_list {
+    display: none !important;
+  }
+  .Massage_Therapist_content_item {
+    width: 100% !important;
+  }
+  .Add_Therapist_list {
+    width: 100% !important;
+  }
+  .Main_Philosophy_content_list {
+    flex-direction: column !important;
+  }
+  .Content_item {
+    width: 100% !important;
+  }
+  .Main_Why_Us_content_list {
+    flex-direction: column !important;
+  }
+  .Main_Why_Us_content_item {
+    width: 100% !important;
+  }
+  .Main_Massage_Therapist_content_list {
+    height: 580px !important;
+    overflow: scroll;
+    border-radius: 16px;
+  }
+  .Review_main_list {
+    margin-top: 30px !important;
+  }
+  .Review_form_list {
+    flex-direction: column-reverse !important;
+  }
+
+  .Review_form_item {
+    width: 100% !important;
+  }
+  .Review_image_item {
+    width: 100% !important;
+  }
+  .Review_image {
+    width: 150px !important;
+    height: 150px !important;
+  }
 }

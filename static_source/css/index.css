@@ -23,6 +23,7 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  width: 100%;
   height: 100%;
   background: #adb59f;
 }
@@ -65,7 +66,7 @@ a {
 
 .Active_Gallery {
   border-radius: 16px;
-  background: #C0A494 !important;
+  background: #c0a494 !important;
 }
 
 .Background_Categories {
@@ -81,11 +82,11 @@ a {
 }
 
 .Background_Blog_News_Categories {
-  background: #AFB5A1;
+  background: #afb5a1;
 }
 
 .Background_Gallery_Categories {
-  background: #9C8273;
+  background: #9c8273;
 }
 
 .Header_list {
@@ -2412,6 +2413,12 @@ a {
   font-weight: 400;
   line-height: normal;
 }
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item .Wrapper_Massage_Therapist_content_item .Massage_Therapist_info .content_item_info_list .content_item_sign_up {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 15px;
+}
 .Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item .Wrapper_Massage_Therapist_content_item .Massage_Therapist_info .content_item_info_list .content_item_sign_up .therapist_link_sign_up {
   border: 2px solid #0c0c0c;
   padding: 15px 30px;
@@ -2807,7 +2814,6 @@ a {
           align-items: center;
   margin-top: 10px;
   width: 50%;
-  height: 50px;
 }
 .Main_Massage_Therapist .Main_Massage_Therapist_list .Add_Therapist_block .Add_Therapist_list .Add_Therapist_form_item .create_massage_therapist_form .custom-file-input .Add_Therapist_button {
   color: var(--black-color);
@@ -2953,6 +2959,12 @@ a {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+.Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item .content_item_info_list .content_item_sign_up {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 15px;
 }
 .Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item .content_item_info_list .content_item_sign_up .therapist_link_sign_up {
   border: 2px solid #0c0c0c;
@@ -3236,6 +3248,16 @@ a {
 .Main_Review .Main_Review_list .Review_main_list .Review_form_list .Review_form_item .review_form {
   margin-top: 65px;
 }
+.Main_Review .Main_Review_list .Review_main_list .Review_form_list .Review_form_item .review_form p {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
 .Main_Review .Main_Review_list .Review_main_list .Review_form_list .Review_form_item .review_form p label {
   display: none;
 }
@@ -3260,9 +3282,8 @@ a {
 }
 .Main_Review .Main_Review_list .Review_main_list .Review_form_list .Review_form_item .review_form p .form-control {
   border-radius: 5px;
-  padding: 15px 16px;
   margin-top: 16px;
-  width: 590px;
+  width: 100%;
   height: 144px;
   border: 2px solid #030303;
   color: #181719;
@@ -3911,6 +3932,250 @@ a {
           transform: rotate(180deg);
 }
 
+@media screen and (max-width: 1330px) {
+  .Main_Header {
+    height: 50vh !important;
+  }
+  .Main_Header_text {
+    margin-top: 150px !important;
+  }
+  .Main_About_Us_info_gallery {
+    margin-top: 50px;
+    -ms-flex-pack: distribute !important;
+        justify-content: space-around !important;
+  }
+  .Main_Spa_Categories_content_item {
+    width: 100% !important;
+  }
+  .Add_Spa_Categories_block {
+    width: 100% !important;
+  }
+  .Massage_Therapist_content_item {
+    width: 45% !important;
+  }
+  .Add_Therapist_list {
+    width: 50% !important;
+  }
+  .Block_review {
+    width: 100% !important;
+  }
+  .Review_list {
+    width: 100% !important;
+    gap: 15px !important;
+  }
+  .review_form {
+    width: 100% !important;
+  }
+  .Review_main_list {
+    width: 100% !important;
+  }
+  .Review_form_item {
+    width: 45% !important;
+  }
+  .Review_image_item {
+    width: 45% !important;
+  }
+  .review_item {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 865px) {
+  .Main_About_Us_info_list {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .Main_About_Us_info_text {
+    width: 100% !important;
+  }
+  .Main_About_Us_info_gallery {
+    width: 100% !important;
+  }
+  .Main_About_Us_info_gallery_list {
+    width: 100% !important;
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+  }
+  .content_item_info_list {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    height: 130px;
+  }
+  .admin_buttons {
+    margin-top: 20px !important;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .Review_form_list {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+        -ms-flex-direction: column-reverse !important;
+            flex-direction: column-reverse !important;
+  }
+  .Review_form_item {
+    width: 100% !important;
+  }
+  .Review_image_item {
+    width: 100% !important;
+  }
+  .Review_image {
+    width: 150px !important;
+    height: 150px !important;
+  }
+}
+@media screen and (max-width: 800px) {
+  .Main_Header_info_list {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .Main_Header_autorization {
+    top: 0 !important;
+    margin-right: 0 !important;
+  }
+  .Main_Header_login_form {
+    height: 100vh !important;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .registration_list {
+    width: 80% !important;
+  }
+  .register_form_list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%;
+  }
+  .UserNameSurname_list {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .UserNameSurname_item {
+    width: 100%;
+  }
+  .form-input-name {
+    width: 90%;
+  }
+  .login_list {
+    width: 80% !important;
+  }
+  .form-input {
+    width: 100% !important;
+  }
+  .Main_Header_navigation_list {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .Main_Footer_navigation_list {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .Main_Header_text {
+    margin-top: 20px !important;
+  }
+  .Main_Header_text_item h1 {
+    font-size: 24px !important;
+  }
+  .navigation_list_nav_list {
+    margin-right: 15px;
+  }
+  .Main_Footer_navigation_item {
+    margin-right: 15px !important;
+  }
+  .Navigation_contacts_list {
+    margin-top: 10px;
+  }
+  .Main_Header_navigation_item {
+    margin-right: 10px !important;
+  }
+  .Main_About_Us {
+    margin-top: 30px !important;
+  }
+  .Main_Philosophy {
+    margin-top: 0px !important;
+  }
+  .Main_Spa_Categories {
+    margin-top: 0px !important;
+  }
+  .Main_Massage_Therapist {
+    margin-top: 0px !important;
+  }
+  .Main_Massage_Therapist {
+    margin-top: 0px !important;
+  }
+  .Main_About_Us_info_gallery_list {
+    display: none !important;
+  }
+  .Massage_Therapist_content_item {
+    width: 100% !important;
+  }
+  .Add_Therapist_list {
+    width: 100% !important;
+  }
+  .Main_Philosophy_content_list {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .Content_item {
+    width: 100% !important;
+  }
+  .Main_Why_Us_content_list {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+  .Main_Why_Us_content_item {
+    width: 100% !important;
+  }
+  .Main_Massage_Therapist_content_list {
+    height: 580px !important;
+    overflow: scroll;
+    border-radius: 16px;
+  }
+  .Review_main_list {
+    margin-top: 30px !important;
+  }
+  .Review_form_list {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: reverse !important;
+        -ms-flex-direction: column-reverse !important;
+            flex-direction: column-reverse !important;
+  }
+  .Review_form_item {
+    width: 100% !important;
+  }
+  .Review_image_item {
+    width: 100% !important;
+  }
+  .Review_image {
+    width: 150px !important;
+    height: 150px !important;
+  }
+}
 .Main_Footer {
   position: relative;
   -webkit-box-align: center;
