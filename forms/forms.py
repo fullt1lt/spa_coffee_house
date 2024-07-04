@@ -1,5 +1,5 @@
 from django import forms
-from myspa.models import MassageTherapist, Position, Review, Salon, Schedule, SpaUser, SpaСategories
+from myspa.models import MassageTherapist, Position, Procedure, Review, Salon, Schedule, SpaUser, SpaСategories
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError  
@@ -112,6 +112,7 @@ class MassageTherapistUpdateForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'position', 'profile_image']
 
 
+
 class ScheduleForm(forms.ModelForm):
     dates = forms.CharField(widget=forms.HiddenInput())
     start_time = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
@@ -121,3 +122,10 @@ class ScheduleForm(forms.ModelForm):
     class Meta:
         model = Schedule
         fields = ['therapist', 'dates', 'start_time', 'end_time']
+        
+
+class ProcedureForm(forms.Form):
+    procedure = forms.ModelChoiceField(queryset=Procedure.objects.all(), label="Процедура")
+
+class TherapistForm(forms.Form):
+    therapist = forms.ModelChoiceField(queryset=MassageTherapist.objects.all(), label="Спеціаліст")

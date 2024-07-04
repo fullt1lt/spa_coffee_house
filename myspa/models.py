@@ -79,7 +79,7 @@ class TypeCategories(models.Model):
         return self.name
 
 
-class CategoriesSession(models.Model):
+class Procedure(models.Model):
     type_category = models.ForeignKey(TypeCategories, on_delete=models.CASCADE, related_name='sessions')
     duration = models.DurationField(choices=CATEGORY_TIME)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -100,11 +100,11 @@ class Schedule(models.Model):
 
 class Record(models.Model):
     schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
-    procedure = models.ForeignKey(CategoriesSession, on_delete=models.CASCADE)
+    procedure = models.ForeignKey(Procedure, on_delete=models.CASCADE)
     start_time = models.TimeField()
 
     def __str__(self):
-        return f"Procedure duration: {self.procedure.time_duration}\n start time: {self.start_time}"
+        return f"Procedure duration: {self.procedure.duration}\n start time: {self.start_time}"
 
 
 class Review(models.Model):
@@ -129,22 +129,6 @@ class Review(models.Model):
         return f"{self.therapist} - {self.rating}"
     
 
-# class Appointment(models.Model):
-#     client = models.ForeignKey(SpaUser, on_delete=models.CASCADE)
-#     therapist = models.ForeignKey(MassageTherapist, on_delete=models.CASCADE)
-#     massage_type = models.ForeignKey(TypeCategories, on_delete=models.CASCADE)
-#     date = models.DateField()
-#     start_time = models.TimeField()
-#     salon = models.ForeignKey(Salon, on_delete=models.CASCADE, related_name='appointments')
-
-#     class Meta:
-#         unique_together = ('therapist', 'date', 'start_time')
-
-#     def __str__(self):
-#         return f"{self.client.user.username} - {self.massage_type.name} with {self.therapist.user.username} on {self.date} at {self.start_time}"
-
-
-    
 class CafeProduct(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=1000)

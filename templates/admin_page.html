@@ -84,13 +84,13 @@
                             <form id="schedule-form" method="post" class="schedule-form">
                                 {% csrf_token %}
                                 {% if schedule_form.non_field_errors %}
-                                <div class="errors">
-                                    <ul class="errorlist">
-                                        {% for error in schedule_form.non_field_errors %}
-                                        <li>{{ error }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
+                                    <div class="errors">
+                                        <ul class="errorlist">
+                                            {% for error in schedule_form.non_field_errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
                                 {% endif %}
                                 <label for="therapist">Співробітник</label>
                                 <select id="therapist" name="therapist">
@@ -102,17 +102,17 @@
                                     <input type="hidden" name="dates" id="selected-dates">
                                     <li class="time_item">
                                         <label for="start_time">Початок роботи:</label>
-                                        <input type="time" id="start_time" name="start_time" required>
+                                        <input type="time" id="start_time" name="start_time" required min="08:00" max="22:00">
                                     </li>
                                     <li class="time_item">
                                         <label for="end_time">Кiнець роботи:</label>
-                                        <input type="time" id="end_time" name="end_time" required>
+                                        <input type="time" id="end_time" name="end_time" required min="08:00" max="22:00">
                                     </li>
                                 </ul>
                                 <div class="create_schedule_block_button">
                                     <button type="submit" class="create_schedule_button" name="schedule">Створити</button>
                                 </div>
-                            </form>
+                            </form> 
                         </li>                       
                     </ul>
                 </li>

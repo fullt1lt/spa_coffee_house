@@ -1,0 +1,182 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<style>
+    .procedure-checkbox {
+        margin-right: 10px;
+        width: 16px;
+        height: 16px;
+    }
+    .error-message {
+        color: red;
+        font-weight: bold;
+    }
+    .date-slot {
+        margin-bottom: 20px;
+    }
+    .time-slot {
+        margin: 5px;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .time-slot.selected {
+        background-color: lightgreen;
+    }
+
+</style>
+{% endblock %}
+
+{% block header %}
+    <li class="Main_Header_navigation_item">
+        <a href="{% url 'blog_news' %}">Новини i блог</a>
+    </li>
+    <li class="Main_Header_navigation_item">
+        <a href="{% url 'gallery' %}">Фотогалерея</a>
+    </li>
+    <li class="Main_Header_navigation_item">
+        <a href="{% url 'cafe' %}">Кав’ярня</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+<div class="Record_main_list">
+    {% if step == '1' %}
+    <form method="post" action="{% url 'create_record' %}" class="Record_procedur_form">
+        {% csrf_token %}
+        <div id="category-buttons" class="category_button_list">
+            {% for category in spa_categories %}
+                <button type="button" class="category-button" data-category-id="{{ category.id }}">{{ category.name }}</button>
+            {% endfor %}
+        </div>
+        <ul id="procedure-list" class="procedure_list">
+            {% for procedure in procedures %}
+                <li class="procedure-item" data-category-id="{{ procedure.type_category.categories.id }}">
+                    <ul class="procedure-item-list">
+                        <li class="procedure-item-info">
+                            <span class="type_category">{{ procedure.type_category.name }}</span>
+                            <span class="get_duration_display">{{ procedure.get_duration_display }} хв</span>
+                            <span class="price">{{ procedure.price|floatformat:0 }} грн</span>
+                        </li>
+                        <li class="procedure-item-label">
+                            <input type="checkbox" name="procedure" value="{{ procedure.id }}" class="procedure-checkbox">
+                        </li>
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+        <input type="hidden" name="step" value="1">
+        <input type="hidden" id="selected-procedure" name="procedure">
+        <button type="submit" class="submit-procedure-button">Вибрати процедуру</button>
+    </form>
+    <script src="{% static 'js/record/record_procedure_filter.js' %}"></script>
+    {% elif step == '2' %}
+    <form method="post" action="{% url 'create_record' %}" class="Record_therapist_form">
+        {% csrf_token %}
+        <ul class="therapist-list" id="therapist-list">
+            {% for therapist in therapists %}
+            <li class="therapist-item">
+                <ul class="therapist-item_list">
+                    <li class="therapist-item_image">
+                        {% if therapist.user.profile_image %}
+                            <img src="{{ therapist.user.profile_image.url }}" alt="" class="Massage_Therapist_img">
+                        {% else %}
+                            <img src="{% static 'icon/logo.svg' %}" alt="">
+                        {% endif %}
+                    </li>
+                    <li class="therapist-item_info">
+                        <ul class="therapist-item_list">
+                            <li class="therapist-item_info_user_name">
+                                <span>{{ therapist.user.first_name }} {{ therapist.user.last_name }}</span>
+                            </li>
+                            <li class="therapist-position">
+                                <ul class="therapist-position_list">
+                                    {% for position in therapist.position.all %}
+                                    <li class="therapist-position-item">
+                                        <span>
+                                            {{ position.name }}
+                                        </span>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </li>
+                            <li class="therapist-rating">
+                                <ul class="rating_list"> 
+                                    <li class="rating" data-rating="{{therapist.average_rating}}"></li>
+                                    <li class="average_rating">
+                                        <span>
+                                            {{therapist.average_rating}}
+                                        </span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="therapist-item-label">
+                    <input type="checkbox" name="therapist" value="{{therapist.id }}" class="therapist-checkbox">
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        <input type="hidden" name="step" value="2">
+        <input type="hidden" id="selected-therapist" name="therapist">
+        <button type="submit" class="submit-therapist-button">Вибрати спеціалиста</button>
+    </form>
+    <script src="{% static 'js/therapist/add_stars.js' %}"></script>
+    <script src="{% static 'js/record/record_therapist_filter.js' %}"></script>
+    {% elif step == '3' %}
+    <form method="post" action="{% url 'create_record' %}">
+        {% csrf_token %}
+        <input type="hidden" name="step" value="3">
+        <input type="hidden" id="selected-date" name="date">
+        <input type="hidden" id="selected-time" name="time">
+        <button type="submit">Выбрать дату и время</button>
+        {% if error_message %}
+            <div class="error-message">{{ error_message }}</div>
+        {% endif %}
+    </form>
+    <div>
+        <h3>Доступные слоты:</h3>
+        <div id="available-slots">
+            {% for date, slots in available_slots.items %}
+                <div class="date-slot">
+                    <h4>{{ date }}</h4>
+                    <div>
+                        {% for slot in slots %}
+                            <span class="time-slot" data-date="{{ date }}" data-time="{{ slot }}">{{ slot }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const availableSlots = document.getElementById('available-slots');
+            availableSlots.addEventListener('click', function(event) {
+                const target = event.target.closest('.time-slot');
+                if (target) {
+                    const date = target.getAttribute('data-date');
+                    const time = target.getAttribute('data-time');
+
+                    document.getElementById('selected-date').value = date;
+                    document.getElementById('selected-time').value = time;
+
+                    // Удаляем класс "selected" у всех элементов
+                    const slots = availableSlots.querySelectorAll('.time-slot');
+                    slots.forEach(slot => slot.classList.remove('selected'));
+
+                    // Добавляем класс "selected" к текущему элементу
+                    target.classList.add('selected');
+                }
+            });
+        });
+    </script>
+    {% endif %}
+</div>
+{% endblock %}

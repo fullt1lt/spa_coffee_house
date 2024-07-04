@@ -5,18 +5,20 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.contrib.auth import login, authenticate
-from forms.forms import CategoriesAddForm, CategoriesUpdateForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, RegisterUserForm, ReviewForm, ScheduleForm
+from forms.forms import CategoriesAddForm, CategoriesUpdateForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureForm, RegisterUserForm, ReviewForm, ScheduleForm, TherapistForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DeleteView, UpdateView, CreateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required 
 from django.core.paginator import Paginator
-from myspa.models import BlogAndNews, CafeProduct, Gallery, MassageTherapist, Position, Review, Schedule, SpaUser, TypeBlogAndNews, TypeCafeProduct, TypeCategories, TypeGallery, SpaСategories
+from myspa.models import BlogAndNews, CafeProduct, Gallery, MassageTherapist, Position, Procedure, Record, Review, Schedule, SpaUser, TypeBlogAndNews, TypeCafeProduct, TypeCategories, TypeGallery, SpaСategories
+from myspa.units import SlotsValidator
 from spa.mixins import SuperUserRequiredMixin
 from django.utils.dateparse import parse_date
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import FormView
 from django.utils import timezone
+from datetime import datetime, timedelta
 
         
 class Register(CreateView):
@@ -160,11 +162,11 @@ class GetReviews(View):
 
 class DeleteSpaCategoriesView(SuperUserRequiredMixin, DeleteView):
     model = SpaСategories
-    success_url = '/admin_main_page/'
+    success_url = '/admin-main-page/'
     
 class DeleteTherapistView(SuperUserRequiredMixin, DeleteView):
     model = MassageTherapist
-    success_url = '/admin_main_page/'
+    success_url = '/admin-main-page/'
 
 
 class TypeCategoriesListView(ListView):
@@ -295,7 +297,7 @@ class AdminMainPage(SuperUserRequiredMixin, View):
             'therapist_update_form': MassageTherapistUpdateForm(),
             'all_positions': Position.objects.all(),
             'therapist_form' : MassageTherapistForm(),
-            'schedule_form': ScheduleForm(),
+            'schedule_form': kwargs.get('schedule_form', ScheduleForm()), 
             'therapists_with_schedule' : MassageTherapist.objects.filter(schedule__isnull=False).distinct(),
         }
         context.update(kwargs)
@@ -389,28 +391,143 @@ class AdminMainPage(SuperUserRequiredMixin, View):
             start_time = form.cleaned_data['start_time']
             end_time = form.cleaned_data['end_time']
             therapist = form.cleaned_data['therapist']
-
-            unavailable_dates = []
-            for date in dates:
-                day = parse_date(date)
-                if Schedule.objects.filter(therapist=therapist, day=day).exists():
-                    unavailable_dates.append(date)
-                else:
-                    Schedule.objects.create(
-                        therapist=therapist,
-                        day=day,
-                        start_time=start_time,
-                        end_time=end_time
-                    )
-
-            if unavailable_dates:
-                form.add_error(None, f"Уже є розклад на такі дати {', '.join(unavailable_dates)}")
-                return self.render_to_response(self.get_context_data(schedule_form=form))
-
-            return redirect('/admin-main-page/')
-        
+    
+            # Проверка времени
+            min_time = datetime.strptime("08:00", '%H:%M').time()
+            max_time = datetime.strptime("22:00", '%H:%M').time()
+            if start_time < min_time or end_time > max_time:
+                form.add_error(None, "Час повинен бути в межах від 08:00 до 22:00.")
+            elif start_time >= end_time:
+                form.add_error(None, "Час кінця роботи повинен бути більшим за час початку роботи.")
+            else:
+                unavailable_dates = []
+                for date in dates:
+                    day = parse_date(date)
+                    if Schedule.objects.filter(therapist=therapist, day=day).exists():
+                        unavailable_dates.append(date)
+                    else:
+                        Schedule.objects.create(
+                            therapist=therapist,
+                            day=day,
+                            start_time=start_time,
+                            end_time=end_time
+                        )
+    
+                if unavailable_dates:
+                    form.add_error(None, f"Уже є розклад на такі дати {', '.join(unavailable_dates)}")
+                    return self.render_to_response(self.get_context_data(schedule_form=form))
+    
+                return redirect('/admin-main-page/')
         return self.render_to_response(self.get_context_data(schedule_form=form))
 
     def render_to_response(self, context, **response_kwargs):
         context.update(self.get_context_data())
         return render(self.request, self.template_name, context, **response_kwargs)
+    
+    
+class RecordView(View):
+    template_name = 'record.html'
+
+    def get(self, request):
+        step = request.GET.get('step', '1')
+        context = self.get_context_data(step, request)
+        return render(request, self.template_name, context)
+
+    def post(self, request):
+        step = request.POST.get('step', '1')
+        if step == '1':
+            # На первом этапе выбираем процедуру
+            procedure_id = request.POST.get('procedure')
+            if procedure_id:
+                request.session['procedure_id'] = procedure_id
+                return redirect('/create-record/?step=2')
+        elif step == '2':
+            # На втором этапе выбираем терапевта
+            therapist_form = TherapistForm(request.POST)
+            if therapist_form.is_valid():
+                request.session['therapist_id'] = therapist_form.cleaned_data['therapist'].id
+                return redirect('/create-record/?step=3')
+        elif step == '3':
+            date = request.POST.get('date')
+            time = request.POST.get('time')
+            if date and time:
+                procedure = Procedure.objects.get(id=request.session['procedure_id'])
+                therapist = MassageTherapist.objects.get(id=request.session['therapist_id'])
+                date = datetime.strptime(date, '%Y-%m-%d').date()
+                time = datetime.strptime(time, '%H:%M').time()
+                start_time = datetime.combine(date, time)
+                end_time = start_time + procedure.duration
+
+                # Проверка на существующие записи
+                overlapping_records = Record.objects.filter(
+                    schedule__therapist=therapist,
+                    schedule__day=date
+                ).exclude(
+                    start_time__gte=end_time.time()
+                ).exclude(
+                    start_time__lt=start_time.time()
+                )
+
+                if overlapping_records.exists():
+                    context = self.get_context_data(step, request)
+                    context['error_message'] = "На это время уже есть запись. Пожалуйста, выберите другое время."
+                    return render(request, self.template_name, context)
+
+                # Создание новой записи
+                schedule, created = Schedule.objects.get_or_create(
+                    therapist=therapist,
+                    day=date,
+                    defaults={'start_time': time, 'end_time': end_time.time()}
+                )
+                Record.objects.create(schedule=schedule, procedure=procedure, start_time=time)
+                return redirect('/create-record/')  # Укажите URL-адрес успешного завершения
+
+        context = self.get_context_data(step, request)
+        return render(request, self.template_name, context)
+
+    def get_context_data(self, step, request):
+        context = {
+            'step': step,
+            'procedure_form': ProcedureForm(),
+            'therapist_form': TherapistForm(),
+            'schedule_form': ScheduleForm(),
+        }
+        if step == '1':
+            context['spa_categories'] = SpaСategories.objects.all()
+            context['procedures'] = Procedure.objects.all()
+        if step == '2':
+            therapists = MassageTherapist.objects.filter(
+            position__type_categories=procedure.type_category,
+            schedule__day__gte=datetime.now().date()  # Только актуальные расписания
+        ).distinct().order_by('-average_rating')
+        
+            context['therapists'] = therapists
+        if step == '3':
+            procedure = Procedure.objects.get(id=request.session['procedure_id'])
+            therapist = MassageTherapist.objects.get(id=request.session['therapist_id'])
+            schedules = Schedule.objects.filter(therapist=therapist, day__gte=datetime.now().date())
+            available_slots = {}
+            now = datetime.now()
+
+            for schedule in schedules:
+                validator = SlotsValidator(schedule, procedure)
+                date_str = schedule.day.strftime('%Y-%m-%d')
+                available_slots[date_str] = [
+                    slot for slot in validator.ranges
+                    if datetime.combine(schedule.day, datetime.strptime(slot, '%H:%M').time()) > now
+                ]
+
+            # Удаление занятых временных слотов
+            taken_slots = Record.objects.filter(
+                schedule__therapist=therapist,
+                schedule__day__gte=datetime.now().date()
+            ).values_list('schedule__day', 'start_time')
+
+            for date, time in taken_slots:
+                date_str = date.strftime('%Y-%m-%d')
+                time_str = time.strftime('%H:%M')
+                if date_str in available_slots and time_str in available_slots[date_str]:
+                    available_slots[date_str].remove(time_str)
+
+            context['available_slots'] = {date: slots for date, slots in available_slots.items() if slots}
+        return context
