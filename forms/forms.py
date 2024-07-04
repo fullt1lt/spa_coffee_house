@@ -1,5 +1,5 @@
 from django import forms
-from myspa.models import MassageTherapist, Position, Review, Salon, SpaUser, SpaСategories
+from myspa.models import MassageTherapist, Position, Review, Salon, Schedule, SpaUser, SpaСategories
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError  
@@ -65,7 +65,7 @@ class MassageTherapistForm(forms.ModelForm):
         
 
 class ReviewForm(forms.ModelForm):
-    therapist = forms.ModelChoiceField(queryset=MassageTherapist.objects.all(), empty_label="Выберите массажиста")
+    therapist = forms.ModelChoiceField(queryset=MassageTherapist.objects.all(), empty_label="Виберіть масажиста")
     rating = forms.IntegerField(widget=forms.HiddenInput(), required=False, min_value=1, max_value=5)
     comment = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
 
@@ -112,12 +112,12 @@ class MassageTherapistUpdateForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'position', 'profile_image']
 
 
-# class MassageTherapistUpdateForm(forms.ModelForm):
-#     first_name = forms.CharField(label='First Name', max_length=100, required=True)
-#     last_name = forms.CharField(label='Last Name', max_length=100, required=True)
-#     position = forms.ModelMultipleChoiceField(queryset=Position.objects.all(), widget=forms.SelectMultiple(attrs={'class': 'form-input select', 'size': '4'}))
-#     profile_image = forms.ImageField(label='Profile Image', required=False)
+class ScheduleForm(forms.ModelForm):
+    dates = forms.CharField(widget=forms.HiddenInput())
+    start_time = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
+    end_time = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
+    therapist = forms.ModelChoiceField(queryset=MassageTherapist.objects.all(), required=True)
 
-#     class Meta:
-#         model = MassageTherapist
-#         fields = ['first_name', 'last_name', 'position', 'profile_image']
+    class Meta:
+        model = Schedule
+        fields = ['therapist', 'dates', 'start_time', 'end_time']

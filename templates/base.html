@@ -67,6 +67,11 @@
                             <li class="Main_Footer_navigation_item">
                                 <a href="{% url 'cafe' %}">Кав’ярня</a>
                             </li>
+                            {% if user.is_superuser %}
+                                <li class="Main_Footer_navigation_item">
+                                    <a href="{% url 'admin_main_page' %}">Сторiнка Адмiнiстратора</a>
+                                </li>
+                            {% endif %}
                         </ul>
                     </li>
                     <li class="Main_Footer_navigation_contacts">

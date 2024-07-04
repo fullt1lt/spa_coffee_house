@@ -1,0 +1,1117 @@
+.Admin_block_content_list {
+  width: 100%;
+  display: flex;
+  .Admin_navigations {
+    display: flex;
+    width: 15%;
+    background-color: rgba(149, 154, 138, 0.8);
+    padding: 15px;
+    flex-direction: column;
+    align-items: center;
+    border: 2px black solid;
+    .Admin_navigations_header {
+      color: #111010;
+      font-family: var(--font-family-Manrope);
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 30.4px;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .Admin_navigations_list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      .Admin_navigations_item {
+        width: 100%;
+        display: flex;
+        padding: 10px;
+        cursor: pointer;
+        span {
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 30.4px;
+        }
+      }
+    }
+  }
+
+  .Admin_content {
+    width: 85%;
+    padding: 20px;
+    .Admin_content_list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      .Admin_view_schedule_item {
+        display: flex;
+        width: 100%;
+        height: 50vh;
+        .Admin_view_schedule__list {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .Admin_view_schedule {
+            // display: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            select {
+              display: flex;
+              width: 400px;
+              margin-top: 30px;
+              padding: 15px 16px;
+              align-items: center;
+              gap: 16px;
+              border-radius: 5px;
+              border: 1px solid #030303;
+              color: #181719;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 22px;
+              letter-spacing: 0.16px;
+            }
+            .therapist-schedule_block {
+              width: 100%;
+              display: flex;
+              justify-content: center;
+              .schedule-list-items::-webkit-scrollbar {
+                width: 1px;
+                background-color: #f9f9fd;
+              }
+              .schedule-list-items::-webkit-scrollbar-thumb {
+                border-radius: 5px;
+                background-color: rgba(149, 154, 138, 0.8);
+              }
+              .schedule-list-items::-webkit-scrollbar-track {
+                -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+                border-radius: 5px;
+                background-color: #f9f9fd;
+              }
+              .schedule-list-items {
+                display: flex;
+                margin-top: 30px;
+                border: 1px gray solid;
+                padding: 10px;
+                overflow-x: auto;
+                background-color: #fff;
+                border-radius: 16px;
+                font-family: var(--font-family-Manrope);
+                width: 80%;
+                box-shadow: 10px 5px 5px rgb(192, 192, 192);
+                animation: 5s show ease;
+                .schedule-list-item {
+                  display: flex;
+                  width: 100px;
+                  flex-direction: column;
+                  justify-content: flex-start;
+                  align-items: center;
+                  margin-right: 5px;
+                  background-color: rgba(149, 154, 138, 0.8);
+                  margin-top: 10px;
+                  border-radius: 8px;
+                  padding: 5px;
+                  color: #181719;
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 22px;
+                  letter-spacing: 0.16px;
+                  .schedule-date {
+                    text-align: center;
+                    font-size: 18px;
+                    font-weight: 600;
+                  }
+                  .schedule-time-list {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin-top: 5px;
+                    .schedule-time-item {
+                      padding: 5px;
+                      border: 1px solid #0c0c0c;
+                      text-align: center;
+                      border-radius: 5px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .Add_schedule_button_block {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 30px;
+            animation: 5s show ease;
+            cursor: pointer;
+          }
+          .Admin_create_schedule {
+            display: none;
+            width: 380px;
+            flex-direction: column;
+            align-items: center;
+            border: 1px gray solid;
+            padding: 5px;
+            background-color: #fff;
+            border-radius: 8px;
+            font-family: var(--font-family-Manrope);
+            box-shadow: 10px 5px 5px rgb(192, 192, 192);
+            animation: 5s show ease;
+            .Add_schedule_close_button_block {
+              width: 100%;
+              display: flex;
+              justify-content: flex-end;
+              .Add_schedule_close_button {
+                width: 15px;
+                height: 15px;
+                cursor: pointer;
+              }
+            }
+            #calendar-container {
+              width: 100%;
+              display: flex;
+              justify-content: flex-start;
+              margin-top: 20px;
+              .calendar_input {
+                color: #000;
+                font-family: var(--font-family-Manrope);
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+              }
+            }
+            .schedule-form {
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              margin-top: 20px;
+              select {
+                color: #000;
+                font-family: var(--font-family-Manrope);
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+              }
+              .time_list {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 20px;
+                .time_item {
+                  width: 50%;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  input {
+                    width: 80px;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    color: #000;
+                    font-family: var(--font-family-Manrope);
+                  }
+                }
+              }
+              .create_schedule_block_button {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+                .create_schedule_button {
+                  border: 2px solid #0c0c0c;
+                  padding: 15px 30px;
+                  color: #141414;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 13px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 19.5px;
+                  letter-spacing: 1.56px;
+                  text-transform: uppercase;
+                  cursor: pointer;
+                  // width: 200px;
+                  background-color: transparent;
+                }
+              }
+            }
+          }
+        }
+      }
+      .Main_Spa_Categories_content {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .Main_Spa_Categories_content_list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          padding: 20px;
+          align-items: start;
+          justify-content: center;
+          width: 100%;
+          .Main_Spa_Categories_content_item {
+            display: flex;
+            flex-direction: column;
+            border: 1px gray solid;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 16px;
+            width: 45%;
+            box-shadow: 10px 5px 5px rgb(192, 192, 192);
+            .spa_categories_wrapper {
+              display: flex;
+              flex-direction: column;
+              position: relative;
+              width: 100%;
+              .Categories_content_item_list {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                backface-visibility: hidden;
+                transition: all 0.5s ease;
+                .item_image {
+                  overflow: hidden;
+                  border-radius: 8px;
+                  .Category_img {
+                    width: 100%;
+                    border-radius: 8px;
+                    height: 265px;
+                    // object-position: 50%;
+                    object-fit: cover;
+                    cursor: pointer;
+                    transition: all 1s ease;
+                    &:hover {
+                      transform: scale(1.2);
+                    }
+                  }
+                }
+                .item_header {
+                  margin-top: 20px;
+                  h2 {
+                    color: #000;
+                    font-family: "Playfair Display";
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                  }
+                }
+                .item_description {
+                  margin-top: 20px;
+                  height: 150px;
+                  .item_description_text {
+                    color: #000;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    word-break: break-all;
+                  }
+                }
+                .item_info {
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: 20px;
+                  align-items: center;
+                  a {
+                    color: #000;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 300;
+                    line-height: normal;
+                  }
+                  .Category_Link_Sign_Up {
+                    border: 2px solid #0c0c0c;
+                    padding: 15px 30px;
+                    color: #141414;
+                    text-align: center;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 19.5px;
+                    letter-spacing: 1.56px;
+                    text-transform: uppercase;
+                  }
+                }
+                .admin_buttons {
+                  display: flex;
+                  .Update_image {
+                    width: 30px;
+                    height: 30px;
+                    cursor: pointer;
+                  }
+                  .Basket_image {
+                    margin-left: 30px;
+                    width: 30px;
+                    height: 30px;
+                    cursor: pointer;
+                  }
+                }
+              }
+              .Categories_update_item_list {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: rotateY(180deg);
+                backface-visibility: hidden;
+                transition: all 0.5s ease;
+                .Cloose_image_item {
+                  width: 100%;
+                  display: flex;
+                  justify-content: flex-end;
+                  .Cloose_image {
+                    width: 15px;
+                    height: 15px;
+                    cursor: pointer;
+                  }
+                }
+                .categories_update_form_list {
+                  margin-top: 20px;
+                  width: 100%;
+                  height: 100%;
+                  .categories_update_form {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    align-items: center;
+                    justify-content: space-between;
+                    .custom-file-upload {
+                      position: relative;
+                      backface-visibility: hidden;
+                      width: 100%;
+                      .label_upload_block {
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        transform: rotateY(180deg);
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 8px;
+                        backdrop-filter: blur(4px);
+                        backface-visibility: hidden;
+                        .label_upload {
+                          color: var(--white-color);
+                          font-family: var(--font-family-Manrope);
+                          font-size: 24px;
+                          text-align: center;
+                        }
+                      }
+                      .img-preview {
+                        width: 100%;
+                        border-radius: 8px;
+                        height: 200px;
+                        object-fit: cover;
+                        cursor: pointer;
+                      }
+                    }
+                    .create_name {
+                      width: 100%;
+                      margin-top: 20px;
+                      color: #000;
+                      font-family: "Playfair Display";
+                      font-size: 24px;
+                      font-style: normal;
+                      font-weight: 600;
+                      line-height: normal;
+                    }
+                    .create_description {
+                      margin-top: 20px;
+                      width: 100%;
+                      height: 130px;
+                      color: #000;
+                      font-family: var(--font-family-Manrope);
+                      font-size: 18px;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: normal;
+                      resize: none;
+                    }
+                    .update_categories_input {
+                      width: 200px;
+                      margin-top: 20px;
+                      border: medium none;
+                      background-image: none;
+                      background: transparent;
+                      float: left;
+                      background-color: transparent;
+                      border: 2px solid #0c0c0c;
+                      padding: 15px 30px;
+                      color: #141414;
+                      text-align: center;
+                      font-family: var(--font-family-Manrope);
+                      font-size: 13px;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: 19.5px;
+                      letter-spacing: 1.56px;
+                      text-transform: uppercase;
+                      cursor: pointer;
+                    }
+                  }
+                }
+              }
+              .Categories_delete_item_list {
+                display: none;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: #fff;
+                .Categories_delete_item_header {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  h2 {
+                    text-align: center;
+                    color: #000;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 22px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                  }
+                }
+                .Categories_delete_item_choice {
+                  display: flex;
+                  margin-top: 15px;
+                  .delete_categories_form {
+                    .delete_categories {
+                      border: medium none;
+                      background-image: none;
+                      background: transparent;
+                      background-color: transparent;
+                      border: 2px solid #0c0c0c;
+                      padding: 15px 30px;
+                      color: #141414;
+                      text-align: center;
+                      font-family: var(--font-family-Manrope);
+                      font-size: 13px;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: 19.5px;
+                      letter-spacing: 1.56px;
+                      text-transform: uppercase;
+                      cursor: pointer;
+                    }
+                  }
+                  .cancel_delete {
+                    margin-left: 40px;
+                    border: 2px solid #0c0c0c;
+                    padding: 15px 30px;
+                    color: #141414;
+                    text-align: center;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 19.5px;
+                    letter-spacing: 1.56px;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .Add_Categories_button_block {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          animation: 5s show ease;
+          cursor: pointer;
+        }
+        .Add_Spa_Categories_block {
+          display: none;
+          align-items: center;
+          justify-content: center;
+          margin-top: 20px;
+          width: 45%;
+          animation: 5s show ease;
+          .Add_Spa_Categories_list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px gray solid;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 16px;
+            width: 100%;
+            box-shadow: 10px 5px 5px rgb(192, 192, 192);
+            .Add_Categories_close_button_item {
+              width: 100%;
+              display: flex;
+              justify-content: flex-end;
+              .Add_Categories_close_button {
+                width: 15px;
+                height: 15px;
+                cursor: pointer;
+              }
+            }
+            .Add_Categories_form_item {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              .categories_add_form {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 20px;
+                .error {
+                  font-family: var(--font-family-Manrope);
+                  font-size: 13px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 19.5px;
+                  letter-spacing: 1.56px;
+                  text-transform: uppercase;
+                  color: red;
+                }
+                .add_custom-file-upload {
+                  width: 100%;
+                  height: 265px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 8px;
+                  .add_custom-file-upload_block {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                    backdrop-filter: blur(4px);
+                    .add_image_custom-button {
+                      border: medium none;
+                      background-image: none;
+                      background: transparent;
+                      background-color: transparent;
+                      color: var(--white-color);
+                      font-family: var(--font-family-Manrope);
+                      font-size: 24px;
+                      text-align: center;
+                      cursor: pointer;
+                    }
+                    .add_image_custom_text {
+                      margin-top: 15px;
+                      color: var(--white-color);
+                      font-family: var(--font-family-Manrope);
+                      font-size: 18px;
+                      text-align: center;
+                    }
+                  }
+                  .add_create_categories_image {
+                    display: none;
+                  }
+                }
+                .add_create_name {
+                  width: 100%;
+                  margin-top: 10px;
+                  color: #000;
+                  font-family: "Playfair Display";
+                  font-size: 24px;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: normal;
+                }
+                .add_create_description {
+                  margin-top: 20px;
+                  width: 100%;
+                  height: 130px;
+                  color: #000;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                  resize: none;
+                }
+                .add_categories_input {
+                  width: 200px;
+                  margin-top: 20px;
+                  border: medium none;
+                  background-image: none;
+                  background: transparent;
+                  float: left;
+                  background-color: transparent;
+                  border: 2px solid #0c0c0c;
+                  padding: 15px 30px;
+                  color: #141414;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 13px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 19.5px;
+                  letter-spacing: 1.56px;
+                  text-transform: uppercase;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
+      .Admin_view_therapist_item {
+        display: none;
+        width: 100%;
+        .Main_Massage_Therapist_list {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          .Main_Massage_Therapist_content {
+            margin-top: 50px;
+            .Main_Massage_Therapist_content_list {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 20px;
+              align-items: center;
+              justify-content: center;
+              width: 100%;
+              .Massage_Therapist_content_item {
+                display: flex;
+                width: 30%;
+                border: 1px gray solid;
+                padding: 10px;
+                background-color: #fff;
+                border-radius: 16px;
+                box-shadow: 10px 5px 5px rgb(192, 192, 192);
+                .Wrapper_Massage_Therapist_content_item {
+                  display: flex;
+                  position: relative;
+                  width: 100%;
+                  .Massage_Therapist_info {
+                    display: flex;
+                    flex-direction: column;
+                    backface-visibility: hidden;
+                    width: 100%;
+                    transition: all 0.5s ease;
+                    .Massage_Therapist_img {
+                      width: 100%;
+                      border-radius: 15px;
+                      height: 357px;
+                    }
+                    .content_item_info_list {
+                      display: flex;
+                      justify-content: space-between;
+                      margin-top: 8px;
+                      align-items: center;
+                      .content_item_info {
+                        .content_item_name {
+                          color: #000;
+                          font-family: var(--font-family-Manrope);
+                          font-size: 18px;
+                          font-style: normal;
+                          font-weight: 400;
+                          line-height: normal;
+                        }
+                        .content_item_position_list {
+                          display: flex;
+                          justify-content: flex-start;
+                          margin-top: 8px;
+                          .content_item_position {
+                            margin-right: 5px;
+                            span {
+                              color: rgba(0, 0, 0, 0.56);
+                              font-family: Manrope;
+                              font-size: 18px;
+                              font-style: normal;
+                              font-weight: 400;
+                              line-height: normal;
+                            }
+                          }
+                        }
+                        .rating_list {
+                          display: flex;
+                          align-items: center;
+                          .rating {
+                            margin-right: 10px;
+                            .star {
+                              color: gold;
+                              font-size: 25px;
+                              display: inline-block;
+                            }
+                          }
+                          .average_rating {
+                            span {
+                              color: rgba(0, 0, 0, 0.56);
+                              font-family: Manrope;
+                              font-size: 18px;
+                              font-style: normal;
+                              font-weight: 400;
+                              line-height: normal;
+                            }
+                          }
+                        }
+                      }
+                      .content_item_sign_up {
+                        display: flex;
+                        margin-bottom: 15px;
+                        .therapist_link_sign_up {
+                          border: 2px solid #0c0c0c;
+                          padding: 15px 30px;
+                          color: #141414;
+                          text-align: center;
+                          font-family: var(--font-family-Manrope);
+                          font-size: 13px;
+                          font-style: normal;
+                          font-weight: 400;
+                          line-height: 19.5px;
+                          letter-spacing: 1.56px;
+                          text-transform: uppercase;
+                        }
+                      }
+                    }
+                    .admin_buttons {
+                      display: flex;
+                      margin-top: 15px;
+                      .Update_therapist_image {
+                        width: 30px;
+                        height: 30px;
+                        cursor: pointer;
+                      }
+                      .Basket_therapist_image {
+                        margin-left: 30px;
+                        width: 30px;
+                        height: 30px;
+                        cursor: pointer;
+                      }
+                    }
+                  }
+                  .Massage_Therapist_update_item {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background-color: #fff;
+                    transform: rotateY(180deg);
+                    backface-visibility: hidden;
+                    transition: all 0.5s ease;
+                    .Massage_Therapist_update_item_list {
+                      display: flex;
+                      flex-direction: column;
+                      width: 100%;
+                      height: 100%;
+                      .Cloose_therapist_image_item {
+                        display: flex;
+                        justify-content: flex-end;
+                        width: 100%;
+                        .Cloose_therapist_image {
+                          width: 15px;
+                          height: 15px;
+                          cursor: pointer;
+                        }
+                      }
+                      .Cloose_therapist_form_list {
+                        width: 100%;
+                        .therapist_form_update {
+                          display: flex;
+                          flex-direction: column;
+                          width: 100%;
+                          .Update_therapist_block_image {
+                            position: relative;
+                            border-radius: 16px;
+                            width: 100%;
+                            height: 337px;
+                            .img-preview {
+                              width: 100%;
+                              height: 100%;
+                              filter: blur(4px);
+                            }
+                            .Update_custom-file-upload {
+                              top: -50%;
+                              position: relative;
+                              display: flex;
+                              flex-direction: column;
+                              align-items: center;
+                              justify-content: center;
+                              border-radius: 8px;
+                              color: var(--white-color);
+                              font-family: var(--font-family-Manrope);
+                              font-size: 24px;
+                              text-align: center;
+                              .file-button {
+                                color: var(--white-color);
+                                font-family: var(--font-family-Manrope);
+                                font-size: 24px;
+                                text-align: center;
+                                border: medium none;
+                                background-image: none;
+                                background: transparent;
+                                background-color: transparent;
+                                cursor: pointer;
+                              }
+                            }
+                          }
+                          .Update_therapist_info_list {
+                            display: flex;
+                            width: 100%;
+                            .Update_therapist_info_items {
+                              display: flex;
+                              flex-direction: column;
+                              width: 50%;
+                              input {
+                                margin-top: 10px;
+                                color: #000;
+                                font-family: var(--font-family-Manrope);
+                                font-size: 18px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: normal;
+                              }
+                              select {
+                                margin-top: 10px;
+                                color: #000;
+                                font-family: var(--font-family-Manrope);
+                                font-size: 18px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: normal;
+                                height: 50px;
+                              }
+                            }
+                            .Update_therapist_submit {
+                              display: flex;
+                              width: 50%;
+                              justify-content: flex-end;
+                              align-items: center;
+                              .update_therapist_input {
+                                border: 2px solid #0c0c0c;
+                                padding: 15px 30px;
+                                color: #141414;
+                                text-align: center;
+                                font-family: var(--font-family-Manrope);
+                                font-size: 13px;
+                                font-style: normal;
+                                font-weight: 400;
+                                line-height: 19.5px;
+                                letter-spacing: 1.56px;
+                                text-transform: uppercase;
+                                cursor: pointer;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                  .Therapist_delete_item_list {
+                    display: none;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    background-color: #fff;
+                    .Therapist_delete_item_header {
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                      h2 {
+                        text-align: center;
+                        color: #000;
+                        font-family: var(--font-family-Manrope);
+                        font-size: 22px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: normal;
+                      }
+                    }
+                    .Therapist_delete_item_choice {
+                      display: flex;
+                      margin-top: 15px;
+                      .therapist_categories_form {
+                        .therapist_delete_button {
+                          border: medium none;
+                          background-image: none;
+                          background: transparent;
+                          background-color: transparent;
+                          border: 2px solid #0c0c0c;
+                          padding: 15px 30px;
+                          color: #141414;
+                          text-align: center;
+                          font-family: var(--font-family-Manrope);
+                          font-size: 13px;
+                          font-style: normal;
+                          font-weight: 400;
+                          line-height: 19.5px;
+                          letter-spacing: 1.56px;
+                          text-transform: uppercase;
+                          cursor: pointer;
+                        }
+                      }
+                      .therapist_cancel_delete {
+                        margin-left: 40px;
+                        border: 2px solid #0c0c0c;
+                        padding: 15px 30px;
+                        color: #141414;
+                        text-align: center;
+                        font-family: var(--font-family-Manrope);
+                        font-size: 13px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 19.5px;
+                        letter-spacing: 1.56px;
+                        text-transform: uppercase;
+                        cursor: pointer;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .Add_Therapist_button_block {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            animation: 5s show ease;
+            margin-top: 20px;
+            cursor: pointer;
+          }
+          .Add_Therapist_block {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            margin-top: 20px;
+            animation: 5s show ease;
+            .Add_Therapist_list {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              border: 1px gray solid;
+              padding: 10px;
+              background-color: #fff;
+              border-radius: 16px;
+              width: 30%;
+              box-shadow: 10px 5px 5px rgb(192, 192, 192);
+              .Therapist_close_button_item {
+                width: 100%;
+                display: flex;
+                justify-content: flex-end;
+                .Add_Therapist_close_button {
+                  width: 15px;
+                  height: 15px;
+                  cursor: pointer;
+                }
+              }
+              .Add_Therapist_form_item {
+                width: 100%;
+                .create_massage_therapist_form {
+                  width: 100%;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  p {
+                    width: 80%;
+                    display: flex;
+                    justify-content: center;
+                    label {
+                      display: none;
+                    }
+                    .create_image {
+                      display: none;
+                    }
+                    input {
+                      width: 100%;
+                      margin-top: 10px;
+                      color: #000;
+                      font-family: var(--font-family-Manrope);
+                      font-size: 18px;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: normal;
+                    }
+                    select {
+                      margin-top: 10px;
+                      color: #000;
+                      font-family: var(--font-family-Manrope);
+                      font-size: 18px;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: normal;
+                    }
+                    .select {
+                      height: 50px;
+                      width: 200px;
+                      overflow: hidden;
+                      text-align: center;
+                    }
+                  }
+                  .custom-file-input {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    margin-top: 10px;
+                    width: 50%;
+                    .Add_Therapist_button {
+                      color: var(--black-color);
+                      font-family: var(--font-family-Manrope);
+                      font-size: 24px;
+                      text-align: center;
+                      border: medium none;
+                      background-image: none;
+                      background: transparent;
+                      background-color: transparent;
+                      cursor: pointer;
+                    }
+                  }
+                  .create_input {
+                    width: 200px;
+                    margin-top: 20px;
+                    border: 2px solid #0c0c0c;
+                    padding: 15px 30px;
+                    color: #141414;
+                    text-align: center;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 19.5px;
+                    letter-spacing: 1.56px;
+                    text-transform: uppercase;
+                    background-color: transparent;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.Admin_active {
+  background-color: rgba(248, 246, 244, 0.5);
+}

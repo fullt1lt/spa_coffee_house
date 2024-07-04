@@ -41,6 +41,11 @@ function setBodyClass() {
     body.classList.add("Background_Gallery_Categories");
     footer.classList.add("Background_Gallery_Categories");
     footer.classList.add("Main_Footer");
+  } else if (url.includes("create-schedule")) {
+    section.classList.add("Block_info_content");
+    body.classList.add("Background_Admin_Page");
+    footer.classList.add("Background_Admin_Page");
+    footer.classList.add("Main_Footer");
   } else {
     footer.classList.add("Background_Main_Page_Footer");
     footer.classList.add("Main_Footer");

@@ -1,11 +1,10 @@
 from django.urls import include, path
 from django.contrib.auth.views import LogoutView
-from myspa.views import (AdminMainPage, BlogNewsView, CafeTypeProductListView, CafeView, DeleteSpaCategoriesView, DeleteTherapistView, GalleryView, GetReviews, MainPage, Register, TypeBlogNewsViewListView, TypeCategoriesListView, TypeGalleryListView)
+from myspa.views import (AdminMainPage, BlogNewsView, CafeTypeProductListView, CafeView, DeleteSpaCategoriesView, DeleteTherapistView, GalleryView, GetReviews, MainPage, Register, TypeBlogNewsViewListView, TypeCategoriesListView, TypeGalleryListView, get_therapist_schedule)
 
 
 urlpatterns = [
     path('', MainPage.as_view(), name='index'),
-    path('main/', AdminMainPage.as_view(), name='main'),
     path('register/', Register.as_view(), name='register'),
     path('logout/', LogoutView.as_view(), name='logout'),
     path('accounts/', include('allauth.urls')),
@@ -19,4 +18,6 @@ urlpatterns = [
     path('gallery-categories/<int:pk>/type-gallery/', TypeGalleryListView.as_view(), name='gallery_categories'),
     path('category-delete/<int:pk>/', DeleteSpaCategoriesView.as_view(), name='category_delete'),
     path('therapist-delete/<int:pk>/', DeleteTherapistView.as_view(), name='therapist_delete'),
+    path('schedule/<int:therapist_id>/', get_therapist_schedule, name='get_therapist_schedule'),
+    path('admin-main-page/', AdminMainPage.as_view(), name='admin_main_page'),
 ]

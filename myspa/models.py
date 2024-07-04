@@ -87,22 +87,24 @@ class CategoriesSession(models.Model):
     def __str__(self):
         return f"{self.type_category.name} - {self.get_duration_display()} - {self.price}"
 
-    
-class Day(models.Model):
-    name = models.DateField(auto_now_add=True) 
 
-    def __str__(self):
-        return self.name
-
-
-class TherapistAvailability(models.Model):
+class Schedule(models.Model):
     therapist = models.ForeignKey(MassageTherapist, on_delete=models.CASCADE)
-    day = models.ForeignKey(Day, on_delete=models.CASCADE)
+    day = models.DateField()
     start_time = models.TimeField()
     end_time = models.TimeField()
 
     def __str__(self):
-        return f"{self.therapist.user.username} - {self.day.name} ({self.start_time} - {self.end_time})"
+        return f"{self.therapist.user.username} - {self.day.strftime('%Y-%m-%d')} ({self.start_time.strftime('%H:%M')} - {self.end_time.strftime('%H:%M')})"
+
+
+class Record(models.Model):
+    schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
+    procedure = models.ForeignKey(CategoriesSession, on_delete=models.CASCADE)
+    start_time = models.TimeField()
+
+    def __str__(self):
+        return f"Procedure duration: {self.procedure.time_duration}\n start time: {self.start_time}"
 
 
 class Review(models.Model):

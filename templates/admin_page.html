@@ -1,0 +1,388 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <style>
+    #calendar {
+        max-width: 400px;
+        margin: 20px auto;
+    }
+    .errorlist {
+        color: red;
+        list-style-type: none;
+    }
+    .add_custom-file-upload {
+        background: url('{% static 'img/add_categories_background.jpg' %}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center -50px;
+    }
+</style>
+{% endblock %}
+
+{% block header %}
+    <li class="Main_Header_navigation_item">
+        <a href="{% url 'blog_news' %}">Новини i блог</a>
+    </li>
+    <li class="Main_Header_navigation_item">
+        <a href="{% url 'gallery' %}">Фотогалерея</a>
+    </li>
+    <li class="Main_Header_navigation_item">
+        <a href="{% url 'cafe' %}">Кав’ярня</a>
+    </li>
+    <li class="Main_Header_navigation_item">
+        <a href="{% url 'admin_main_page' %}">Сторiнка Адмiнiстратора</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+    <ul class="Admin_block_content_list">
+        <li class="Admin_navigations">
+            <h1 class="Admin_navigations_header">Панель управління</h1>
+            <ul class="Admin_navigations_list">
+                <li class="Admin_navigations_item Admin_active" id="schedule">
+                    <span>Графiк співробітнків</span>
+                </li>
+                <li class="Admin_navigations_item" id="categories">
+                    <span>Категорiї</span>
+                </li>
+                <li class="Admin_navigations_item" id="therapist">
+                    <span>Спеціалісти</span>
+                </li>
+            </ul>
+        </li>
+        <li class="Admin_content">
+            <ul class="Admin_content_list">
+                <li class="Admin_view_schedule_item" id="schedule-list">
+                    <ul class="Admin_view_schedule__list">
+                        <li class="Admin_view_schedule">
+                            <div class="Main_headers">
+                                <h1>
+                                    Графiк співробітнків
+                                </h1>
+                            </div>
+                            <select id="view_therapist">
+                                <option value="">Виберіть співробітника</option>
+                                {% for therapist in therapists_with_schedule %}
+                                <option value="{{ therapist.id }}">{{ therapist.user.first_name }} {{ therapist.user.last_name }}</option>
+                                {% endfor %}
+                            </select>
+                            <div id="therapist-schedule" class="therapist-schedule_block">
+                            </div>
+                        </li>
+                        <li class="Add_schedule_button_block">
+                            <img src="{% static 'icon/add_button.png' %}" alt="" class="Add_schedule_button" id="Add_schedule_button">
+                        </li>
+                        <li class="Admin_create_schedule" id="Admin_create_schedule">
+                            <div class="Add_schedule_close_button_block">
+                                 <img src="{% static 'icon/cloose.png' %}" alt="" class="Add_schedule_close_button" id="Add_schedule_close_button">
+                            </div>
+                            <div id="calendar-container">
+                                <input type="text" id="calendar" placeholder="Виберiть дату" readonly  class="calendar_input">
+                            </div>
+                            <form id="schedule-form" method="post" class="schedule-form">
+                                {% csrf_token %}
+                                {% if schedule_form.non_field_errors %}
+                                <div class="errors">
+                                    <ul class="errorlist">
+                                        {% for error in schedule_form.non_field_errors %}
+                                        <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                                {% endif %}
+                                <label for="therapist">Співробітник</label>
+                                <select id="therapist" name="therapist">
+                                    {% for therapist in massage_therapists %}
+                                    <option value="{{ therapist.id }}">{{ therapist.user.first_name }} {{ therapist.user.last_name }}</option>
+                                    {% endfor %}
+                                </select>
+                                <ul class="time_list">
+                                    <input type="hidden" name="dates" id="selected-dates">
+                                    <li class="time_item">
+                                        <label for="start_time">Початок роботи:</label>
+                                        <input type="time" id="start_time" name="start_time" required>
+                                    </li>
+                                    <li class="time_item">
+                                        <label for="end_time">Кiнець роботи:</label>
+                                        <input type="time" id="end_time" name="end_time" required>
+                                    </li>
+                                </ul>
+                                <div class="create_schedule_block_button">
+                                    <button type="submit" class="create_schedule_button" name="schedule">Створити</button>
+                                </div>
+                            </form>
+                        </li>                       
+                    </ul>
+                </li>
+                <li class="Main_Spa_Categories_content" id="categories-list">
+                    <div class="Main_headers">
+                                <h1>
+                                    Категорiї
+                                </h1>
+                            </div>
+                    <ul class="Main_Spa_Categories_content_list">
+                        {% for category in spa_categories %}
+                            <li class="Main_Spa_Categories_content_item">
+                                <div class="spa_categories_wrapper">
+                                    <ul class="Categories_content_item_list" id="categories_front_{{ category.id }}" data-category='{"name": "{{ category.name }}", "description": "{{ category.description }}", "categories_image": "{% if category.categories_image %}{{ category.categories_image.url }}{% endif %}"}'>
+                                        <li class="item_image">
+                                            {% if category.categories_image %}
+                                                <img src="{{ category.categories_image.url }}" alt="" class="Category_img">
+                                            {% else %}
+                                                <img src="{% static 'icon/logo.svg' %}" alt="">
+                                            {% endif %}
+                                        </li>
+                                        <li class="item_header">
+                                            <h2>{{ category.name }}</h2>
+                                        </li>
+                                        <li class="item_description">
+                                            <span class="item_description_text">{{ category.description }}</span>
+                                        </li>
+                                        <li class="item_info">
+                                            <a href="{% url 'categories' category.id %}">Дізнатися більше</a>
+                                            <a href="#" class="Category_Link_Sign_Up">Записатись</a>
+                                        </li>
+                                        <li class="admin_buttons">
+                                            <img src="{% static 'icon/update_button.svg' %}" alt="" class="Update_image" update-category-id="{{ category.id }}">
+                                            <img src="{% static 'icon/basket.svg' %}" alt="" class="Basket_image" delete-category-id="{{ category.id }}">
+                                        </li>
+                                    </ul>
+                                    <ul class="Categories_update_item_list" id="categories_back_{{ category.id }}">
+                                        <li class="Cloose_image_item">
+                                            <img src="{% static 'icon/cloose.png' %}" alt="" class="Cloose_image" close-category-id="{{ category.id }}">
+                                        </li>
+                                        <li class="categories_update_form_list">
+                                           <form method="post" enctype="multipart/form-data" class="categories_update_form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="category_id" value="{{ category.id }}">
+                                                <div class="custom-file-upload">
+                                                    <div class="label_upload_block" id="label_upload_block_{{ category.id }}">
+                                                        <label for="categories_image_{{ category.id }}" class="label_upload">Вибрати зображення</label>
+                                                    </div>
+                                                     <!-- Скрытый input для выбора файла -->
+                                                    <input type="file" name="categories_image" id="categories_image_{{ category.id }}" class="create_categories_image" style="display: none;">
+                                                </div>
+                                                <input type="text" name="name" id="name_{{ category.id }}" placeholder="Назва категорії" class="create_name">
+                                                <textarea name="description" id="description_{{ category.id }}" placeholder="Опис категорії" class="create_description"></textarea>
+                                                <input type="submit" value="Оновити" name="update_categories" class="update_categories_input">
+                                            </form>
+                                        </li>
+                                    </ul>
+                                    <ul class="Categories_delete_item_list" id="categories_delete_{{ category.id }}">
+                                        <li class="Categories_delete_item_header">
+                                            <h2>Ви хочете видалити категорію?</h2>
+                                        </li>
+                                        <li class="Categories_delete_item_choice">
+                                            <form method="post" action="{% url 'category_delete' category.pk %}" class="delete_categories_form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="delete_id" value="{{ category.pk }}">
+                                                <input type="submit" value="Видалити" class="delete_categories">
+                                            </form>
+                                            <span class="cancel_delete" cancel-delete-category-id="{{ category.id }}">Закрити</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        {% endfor %}
+                       <script src="{% static 'js/categories/spa_categories_rotate_card.js' %}"></script>
+                       <script src="{% static 'js/categories/delete_categories.js' %}"></script>
+                    </ul>
+                    <div class="Add_Categories_button_block">
+                        <img src="{% static 'icon/add_button.png' %}" alt="" class="Add_Categories_button" id="Add_Categories_button">
+                    </div>
+                    <div class="Add_Spa_Categories_block" id="Add_Spa_Categories_block">
+                        <ul class="Add_Spa_Categories_list">
+                            <li class="Add_Categories_close_button_item">
+                                <img src="{% static 'icon/cloose.png' %}" alt="" class="Add_Categories_close_button" id="Add_Categories_close_button">
+                            </li>
+                            <li class="Add_Categories_form_item">
+                                <form method="post" enctype="multipart/form-data" class="categories_add_form">
+                                    {% csrf_token %}
+                                    {{ categories_add_form.non_field_errors }}
+
+                                    <div class="add_custom-file-upload">
+                                        <div class="add_custom-file-upload_block">
+                                            <button type="button" id="custom-button" class="add_image_custom-button">Вибрати зображення</button>
+                                            <span id="custom-text" class="add_image_custom_text">Файл не вибрано</span>
+                                        </div>
+                                        {{ categories_add_form.categories_image }}
+                                    </div>
+                                    {% if categories_add_form.categories_image.errors %}
+                                        <div class="error">{{ categories_add_form.categories_image.errors }}</div>
+                                    {% endif %}
+
+                                    <div>
+                                        {{ categories_add_form.name.label_tag }}
+                                        {{ categories_add_form.name }}
+                                        {% if categories_add_form.name.errors %}
+                                            <div class="error">{{ categories_add_form.name.errors }}</div>
+                                        {% endif %}
+                                    </div>
+
+                                    <div>
+                                        {{ categories_add_form.description.label_tag }}
+                                        {{ categories_add_form.description }}
+                                        {% if categories_add_form.description.errors %}
+                                            <div class="error">{{ categories_add_form.description.errors }}</div>
+                                        {% endif %}
+                                    </div>
+
+                                    <input type="submit" value="Додати" name="add_categories" class="add_categories_input">
+                                <form>
+
+                                <script>
+                                    document.getElementById("custom-button").addEventListener("click", function() {
+                                        document.getElementById("id_categories_image").click();
+                                    });
+                                
+                                    document.getElementById("id_categories_image").addEventListener("change", function() {
+                                        const fileName = document.getElementById("id_categories_image").files[0].name;
+                                        document.getElementById("custom-text").textContent = fileName;
+                                    });
+                                </script>
+                            </li>
+                        </ul>
+                    </div>
+                    <script src="{% static 'js/categories/add_categories.js' %}"></script>
+                </li>
+                <li class="Admin_view_therapist_item" id="therapist-list">
+                    <ul class="Main_Massage_Therapist_list">
+                        <li class="Main_headers">
+                            <h1>
+                                Спеціалісти
+                            </h1>
+                        </li>
+                        <li class="Main_Massage_Therapist_content" id="categories-list">
+                            <ul class="Main_Massage_Therapist_content_list">
+                        {% for therapist in massage_therapists %}
+                            <li class="Massage_Therapist_content_item">
+                                <div class="Wrapper_Massage_Therapist_content_item">
+                                    <div class="Massage_Therapist_info" id="therapist_front_{{ therapist.id }}" data-first-name="{{ therapist.user.first_name }}" data-last-name="{{ therapist.user.last_name }}" data-positions="{% for position in therapist.position.all %}{{ position.id }}{% if not forloop.last %},{% endif %}{% endfor %}">
+                                        {% if therapist.user.profile_image %}
+                                            <img src="{{ therapist.user.profile_image.url }}" alt="" class="Massage_Therapist_img">
+                                        {% else %}
+                                            <img src="{% static 'icon/logo.svg' %}" alt="">
+                                        {% endif %}
+                                        <ul class="content_item_info_list">
+                                            <li class="content_item_info">
+                                                <span class="content_item_name">{{ therapist.user.first_name }}</span>
+                                                <span class="content_item_name">{{ therapist.user.last_name }}</span>
+                                                <ul class="content_item_position_list">
+                                                    {% for position in therapist.position.all %}
+                                                        <li class="content_item_position">
+                                                            <span>{{ position.name }}</span>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                                <ul class="rating_list">
+                                                    <li class="rating" data-rating="{{ therapist.average_rating }}"></li>
+                                                    <li class="average_rating">
+                                                        <span>{{ therapist.average_rating }}</span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="content_item_sign_up">
+                                                <a href="#" class="therapist_link_sign_up">Записатись</a>
+                                            </li>
+                                        </ul>
+                                        <div class="admin_buttons">
+                                            <img src="{% static 'icon/update_button.svg' %}" alt="" class="Update_therapist_image" update-therapist-id="{{ therapist.id }}">
+                                            <img src="{% static 'icon/basket.svg' %}" alt="" class="Basket_therapist_image" delete-therapist-id="{{ therapist.id }}">
+                                        </div>
+                                    </div>
+                                    <div class="Massage_Therapist_update_item" id="therapist_back_{{ therapist.id }}">
+                                        <ul class="Massage_Therapist_update_item_list">
+                                            <li class="Cloose_therapist_image_item">
+                                                <img src="{% static 'icon/cloose.png' %}" alt="" class="Cloose_therapist_image" close-therapist-id="{{ therapist.id }}">
+                                            </li>
+                                            <li class="Cloose_therapist_form_list">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="therapist_id" value="{{ therapist.id }}">
+                                                <div class="Update_therapist_block_image">
+                                                    <img src="{{ therapist.user.profile_image.url }}" alt="Profile Image" class="img-preview" style="display: {% if therapist.user.profile_image %}block{% else %}none{% endif %};">
+                                                    <div class="Update_custom-file-upload" id="Update_custom-file-upload_{{ therapist.id }}">
+                                                        <input type="file" name="profile_image" id="profile_image_{{ therapist.id }}" class="file-input" style="display: none;">
+                                                        <button type="button" class="file-button" onclick="document.getElementById('profile_image_{{ therapist.id }}').click()">Вибрати зображення</button>
+                                                        <span class="file-name" id="file-name-{{ therapist.id }}">Файл не выбрано</span>
+                                                    </div>
+                                                </div>
+                                                <ul class="Update_therapist_info_list">
+                                                    <li class="Update_therapist_info_items">
+                                                        <input type="text" name="first_name" id="first_name_{{ therapist.id }}" value="{{ therapist.user.first_name }}" required>
+                                                        <input type="text" name="last_name" id="last_name_{{ therapist.id }}" value="{{ therapist.user.last_name }}" required>
+                                                        <select name="position" id="position_{{ therapist.id }}" multiple required>
+                                                            {% for pos in all_positions %}
+                                                                <option value="{{ pos.id }}" {% if pos in therapist.position.all %}selected{% endif %}>{{ pos.name }}</option>
+                                                            {% endfor %}
+                                                        </select>
+                                                    </li>
+                                                    <li class="Update_therapist_submit">
+                                                        <input type="submit" value="Оновити" name="update_therapist" class="update_therapist_input">
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <ul class="Therapist_delete_item_list" id="therapist_delete_{{ therapist.id }}">
+                                        <li class="Therapist_delete_item_header">
+                                            <h2>Ви хочете видалити категорію?</h2>
+                                        </li>
+                                        <li class="Therapist_delete_item_choice">
+                                            <form method="post" action="{% url 'therapist_delete' therapist.pk %}" class="therapist_categories_form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="delete_id" value="{{ therapist.pk }}">
+                                                <input type="submit" value="Видалити" class="therapist_delete_button">
+                                            </form>
+                                            <span class="therapist_cancel_delete" cancel-delete-therapist-id="{{ therapist.id }}">Закрити</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        {% endfor %}
+
+                        <script src="{% static 'js/therapist/therapist_rotate_card.js' %}"></script>
+                        <script src="{% static 'js/therapist/delete_therapist.js' %}"></script>
+                        <script src="{% static 'js/therapist/file-input-thearapist.js' %}"></script>
+                        <script src="{% static 'js/therapist/add_stars.js' %}"></script>
+                            </ul>
+                        </li>
+                        <li class="Add_Therapist_button_block">
+                            <img src="{% static 'icon/add_button.png' %}" alt="" class="Add_therapist_button" id="Add_therapist_button">
+                        </li>
+                        <li class="Add_Therapist_block" id="Add_Therapist_block">
+                            <ul class="Add_Therapist_list">
+                                <li class="Therapist_close_button_item">
+                                    <img src="{% static 'icon/cloose.png' %}" alt="" class="Add_Therapist_close_button" id="Add_Therapist_close_button">
+                                </li>
+                                <li class="Add_Therapist_form_item">
+                                    <form method="post" enctype="multipart/form-data" class="create_massage_therapist_form">
+                                        {% csrf_token %}
+                                        {{ register_form.as_p }}
+                                        <div class="custom-file-input">
+                                            <input type="file" id="id_Therapist_image" name="profile_image" style="display: none;">
+                                            <button type="button" class="Add_Therapist_button" onclick="document.getElementById('id_Therapist_image').click()">Вибрати зображення</button>
+                                            <span id="file-name">Файл не выбрано</span>
+                                        </div>
+                                        {{ therapist_form.as_p }}
+                                        <button type="submit" class="create_input" name="add_therapist">Додати</button>
+                                    </form>
+                                </li>
+                            </ul>
+                            <script src="{% static 'js/therapist/file_add_therapist.js' %}"></script>
+                            <script src="{% static 'js/therapist/add_therapist.js' %}"></script>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/uk.js"></script>
+        <script src="{% static 'js/admin/calendar.js' %}"></script>
+        <script src="{% static 'js/admin/create_time.js' %}"></script>
+        <script src="{% static 'js/admin/schedule_list.js' %}"></script>
+        <script src="{% static 'js/admin/add_schedule.js' %}"></script>
+        <script src="{% static 'js/admin/navigaton_list.js' %}"></script>
+{% endblock %}
