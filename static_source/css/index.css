@@ -1370,6 +1370,19 @@ a {
   font-weight: 400;
   line-height: normal;
 }
+.TypeCategories_main_list .TypeCategory_Link_Sign_Up {
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+}
 
 .Main_About_Us {
   margin-top: 80px;
@@ -4722,7 +4735,7 @@ a {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  width: 90%;
+  width: 400px;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -4733,21 +4746,22 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
+  width: 400px;
   margin-top: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   cursor: pointer;
 }
 .Record_main_list .Record_therapist_form .therapist-list .therapist-item .therapist-item_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: c;
-      -ms-flex-pack: c;
-          justify-content: c;
-  width: 80%;
+  margin-left: 15px;
+  width: 100%;
 }
 .Record_main_list .Record_therapist_form .therapist-list .therapist-item .therapist-item_list .therapist-item_image {
-  margin-right: 15px;
+  margin-right: 5px;
 }
 .Record_main_list .Record_therapist_form .therapist-list .therapist-item .therapist-item_list .therapist-item_image .Massage_Therapist_img {
   width: 50px;
@@ -4818,6 +4832,29 @@ a {
   font-weight: 400;
   line-height: normal;
 }
+.Record_main_list .Record_therapist_form .therapist-list .therapist-item .therapist-item_list .therapist-item_info .therapist-item_list .therapist-available-slots .therapist-available-slots_list .slot_datetime span {
+  color: var(--black-color);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+.Record_main_list .Record_therapist_form .therapist-list .therapist-item .therapist-item_list .therapist-item_info .therapist-item_list .therapist-available-slots .therapist-available-slots_list .slot_datetime .slot_time_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+}
+.Record_main_list .Record_therapist_form .therapist-list .therapist-item .therapist-item_list .therapist-item_info .therapist-item_list .therapist-available-slots .therapist-available-slots_list .slot_datetime .slot_time_list .slot_time_item {
+  border: 1px solid black;
+  padding: 5px;
+  border-radius: 5px;
+  margin-right: 5px;
+  background-color: #e0e3eb;
+}
 .Record_main_list .Record_therapist_form .therapist-list .therapist-item .therapist-item-label {
   margin-top: 15px;
   display: -webkit-box;
@@ -4872,6 +4909,94 @@ a {
 }
 .Record_main_list .Record_therapist_form .submit-therapist-button {
   margin: 20px 0;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  background-color: transparent;
+}
+.Record_main_list .Record_datetime_container {
+  width: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 50px 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #fff;
+  border-radius: 16px;
+  -webkit-box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+}
+.Record_main_list .Record_datetime_container div {
+  width: 100%;
+}
+.Record_main_list .Record_datetime_container div .flatpickr-calendar {
+  width: 398px !important;
+  border-radius: 16px 16px 0 0;
+}
+.Record_main_list .Record_datetime_container .available-slots {
+  width: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 30px;
+}
+.Record_main_list .Record_datetime_container .available-slots .slots-container {
+  width: 80%;
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.Record_main_list .Record_datetime_container .available-slots .slots-container .time-slot {
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: inline-block;
+  cursor: pointer;
+}
+.Record_main_list .Record_datetime_container .available-slots .time-slot.selected {
+  background-color: #569ff7;
+  color: var(--white-color);
+}
+.Record_main_list .Record_datetime_container .Record_datetime_form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 50px;
+}
+.Record_main_list .Record_datetime_container .Record_datetime_form .submit-datetime-button {
+  margin: 10px 0;
   border: 2px solid #0c0c0c;
   padding: 15px 30px;
   color: #141414;

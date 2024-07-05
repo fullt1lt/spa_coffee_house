@@ -307,7 +307,7 @@
                                     </li>
                                     <li class="item_info">
                                         <a href="{% url 'categories' category.id %}">Дізнатися більше</a>
-                                        <a href="#" class="Category_Link_Sign_Up">Записатись</a>
+                                        <a href="{% url 'create_record' %}" class="Category_Link_Sign_Up">Записатись</a>
                                     </li>
                                 </ul>
                             </li>
@@ -360,7 +360,7 @@
                                         </ul>
                                     </li>
                                     <li class="content_item_sign_up">
-                                        <a href="#" class="therapist_link_sign_up">Записатись</a>
+                                        <a href="{% url 'create_record' %}" class="therapist_link_sign_up">Записатись</a>
                                     </li>
                                 </ul>
                             </li>

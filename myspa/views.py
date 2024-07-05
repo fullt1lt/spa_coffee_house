@@ -424,7 +424,7 @@ class AdminMainPage(SuperUserRequiredMixin, View):
         context.update(self.get_context_data())
         return render(self.request, self.template_name, context, **response_kwargs)
     
-    
+
 class RecordView(View):
     template_name = 'record.html'
 
@@ -436,52 +436,11 @@ class RecordView(View):
     def post(self, request):
         step = request.POST.get('step', '1')
         if step == '1':
-            # На первом этапе выбираем процедуру
-            procedure_id = request.POST.get('procedure')
-            if procedure_id:
-                request.session['procedure_id'] = procedure_id
-                return redirect('/create-record/?step=2')
+            return self.choice_of_procedure(request)
         elif step == '2':
-            # На втором этапе выбираем терапевта
-            therapist_form = TherapistForm(request.POST)
-            if therapist_form.is_valid():
-                request.session['therapist_id'] = therapist_form.cleaned_data['therapist'].id
-                return redirect('/create-record/?step=3')
+            return self.choice_of_therapist(request)
         elif step == '3':
-            date = request.POST.get('date')
-            time = request.POST.get('time')
-            if date and time:
-                procedure = Procedure.objects.get(id=request.session['procedure_id'])
-                therapist = MassageTherapist.objects.get(id=request.session['therapist_id'])
-                date = datetime.strptime(date, '%Y-%m-%d').date()
-                time = datetime.strptime(time, '%H:%M').time()
-                start_time = datetime.combine(date, time)
-                end_time = start_time + procedure.duration
-
-                # Проверка на существующие записи
-                overlapping_records = Record.objects.filter(
-                    schedule__therapist=therapist,
-                    schedule__day=date
-                ).exclude(
-                    start_time__gte=end_time.time()
-                ).exclude(
-                    start_time__lt=start_time.time()
-                )
-
-                if overlapping_records.exists():
-                    context = self.get_context_data(step, request)
-                    context['error_message'] = "На это время уже есть запись. Пожалуйста, выберите другое время."
-                    return render(request, self.template_name, context)
-
-                # Создание новой записи
-                schedule, created = Schedule.objects.get_or_create(
-                    therapist=therapist,
-                    day=date,
-                    defaults={'start_time': time, 'end_time': end_time.time()}
-                )
-                Record.objects.create(schedule=schedule, procedure=procedure, start_time=time)
-                return redirect('/create-record/')  # Укажите URL-адрес успешного завершения
-
+            return self.choice_of_datetime(request)
         context = self.get_context_data(step, request)
         return render(request, self.template_name, context)
 
@@ -496,38 +455,121 @@ class RecordView(View):
             context['spa_categories'] = SpaСategories.objects.all()
             context['procedures'] = Procedure.objects.all()
         if step == '2':
-            therapists = MassageTherapist.objects.filter(
-            position__type_categories=procedure.type_category,
-            schedule__day__gte=datetime.now().date()  # Только актуальные расписания
-        ).distinct().order_by('-average_rating')
-        
-            context['therapists'] = therapists
+            context['therapists'] = self.sorting_therapists(request)
         if step == '3':
+            context.update(self.get_available_slots(request))
+        return context
+
+    def get_available_slots(self, request):
+        procedure = Procedure.objects.get(id=request.session['procedure_id'])
+        therapist = MassageTherapist.objects.get(id=request.session['therapist_id'])
+        schedules = Schedule.objects.filter(therapist=therapist, day__gte=datetime.now().date())
+        available_slots = {}
+        now = datetime.now()
+
+        for schedule in schedules:
+            validator = SlotsValidator(schedule, procedure)
+            date_str = schedule.day.strftime('%Y-%m-%d')
+            available_slots[date_str] = [
+                slot for slot in validator.ranges
+                if datetime.combine(schedule.day, datetime.strptime(slot, '%H:%M').time()) > now
+            ]
+
+        taken_slots = Record.objects.filter(
+            schedule__therapist=therapist,
+            schedule__day__gte=datetime.now().date()
+        ).values_list('schedule__day', 'start_time')
+        occupied_slots = {(date.strftime('%Y-%m-%d'), time.strftime('%H:%M')) for date, time in taken_slots}
+        # Удаляем занятые слоты из available_slots
+        for date_str, slots in available_slots.items():
+            available_slots[date_str] = [time for time in slots if (date_str, time) not in occupied_slots]
+
+        # Убираем даты без доступных слотов
+        available_slots = {date: slots for date, slots in available_slots.items() if slots}
+
+        return {'available_slots': available_slots}
+    
+    def choice_of_procedure(self, request):
+        procedure_id = request.POST.get('procedure')
+        if procedure_id:
+            request.session['procedure_id'] = procedure_id
+            return redirect('/create-record/?step=2')
+        return redirect('/create-record/')
+    
+    def choice_of_therapist(self, request):
+        therapist_form = TherapistForm(request.POST)
+        if therapist_form.is_valid():
+            request.session['therapist_id'] = therapist_form.cleaned_data['therapist'].id
+            return redirect('/create-record/?step=3')
+        return redirect('/create-record/?step=2')
+    
+    def choice_of_datetime(self, request):
+        date = request.POST.get('date')
+        time = request.POST.get('time')
+        if date and time:
             procedure = Procedure.objects.get(id=request.session['procedure_id'])
             therapist = MassageTherapist.objects.get(id=request.session['therapist_id'])
-            schedules = Schedule.objects.filter(therapist=therapist, day__gte=datetime.now().date())
-            available_slots = {}
-            now = datetime.now()
+            date = datetime.strptime(date, '%Y-%m-%d').date()
+            time = datetime.strptime(time, '%H:%M').time()
+            start_time = datetime.combine(date, time)
+            end_time = start_time + procedure.duration
 
+            # Проверка на существующие записи
+            overlapping_records = Record.objects.filter(
+                schedule__therapist=therapist,
+                schedule__day=date
+            ).exclude(
+                start_time__gte=end_time.time()
+            ).exclude(
+                start_time__lt=start_time.time()
+            )
+
+            if overlapping_records.exists():
+                context = self.get_context_data('3', request)
+                context['error_message'] = "На это время уже есть запись. Пожалуйста, выберите другое время."
+                return render(request, self.template_name, context)
+
+            # Создание новой записи
+            schedule, created = Schedule.objects.get_or_create(
+                therapist=therapist,
+                day=date,
+                defaults={'start_time': time, 'end_time': end_time.time()}
+            )
+            Record.objects.create(schedule=schedule, procedure=procedure, start_time=time)
+            return redirect('/create-record/')  # Укажите URL-адрес успешного завершения
+
+        context = self.get_context_data('3', request)
+        return render(request, self.template_name, context)
+
+    def sorting_therapists(self, request):
+        procedure = Procedure.objects.get(id=request.session['procedure_id'])
+        now = datetime.now()
+        therapists = MassageTherapist.objects.filter(
+            position__type_categories=procedure.type_category,
+            schedule__day__gte=now.date()
+        ).distinct().order_by('-average_rating')
+    
+        therapists_with_slots = []
+    
+        for therapist in therapists:
+            schedules = Schedule.objects.filter(therapist=therapist, day__gte=now.date()).order_by('day')
+            nearest_slots = []
+    
             for schedule in schedules:
+                if nearest_slots:
+                    break
                 validator = SlotsValidator(schedule, procedure)
-                date_str = schedule.day.strftime('%Y-%m-%d')
-                available_slots[date_str] = [
+                slots = [
                     slot for slot in validator.ranges
                     if datetime.combine(schedule.day, datetime.strptime(slot, '%H:%M').time()) > now
                 ]
+                nearest_slots.extend({'date': schedule.day.strftime('%Y-%m-%d'), 'time': slot} for slot in slots[:5])
+    
+            if nearest_slots:
+                therapists_with_slots.append({
+                    'therapist': therapist,
+                    'nearest_slots': nearest_slots[:5]
+                })
+    
+        return therapists_with_slots
 
-            # Удаление занятых временных слотов
-            taken_slots = Record.objects.filter(
-                schedule__therapist=therapist,
-                schedule__day__gte=datetime.now().date()
-            ).values_list('schedule__day', 'start_time')
-
-            for date, time in taken_slots:
-                date_str = date.strftime('%Y-%m-%d')
-                time_str = time.strftime('%H:%M')
-                if date_str in available_slots and time_str in available_slots[date_str]:
-                    available_slots[date_str].remove(time_str)
-
-            context['available_slots'] = {date: slots for date, slots in available_slots.items() if slots}
-        return context

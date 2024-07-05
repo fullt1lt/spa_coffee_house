@@ -159,21 +159,22 @@
     .therapist-list {
       display: flex;
       flex-direction: column;
-      width: 90%;
+      width: 400px;
       align-items: center;
       margin-top: 20px;
       padding: 5px;
       .therapist-item {
         display: flex;
-        width: 100%;
+        width: 400px;
         margin-top: 20px;
+        justify-content: space-between;
         cursor: pointer;
         .therapist-item_list {
           display: flex;
-          justify-content: c;
-          width: 80%;
+          margin-left: 15px;
+          width: 100%;
           .therapist-item_image {
-            margin-right: 15px;
+            margin-right: 5px;
             .Massage_Therapist_img {
               width: 50px;
               height: 50px;
@@ -236,57 +237,82 @@
                   }
                 }
               }
+              .therapist-available-slots {
+                .therapist-available-slots_list {
+                  .slot_datetime {
+                    span {
+                      color: var(--black-color);
+                      font-style: normal;
+                      font-weight: 400;
+                      font-size: 16px;
+                      line-height: 24px;
+                    }
+                    .slot_time_list {
+                      display: flex;
+                      justify-content: flex-start;
+                      width: 100%;
+                      .slot_time_item {
+                        border: 1px solid black;
+                        padding: 5px;
+                        border-radius: 5px;
+                        margin-right: 5px;
+                        background-color: #e0e3eb;
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
         .therapist-item-label {
-            margin-top: 15px;
-            display: flex;
+          margin-top: 15px;
+          display: flex;
+          cursor: pointer;
+          input[type="radio"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid black;
+            border-radius: 3px;
+            margin-right: 10px;
+            outline: none;
             cursor: pointer;
-            input[type="radio"] {
-              appearance: none;
-              width: 20px;
-              height: 20px;
-              border: 2px solid black;
-              border-radius: 3px;
-              margin-right: 10px;
-              outline: none;
-              cursor: pointer;
-              position: relative;
-            }
-            .therapist-checkbox {
-              appearance: none;
-              width: 20px;
-              height: 20px;
-              border: 2px solid black;
-              margin-right: 10px;
-              outline: none;
-              cursor: pointer;
-              position: relative;
-              border-radius: 3px; // если нужен квадрат, можно убрать эту строку
-            }
-
-            .therapist-checkbox::after {
-              content: "";
-              position: absolute;
-              width: 5px;
-              height: 10px;
-              border: solid white;
-              border-width: 0 2px 2px 0;
-              top: 1px;
-              left: 5px;
-              transform: rotate(45deg);
-              display: none;
-            }
-
-            .therapist-checkbox:checked {
-              background-color: black;
-            }
-
-            .therapist-checkbox:checked::after {
-              display: block;
-            }
+            position: relative;
           }
+          .therapist-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid black;
+            margin-right: 10px;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            border-radius: 3px; // если нужен квадрат, можно убрать эту строку
+          }
+
+          .therapist-checkbox::after {
+            content: "";
+            position: absolute;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            top: 1px;
+            left: 5px;
+            transform: rotate(45deg);
+            display: none;
+          }
+
+          .therapist-checkbox:checked {
+            background-color: black;
+          }
+
+          .therapist-checkbox:checked::after {
+            display: block;
+          }
+        }
       }
     }
     .submit-therapist-button {
@@ -303,6 +329,70 @@
       letter-spacing: 1.56px;
       text-transform: uppercase;
       background-color: transparent;
+    }
+  }
+  .Record_datetime_container {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin: 50px 0;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 16px;
+    box-shadow: 10px 5px 5px rgb(192, 192, 192);
+    div {
+      width: 100%;
+      .flatpickr-calendar {
+        width: 398px !important;
+        border-radius: 16px 16px 0 0;
+      }
+    }
+    .available-slots {
+      width: 400px;
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      .slots-container {
+        width: 80%;
+        padding: 5px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        .time-slot {
+          margin: 5px;
+          padding: 5px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          display: inline-block;
+          cursor: pointer;
+        }
+      }
+      .time-slot.selected {
+        background-color: #569ff7;
+        color: var(--white-color);
+      }
+    }
+    .Record_datetime_form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      .submit-datetime-button {
+        margin: 10px 0;
+        border: 2px solid #0c0c0c;
+        padding: 15px 30px;
+        color: #141414;
+        text-align: center;
+        font-family: var(--font-family-Manrope);
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 19.5px;
+        letter-spacing: 1.56px;
+        text-transform: uppercase;
+        background-color: transparent;
+      }
     }
   }
 }
