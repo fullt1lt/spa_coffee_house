@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.contrib.auth import login, authenticate
-from forms.forms import CategoriesAddForm, CategoriesUpdateForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureForm, RegisterUserForm, ReviewForm, ScheduleForm, TherapistForm
+from forms.forms import CategoriesAddForm, CategoriesUpdateForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureForm, RegisterUserForm, ReviewForm, ScheduleForm, TherapistForm, TypeCategoryForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DeleteView, UpdateView, CreateView
 from django.utils.decorators import method_decorator
@@ -164,8 +164,14 @@ class DeleteSpaCategoriesView(SuperUserRequiredMixin, DeleteView):
     model = SpaСategories
     success_url = '/admin-main-page/'
     
+
 class DeleteTherapistView(SuperUserRequiredMixin, DeleteView):
     model = MassageTherapist
+    success_url = '/admin-main-page/'
+    
+
+class DeleteTypeCategoriesView(SuperUserRequiredMixin, DeleteView):
+    model = TypeCategories
     success_url = '/admin-main-page/'
 
 
@@ -296,12 +302,31 @@ class AdminMainPage(SuperUserRequiredMixin, View):
             'categories_add_form': CategoriesAddForm(),
             'therapist_update_form': MassageTherapistUpdateForm(),
             'all_positions': Position.objects.all(),
-            'therapist_form' : MassageTherapistForm(),
-            'schedule_form': kwargs.get('schedule_form', ScheduleForm()), 
-            'therapists_with_schedule' : MassageTherapist.objects.filter(schedule__isnull=False).distinct(),
+            'therapist_form': MassageTherapistForm(),
+            'schedule_form': kwargs.get('schedule_form', ScheduleForm()),
+            'therapists_with_schedule': MassageTherapist.objects.filter(schedule__isnull=False).distinct(),
+            'type_category_form': kwargs.get('type_category_form', TypeCategoryForm()),
+            'procedure_form': kwargs.get('procedure_form', ProcedureForm()),
         }
         context.update(kwargs)
+        context.update(self.get_type_categories_data())
         return context
+
+    def get_type_categories_data(self):
+        type_categories = TypeCategories.objects.prefetch_related('sessions').all()
+
+        type_categories_data = []
+        for type_category in type_categories:
+            sessions = type_category.sessions.all()
+            durations = "/".join([str(int(session.duration.total_seconds() // 60)) for session in sessions])
+            prices = "/".join([str(int(session.price)) for session in sessions])
+            type_categories_data.append({
+                'type_category': type_category,
+                'durations': durations,
+                'prices': prices,
+            })
+
+        return {'type_categories_data': type_categories_data}
 
     def get(self, request, *args, **kwargs):  
         context = self.get_context_data()
@@ -320,6 +345,9 @@ class AdminMainPage(SuperUserRequiredMixin, View):
             return self.add_therapist(request)
         elif 'schedule' in request.POST:
             return self.handle_schedule(request)
+        elif 'update_type_category' in request.POST:
+            type_category_id = request.POST.get('type_category_id')
+            return self.update_type_category(request, type_category_id)
         return self.get(request, *args, **kwargs)
 
 
@@ -420,6 +448,16 @@ class AdminMainPage(SuperUserRequiredMixin, View):
                 return redirect('/admin-main-page/')
         return self.render_to_response(self.get_context_data(schedule_form=form))
 
+    def update_type_category(self, request, type_category_id):
+        type_category = get_object_or_404(TypeCategories, id=type_category_id)
+        type_category_update_form = TypeCategoryForm(data=request.POST, files=request.FILES, instance=type_category)
+        if type_category_update_form.is_valid():
+            type_category_update_form.save()
+            return redirect('/admin-main-page/')
+
+        context = self.get_context_data(type_category_update_form=type_category_update_form)
+        return render(request, self.template_name, context)
+    
     def render_to_response(self, context, **response_kwargs):
         context.update(self.get_context_data())
         return render(self.request, self.template_name, context, **response_kwargs)
@@ -548,13 +586,13 @@ class RecordView(View):
             position__type_categories=procedure.type_category,
             schedule__day__gte=now.date()
         ).distinct().order_by('-average_rating')
-    
+
         therapists_with_slots = []
-    
+
         for therapist in therapists:
             schedules = Schedule.objects.filter(therapist=therapist, day__gte=now.date()).order_by('day')
             nearest_slots = []
-    
+
             for schedule in schedules:
                 if nearest_slots:
                     break
@@ -564,12 +602,12 @@ class RecordView(View):
                     if datetime.combine(schedule.day, datetime.strptime(slot, '%H:%M').time()) > now
                 ]
                 nearest_slots.extend({'date': schedule.day.strftime('%Y-%m-%d'), 'time': slot} for slot in slots[:5])
-    
+
             if nearest_slots:
                 therapists_with_slots.append({
                     'therapist': therapist,
                     'nearest_slots': nearest_slots[:5]
                 })
-    
+
         return therapists_with_slots
 

@@ -1,6 +1,7 @@
 .Admin_block_content_list {
   width: 100%;
   display: flex;
+  min-height: 70vh;
   .Admin_navigations {
     display: flex;
     width: 15%;
@@ -1104,6 +1105,336 @@
                   }
                 }
               }
+            }
+          }
+        }
+      }
+      .Admin_view_type_categories_item {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        .TypeCategories_list {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 20px;
+          padding: 20px;
+          align-items: start;
+          justify-content: flex-start;
+          width: 100%;
+          .TypeCategory_item {
+            display: flex;
+            flex-direction: column;
+            border: 1px gray solid;
+            padding: 10px;
+            border-radius: 12px;
+            width: 45%;
+            background: #fff;
+            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+            .spa_categories_wrapper {
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              position: relative;
+              .TypeCategory_item_list {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                transition: all 0.5s ease;
+                backface-visibility: hidden;
+                .item_image {
+                  overflow: hidden;
+                  border-radius: 8px;
+                  .TypeCategory_img {
+                    width: 100%;
+                    border-radius: 8px;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                    &:hover {
+                      transform: scale(1.2);
+                    }
+                  }
+                }
+                .item_header {
+                  margin-top: 20px;
+                  h2 {
+                    color: #000;
+                    font-family: "Playfair Display";
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                  }
+                }
+                .item_description {
+                  margin-top: 20px;
+                  height: 180px;
+                  span {
+                    color: #000;
+                    font-family: Manrope;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                  }
+                }
+                .item_price_duration {
+                  margin-top: 20px;
+                  .item_price_duration_list {
+                    display: flex;
+                    justify-content: space-between;
+                    .item_info {
+                      span {
+                        color: #000;
+                        font-family: "Spline Sans";
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                      }
+                    }
+                  }
+                }
+                .admin_buttons {
+                  margin-top: 10px;
+                  display: flex;
+                  .Update_TypeCategory_image {
+                    width: 30px;
+                    height: 30px;
+                    cursor: pointer;
+                  }
+                  .Basket_image {
+                    margin-left: 30px;
+                    width: 30px;
+                    height: 30px;
+                    cursor: pointer;
+                  }
+                }
+              }
+              .TypeCategory_update_item_list {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: rotateY(180deg);
+                backface-visibility: hidden;
+                transition: all 0.5s ease;
+                .Cloose_image_item {
+                  width: 100%;
+                  display: flex;
+                  justify-content: flex-end;
+                  .Cloose_type_category_image {
+                    width: 15px;
+                    height: 15px;
+                    cursor: pointer;
+                  }
+                }
+                .TypeCategory_update_item {
+                  width: 100%;
+                  height: 100%;
+                  .TypeCategory_update_form {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    .item_image {
+                      overflow: hidden;
+                      border-radius: 8px;
+                      width: 100%;
+                      position: relative;
+                      height: 240px;
+                      .TypeCategory_img {
+                        width: 100%;
+                        height: 100%;
+                        filter: blur(4px);
+                      }
+                      .upload-button_list {
+                        top: -70%;
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 8px;
+                        color: var(--white-color);
+                        font-family: var(--font-family-Manrope);
+                        font-size: 24px;
+                        text-align: center;
+                        cursor: pointer;
+                      }
+                    }
+                    p {
+                      width: 100%;
+                      label {
+                        display: none;
+                      }
+                      .form-control-name {
+                        margin-top: 20px;
+                        width: 100%;
+                        color: #000;
+                        font-family: "Playfair Display";
+                        font-size: 24px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: normal;
+                      }
+                      .form-control-description {
+                        margin-top: 20px;
+                        width: 100%;
+                        height: 150px;
+                        color: #000;
+                        font-family: Manrope;
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        resize: none;
+                      }
+                      .form-control-file {
+                        display: none;
+                      }
+                      .form-control-categories {
+                        margin-top: 10px;
+                        color: #000;
+                        font-family: Manrope;
+                        font-size: 18px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        resize: none;
+                      }
+                    }
+                    .item_update {
+                      margin-top: 20px;
+                      width: 100%;
+                      display: flex;
+                      justify-content: center;
+                      .update_type_category_input {
+                        border: 2px solid #0c0c0c;
+                        padding: 15px 30px;
+                        color: #141414;
+                        text-align: center;
+                        font-family: var(--font-family-Manrope);
+                        font-size: 13px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: 19.5px;
+                        letter-spacing: 1.56px;
+                        text-transform: uppercase;
+                        background-color: transparent;
+                        cursor: pointer;
+                      }
+                    }
+                  }
+                }
+              }
+              .TypeCategory_delete_item_list {
+                display: none;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: #fff;
+                .TypeCategory_delete_item_header {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  h2 {
+                    text-align: center;
+                    color: #000;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 22px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                  }
+                }
+                .TypeCategory_delete_item_choice {
+                  display: flex;
+                  margin-top: 15px;
+                  .delete_type_category_form {
+                    .delete_type_category {
+                      border: medium none;
+                      background-image: none;
+                      background: transparent;
+                      background-color: transparent;
+                      border: 2px solid #0c0c0c;
+                      padding: 15px 30px;
+                      color: #141414;
+                      text-align: center;
+                      font-family: var(--font-family-Manrope);
+                      font-size: 13px;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: 19.5px;
+                      letter-spacing: 1.56px;
+                      text-transform: uppercase;
+                      cursor: pointer;
+                    }
+                  }
+                  .cancel_delete_type_category {
+                    margin-left: 40px;
+                    border: 2px solid #0c0c0c;
+                    padding: 15px 30px;
+                    color: #141414;
+                    text-align: center;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 19.5px;
+                    letter-spacing: 1.56px;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .Add_TypeCategories_button_block {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          animation: 5s show ease;
+          cursor: pointer;
+        }
+        .Add_TypeCategories_block {
+          display: none;
+          align-items: center;
+          justify-content: center;
+          margin-top: 20px;
+          width: 45%;
+          animation: 5s show ease;
+          .Add_TypeCategories_list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px gray solid;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 16px;
+            width: 100%;
+            box-shadow: 10px 5px 5px rgb(192, 192, 192);
+            .Add_TypeCategories_close_button_item {
+              width: 100%;
+              display: flex;
+              justify-content: flex-end;
+              .Add_TypeCategories_close_button {
+                width: 15px;
+                height: 15px;
+                cursor: pointer;
+              }
+            }
+            .Add_TypeCategories_form_item {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
             }
           }
         }

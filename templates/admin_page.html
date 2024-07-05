@@ -50,6 +50,9 @@
                 <li class="Admin_navigations_item" id="therapist">
                     <span>Спеціалісти</span>
                 </li>
+                <li class="Admin_navigations_item" id="type-categories">
+                    <span>Тип категорії</span>
+                </li>
             </ul>
         </li>
         <li class="Admin_content">
@@ -374,6 +377,104 @@
                             <script src="{% static 'js/therapist/add_therapist.js' %}"></script>
                         </li>
                     </ul>
+                </li>
+                <li class="Admin_view_type_categories_item" id="type-categories-list">
+                    <ul class="TypeCategories_list">
+                        {% for data in type_categories_data %}
+                            <li class="TypeCategory_item">
+                                <div class="spa_categories_wrapper">
+                                    <ul class="TypeCategory_item_list" id="type_category_front_{{data.type_category.id}}">
+                                        <li class="item_image">
+                                            {% if data.type_category.type_categories_image %}
+                                                <img src="{{ data.type_category.type_categories_image.url }}" alt="" class="TypeCategory_img">
+                                            {% else %}
+                                                <img src="{% static 'icon/logo.svg' %}" alt="">
+                                            {% endif %}
+                                        </li>
+                                        <li class="item_category" style="display: none;" data-category-id="{{ data.type_category.categories.id }}">
+                                            <span>{{ data.type_category.categories.name }}</span>
+                                        </li>
+                                        <li class="item_header">
+                                            <h2>{{ data.type_category.name }}</h2>
+                                        </li>
+                                        <li class="item_description">
+                                            <span>{{ data.type_category.description }}</span>
+                                        </li>
+                                        <li class="item_price_duration">
+                                            <ul class="item_price_duration_list">
+                                                <li class="item_info">
+                                                    <span>Тривалість: {{ data.durations }} хв</span>
+                                                </li>
+                                                <li class="item_info">
+                                                    <span>Цiна: {{ data.prices }} грн</span>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li class="admin_buttons">
+                                            <img src="{% static 'icon/update_button.svg' %}" alt="" class="Update_TypeCategory_image" update-type_category-id="{{ data.type_category.id }}">
+                                            <img src="{% static 'icon/basket.svg' %}" alt="" class="Basket_image" delete-type_category-id="{{ data.type_category.id }}">
+                                        </li>
+                                    </ul>
+                                    <ul class="TypeCategory_update_item_list" id="type_category_back_{{ data.type_category.id }}">
+                                        <li class="Cloose_image_item">
+                                            <img src="{% static 'icon/cloose.png' %}" alt="" class="Cloose_type_category_image" close-type-category-id="{{ data.type_category.id }}">
+                                        </li>
+                                        <li class="TypeCategory_update_item">
+                                        <form method="post" enctype="multipart/form-data" class="TypeCategory_update_form">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="type_category_id" value="{{ data.type_category.id }}">
+                                            <li class="item_image">
+                                                {% if data.type_category.type_categories_image %}
+                                                <img src="{{ data.type_category.type_categories_image.url }}" alt="" class="TypeCategory_img">
+                                                {% else %}
+                                                <img src="{% static 'icon/logo.svg' %}" alt="" class="TypeCategory_img">
+                                                {% endif %}
+                                                <div class="upload-button_list">
+                                                    <label for="image-upload-{{ data.type_category.id }}" class="upload-button">Вибрати зображення</label>
+                                                    <input type="file" id="image-upload-{{ data.type_category.id }}" class="image-upload-input" name="type_categories_image" style="display: none;">
+                                                    <span class="image-upload-filename">Файл не вибрано</span>
+                                                </div>
+                                            </li>       
+                                            {{ type_category_form.as_p }}
+                                            <li class="item_update">
+                                                <button type="submit" name="update_type_category" class="update_type_category_input">Оновити</button>
+                                            </li>
+                                        </form>
+                                        </li>
+                                    </ul>
+                                    <ul class="TypeCategory_delete_item_list" id="type_category_delete_{{ data.type_category.id }}">
+                                        <li class="TypeCategory_delete_item_header">
+                                            <h2>Ви хочете видалити категорію?</h2>
+                                        </li>
+                                        <li class="TypeCategory_delete_item_choice">
+                                            <form method="post" action="{% url 'type_category_delete' data.type_category.pk %}" class="delete_type_category_form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="delete_id" value="{{ data.type_category.pk }}">
+                                                <input type="submit" value="Видалити" class="delete_type_category">
+                                            </form>
+                                            <span class="cancel_delete_type_category" cancel-delete-type-category-id="{{ data.type_category.id }}">Закрити</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <script src="{% static 'js/admin/delete_type_category.js' %}"></script>
+                                <script src="{% static 'js/admin/flip_type_categories.js' %}"></script>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="Add_TypeCategories_button_block">
+                        <img src="{% static 'icon/add_button.png' %}" alt="" class="Add_TypeCategories_button" id="Add_TypeCategories_button">
+                    </div>
+                    <div class="Add_TypeCategories_block" id="Add_TypeCategories_block">
+                        <ul class="Add_TypeCategories_list">
+                            <li class="Add_TypeCategories_close_button_item">
+                                <img src="{% static 'icon/cloose.png' %}" alt="" class="Add_TypeCategories_close_button" id="Add_TypeCategories_close_button">
+                            </li>
+                            <li class="Add_TypeCategories_form_item">
+                                
+                            </li>
+                        </ul>
+                    </div>
+                    <script src="{% static 'js/admin/add_type_categories.js' %}"></script>
                 </li>
             </ul>
         </li>

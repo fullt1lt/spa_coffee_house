@@ -341,10 +341,12 @@
     border-radius: 16px;
     box-shadow: 10px 5px 5px rgb(192, 192, 192);
     div {
-      width: 100%;
       .flatpickr-calendar {
         width: 398px !important;
         border-radius: 16px 16px 0 0;
+      }
+      .flatpickr-innerContainer {
+        justify-content: center;
       }
     }
     .available-slots {

@@ -3035,6 +3035,7 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  min-height: 70vh;
 }
 .Admin_block_content_list .Admin_navigations {
   display: -webkit-box;
@@ -4517,6 +4518,447 @@ a {
   background-color: transparent;
   cursor: pointer;
 }
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item {
+  display: none;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 100%;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px gray solid;
+  padding: 10px;
+  border-radius: 12px;
+  width: 45%;
+  background: #fff;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_item_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_item_list .item_image {
+  overflow: hidden;
+  border-radius: 8px;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_item_list .item_image .TypeCategory_img {
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_item_list .item_image .TypeCategory_img:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_item_list .item_header {
+  margin-top: 20px;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_item_list .item_header h2 {
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_item_list .item_description {
+  margin-top: 20px;
+  height: 180px;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_item_list .item_description span {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_item_list .item_price_duration {
+  margin-top: 20px;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_item_list .item_price_duration .item_price_duration_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_item_list .item_price_duration .item_price_duration_list .item_info span {
+  color: #000;
+  font-family: "Spline Sans";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_item_list .admin_buttons {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_item_list .admin_buttons .Update_TypeCategory_image {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_item_list .admin_buttons .Basket_image {
+  margin-left: 30px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .Cloose_image_item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .Cloose_image_item .Cloose_type_category_image {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .TypeCategory_update_item {
+  width: 100%;
+  height: 100%;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .TypeCategory_update_item .TypeCategory_update_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .TypeCategory_update_item .TypeCategory_update_form .item_image {
+  overflow: hidden;
+  border-radius: 8px;
+  width: 100%;
+  position: relative;
+  height: 240px;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .TypeCategory_update_item .TypeCategory_update_form .item_image .TypeCategory_img {
+  width: 100%;
+  height: 100%;
+  -webkit-filter: blur(4px);
+          filter: blur(4px);
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .TypeCategory_update_item .TypeCategory_update_form .item_image .upload-button_list {
+  top: -70%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 8px;
+  color: var(--white-color);
+  font-family: var(--font-family-Manrope);
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .TypeCategory_update_item .TypeCategory_update_form p {
+  width: 100%;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .TypeCategory_update_item .TypeCategory_update_form p label {
+  display: none;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .TypeCategory_update_item .TypeCategory_update_form p .form-control-name {
+  margin-top: 20px;
+  width: 100%;
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .TypeCategory_update_item .TypeCategory_update_form p .form-control-description {
+  margin-top: 20px;
+  width: 100%;
+  height: 150px;
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  resize: none;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .TypeCategory_update_item .TypeCategory_update_form p .form-control-file {
+  display: none;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .TypeCategory_update_item .TypeCategory_update_form p .form-control-categories {
+  margin-top: 10px;
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  resize: none;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .TypeCategory_update_item .TypeCategory_update_form .item_update {
+  margin-top: 20px;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_update_item_list .TypeCategory_update_item .TypeCategory_update_form .item_update .update_type_category_input {
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  background-color: transparent;
+  cursor: pointer;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_delete_item_list {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_delete_item_list .TypeCategory_delete_item_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_delete_item_list .TypeCategory_delete_item_header h2 {
+  text-align: center;
+  color: #000;
+  font-family: var(--font-family-Manrope);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_delete_item_list .TypeCategory_delete_item_choice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 15px;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_delete_item_list .TypeCategory_delete_item_choice .delete_type_category_form .delete_type_category {
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  background-color: transparent;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .TypeCategories_list .TypeCategory_item .spa_categories_wrapper .TypeCategory_delete_item_list .TypeCategory_delete_item_choice .cancel_delete_type_category {
+  margin-left: 40px;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .Add_TypeCategories_button_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -webkit-animation: 5s show ease;
+          animation: 5s show ease;
+  cursor: pointer;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .Add_TypeCategories_block {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px;
+  width: 45%;
+  -webkit-animation: 5s show ease;
+          animation: 5s show ease;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .Add_TypeCategories_block .Add_TypeCategories_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px gray solid;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 16px;
+  width: 100%;
+  -webkit-box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .Add_TypeCategories_block .Add_TypeCategories_list .Add_TypeCategories_close_button_item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .Add_TypeCategories_block .Add_TypeCategories_list .Add_TypeCategories_close_button_item .Add_TypeCategories_close_button {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.Admin_block_content_list .Admin_content .Admin_content_list .Admin_view_type_categories_item .Add_TypeCategories_block .Add_TypeCategories_list .Add_TypeCategories_form_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
 
 .Admin_active {
   background-color: rgba(248, 246, 244, 0.5);
@@ -4940,12 +5382,14 @@ a {
   -webkit-box-shadow: 10px 5px 5px rgb(192, 192, 192);
           box-shadow: 10px 5px 5px rgb(192, 192, 192);
 }
-.Record_main_list .Record_datetime_container div {
-  width: 100%;
-}
 .Record_main_list .Record_datetime_container div .flatpickr-calendar {
   width: 398px !important;
   border-radius: 16px 16px 0 0;
+}
+.Record_main_list .Record_datetime_container div .flatpickr-innerContainer {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .Record_main_list .Record_datetime_container .available-slots {
   width: 400px;

@@ -1,5 +1,5 @@
 from django import forms
-from myspa.models import MassageTherapist, Position, Procedure, Review, Salon, Schedule, SpaUser, SpaСategories
+from myspa.models import MassageTherapist, Position, Procedure, Review, Salon, Schedule, SpaUser, TypeCategories, SpaСategories
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError  
@@ -129,3 +129,22 @@ class ProcedureForm(forms.Form):
 
 class TherapistForm(forms.Form):
     therapist = forms.ModelChoiceField(queryset=MassageTherapist.objects.all(), label="Спеціаліст")
+    
+class TypeCategoryForm(forms.ModelForm):
+    categories = forms.ModelChoiceField(
+        queryset=SpaСategories.objects.all(),
+        widget=forms.Select,
+        label='Категорія'
+    )
+
+class TypeCategoryForm(forms.ModelForm):
+    class Meta:
+        model = TypeCategories
+        fields = ['name', 'description', 'type_categories_image', 'categories']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control-name', 'placeholder': 'Введите название'}),
+            'description': forms.Textarea(attrs={'class': 'form-control-description', 'placeholder': 'Введите описание'}),
+            'type_categories_image': forms.FileInput(attrs={'class': 'form-control-file'}),
+            'categories': forms.Select(attrs={'class': 'form-control-categories'}),
+        }
+        
