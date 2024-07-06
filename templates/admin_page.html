@@ -470,8 +470,60 @@
                                 <img src="{% static 'icon/cloose.png' %}" alt="" class="Add_TypeCategories_close_button" id="Add_TypeCategories_close_button">
                             </li>
                             <li class="Add_TypeCategories_form_item">
-                                
+                                <form method="post" enctype="multipart/form-data" class="type_category_add_form" id="type-category-form">
+                                    {% csrf_token %}
+                                    {{ type_costom_category_form.non_field_errors }}
+                                    <div class="add_custom-file-upload">
+                                        <div class="add_custom-file-upload_block">
+                                            <button type="button" id="type-category-custom-button" class="add_image_custom-button">Вибрати зображення</button>
+                                            <span id="type-category-custom-text" class="add_image_custom_text">Файл не вибрано</span>
+                                        </div>
+                                        {{ type_costom_category_form.type_categories_image }}
+                                    </div>
+                                    {% if type_costom_category_form.type_categories_image.errors %}
+                                        <div class="error">{{ type_costom_category_form.type_categories_image.errors }}</div>
+                                    {% endif %}
+                                    <div>
+                                        {{ type_costom_category_form.name }}
+                                        {% if type_costom_category_form.name.errors %}
+                                            <div class="error">{{ type_costom_category_form.name.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <div>
+                                        {{ type_costom_category_form.description }}
+                                        {% if type_costom_category_form.description.errors %}
+                                            <div class="error">{{ type_costom_category_form.description.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <div>
+                                        {{ type_costom_category_form.categories }}
+                                        {% if type_costom_category_form.categories.errors %}
+                                            <div class="error">{{ type_costom_category_form.categories.errors }}</div>
+                                        {% endif %}
+                                    </div>
+                                    <input type="submit" value="Додати" name="add_type_category" class="add_type_category_input">
+                                </form>
                             </li>
+
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function() {
+                                    const customButton = document.getElementById("type-category-custom-button");
+                                    const fileInput = document.getElementById("custom_file_input");
+                                    const customText = document.getElementById("type-category-custom-text");
+                                
+                                    customButton.addEventListener("click", function() {
+                                        fileInput.click();
+                                    });
+                                
+                                    fileInput.addEventListener("change", function() {
+                                        if (this.files.length > 0) {
+                                            const fileName = this.files[0].name;
+                                            customText.textContent = fileName;
+                                        } else {
+                                        }
+                                    });
+                                });
+                            </script>
                         </ul>
                     </div>
                     <script src="{% static 'js/admin/add_type_categories.js' %}"></script>

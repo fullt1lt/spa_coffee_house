@@ -52,12 +52,12 @@ class MassageTherapist(models.Model):
         positions = ', '.join([position.name for position in self.position.all()])
         return f"{self.user.username} - {positions}"
     
-class Composition(models.Model):
-    name = models.CharField(max_length=50)
-    description = models.TextField(max_length=1000)
+# class Composition(models.Model):
+#     name = models.CharField(max_length=50)
+#     description = models.TextField(max_length=1000)
 
-    def __str__(self):
-        return f"{self.name} - {self.description[:40]}"
+#     def __str__(self):
+#         return f"{self.name} - {self.description[:40]}"
 
 class SpaСategories(models.Model):
     name = models.CharField(max_length=100)
@@ -71,7 +71,6 @@ class SpaСategories(models.Model):
 class TypeCategories(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(max_length=1000)
-    composition = models.ForeignKey(Composition, on_delete=models.CASCADE, related_name='composition')
     type_categories_image = models.ImageField(upload_to='type_categories_image/', blank=True, null=True)
     categories = models.ForeignKey(SpaСategories, on_delete=models.CASCADE, related_name='type_categories', default=1)
     

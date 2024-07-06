@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.contrib.auth import login, authenticate
-from forms.forms import CategoriesAddForm, CategoriesUpdateForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureForm, RegisterUserForm, ReviewForm, ScheduleForm, TherapistForm, TypeCategoryForm
+from forms.forms import CategoriesAddForm, CategoriesUpdateForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureForm, RegisterUserForm, ReviewForm, ScheduleForm, TherapistForm, TypeCategoryCustomForm, TypeCategoryForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DeleteView, UpdateView, CreateView
 from django.utils.decorators import method_decorator
@@ -306,6 +306,7 @@ class AdminMainPage(SuperUserRequiredMixin, View):
             'schedule_form': kwargs.get('schedule_form', ScheduleForm()),
             'therapists_with_schedule': MassageTherapist.objects.filter(schedule__isnull=False).distinct(),
             'type_category_form': kwargs.get('type_category_form', TypeCategoryForm()),
+            'type_costom_category_form': kwargs.get('type_costom_category_form', TypeCategoryCustomForm()),
             'procedure_form': kwargs.get('procedure_form', ProcedureForm()),
         }
         context.update(kwargs)
@@ -348,6 +349,8 @@ class AdminMainPage(SuperUserRequiredMixin, View):
         elif 'update_type_category' in request.POST:
             type_category_id = request.POST.get('type_category_id')
             return self.update_type_category(request, type_category_id)
+        elif 'add_type_category' in request.POST:
+            return self.add_type_category(request)
         return self.get(request, *args, **kwargs)
 
 
@@ -456,6 +459,26 @@ class AdminMainPage(SuperUserRequiredMixin, View):
             return redirect('/admin-main-page/')
 
         context = self.get_context_data(type_category_update_form=type_category_update_form)
+        return render(request, self.template_name, context)
+    
+    # def add_type_category(self, request):
+    #     type_category_form = TypeCategoryForm(request.POST, request.FILES)
+    #     if type_category_form.is_valid():
+    #         type_category_form.save()
+    #         return redirect('/admin-main-page/')
+
+    #     context = self.get_context_data(type_category_form=type_category_form)
+    #     return render(request, self.template_name, context)
+    def add_type_category(self, request):
+        if request.method == 'POST':
+            type_category_form = TypeCategoryCustomForm(request.POST, request.FILES)
+            if type_category_form.is_valid():
+                type_category_form.save()
+                return redirect('/admin-main-page/')
+            else:
+                print("Файл не загружен или невалиден:", type_category_form.errors)
+
+        context = self.get_context_data(type_category_form=type_category_form)
         return render(request, self.template_name, context)
     
     def render_to_response(self, context, **response_kwargs):

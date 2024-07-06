@@ -1145,11 +1145,16 @@
                 .item_image {
                   overflow: hidden;
                   border-radius: 8px;
+                  width: 100%;
+                  height: 260px;
                   .TypeCategory_img {
                     width: 100%;
+                    height: 100%;
                     border-radius: 8px;
                     cursor: pointer;
                     transition: all 0.3s ease;
+                    object-fit: cover;
+                    object-position: center;
                     &:hover {
                       transform: scale(1.2);
                     }
@@ -1435,6 +1440,117 @@
               display: flex;
               flex-direction: column;
               width: 100%;
+              .type_category_add_form {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin-top: 20px;
+                .error {
+                  font-family: var(--font-family-Manrope);
+                  font-size: 13px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 19.5px;
+                  letter-spacing: 1.56px;
+                  text-transform: uppercase;
+                  color: red;
+                }
+                .add_custom-file-upload {
+                  width: 100%;
+                  height: 265px;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 8px;
+                  .add_custom-file-upload_block {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    width: 100%;
+                    height: 100%;
+                    backdrop-filter: blur(4px);
+                    .add_image_custom-button {
+                      border: medium none;
+                      background-image: none;
+                      background: transparent;
+                      background-color: transparent;
+                      color: var(--white-color);
+                      font-family: var(--font-family-Manrope);
+                      font-size: 24px;
+                      text-align: center;
+                      cursor: pointer;
+                    }
+                    .add_image_custom_text {
+                      margin-top: 15px;
+                      color: var(--white-color);
+                      font-family: var(--font-family-Manrope);
+                      font-size: 18px;
+                      text-align: center;
+                    }
+                  }
+                  .form-control-file {
+                    display: none;
+                  }
+                }
+                div {
+                  .form-control-name {
+                    width: 100%;
+                    margin-top: 10px;
+                    color: #000;
+                    font-family: "Playfair Display";
+                    font-size: 24px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                  }
+                  .form-control-description {
+                    margin-top: 20px;
+                    width: 100%;
+                    height: 130px;
+                    color: #000;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    resize: none;
+                  }
+                  .form-control-categories {
+                    width: 100%;
+                    margin-top: 10px;
+                    color: #000;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    resize: none;
+                  }
+                }
+                .add_type_category_input {
+                  width: 200px;
+                  margin-top: 20px;
+                  border: medium none;
+                  background-image: none;
+                  background: transparent;
+                  float: left;
+                  background-color: transparent;
+                  border: 2px solid #0c0c0c;
+                  padding: 15px 30px;
+                  color: #141414;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 13px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 19.5px;
+                  letter-spacing: 1.56px;
+                  text-transform: uppercase;
+                  cursor: pointer;
+                }
+              }
             }
           }
         }
