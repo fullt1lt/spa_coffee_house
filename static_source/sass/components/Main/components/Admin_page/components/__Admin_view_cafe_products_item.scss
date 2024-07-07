@@ -1,0 +1,574 @@
+.Admin_view_cafe_products_item {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  .CafeProducts_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    align-items: start;
+    justify-content: flex-start;
+    width: 80%;
+    .CafeProduct_item {
+      display: flex;
+      flex-direction: column;
+      border: 1px gray solid;
+      padding: 10px;
+      border-radius: 12px;
+      width: 45%;
+      background: #fff;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      .CafeProduct_wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        .CafeProduct_item_list {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          backface-visibility: hidden;
+          transition: all 0.5s ease;
+          .item_image {
+            overflow: hidden;
+            border-radius: 8px;
+            height: 220px;
+            .CafeProduct_img {
+              width: 100%;
+              height: 100%;
+              border-radius: 8px;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              &:hover {
+                transform: scale(1.2);
+              }
+            }
+          }
+          .item_header {
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            h2 {
+              color: #000;
+              font-family: "Playfair Display";
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+            }
+          }
+          .item_composition {
+            margin-top: 25px;
+            width: 100%;
+
+            span {
+              width: 100%;
+              word-wrap: break-word;
+              text-wrap: wrap;
+              color: #000;
+              font-family: Manrope;
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            }
+          }
+          .item_description {
+            margin-top: 25px;
+            width: 100%;
+
+            span {
+              width: 100%;
+              word-wrap: break-word;
+              text-wrap: wrap;
+              color: #000;
+              font-family: Manrope;
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            }
+          }
+          .admin_buttons {
+            margin-top: 20px;
+            display: flex;
+            .Update_CafeProduct_image {
+              width: 30px;
+              height: 30px;
+              cursor: pointer;
+            }
+            .Basket_CafeProduct_image {
+              margin-left: 30px;
+              width: 30px;
+              height: 30px;
+              cursor: pointer;
+            }
+          }
+        }
+        .CafeProduct_update_item_list {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: rotateY(180deg);
+          backface-visibility: hidden;
+          transition: all 0.5s ease;
+          .Cloose_image_item {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            .Cloose_cafe_product_image {
+              width: 15px;
+              height: 15px;
+              cursor: pointer;
+            }
+          }
+          .CafeProduct_update_item {
+            width: 100%;
+            height: 100%;
+            .CafeProduct_update_form {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              align-items: flex-start;
+              justify-content: space-between;
+              .item_image {
+                overflow: hidden;
+                border-radius: 8px;
+                width: 100%;
+                position: relative;
+                height: 160px;
+                .CafeProduct_img {
+                  width: 100%;
+                  height: 100%;
+                  filter: blur(4px);
+                }
+                .upload-button_list {
+                  top: -70%;
+                  position: relative;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 8px;
+                  color: var(--white-color);
+                  font-family: var(--font-family-Manrope);
+                  font-size: 24px;
+                  text-align: center;
+                  cursor: pointer;
+                }
+              }
+              .Name_and_price_cafe_product {
+                margin-top: 10px;
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                .label-form-control-cafe-product {
+                  color: #000;
+                  font-family: "Playfair Display";
+                  font-size: 24px;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: normal;
+                }
+                .form-control-cafe-product {
+                  color: #000;
+                  font-family: "Playfair Display";
+                  font-size: 24px;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: normal;
+                  width: 250px;
+                }
+                .form-control-cafe-price {
+                  color: #000;
+                  font-family: "Playfair Display";
+                  font-size: 24px;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: normal;
+                  width: 20%;
+                }
+              }
+              .description_cafe_product {
+                margin-top: 10px;
+                display: flex;
+                width: 100%;
+                justify-content: flex-start;
+                .form-control-cafe-description {
+                  color: #000;
+                  font-family: Manrope;
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                  resize: none;
+                  width: 100%;
+                  height: 60px;
+                }
+                .form-control-cafe-product {
+                  color: #000;
+                  font-family: Manrope;
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                }
+              }
+              .composition_cafe_product {
+                margin-top: 10px;
+                display: flex;
+                width: 100%;
+                justify-content: flex-start;
+                .form-control-cafe-product {
+                  color: #000;
+                  font-family: Manrope;
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                }
+                .form-control-cafe-composition {
+                  color: #000;
+                  font-family: Manrope;
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                  resize: none;
+                  width: 100%;
+                  height: 60px;
+                }
+              }
+              .type_cafe_product_list {
+                margin-top: 10px;
+                display: flex;
+                width: 100%;
+                justify-content: space-between;
+                .type_cafe_product_item {
+                  label {
+                    color: #000;
+                    font-family: Manrope;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                  }
+                  .form-control-type-cafe-product {
+                    color: #000;
+                    font-family: Manrope;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                  }
+                }
+                .update_cafe_product_input {
+                  border: 2px solid #0c0c0c;
+                  padding: 15px 30px;
+                  color: #141414;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 13px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 19.5px;
+                  letter-spacing: 1.56px;
+                  text-transform: uppercase;
+                  background-color: transparent;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+        .CafeProduct_delete_item_list {
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: #fff;
+          .CafeProduct_delete_item_header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            h2 {
+              text-align: center;
+              color: #000;
+              font-family: var(--font-family-Manrope);
+              font-size: 22px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+            }
+          }
+          .CafeProduct_delete_item_choice {
+            display: flex;
+            margin-top: 15px;
+            .delete_cafe_product_form {
+              .delete_cafe_product {
+                border: medium none;
+                background-image: none;
+                background: transparent;
+                background-color: transparent;
+                border: 2px solid #0c0c0c;
+                padding: 15px 30px;
+                color: #141414;
+                text-align: center;
+                font-family: var(--font-family-Manrope);
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 19.5px;
+                letter-spacing: 1.56px;
+                text-transform: uppercase;
+                cursor: pointer;
+              }
+            }
+            .cancel_delete_cafe_product {
+              margin-left: 40px;
+              border: 2px solid #0c0c0c;
+              padding: 15px 30px;
+              color: #141414;
+              text-align: center;
+              font-family: var(--font-family-Manrope);
+              font-size: 13px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 19.5px;
+              letter-spacing: 1.56px;
+              text-transform: uppercase;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+  .Add_CafeProduct_button_block {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    animation: 5s show ease;
+    cursor: pointer;
+  }
+  .Add_CafeProduct_block {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    width: 45%;
+    animation: 5s show ease;
+    .Add_CafeProduct_list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px gray solid;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 16px;
+      width: 100%;
+      box-shadow: 10px 5px 5px rgb(192, 192, 192);
+      .Add_CafeProduct_close_button_item {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        .Add_CafeProduct_close_button {
+          width: 15px;
+          height: 15px;
+          cursor: pointer;
+        }
+      }
+      .Add_CafeProduct_form_item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .cafe_product_add_form {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin-top: 20px;
+          .error {
+            font-family: var(--font-family-Manrope);
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 19.5px;
+            letter-spacing: 1.56px;
+            text-transform: uppercase;
+            color: red;
+          }
+          .add_custom-file-upload {
+            width: 100%;
+            height: 265px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            .add_custom-file-upload_block {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              width: 100%;
+              height: 100%;
+              backdrop-filter: blur(4px);
+              .add_image_custom-button {
+                border: medium none;
+                background-image: none;
+                background: transparent;
+                background-color: transparent;
+                color: var(--white-color);
+                font-family: var(--font-family-Manrope);
+                font-size: 24px;
+                text-align: center;
+                cursor: pointer;
+              }
+              .add_image_custom_text {
+                margin-top: 15px;
+                color: var(--white-color);
+                font-family: var(--font-family-Manrope);
+                font-size: 18px;
+                text-align: center;
+              }
+            }
+            .add-form-control-file-cafe-product {
+              display: none;
+            }
+          }
+          .Name_and_price_cafe_product {
+            margin-top: 10px;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            .label-form-control-cafe-product {
+              color: #000;
+              font-family: "Playfair Display";
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+            }
+            .add-form-control-cafe-product {
+              color: #000;
+              font-family: "Playfair Display";
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+              width: 250px;
+            }
+            .add-form-control-cafe-price {
+              color: #000;
+              font-family: "Playfair Display";
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+              width: 20%;
+            }
+          }
+          .description_cafe_product {
+            margin-top: 10px;
+            display: flex;
+            width: 100%;
+            justify-content: flex-start;
+            .add-form-control-cafe-description {
+              color: #000;
+              font-family: Manrope;
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              resize: none;
+              width: 100%;
+              height: 60px;
+            }
+            .add-form-control-cafe-product {
+              color: #000;
+              font-family: Manrope;
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            }
+          }
+          .composition_cafe_product {
+            margin-top: 10px;
+            display: flex;
+            width: 100%;
+            justify-content: flex-start;
+            .add-form-control-cafe-product {
+              color: #000;
+              font-family: Manrope;
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            }
+            .add-form-control-cafe-composition {
+              color: #000;
+              font-family: Manrope;
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              resize: none;
+              width: 100%;
+              height: 60px;
+            }
+          }
+          .add_type_cafe_product_list {
+            margin-top: 30px;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            .type_cafe_product_item {
+              label {
+                color: #000;
+                font-family: Manrope;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+              }
+              .add-form-control-type-cafe-product {
+                color: #000;
+                font-family: Manrope;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+              }
+            }
+            .add_cafe_product_input {
+              border: 2px solid #0c0c0c;
+              padding: 15px 30px;
+              color: #141414;
+              text-align: center;
+              font-family: var(--font-family-Manrope);
+              font-size: 13px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 19.5px;
+              letter-spacing: 1.56px;
+              text-transform: uppercase;
+              background-color: transparent;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}

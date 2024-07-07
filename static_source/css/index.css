@@ -2342,9 +2342,12 @@ a {
 .TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_image {
   overflow: hidden;
   border-radius: 8px;
+  width: 100%;
+  height: 260px;
 }
 .TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_image .TypeCafeCategories_img {
   width: 100%;
+  height: 100%;
   border-radius: 8px;
   cursor: pointer;
   -webkit-transition: all 0.3s ease;
@@ -4185,7 +4188,7 @@ a {
   cursor: pointer;
 }
 
-.Main_Spa_Categories_content {
+.Admin_Main_Spa_Categories_content {
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -4198,7 +4201,7 @@ a {
       -ms-flex-align: center;
           align-items: center;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4214,7 +4217,7 @@ a {
           justify-content: center;
   width: 100%;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4230,7 +4233,7 @@ a {
   -webkit-box-shadow: 10px 5px 5px rgb(192, 192, 192);
           box-shadow: 10px 5px 5px rgb(192, 192, 192);
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4241,7 +4244,7 @@ a {
   position: relative;
   width: 100%;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4255,11 +4258,11 @@ a {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_image {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_image {
   overflow: hidden;
   border-radius: 8px;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_image .Category_img {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_image .Category_img {
   width: 100%;
   border-radius: 8px;
   height: 265px;
@@ -4269,14 +4272,14 @@ a {
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_image .Category_img:hover {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_image .Category_img:hover {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_header {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_header {
   margin-top: 20px;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_header h2 {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_header h2 {
   color: #000;
   font-family: "Playfair Display";
   font-size: 24px;
@@ -4284,11 +4287,11 @@ a {
   font-weight: 600;
   line-height: normal;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_description {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_description {
   margin-top: 20px;
   height: 150px;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_description .item_description_text {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_description .item_description_text {
   color: #000;
   font-family: var(--font-family-Manrope);
   font-size: 18px;
@@ -4297,7 +4300,7 @@ a {
   line-height: normal;
   word-break: break-all;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_info {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4309,7 +4312,7 @@ a {
       -ms-flex-align: center;
           align-items: center;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_info a {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_info a {
   color: #000;
   font-family: var(--font-family-Manrope);
   font-size: 18px;
@@ -4317,7 +4320,7 @@ a {
   font-weight: 300;
   line-height: normal;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_info .Category_Link_Sign_Up {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_info .Category_Link_Sign_Up {
   border: 2px solid #0c0c0c;
   padding: 15px 30px;
   color: #141414;
@@ -4330,23 +4333,23 @@ a {
   letter-spacing: 1.56px;
   text-transform: uppercase;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .admin_buttons {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .admin_buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .admin_buttons .Update_image {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .admin_buttons .Update_image {
   width: 30px;
   height: 30px;
   cursor: pointer;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .admin_buttons .Basket_image {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .admin_buttons .Basket_image {
   margin-left: 30px;
   width: 30px;
   height: 30px;
   cursor: pointer;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4365,7 +4368,7 @@ a {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .Cloose_image_item {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .Cloose_image_item {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4374,17 +4377,17 @@ a {
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .Cloose_image_item .Cloose_image {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .Cloose_image_item .Cloose_image {
   width: 15px;
   height: 15px;
   cursor: pointer;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list {
   margin-top: 20px;
   width: 100%;
   height: 100%;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4400,13 +4403,13 @@ a {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .custom-file-upload {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .custom-file-upload {
   position: relative;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
   width: 100%;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .custom-file-upload .label_upload_block {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .custom-file-upload .label_upload_block {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -4427,13 +4430,13 @@ a {
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .custom-file-upload .label_upload_block .label_upload {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .custom-file-upload .label_upload_block .label_upload {
   color: var(--white-color);
   font-family: var(--font-family-Manrope);
   font-size: 24px;
   text-align: center;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .custom-file-upload .img-preview {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .custom-file-upload .img-preview {
   width: 100%;
   border-radius: 8px;
   height: 200px;
@@ -4441,7 +4444,7 @@ a {
      object-fit: cover;
   cursor: pointer;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .create_name {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .create_name {
   width: 100%;
   margin-top: 20px;
   color: #000;
@@ -4451,7 +4454,7 @@ a {
   font-weight: 600;
   line-height: normal;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .create_description {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .create_description {
   margin-top: 20px;
   width: 100%;
   height: 130px;
@@ -4463,7 +4466,7 @@ a {
   line-height: normal;
   resize: none;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .update_categories_input {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_update_item_list .categories_update_form_list .categories_update_form .update_categories_input {
   width: 200px;
   margin-top: 20px;
   border: medium none;
@@ -4484,7 +4487,7 @@ a {
   text-transform: uppercase;
   cursor: pointer;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list {
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -4501,7 +4504,7 @@ a {
   height: 100%;
   background-color: #fff;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_header {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4512,7 +4515,7 @@ a {
       -ms-flex-align: center;
           align-items: center;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_header h2 {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_header h2 {
   text-align: center;
   color: #000;
   font-family: var(--font-family-Manrope);
@@ -4521,13 +4524,13 @@ a {
   font-weight: 600;
   line-height: normal;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_choice {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_choice {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-top: 15px;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_choice .delete_categories_form .delete_categories {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_choice .delete_categories_form .delete_categories {
   border: medium none;
   background-image: none;
   background: transparent;
@@ -4545,7 +4548,7 @@ a {
   text-transform: uppercase;
   cursor: pointer;
 }
-.Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_choice .cancel_delete {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_delete_item_list .Categories_delete_item_choice .cancel_delete {
   margin-left: 40px;
   border: 2px solid #0c0c0c;
   padding: 15px 30px;
@@ -4560,7 +4563,7 @@ a {
   text-transform: uppercase;
   cursor: pointer;
 }
-.Main_Spa_Categories_content .Add_Categories_button_block {
+.Admin_Main_Spa_Categories_content .Add_Categories_button_block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4572,7 +4575,7 @@ a {
           animation: 5s show ease;
   cursor: pointer;
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block {
   display: none;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -4585,7 +4588,7 @@ a {
   -webkit-animation: 5s show ease;
           animation: 5s show ease;
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4604,7 +4607,7 @@ a {
   -webkit-box-shadow: 10px 5px 5px rgb(192, 192, 192);
           box-shadow: 10px 5px 5px rgb(192, 192, 192);
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_close_button_item {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_close_button_item {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4613,12 +4616,12 @@ a {
       -ms-flex-pack: end;
           justify-content: flex-end;
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_close_button_item .Add_Categories_close_button {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_close_button_item .Add_Categories_close_button {
   width: 15px;
   height: 15px;
   cursor: pointer;
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4628,7 +4631,7 @@ a {
           flex-direction: column;
   width: 100%;
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4639,7 +4642,7 @@ a {
   width: 100%;
   margin-top: 20px;
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .error {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .error {
   font-family: var(--font-family-Manrope);
   font-size: 13px;
   font-style: normal;
@@ -4649,7 +4652,7 @@ a {
   text-transform: uppercase;
   color: red;
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload {
   width: 100%;
   height: 265px;
   display: -webkit-box;
@@ -4667,7 +4670,7 @@ a {
           justify-content: center;
   border-radius: 8px;
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload .add_custom-file-upload_block {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload .add_custom-file-upload_block {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4686,7 +4689,7 @@ a {
   -webkit-backdrop-filter: blur(4px);
           backdrop-filter: blur(4px);
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload .add_custom-file-upload_block .add_image_custom-button {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload .add_custom-file-upload_block .add_image_custom-button {
   border: medium none;
   background-image: none;
   background: transparent;
@@ -4697,17 +4700,17 @@ a {
   text-align: center;
   cursor: pointer;
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload .add_custom-file-upload_block .add_image_custom_text {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload .add_custom-file-upload_block .add_image_custom_text {
   margin-top: 15px;
   color: var(--white-color);
   font-family: var(--font-family-Manrope);
   font-size: 18px;
   text-align: center;
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload .add_create_categories_image {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_custom-file-upload .add_create_categories_image {
   display: none;
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_create_name {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_create_name {
   width: 100%;
   margin-top: 10px;
   color: #000;
@@ -4717,7 +4720,7 @@ a {
   font-weight: 600;
   line-height: normal;
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_create_description {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_create_description {
   margin-top: 20px;
   width: 100%;
   height: 130px;
@@ -4729,7 +4732,7 @@ a {
   line-height: normal;
   resize: none;
 }
-.Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_categories_input {
+.Admin_Main_Spa_Categories_content .Add_Spa_Categories_block .Add_Spa_Categories_list .Add_Categories_form_item .categories_add_form .add_categories_input {
   width: 200px;
   margin-top: 20px;
   border: medium none;
@@ -5471,6 +5474,742 @@ a {
   line-height: 19.5px;
   letter-spacing: 1.56px;
   text-transform: uppercase;
+  cursor: pointer;
+}
+
+.Admin_view_cafe_products_item {
+  display: none;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Admin_view_cafe_products_item .CafeProducts_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  width: 80%;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px gray solid;
+  padding: 10px;
+  border-radius: 12px;
+  width: 45%;
+  background: #fff;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_item_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_item_list .item_image {
+  overflow: hidden;
+  border-radius: 8px;
+  height: 220px;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_item_list .item_image .CafeProduct_img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_item_list .item_image .CafeProduct_img:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_item_list .item_header {
+  width: 100%;
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_item_list .item_header h2 {
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_item_list .item_composition {
+  margin-top: 25px;
+  width: 100%;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_item_list .item_composition span {
+  width: 100%;
+  word-wrap: break-word;
+  text-wrap: wrap;
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_item_list .item_description {
+  margin-top: 25px;
+  width: 100%;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_item_list .item_description span {
+  width: 100%;
+  word-wrap: break-word;
+  text-wrap: wrap;
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_item_list .admin_buttons {
+  margin-top: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_item_list .admin_buttons .Update_CafeProduct_image {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_item_list .admin_buttons .Basket_CafeProduct_image {
+  margin-left: 30px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .Cloose_image_item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .Cloose_image_item .Cloose_cafe_product_image {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item {
+  width: 100%;
+  height: 100%;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .item_image {
+  overflow: hidden;
+  border-radius: 8px;
+  width: 100%;
+  position: relative;
+  height: 160px;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .item_image .CafeProduct_img {
+  width: 100%;
+  height: 100%;
+  -webkit-filter: blur(4px);
+          filter: blur(4px);
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .item_image .upload-button_list {
+  top: -70%;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 8px;
+  color: var(--white-color);
+  font-family: var(--font-family-Manrope);
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .Name_and_price_cafe_product {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .Name_and_price_cafe_product .label-form-control-cafe-product {
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .Name_and_price_cafe_product .form-control-cafe-product {
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 250px;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .Name_and_price_cafe_product .form-control-cafe-price {
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 20%;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .description_cafe_product {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .description_cafe_product .form-control-cafe-description {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  resize: none;
+  width: 100%;
+  height: 60px;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .description_cafe_product .form-control-cafe-product {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .composition_cafe_product {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .composition_cafe_product .form-control-cafe-product {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .composition_cafe_product .form-control-cafe-composition {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  resize: none;
+  width: 100%;
+  height: 60px;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .type_cafe_product_list {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .type_cafe_product_list .type_cafe_product_item label {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .type_cafe_product_list .type_cafe_product_item .form-control-type-cafe-product {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .type_cafe_product_list .update_cafe_product_input {
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  background-color: transparent;
+  cursor: pointer;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_delete_item_list {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_delete_item_list .CafeProduct_delete_item_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_delete_item_list .CafeProduct_delete_item_header h2 {
+  text-align: center;
+  color: #000;
+  font-family: var(--font-family-Manrope);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_delete_item_list .CafeProduct_delete_item_choice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 15px;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_delete_item_list .CafeProduct_delete_item_choice .delete_cafe_product_form .delete_cafe_product {
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  background-color: transparent;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_delete_item_list .CafeProduct_delete_item_choice .cancel_delete_cafe_product {
+  margin-left: 40px;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_button_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -webkit-animation: 5s show ease;
+          animation: 5s show ease;
+  cursor: pointer;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px;
+  width: 45%;
+  -webkit-animation: 5s show ease;
+          animation: 5s show ease;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px gray solid;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 16px;
+  width: 100%;
+  -webkit-box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_close_button_item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_close_button_item .Add_CafeProduct_close_button {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  margin-top: 20px;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .error {
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  color: red;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .add_custom-file-upload {
+  width: 100%;
+  height: 265px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 8px;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .add_custom-file-upload .add_custom-file-upload_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .add_custom-file-upload .add_custom-file-upload_block .add_image_custom-button {
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  background-color: transparent;
+  color: var(--white-color);
+  font-family: var(--font-family-Manrope);
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .add_custom-file-upload .add_custom-file-upload_block .add_image_custom_text {
+  margin-top: 15px;
+  color: var(--white-color);
+  font-family: var(--font-family-Manrope);
+  font-size: 18px;
+  text-align: center;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .add_custom-file-upload .add-form-control-file-cafe-product {
+  display: none;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .Name_and_price_cafe_product {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .Name_and_price_cafe_product .label-form-control-cafe-product {
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .Name_and_price_cafe_product .add-form-control-cafe-product {
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 250px;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .Name_and_price_cafe_product .add-form-control-cafe-price {
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  width: 20%;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .description_cafe_product {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .description_cafe_product .add-form-control-cafe-description {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  resize: none;
+  width: 100%;
+  height: 60px;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .description_cafe_product .add-form-control-cafe-product {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .composition_cafe_product {
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .composition_cafe_product .add-form-control-cafe-product {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .composition_cafe_product .add-form-control-cafe-composition {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  resize: none;
+  width: 100%;
+  height: 60px;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .add_type_cafe_product_list {
+  margin-top: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .add_type_cafe_product_list .type_cafe_product_item label {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .add_type_cafe_product_list .type_cafe_product_item .add-form-control-type-cafe-product {
+  color: #000;
+  font-family: Manrope;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Admin_view_cafe_products_item .Add_CafeProduct_block .Add_CafeProduct_list .Add_CafeProduct_form_item .cafe_product_add_form .add_type_cafe_product_list .add_cafe_product_input {
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  background-color: transparent;
   cursor: pointer;
 }
 

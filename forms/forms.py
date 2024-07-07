@@ -1,5 +1,5 @@
 from django import forms
-from myspa.models import CATEGORY_TIME, MassageTherapist, Position, Procedure, Review, Salon, Schedule, SpaUser, TypeCategories, SpaСategories
+from myspa.models import CATEGORY_TIME, CafeProduct, MassageTherapist, Position, Procedure, Review, Salon, Schedule, SpaUser, TypeCategories, SpaСategories
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError  
@@ -191,4 +191,32 @@ class ProcedureAddForm(forms.ModelForm):
             'type_category': 'Тип категорії',
             'duration': 'Тривалість',
             'price': 'Ціна',
+        }
+        
+
+class CafeProductForm(forms.ModelForm):
+    class Meta:
+        model = CafeProduct
+        fields = ['name', 'description', 'price', 'product_image', 'composition', 'type_cafe_product']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control-cafe-product', 'placeholder': 'Введите название'}),
+            'description': forms.Textarea(attrs={'class': 'form-control-cafe-description', 'placeholder': 'Введите описание'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control-cafe-price', 'placeholder': 'Введите цену'}),
+            'product_image': forms.FileInput(attrs={'class': 'form-control-file-cafe-product'}),
+            'composition': forms.Textarea(attrs={'class': 'form-control-cafe-composition', 'placeholder': 'Введите состав'}),
+            'type_cafe_product': forms.Select(attrs={'class': 'form-control-type-cafe-product'}),
+        }
+        
+
+class AddCafeProductForm(forms.ModelForm):
+    class Meta:
+        model = CafeProduct
+        fields = ['name', 'description', 'price', 'product_image', 'composition', 'type_cafe_product']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'add-form-control-cafe-product', 'placeholder': 'Введите название'}),
+            'description': forms.Textarea(attrs={'class': 'add-form-control-cafe-description', 'placeholder': 'Введите описание'}),
+            'price': forms.NumberInput(attrs={'class': 'add-form-control-cafe-price', 'placeholder': 'Введите цену'}),
+            'product_image': forms.FileInput(attrs={'class': 'add-form-control-file-cafe-product'}),
+            'composition': forms.Textarea(attrs={'class': 'add-form-control-cafe-composition', 'placeholder': 'Введите состав'}),
+            'type_cafe_product': forms.Select(attrs={'class': 'add-form-control-type-cafe-product'}),
         }

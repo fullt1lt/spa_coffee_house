@@ -56,6 +56,9 @@
                 <li class="Admin_navigations_item" id="procedure">
                     <span>Процедури</span>
                 </li>
+                <li class="Admin_navigations_item" id="cafe-products">
+                    <span>Кафе</span>
+                </li>
             </ul>
         </li>
         <li class="Admin_content">
@@ -122,7 +125,7 @@
                         </li>                       
                     </ul>
                 </li>
-                <li class="Main_Spa_Categories_content" id="categories-list">
+                <li class="Admin_Main_Spa_Categories_content" id="categories-list">
                     <div class="Main_headers">
                                 <h1>
                                     Категорiї
@@ -586,7 +589,182 @@
                             </ul>
                         </div>
                     </li>
-                    
+                <li class="Admin_view_cafe_products_item" id="cafe-products-list">
+                    <ul class="CafeProducts_list">
+                        {% for product in cafe_products %}
+                            <li class="CafeProduct_item">
+                                <div class="CafeProduct_wrapper">
+                                    <ul class="CafeProduct_item_list" id="cafe_product_front_{{ product.id }}">
+                                        <li class="item_image">
+                                            {% if product.product_image %}
+                                                <img src="{{ product.product_image.url }}" alt="" class="CafeProduct_img">
+                                            {% else %}
+                                                <img src="{% static 'icon/logo.svg' %}" alt="">
+                                            {% endif %}
+                                        </li>
+                                        <li class="item_header">
+                                            <h2>{{ product.name }}</h2>
+                                            <h2>{{ product.price }} грн</h2>
+                                        </li>
+                                        <li class="item_description">
+                                            <span>{{ product.description }}</span>
+                                        </li>
+                                        <li class="item_composition">
+                                            <span>{{ product.composition }}</span>
+                                        </li>
+                                        <li class="admin_buttons">
+                                            <img src="{% static 'icon/update_button.svg' %}" alt="" class="Update_CafeProduct_image" update-cafe_product-id="{{ product.id }}">
+                                            <img src="{% static 'icon/basket.svg' %}" alt="" class="Basket_CafeProduct_image" delete-cafe_product-id="{{ product.id }}">
+                                        </li>
+                                    </ul>
+                                    <ul class="CafeProduct_update_item_list" id="cafe_product_back_{{ product.id }}">
+                                        <li class="Cloose_image_item">
+                                            <img src="{% static 'icon/cloose.png' %}" alt="" class="Cloose_cafe_product_image" close-cafe-product-id="{{ product.id }}">
+                                        </li>
+                                        <li class="CafeProduct_update_item">
+                                            <form method="post" enctype="multipart/form-data" class="CafeProduct_update_form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="cafe_product_id" value="{{ product.id }}">
+                                                <li class="item_image">
+                                                    {% if product.product_image %}
+                                                        <img src="{{ product.product_image.url }}" alt="" class="CafeProduct_img">
+                                                    {% else %}
+                                                        <img src="{% static 'icon/logo.svg' %}" alt="" class="CafeProduct_img">
+                                                    {% endif %}
+                                                    <div class="upload-button_list">
+                                                        <label for="image-upload-{{ product.id }}" class="upload-button">Вибрати зображення</label>
+                                                        <input type="file" id="image-upload-{{ product.id }}" class="image-upload-input" name="product_image" style="display: none;">
+                                                        <span class="image-upload-filename">Файл не вибрано</span>
+                                                    </div>
+                                                </li>
+                                                <li class="Name_and_price_cafe_product">
+                                                    <label for="id_name" class="label-form-control-cafe-product">Назва:</label>
+                                                    {{ cafe_product_form.name }}
+                                                    {% if cafe_product_form.name.errors %}
+                                                        <div class="error">{{ cafe_product_form.name.errors }}</div>
+                                                    {% endif %}
+                                                    <label for="id_price" class="label-form-control-cafe-product">Ціна:</label>
+                                                    {{ cafe_product_form.price }}
+                                                    {% if cafe_product_form.price.errors %}
+                                                        <div class="error">{{ cafe_product_form.price.errors }}</div>
+                                                    {% endif %}
+                                                </li>
+                                            
+                                                <li class="description_cafe_product">
+                                                    <label for="id_description" class="form-control-cafe-product">Опис:</label>
+                                                    {{ cafe_product_form.description }}
+                                                    {% if cafe_product_form.description.errors %}
+                                                        <div class="error">{{ cafe_product_form.description.errors }}</div>
+                                                    {% endif %}
+                                                </li>
+                                                <li class="composition_cafe_product">
+                                                    <label for="id_composition" class="form-control-cafe-product">Склад:</label>
+                                                    {{ cafe_product_form.composition }}
+                                                    {% if cafe_product_form.composition.errors %}
+                                                        <div class="error">{{ cafe_product_form.composition.errors }}</div>
+                                                    {% endif %}
+                                                </li>
+                                            
+                                                <li class="type_cafe_product_list">
+                                                    <div class="type_cafe_product_item">
+                                                        <label for="id_type_cafe_product">Тип продукту:</label>
+                                                        {{ cafe_product_form.type_cafe_product }}
+                                                        {% if cafe_product_form.type_cafe_product.errors %}
+                                                        <div class="error">{{ cafe_product_form.type_cafe_product.errors }}</div>
+                                                        {% endif %}
+                                                    </div>
+                                                    <button type="submit" name="update_cafe_product" class="update_cafe_product_input">Оновити</button>
+                                                </li>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                    <ul class="CafeProduct_delete_item_list" id="cafe_product_delete_{{ product.id }}">
+                                        <li class="CafeProduct_delete_item_header">
+                                            <h2>Ви хочете видалити продукт?</h2>
+                                        </li>
+                                        <li class="CafeProduct_delete_item_choice">
+                                            <form method="post" action="{% url 'delete_cafe_product' product.pk %}" class="delete_cafe_product_form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="delete_id" value="{{ product.pk }}">
+                                                <input type="submit" value="Видалити" class="delete_cafe_product">
+                                            </form>
+                                            <span class="cancel_delete_cafe_product" cancel-delete-cafe-product-id="{{ product.id }}">Закрити</span>
+                                        </li> 
+                                    </ul>
+                                </div>
+                            </li>
+                            {% endfor %}
+                            <script src="{% static 'js/admin/cafe_products/flip_cafe_products.js' %}"></script>
+                            <script src="{% static 'js/admin/cafe_products/delete_cafe_product.js' %}"></script>
+                    </ul>
+                    <div class="Add_CafeProduct_button_block">
+                        <img src="{% static 'icon/add_button.png' %}" alt="" class="Add_CafeProduct_button" id="Add_CafeProduct_button">
+                    </div>
+                    <div class="Add_CafeProduct_block" id="Add_CafeProduct_block">
+                        <ul class="Add_CafeProduct_list">
+                            <li class="Add_CafeProduct_close_button_item">
+                                <img src="{% static 'icon/cloose.png' %}" alt="" class="Add_CafeProduct_close_button" id="Add_CafeProduct_close_button">
+                            </li>
+                            <li class="Add_CafeProduct_form_item">
+                                <form method="post" enctype="multipart/form-data" class="cafe_product_add_form" id="cafe_product-form">
+                                    {% csrf_token %}
+                                    {{ add_cafe_product_form.non_field_errors }}
+                                    <div class="add_custom-file-upload">
+                                        <div class="add_custom-file-upload_block">
+                                            <button type="button" id="cafe-product-custom-button" class="add_image_custom-button">Вибрати зображення</button>
+                                            <span id="cafe-product-custom-text" class="add_image_custom_text">Файл не вибрано</span>
+                                        </div>
+                                        {{ add_cafe_product_form.product_image }}
+                                    </div>
+                                    {% if add_cafe_product_form.product_image.errors %}
+                                        <div class="error">{{ add_cafe_product_form.product_image.errors }}</div>
+                                    {% endif %}
+                                    <li class="Name_and_price_cafe_product">
+                                        <label for="id_name" class="label-form-control-cafe-product">Назва:</label>
+                                        {{ cafe_product_form.name }}
+                                        {% if cafe_product_form.name.errors %}
+                                            <div class="error">{{ cafe_product_form.name.errors }}</div>
+                                        {% endif %}
+                                        <label for="id_price" class="label-form-control-cafe-product">Ціна:</label>
+                                        {{ cafe_product_form.price }}
+                                        {% if cafe_product_form.price.errors %}
+                                            <div class="error">{{ cafe_product_form.price.errors }}</div>
+                                        {% endif %}
+                                    </li>
+                                
+                                    <li class="description_cafe_product">
+                                        <label for="id_description" class="form-control-cafe-product">Опис:</label>
+                                        {{ add_cafe_product_form.description }}
+                                        {% if add_cafe_product_form.description.errors %}
+                                            <div class="error">{{ add_cafe_product_form.description.errors }}</div>
+                                        {% endif %}
+                                    </li>
+                                    <li class="composition_cafe_product">
+                                        <label for="id_composition" class="form-control-cafe-product">Склад:</label>
+                                        {{ add_cafe_product_form.composition }}
+                                        {% if add_cafe_product_form.composition.errors %}
+                                            <div class="error">{{ add_cafe_product_form.composition.errors }}</div>
+                                        {% endif %}
+                                    </li>
+                                
+                                    <li class="add_type_cafe_product_list">
+                                        <div class="type_cafe_product_item">
+                                            <label for="id_type_cafe_product">Тип продукту:</label>
+                                            {{ add_cafe_product_form.type_cafe_product }}
+                                            {% if add_cafe_product_form.type_cafe_product.errors %}
+                                            <div class="error">{{ add_cafe_product_form.type_cafe_product.errors }}</div>
+                                            {% endif %}
+                                        </div>
+                                        <button type="submit" name="add_cafe_product" class="add_cafe_product_input">Оновити</button>
+                                    </li>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <script src="{% static 'js/admin/cafe_products/file_input_cafe_products.js' %}"></script>
+                    <script src="{% static 'js/admin/cafe_products/add_cafe_products.js' %}"></script>
+                </li>
+
                 <script src="{% static 'js/admin/procedure/add_procedure.js' %}"></script>
                 <script src="{% static 'js/admin/procedure/procedures.js' %}"></script>
             </ul>
