@@ -6,7 +6,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const typecategoriesList = document.getElementById("type-categories-list");
   const procedureList = document.getElementById("procedure-list");
   const cafeproductsList = document.getElementById("cafe-products-list");
-  const typecafeproductsList = document.getElementById("type-cafe-products-list");
+  const typecafeproductsList = document.getElementById(
+    "type-cafe-products-list"
+  );
+  const galleryList = document.getElementById("gallery-list");
 
   navItems.forEach((item) => {
     item.addEventListener("click", function () {
@@ -25,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
         procedureList.style.display = "none";
         cafeproductsList.style.display = "none";
         typecafeproductsList.style.display = "none";
+        galleryList.style.display = "none";
       } else if (item.id === "categories") {
         scheduleList.style.display = "none";
         categoriesList.style.display = "flex";
@@ -33,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
         procedureList.style.display = "none";
         cafeproductsList.style.display = "none";
         typecafeproductsList.style.display = "none";
+        galleryList.style.display = "none";
       } else if (item.id === "therapist") {
         scheduleList.style.display = "none";
         categoriesList.style.display = "none";
@@ -41,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         procedureList.style.display = "none";
         cafeproductsList.style.display = "none";
         typecafeproductsList.style.display = "none";
+        galleryList.style.display = "none";
       } else if (item.id === "type-categories") {
         scheduleList.style.display = "none";
         categoriesList.style.display = "none";
@@ -49,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
         procedureList.style.display = "none";
         cafeproductsList.style.display = "none";
         typecafeproductsList.style.display = "none";
+        galleryList.style.display = "none";
       } else if (item.id === "procedure") {
         scheduleList.style.display = "none";
         categoriesList.style.display = "none";
@@ -57,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
         procedureList.style.display = "flex";
         cafeproductsList.style.display = "none";
         typecafeproductsList.style.display = "none";
+        galleryList.style.display = "none";
       } else if (item.id === "cafe-products") {
         scheduleList.style.display = "none";
         categoriesList.style.display = "none";
@@ -65,6 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         procedureList.style.display = "none";
         cafeproductsList.style.display = "flex";
         typecafeproductsList.style.display = "none";
+        galleryList.style.display = "none";
       } else if (item.id === "type-cafe-products") {
         scheduleList.style.display = "none";
         categoriesList.style.display = "none";
@@ -73,6 +82,16 @@ document.addEventListener("DOMContentLoaded", function () {
         procedureList.style.display = "none";
         cafeproductsList.style.display = "none";
         typecafeproductsList.style.display = "flex";
+        galleryList.style.display = "none";
+      } else if (item.id === "gallery") {
+        scheduleList.style.display = "none";
+        categoriesList.style.display = "none";
+        therapistList.style.display = "none";
+        typecategoriesList.style.display = "none";
+        procedureList.style.display = "none";
+        cafeproductsList.style.display = "none";
+        typecafeproductsList.style.display = "none";
+        galleryList.style.display = "flex";
       }
     });
   });

@@ -6641,6 +6641,429 @@ a {
   cursor: pointer;
 }
 
+.Admin_view_gallery_item {
+  display: none;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Admin_view_gallery_item .Gallery_list {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: start;
+  gap: 20px;
+  padding: 20px;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border: 1px gray solid;
+  padding: 10px;
+  border-radius: 12px;
+  width: 305px;
+  background: #fff;
+  -webkit-box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_item_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_item_list .item_image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_item_list .item_image .Gallery_img {
+  width: 305px;
+  height: 326px;
+  border: 4px solid #000;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_item_list .item_name_delete_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 20px;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_item_list .item_name_delete_list .item_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_item_list .item_name_delete_list .item_header h2 {
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_item_list .item_name_delete_list .admin_gallery_buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_item_list .item_name_delete_list .admin_gallery_buttons .Basket_Gallery_image {
+  margin-left: 30px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_delete_item_list {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 320px;
+  height: 100%;
+  background-color: #fff;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_delete_item_list .Gallery_delete_item_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_delete_item_list .Gallery_delete_item_header h2 {
+  text-align: center;
+  color: #000;
+  font-family: var(--font-family-Manrope);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_delete_item_list .Gallery_delete_item_choice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 15px;
+  width: 100%;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_delete_item_list .Gallery_delete_item_choice .delete_gallery_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_delete_item_list .Gallery_delete_item_choice .delete_gallery_form .delete_gallery {
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  background-color: transparent;
+  border: 2px solid #0c0c0c;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+}
+.Admin_view_gallery_item .Gallery_list .Gallery_item .Gallery_wrapper .Gallery_delete_item_list .Gallery_delete_item_choice .cancel_delete_gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 20px;
+  border: 2px solid #0c0c0c;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  width: 150px;
+  height: 50px;
+  cursor: pointer;
+}
+.Admin_view_gallery_item .Add_Gallery_button_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  -webkit-animation: 5s show ease;
+          animation: 5s show ease;
+  cursor: pointer;
+}
+.Admin_view_gallery_item .Add_Gallery_block {
+  display: none;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px;
+  width: 30%;
+  -webkit-animation: 5s show ease;
+          animation: 5s show ease;
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px gray solid;
+  padding: 10px;
+  background-color: #fff;
+  border-radius: 16px;
+  width: 100%;
+  -webkit-box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list .Add_Gallery_close_button_item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list .Add_Gallery_close_button_item .Add_Gallery_close_button {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list .Add_Gallery_form_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list .Add_Gallery_form_item .gallery_add_form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list .Add_Gallery_form_item .gallery_add_form .add_custom-file-upload {
+  width: 100%;
+  height: 265px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 8px;
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list .Add_Gallery_form_item .gallery_add_form .add_custom-file-upload .add_custom-file-upload_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list .Add_Gallery_form_item .gallery_add_form .add_custom-file-upload .add_custom-file-upload_block .add_image_custom-button {
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  background-color: transparent;
+  color: var(--white-color);
+  font-family: var(--font-family-Manrope);
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list .Add_Gallery_form_item .gallery_add_form .add_custom-file-upload .add_custom-file-upload_block .add_image_custom_text {
+  margin-top: 15px;
+  color: var(--white-color);
+  font-family: var(--font-family-Manrope);
+  font-size: 18px;
+  text-align: center;
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list .Add_Gallery_form_item .gallery_add_form .add_custom-file-upload .form-control-file-gallery {
+  display: none;
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list .Add_Gallery_form_item .gallery_add_form .item_type_gallery {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list .Add_Gallery_form_item .gallery_add_form .item_type_gallery .label-form-control-gallery {
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list .Add_Gallery_form_item .gallery_add_form .item_type_gallery .form-control-type-gallery {
+  color: #000;
+  font-family: "Playfair Display";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list .Add_Gallery_form_item .gallery_add_form .add_gallery_input_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.Admin_view_gallery_item .Add_Gallery_block .Add_Gallery_list .Add_Gallery_form_item .gallery_add_form .add_gallery_input_item .add_gallery_input {
+  width: 200px;
+  margin-top: 20px;
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  float: left;
+  background-color: transparent;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 .Admin_block_content_list {
   width: 100%;
   display: -webkit-box;

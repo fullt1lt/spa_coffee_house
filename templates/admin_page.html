@@ -62,6 +62,9 @@
                 <li class="Admin_navigations_item" id="type-cafe-products">
                     <span>Тип товарів кафе</span>
                 </li>
+                <li class="Admin_navigations_item" id="gallery">
+                    <span>Галерея</span>
+                </li>
             </ul>
         </li>
         <li class="Admin_content">
@@ -864,7 +867,82 @@
                     <script src="{% static 'js/admin/type_cafe_products/delete_type_cafe_product.js' %}"></script>
                     <script src="{% static 'js/admin/type_cafe_products/add_type_cafe_product.js' %}"></script>
                 </li>
-
+                <li class="Admin_view_gallery_item" id="gallery-list">
+                    <ul class="Gallery_list">
+                        {% for gallery in galleries %}
+                            <li class="Gallery_item">
+                                <div class="Gallery_wrapper">
+                                    <ul class="Gallery_item_list" id="gallery_front_{{ gallery.id }}">
+                                        <li class="item_image">
+                                            {% if gallery.gallery_image %}
+                                                <img src="{{ gallery.gallery_image.url }}" alt="" class="Gallery_img">
+                                            {% else %}
+                                                <img src="{% static 'icon/no_image_available.png' %}" alt="">
+                                            {% endif %}
+                                        </li>
+                                        <ul class="item_name_delete_list">
+                                            <li class="item_header">
+                                                <h2>{{ gallery.type_gallery.name }}</h2>
+                                            </li>
+                                            <li class="admin_gallery_buttons">
+                                                <img src="{% static 'icon/basket.svg' %}" alt="" class="Basket_Gallery_image" delete-gallery-id="{{ gallery.id }}">
+                                            </li>
+                                        </ul>
+                                    </ul>
+                                    <ul class="Gallery_delete_item_list" id="gallery_delete_{{ gallery.id }}">
+                                        <li class="Gallery_delete_item_header">
+                                            <h2>Ви хочете видалити зображення?</h2>
+                                        </li>
+                                        <li class="Gallery_delete_item_choice">
+                                            <form method="post" action="{% url 'delete_gallery' gallery.id %}" class="delete_gallery_form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="delete_id" value="{{ gallery.id }}">
+                                                <input type="submit" value="Видалити" class="delete_gallery">
+                                            </form>
+                                            <span class="cancel_delete_gallery" cancel-delete-gallery-id="{{ gallery.id }}">Закрити</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="Add_Gallery_button_block">
+                        <img src="{% static 'icon/add_button.png' %}" alt="" class="Add_Gallery_button" id="Add_Gallery_button">
+                    </div>
+                    <div class="Add_Gallery_block" id="Add_Gallery_block">
+                        <ul class="Add_Gallery_list">
+                            <li class="Add_Gallery_close_button_item">
+                                <img src="{% static 'icon/cloose.png' %}" alt="" class="Add_Gallery_close_button" id="Add_Gallery_close_button">
+                            </li>
+                            <li class="Add_Gallery_form_item">
+                                <form method="post" enctype="multipart/form-data" class="gallery_add_form" id="gallery-form">
+                                    {% csrf_token %}
+                                    {{ add_gallery_form.non_field_errors }}
+                                    <div class="add_custom-file-upload">
+                                        <div class="add_custom-file-upload_block">
+                                            <button type="button" id="gallery-custom-button" class="add_image_custom-button">Вибрати зображення</button>
+                                            <span id="gallery-custom-text" class="add_image_custom_text">Файл не вибрано</span>
+                                        </div>
+                                        {{ add_gallery_form.gallery_image }}
+                                    </div>
+                                    <li class="item_type_gallery">
+                                        <label for="id_type_gallery" class="label-form-control-gallery">Тип галереї:</label>
+                                        {{ add_gallery_form.type_gallery }}
+                                        {% if add_gallery_form.type_gallery.errors %}
+                                            <div class="error">{{ add_gallery_form.type_gallery.errors }}</div>
+                                        {% endif %}
+                                    </li>
+                                    <li class="add_gallery_input_item">
+                                        <button type="submit" name="add_gallery" class="add_gallery_input">Додати</button>
+                                    </li>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <script src="{% static 'js/admin/gallery/delete_gallery.js' %}"></script>
+                    <script src="{% static 'js/admin/gallery/add_gallery.js' %}"></script>
+                    <script src="{% static 'js/admin/gallery/file_gallery.js' %}"></script>
+                </li>
                 <script src="{% static 'js/admin/procedure/add_procedure.js' %}"></script>
                 <script src="{% static 'js/admin/procedure/procedures.js' %}"></script>
             </ul>

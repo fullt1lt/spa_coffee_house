@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.contrib.auth import login, authenticate
-from forms.forms import AddCafeProductForm, AddTypeCafeProductForm, CafeProductForm, CategoriesAddForm, CategoriesUpdateForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureAddForm, ProcedureEditForm, ProcedureForm, RegisterUserForm, ReviewForm, ScheduleForm, TherapistForm, TypeCategoryCustomForm, TypeCategoryForm, UpdateTypeCafeProductForm
+from forms.forms import AddCafeProductForm, AddGalleryForm, AddTypeCafeProductForm, CafeProductForm, CategoriesAddForm, CategoriesUpdateForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureAddForm, ProcedureEditForm, ProcedureForm, RegisterUserForm, ReviewForm, ScheduleForm, TherapistForm, TypeCategoryCustomForm, TypeCategoryForm, UpdateTypeCafeProductForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DeleteView, UpdateView, CreateView
 from django.utils.decorators import method_decorator
@@ -187,6 +187,10 @@ class DeleteCafeProductView(SuperUserRequiredMixin, DeleteView):
 class DeleteTypeCafeProductView(SuperUserRequiredMixin, DeleteView):
     model = TypeCafeProduct
     success_url = '/admin-main-page/'
+    
+class DeleteGalleryView(SuperUserRequiredMixin, DeleteView):
+    model = Gallery
+    success_url = '/admin-main-page/'
 
 
 class TypeCategoriesListView(ListView):
@@ -330,6 +334,8 @@ class AdminMainPage(SuperUserRequiredMixin, View):
             'type_cafe_product_form': kwargs.get('type_cafe_product_form', UpdateTypeCafeProductForm()),
             'add_type_cafe_product_form': kwargs.get('add_type_cafe_product_form', AddTypeCafeProductForm()),
             'type_cafe_products': TypeCafeProduct.objects.all(),
+            'add_gallery_form': AddGalleryForm(),
+            'galleries': Gallery.objects.all().order_by('type_gallery'),
         }
         context.update(kwargs)
         context.update(self.get_type_categories_data())
@@ -388,6 +394,8 @@ class AdminMainPage(SuperUserRequiredMixin, View):
         elif 'update_type_cafe_product' in request.POST:
             type_cafe_product_id = request.POST.get('type_cafe_product_id')
             return self.update_type_cafe_product(request, type_cafe_product_id)
+        elif 'add_gallery' in request.POST:
+            return self.add_gallery(request)
         return self.get(request, *args, **kwargs)
 
 
@@ -565,6 +573,15 @@ class AdminMainPage(SuperUserRequiredMixin, View):
             return redirect('/admin-main-page/')
 
         context = self.get_context_data(type_cafe_product_form=type_cafe_product_form)
+        return render(request, self.template_name, context)
+    
+    def add_gallery(self, request):
+        add_gallery_form = AddGalleryForm(request.POST, request.FILES)
+        if add_gallery_form.is_valid():
+            add_gallery_form.save()
+            return redirect('/admin-main-page/')
+        
+        context = self.get_context_data(add_gallery_form=add_gallery_form)
         return render(request, self.template_name, context)
 
     def render_to_response(self, context, **response_kwargs):

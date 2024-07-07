@@ -1,0 +1,286 @@
+.Admin_view_gallery_item {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  .Gallery_list {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: start;
+    gap: 20px;
+    padding: 20px;
+    .Gallery_item {
+      display: flex;
+      flex-direction: column;
+      border: 1px gray solid;
+      padding: 10px;
+      border-radius: 12px;
+      width: 305px;
+      background: #fff;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      .Gallery_wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        align-items: center;
+        .Gallery_item_list {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          transition: all 0.5s ease;
+          backface-visibility: hidden;
+          .item_image {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            align-items: center;
+            .Gallery_img {
+              width: 305px;
+              height: 326px;
+              border: 4px solid #000;
+              cursor: pointer;
+              transition: all 0.3s ease;
+            }
+          }
+          .item_name_delete_list {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+            .item_header {
+              display: flex;
+              h2 {
+                color: #000;
+                font-family: "Playfair Display";
+                font-size: 24px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+              }
+            }
+            .admin_gallery_buttons {
+              display: flex;
+              .Basket_Gallery_image {
+                margin-left: 30px;
+                width: 30px;
+                height: 30px;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+        .Gallery_delete_item_list {
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          width: 320px;
+          height: 100%;
+          background-color: #fff;
+          .Gallery_delete_item_header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            h2 {
+              text-align: center;
+              color: #000;
+              font-family: var(--font-family-Manrope);
+              font-size: 22px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+            }
+          }
+          .Gallery_delete_item_choice {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 15px;
+            width: 100%;
+            .delete_gallery_form {
+              display: flex;
+              align-items: center;
+              .delete_gallery {
+                border: medium none;
+                background-image: none;
+                background: transparent;
+                background-color: transparent;
+                border: 2px solid #0c0c0c;
+                color: #141414;
+                text-align: center;
+                font-family: var(--font-family-Manrope);
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 19.5px;
+                letter-spacing: 1.56px;
+                text-transform: uppercase;
+                width: 150px;
+                height: 50px;
+                cursor: pointer;
+              }
+            }
+            .cancel_delete_gallery {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              margin-top: 20px;
+              border: 2px solid #0c0c0c;
+              color: #141414;
+              text-align: center;
+              font-family: var(--font-family-Manrope);
+              font-size: 13px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 19.5px;
+              letter-spacing: 1.56px;
+              text-transform: uppercase;
+              width: 150px;
+              height: 50px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+  .Add_Gallery_button_block {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    animation: 5s show ease;
+    cursor: pointer;
+  }
+  .Add_Gallery_block {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    width: 30%;
+    animation: 5s show ease;
+    .Add_Gallery_list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px gray solid;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 16px;
+      width: 100%;
+      box-shadow: 10px 5px 5px rgb(192, 192, 192);
+      .Add_Gallery_close_button_item {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        .Add_Gallery_close_button {
+          width: 15px;
+          height: 15px;
+          cursor: pointer;
+        }
+      }
+      .Add_Gallery_form_item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .gallery_add_form {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          .add_custom-file-upload {
+            width: 100%;
+            height: 265px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            .add_custom-file-upload_block {
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              width: 100%;
+              height: 100%;
+              backdrop-filter: blur(4px);
+              .add_image_custom-button {
+                border: medium none;
+                background-image: none;
+                background: transparent;
+                background-color: transparent;
+                color: var(--white-color);
+                font-family: var(--font-family-Manrope);
+                font-size: 24px;
+                text-align: center;
+                cursor: pointer;
+              }
+              .add_image_custom_text {
+                margin-top: 15px;
+                color: var(--white-color);
+                font-family: var(--font-family-Manrope);
+                font-size: 18px;
+                text-align: center;
+              }
+            }
+            .form-control-file-gallery {
+              display: none;
+            }
+          }
+          .item_type_gallery {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            .label-form-control-gallery {
+              color: #000;
+              font-family: "Playfair Display";
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+            }
+            .form-control-type-gallery {
+              color: #000;
+              font-family: "Playfair Display";
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+            }
+          }
+          .add_gallery_input_item {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            .add_gallery_input {
+              width: 200px;
+              margin-top: 20px;
+              border: medium none;
+              background-image: none;
+              background: transparent;
+              float: left;
+              background-color: transparent;
+              border: 2px solid #0c0c0c;
+              padding: 15px 30px;
+              color: #141414;
+              text-align: center;
+              font-family: var(--font-family-Manrope);
+              font-size: 13px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 19.5px;
+              letter-spacing: 1.56px;
+              text-transform: uppercase;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}
