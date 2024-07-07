@@ -53,6 +53,9 @@
                 <li class="Admin_navigations_item" id="type-categories">
                     <span>Тип категорії</span>
                 </li>
+                <li class="Admin_navigations_item" id="procedure">
+                    <span>Процедури</span>
+                </li>
             </ul>
         </li>
         <li class="Admin_content">
@@ -456,8 +459,8 @@
                                         </li>
                                     </ul>
                                 </div>
-                                <script src="{% static 'js/admin/delete_type_category.js' %}"></script>
-                                <script src="{% static 'js/admin/flip_type_categories.js' %}"></script>
+                                <script src="{% static 'js/admin/type_categories/delete_type_category.js' %}"></script>
+                                <script src="{% static 'js/admin/type_categories/flip_type_categories.js' %}"></script>
                             </li>
                         {% endfor %}
                     </ul>
@@ -504,30 +507,88 @@
                                     <input type="submit" value="Додати" name="add_type_category" class="add_type_category_input">
                                 </form>
                             </li>
-
-                            <script>
-                                document.addEventListener("DOMContentLoaded", function() {
-                                    const customButton = document.getElementById("type-category-custom-button");
-                                    const fileInput = document.getElementById("custom_file_input");
-                                    const customText = document.getElementById("type-category-custom-text");
-                                
-                                    customButton.addEventListener("click", function() {
-                                        fileInput.click();
-                                    });
-                                
-                                    fileInput.addEventListener("change", function() {
-                                        if (this.files.length > 0) {
-                                            const fileName = this.files[0].name;
-                                            customText.textContent = fileName;
-                                        } else {
-                                        }
-                                    });
-                                });
-                            </script>
                         </ul>
                     </div>
-                    <script src="{% static 'js/admin/add_type_categories.js' %}"></script>
+                    <script src="{% static 'js/admin/type_categories/file_input_typecategories.js' %}"></script>
+                    <script src="{% static 'js/admin/type_categories/add_type_categories.js' %}"></script>
                 </li>
+                <li class="Admin_view_procedure_item" id="procedure-list">
+                    <ul class="Procedures_list">
+                        {% for procedure in procedures %}
+                            <li class="Procedure_item">
+                                <div class="spa_procedure_wrapper">
+                                    <ul class="Procedure_item_list" id="procedure_front_{{procedure.id}}">
+                                        <li class="item_header">
+                                            <h2>{{ procedure.type_category.name }}</h2>
+                                        </li>
+                                        <li class="item_duration">
+                                            <span>Тривалість: {{ procedure.get_duration_display }} хв</span>
+                                        </li>
+                                        <li class="item_price">
+                                            <span>Цiна: {{ procedure.price }} грн</span>
+                                        </li>
+                                        <li class="admin_buttons">
+                                            <img src="{% static 'icon/update_button.svg' %}" alt="" class="Update_Procedure_image" update-procedure-id="{{ procedure.id }}">
+                                            <img src="{% static 'icon/basket.svg' %}" alt="" class="Basket_procedure_image" delete-procedure-id="{{ procedure.id }}">
+                                        </li>
+                                    </ul>
+                                    <ul class="Procedure_update_item_list" id="procedure_back_{{ procedure.id }}">
+                                        <li class="Cloose_image_item">
+                                            <img src="{% static 'icon/cloose.png' %}" alt="" class="Cloose_procedure_image" close-procedure-id="{{ procedure.id }}">
+                                        </li>
+                                        <li class="Procedure_update_item">
+                                            <form method="post" class="Procedure_update_form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="procedure_id" value="{{ procedure.id }}">
+                                                {{ procedure_form.as_p }}
+                                                <li class="item_update">
+                                                    <button type="submit" name="update_procedure" class="update_procedure_input">Оновити</button>
+                                                </li>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                    <ul class="Procedure_delete_item_list" id="procedure_delete_{{ procedure.id }}">
+                                        <li class="Procedure_delete_item_header">
+                                            <h2>Ви хочете видалити процедуру?</h2>
+                                        </li>
+                                        <li class="Procedure_delete_item_choice">
+                                            <form method="post" action="{% url 'procedure_delete' procedure.id %}" class="delete_procedure_form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="delete_id" value="{{ procedure.id }}">
+                                                <input type="submit" value="Видалити" class="delete_procedure">
+                                            </form>
+                                            <span class="cancel_delete_procedure" cancel-delete-procedure-id="{{ procedure.id }}">Закрити</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <script src="{% static 'js/admin/procedure/delete_procedure.js' %}"></script>
+                                <script src="{% static 'js/admin/procedure/flip_procedures.js' %}"></script>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <div class="Add_Procedures_button_block">
+                            <img src="{% static 'icon/add_button.png' %}" alt="" class="Add_Procedures_button" id="Add_Procedures_button">
+                        </div>
+                        <div class="Add_Procedures_block" id="Add_Procedures_block">
+                            <ul class="Add_Procedures_list">
+                                <li class="Add_Procedures_close_button_item">
+                                    <img src="{% static 'icon/cloose.png' %}" alt="" class="Add_Procedures_close_button" id="Add_Procedures_close_button">
+                                </li>
+                                <li class="Add_Procedures_form_item">
+                                    <form method="post" class="procedures_add_form" id="procedures-form">
+                                        {% csrf_token %}
+                                        {{ procedure_add_form.as_p }}
+                                        <div class="add_procedure_input_block">
+                                            <input type="submit" value="Додати" name="add_procedure" class="add_procedure_input">
+                                        </div>
+                                    </form>
+                            </li>
+                            </ul>
+                        </div>
+                    </li>
+                    
+                <script src="{% static 'js/admin/procedure/add_procedure.js' %}"></script>
+                <script src="{% static 'js/admin/procedure/procedures.js' %}"></script>
             </ul>
         </li>
     </ul>
@@ -535,7 +596,7 @@
         <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/uk.js"></script>
         <script src="{% static 'js/admin/calendar.js' %}"></script>
         <script src="{% static 'js/admin/create_time.js' %}"></script>
-        <script src="{% static 'js/admin/schedule_list.js' %}"></script>
-        <script src="{% static 'js/admin/add_schedule.js' %}"></script>
+        <script src="{% static 'js/admin/schedule/schedule_list.js' %}"></script>
+        <script src="{% static 'js/admin/schedule/add_schedule.js' %}"></script>
         <script src="{% static 'js/admin/navigaton_list.js' %}"></script>
 {% endblock %}

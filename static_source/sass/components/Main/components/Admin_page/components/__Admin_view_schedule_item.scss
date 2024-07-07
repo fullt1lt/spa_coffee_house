@@ -1,0 +1,202 @@
+.Admin_view_schedule_item {
+  display: flex;
+  width: 100%;
+  height: 50vh;
+  .Admin_view_schedule__list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .Admin_view_schedule {
+      // display: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      select {
+        display: flex;
+        width: 400px;
+        margin-top: 30px;
+        padding: 15px 16px;
+        align-items: center;
+        gap: 16px;
+        border-radius: 5px;
+        border: 1px solid #030303;
+        color: #181719;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: 0.16px;
+      }
+      .therapist-schedule_block {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .schedule-list-items::-webkit-scrollbar {
+          width: 1px;
+          background-color: #f9f9fd;
+        }
+        .schedule-list-items::-webkit-scrollbar-thumb {
+          border-radius: 5px;
+          background-color: rgba(149, 154, 138, 0.8);
+        }
+        .schedule-list-items::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+          border-radius: 5px;
+          background-color: #f9f9fd;
+        }
+        .schedule-list-items {
+          display: flex;
+          margin-top: 30px;
+          border: 1px gray solid;
+          padding: 10px;
+          overflow-x: auto;
+          background-color: #fff;
+          border-radius: 16px;
+          font-family: var(--font-family-Manrope);
+          width: 80%;
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          animation: 5s show ease;
+          .schedule-list-item {
+            display: flex;
+            width: 100px;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            margin-right: 5px;
+            background-color: rgba(149, 154, 138, 0.8);
+            margin-top: 10px;
+            border-radius: 8px;
+            padding: 5px;
+            color: #181719;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 22px;
+            letter-spacing: 0.16px;
+            .schedule-date {
+              text-align: center;
+              font-size: 18px;
+              font-weight: 600;
+            }
+            .schedule-time-list {
+              display: flex;
+              justify-content: space-between;
+              width: 100%;
+              margin-top: 5px;
+              .schedule-time-item {
+                padding: 5px;
+                border: 1px solid #0c0c0c;
+                text-align: center;
+                border-radius: 5px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .Add_schedule_button_block {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 30px;
+      animation: 5s show ease;
+      cursor: pointer;
+    }
+    .Admin_create_schedule {
+      display: none;
+      width: 380px;
+      flex-direction: column;
+      align-items: center;
+      border: 1px gray solid;
+      padding: 5px;
+      background-color: #fff;
+      border-radius: 8px;
+      font-family: var(--font-family-Manrope);
+      box-shadow: 10px 5px 5px rgb(192, 192, 192);
+      animation: 5s show ease;
+      .Add_schedule_close_button_block {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        .Add_schedule_close_button {
+          width: 15px;
+          height: 15px;
+          cursor: pointer;
+        }
+      }
+      #calendar-container {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 20px;
+        .calendar_input {
+          color: #000;
+          font-family: var(--font-family-Manrope);
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+      .schedule-form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        select {
+          color: #000;
+          font-family: var(--font-family-Manrope);
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+        .time_list {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          margin-top: 20px;
+          .time_item {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            input {
+              width: 80px;
+              font-size: 18px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              color: #000;
+              font-family: var(--font-family-Manrope);
+            }
+          }
+        }
+        .create_schedule_block_button {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          margin-top: 20px;
+          .create_schedule_button {
+            border: 2px solid #0c0c0c;
+            padding: 15px 30px;
+            color: #141414;
+            text-align: center;
+            font-family: var(--font-family-Manrope);
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 19.5px;
+            letter-spacing: 1.56px;
+            text-transform: uppercase;
+            cursor: pointer;
+            // width: 200px;
+            background-color: transparent;
+          }
+        }
+      }
+    }
+  }
+}

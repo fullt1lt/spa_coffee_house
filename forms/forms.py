@@ -1,5 +1,5 @@
 from django import forms
-from myspa.models import MassageTherapist, Position, Procedure, Review, Salon, Schedule, SpaUser, TypeCategories, SpaСategories
+from myspa.models import CATEGORY_TIME, MassageTherapist, Position, Procedure, Review, Salon, Schedule, SpaUser, TypeCategories, SpaСategories
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError  
@@ -142,6 +142,7 @@ class TypeCategoryForm(forms.ModelForm):
             'categories': forms.Select(attrs={'class': 'form-control-categories'}),
         }
         
+  
 class TypeCategoryCustomForm(forms.ModelForm):
     class Meta:
         model = TypeCategories
@@ -151,4 +152,43 @@ class TypeCategoryCustomForm(forms.ModelForm):
             'description': forms.Textarea(attrs={'class': 'form-control-description', 'placeholder': 'Введіть опис'}),
             'type_categories_image': forms.FileInput(attrs={'class': 'form-control-file', 'id': 'custom_file_input', 'name': 'custom_type_categories_image'}),
             'categories': forms.Select(attrs={'class': 'form-control-categories'}),
+        }
+        
+        
+
+class ProcedureEditForm(forms.ModelForm):
+    class Meta:
+        model = Procedure
+        fields = ['duration', 'price']
+        widgets = {
+            'duration': forms.Select(attrs={'class': 'form-input', 'id': 'id_duration', 'placeholder': 'Тривалість'}),
+            'price': forms.NumberInput(attrs={'class': 'form-input', 'id': 'id_price', 'placeholder': 'Ціна'}),
+        }
+
+    duration = forms.ChoiceField(
+        label='Тривалість',
+        choices=CATEGORY_TIME,
+        widget=forms.Select(attrs={'class': 'form-input', 'id': 'id_duration'})
+    )
+    price = forms.DecimalField(
+        label='Ціна',
+        max_digits=10,
+        decimal_places=2,
+        widget=forms.NumberInput(attrs={'class': 'form-input', 'id': 'id_price', 'placeholder': 'Ціна'})
+    )
+        
+
+class ProcedureAddForm(forms.ModelForm):
+    class Meta:
+        model = Procedure
+        fields = ['type_category', 'duration', 'price']
+        widgets = {
+            'type_category': forms.Select(attrs={'class': 'form-control'}),
+            'duration': forms.Select(attrs={'class': 'form-control'}),
+            'price': forms.NumberInput(attrs={'class': 'form-control', 'step': '0.01'}),
+        }
+        labels = {
+            'type_category': 'Тип категорії',
+            'duration': 'Тривалість',
+            'price': 'Ціна',
         }

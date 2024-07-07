@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.contrib.auth import login, authenticate
-from forms.forms import CategoriesAddForm, CategoriesUpdateForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureForm, RegisterUserForm, ReviewForm, ScheduleForm, TherapistForm, TypeCategoryCustomForm, TypeCategoryForm
+from forms.forms import CategoriesAddForm, CategoriesUpdateForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureAddForm, ProcedureEditForm, ProcedureForm, RegisterUserForm, ReviewForm, ScheduleForm, TherapistForm, TypeCategoryCustomForm, TypeCategoryForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DeleteView, UpdateView, CreateView
 from django.utils.decorators import method_decorator
@@ -173,6 +173,11 @@ class DeleteTherapistView(SuperUserRequiredMixin, DeleteView):
 class DeleteTypeCategoriesView(SuperUserRequiredMixin, DeleteView):
     model = TypeCategories
     success_url = '/admin-main-page/'
+    
+    
+class DeleteProcedureView(SuperUserRequiredMixin, DeleteView):
+    model = Procedure
+    success_url = '/admin-main-page/'
 
 
 class TypeCategoriesListView(ListView):
@@ -307,7 +312,9 @@ class AdminMainPage(SuperUserRequiredMixin, View):
             'therapists_with_schedule': MassageTherapist.objects.filter(schedule__isnull=False).distinct(),
             'type_category_form': kwargs.get('type_category_form', TypeCategoryForm()),
             'type_costom_category_form': kwargs.get('type_costom_category_form', TypeCategoryCustomForm()),
-            'procedure_form': kwargs.get('procedure_form', ProcedureForm()),
+            'procedure_form': kwargs.get('procedure_form', ProcedureEditForm()),
+            'procedures': Procedure.objects.select_related('type_category__categories').order_by('type_category__categories', 'type_category', 'duration'),
+            'procedure_add_form': kwargs.get('procedure_add_form', ProcedureAddForm()), 
         }
         context.update(kwargs)
         context.update(self.get_type_categories_data())
@@ -351,6 +358,11 @@ class AdminMainPage(SuperUserRequiredMixin, View):
             return self.update_type_category(request, type_category_id)
         elif 'add_type_category' in request.POST:
             return self.add_type_category(request)
+        elif 'update_procedure' in request.POST:
+            procedure_id = request.POST.get('procedure_id')
+            return self.update_procedure(request, procedure_id)
+        elif 'add_procedure' in request.POST:
+            return self.add_procedure(request)
         return self.get(request, *args, **kwargs)
 
 
@@ -460,15 +472,7 @@ class AdminMainPage(SuperUserRequiredMixin, View):
 
         context = self.get_context_data(type_category_update_form=type_category_update_form)
         return render(request, self.template_name, context)
-    
-    # def add_type_category(self, request):
-    #     type_category_form = TypeCategoryForm(request.POST, request.FILES)
-    #     if type_category_form.is_valid():
-    #         type_category_form.save()
-    #         return redirect('/admin-main-page/')
 
-    #     context = self.get_context_data(type_category_form=type_category_form)
-    #     return render(request, self.template_name, context)
     def add_type_category(self, request):
         if request.method == 'POST':
             type_category_form = TypeCategoryCustomForm(request.POST, request.FILES)
@@ -481,6 +485,25 @@ class AdminMainPage(SuperUserRequiredMixin, View):
         context = self.get_context_data(type_category_form=type_category_form)
         return render(request, self.template_name, context)
     
+    def update_procedure(self, request, procedure_id):
+        procedure = get_object_or_404(Procedure, id=procedure_id)
+        procedure_form = ProcedureEditForm(data=request.POST, instance=procedure)
+        if procedure_form.is_valid():
+            procedure_form.save()
+            return redirect('/admin-main-page/')
+
+        context = self.get_context_data(procedure_form=procedure_form)
+        return render(request, self.template_name, context)
+    
+    def add_procedure(self, request):
+        procedure_add_form = ProcedureAddForm(request.POST)
+        if procedure_add_form.is_valid():
+            procedure_add_form.save()
+            return redirect('/admin-main-page/')
+
+        context = self.get_context_data(procedure_add_form=procedure_add_form)
+        return render(request, self.template_name, context)
+
     def render_to_response(self, context, **response_kwargs):
         context.update(self.get_context_data())
         return render(self.request, self.template_name, context, **response_kwargs)
@@ -606,9 +629,9 @@ class RecordView(View):
         procedure = Procedure.objects.get(id=request.session['procedure_id'])
         now = datetime.now()
         therapists = MassageTherapist.objects.filter(
-            position__type_categories=procedure.type_category,
-            schedule__day__gte=now.date()
-        ).distinct().order_by('-average_rating')
+        position__spa_categories=procedure.type_category.categories,
+        schedule__day__gte=now.date()
+    ).distinct().order_by('-average_rating')
 
         therapists_with_slots = []
 

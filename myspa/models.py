@@ -33,7 +33,7 @@ class Salon(models.Model):
 
 class Position(models.Model):
     name = models.CharField(max_length=20)
-    type_categories = models.ManyToManyField('TypeCategories', related_name='type_categories')
+    spa_categories = models.ManyToManyField('SpaСategories', related_name='positions')
     
     def __str__(self):
         return self.name
@@ -52,13 +52,6 @@ class MassageTherapist(models.Model):
         positions = ', '.join([position.name for position in self.position.all()])
         return f"{self.user.username} - {positions}"
     
-# class Composition(models.Model):
-#     name = models.CharField(max_length=50)
-#     description = models.TextField(max_length=1000)
-
-#     def __str__(self):
-#         return f"{self.name} - {self.description[:40]}"
-
 class SpaСategories(models.Model):
     name = models.CharField(max_length=100)
     categories_image = models.ImageField(upload_to='categories_image/', blank=True, null=True)
