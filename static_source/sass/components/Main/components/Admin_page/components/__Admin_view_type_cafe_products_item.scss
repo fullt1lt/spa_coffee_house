@@ -1,0 +1,307 @@
+.Admin_view_type_cafe_products_item {
+  display: none;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  .TypeCafeProducts_list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    align-items: start;
+    justify-content: flex-start;
+    width: 80%;
+    .TypeCafeProduct_item {
+      display: flex;
+      flex-direction: column;
+      border: 1px gray solid;
+      padding: 10px;
+      border-radius: 12px;
+      width: 45%;
+      background: #fff;
+      box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+      .TypeCafeProduct_wrapper {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        .TypeCafeProduct_item_list {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          backface-visibility: hidden;
+          transition: all 0.5s ease;
+          height: 120px;
+          .item_header {
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            h2 {
+              color: #000;
+              font-family: "Playfair Display";
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+            }
+          }
+          .admin_buttons {
+            margin-top: 20px;
+            display: flex;
+            .Update_TypeCafeProduct_image {
+              width: 30px;
+              height: 30px;
+              cursor: pointer;
+            }
+            .Basket_TypeCafeProduct_image {
+              margin-left: 30px;
+              width: 30px;
+              height: 30px;
+              cursor: pointer;
+            }
+          }
+        }
+        .TypeCafeProduct_update_item_list {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: rotateY(180deg);
+          backface-visibility: hidden;
+          transition: all 0.5s ease;
+          .Cloose_image_item {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            .Cloose_type_cafe_product_image {
+              width: 15px;
+              height: 15px;
+              cursor: pointer;
+            }
+          }
+          .TypeCafeProduct_update_item {
+            width: 100%;
+            height: 100%;
+            .TypeCafeProduct_update_form {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              align-items: flex-start;
+              justify-content: space-between;
+              .Name_type_cafe_product {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                .label-form-control-type-cafe-product {
+                  color: #000;
+                  font-family: "Playfair Display";
+                  font-size: 24px;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: normal;
+                }
+                .update-form-control-type-cafe-product {
+                  color: #000;
+                  font-family: "Playfair Display";
+                  font-size: 24px;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: normal;
+                  width: 50%;
+                }
+              }
+              .update_type_cafe_product_input_item {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin-top: 10px;
+                .update_type_cafe_product_input {
+                  border: 2px solid #0c0c0c;
+                  padding: 15px 30px;
+                  color: #141414;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 13px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 19.5px;
+                  letter-spacing: 1.56px;
+                  text-transform: uppercase;
+                  background-color: transparent;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+        .TypeCafeProduct_delete_item_list {
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background-color: #fff;
+          .TypeCafeProduct_delete_item_header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            h2 {
+              text-align: center;
+              color: #000;
+              font-family: var(--font-family-Manrope);
+              font-size: 22px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+            }
+          }
+          .TypeCafeProduct_delete_item_choice {
+            display: flex;
+            margin-top: 15px;
+            .delete_type_cafe_product_form {
+              .delete_type_cafe_product {
+                border: medium none;
+                background-image: none;
+                background: transparent;
+                background-color: transparent;
+                border: 2px solid #0c0c0c;
+                padding: 15px 30px;
+                color: #141414;
+                text-align: center;
+                font-family: var(--font-family-Manrope);
+                font-size: 13px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 19.5px;
+                letter-spacing: 1.56px;
+                text-transform: uppercase;
+                cursor: pointer;
+              }
+            }
+            .cancel_delete_type_cafe_product {
+              margin-left: 40px;
+              border: 2px solid #0c0c0c;
+              padding: 15px 30px;
+              color: #141414;
+              text-align: center;
+              font-family: var(--font-family-Manrope);
+              font-size: 13px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 19.5px;
+              letter-spacing: 1.56px;
+              text-transform: uppercase;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+  .Add_TypeCafeProduct_button_block {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    animation: 5s show ease;
+    cursor: pointer;
+  }
+  .Add_TypeCafeProduct_block {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    width: 45%;
+    animation: 5s show ease;
+    .Add_TypeCafeProduct_list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px gray solid;
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 16px;
+      width: 100%;
+      box-shadow: 10px 5px 5px rgb(192, 192, 192);
+      .Add_TypeCafeProduct_close_button_item {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        .Add_TypeCafeProduct_close_button {
+          width: 15px;
+          height: 15px;
+          cursor: pointer;
+        }
+      }
+      .Add_TypeCafeProduct_form_item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        .type_cafe_product_add_form {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          margin-top: 20px;
+          .error {
+            font-family: var(--font-family-Manrope);
+            font-size: 13px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 19.5px;
+            letter-spacing: 1.56px;
+            text-transform: uppercase;
+            color: red;
+          }
+          .Name_type_cafe_product {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            .label-form-control-type-cafe-product {
+              color: #000;
+              font-family: "Playfair Display";
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+            }
+            .add-form-control-type-cafe-product {
+              color: #000;
+              font-family: "Playfair Display";
+              font-size: 24px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: normal;
+              width: 50%;
+            }
+          }
+          .add_type_cafe_product_input_item {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+            .add_type_cafe_product_input {
+              border: 2px solid #0c0c0c;
+              padding: 15px 30px;
+              color: #141414;
+              text-align: center;
+              font-family: var(--font-family-Manrope);
+              font-size: 13px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 19.5px;
+              letter-spacing: 1.56px;
+              text-transform: uppercase;
+              background-color: transparent;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+    }
+  }
+}

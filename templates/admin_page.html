@@ -57,7 +57,10 @@
                     <span>Процедури</span>
                 </li>
                 <li class="Admin_navigations_item" id="cafe-products">
-                    <span>Кафе</span>
+                    <span>Товари кафе</span>
+                </li>
+                <li class="Admin_navigations_item" id="type-cafe-products">
+                    <span>Тип товарів кафе</span>
                 </li>
             </ul>
         </li>
@@ -385,6 +388,11 @@
                     </ul>
                 </li>
                 <li class="Admin_view_type_categories_item" id="type-categories-list">
+                    <div class="Main_headers">
+                        <h1>
+                            Тип категорії
+                        </h1>
+                    </div>
                     <ul class="TypeCategories_list">
                         {% for data in type_categories_data %}
                             <li class="TypeCategory_item">
@@ -516,6 +524,11 @@
                     <script src="{% static 'js/admin/type_categories/add_type_categories.js' %}"></script>
                 </li>
                 <li class="Admin_view_procedure_item" id="procedure-list">
+                    <div class="Main_headers">
+                        <h1>
+                            Процедури
+                        </h1>
+                    </div>
                     <ul class="Procedures_list">
                         {% for procedure in procedures %}
                             <li class="Procedure_item">
@@ -585,11 +598,16 @@
                                             <input type="submit" value="Додати" name="add_procedure" class="add_procedure_input">
                                         </div>
                                     </form>
-                            </li>
+                                </li>
                             </ul>
                         </div>
-                    </li>
+                </li>
                 <li class="Admin_view_cafe_products_item" id="cafe-products-list">
+                    <div class="Main_headers">
+                        <h1>
+                            Товари кафе
+                        </h1>
+                    </div>
                     <ul class="CafeProducts_list">
                         {% for product in cafe_products %}
                             <li class="CafeProduct_item">
@@ -763,6 +781,88 @@
                     </div>
                     <script src="{% static 'js/admin/cafe_products/file_input_cafe_products.js' %}"></script>
                     <script src="{% static 'js/admin/cafe_products/add_cafe_products.js' %}"></script>
+                </li>
+                <li class="Admin_view_type_cafe_products_item" id="type-cafe-products-list">
+                    <ul class="TypeCafeProducts_list">
+                        {% for type in type_cafe_products %}
+                            <li class="TypeCafeProduct_item">
+                                <div class="TypeCafeProduct_wrapper">
+                                    <ul class="TypeCafeProduct_item_list" id="type_cafe_product_front_{{ type.id }}">
+                                        <li class="item_header">
+                                            <h2>{{ type.name }}</h2>
+                                        </li>
+                                        <li class="admin_buttons">
+                                            <img src="{% static 'icon/update_button.svg' %}" alt="" class="Update_TypeCafeProduct_image" update-type_cafe_product-id="{{ type.id }}">
+                                            <img src="{% static 'icon/basket.svg' %}" alt="" class="Basket_TypeCafeProduct_image" delete-type_cafe_product-id="{{ type.id }}">
+                                        </li>
+                                    </ul>
+                                    <ul class="TypeCafeProduct_update_item_list" id="type_cafe_product_back_{{ type.id }}">
+                                        <li class="Cloose_image_item">
+                                            <img src="{% static 'icon/cloose.png' %}" alt="" class="Cloose_type_cafe_product_image" close-type_cafe_product-id="{{ type.id }}">
+                                        </li>
+                                        <li class="TypeCafeProduct_update_item">
+                                            <form method="post" class="TypeCafeProduct_update_form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="type_cafe_product_id" value="{{ type.id }}">
+                                                <li class="Name_type_cafe_product">
+                                                    <label for="id_name" class="label-form-control-type-cafe-product">Назва:</label>
+                                                    {{ type_cafe_product_form.name }}
+                                                    {% if type_cafe_product_form.name.errors %}
+                                                        <div class="error">{{ type_cafe_product_form.name.errors }}</div>
+                                                    {% endif %}
+                                                </li>
+                                                <li class="update_type_cafe_product_input_item">
+                                                    <button type="submit" name="update_type_cafe_product" class="update_type_cafe_product_input">Оновити</button>
+                                                </li>
+                                            </form>
+                                        </li>
+                                    </ul>
+                                    <ul class="TypeCafeProduct_delete_item_list" id="type_cafe_product_delete_{{ type.id }}">
+                                        <li class="TypeCafeProduct_delete_item_header">
+                                            <h2>Ви хочете видалити тип продукту?</h2>
+                                        </li>
+                                        <li class="TypeCafeProduct_delete_item_choice">
+                                            <form method="post" action="{% url 'delete_type_cafe_product' type.pk %}" class="delete_type_cafe_product_form">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="delete_id" value="{{ type.pk }}">
+                                                <input type="submit" value="Видалити" class="delete_type_cafe_product">
+                                            </form>
+                                            <span class="cancel_delete_type_cafe_product" cancel-delete-type-cafe-product-id="{{ type.id }}">Закрити</span>
+                                        </li> 
+                                    </ul>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="Add_TypeCafeProduct_button_block">
+                        <img src="{% static 'icon/add_button.png' %}" alt="" class="Add_TypeCafeProduct_button" id="Add_TypeCafeProduct_button">
+                    </div>
+                    <div class="Add_TypeCafeProduct_block" id="Add_TypeCafeProduct_block">
+                        <ul class="Add_TypeCafeProduct_list">
+                            <li class="Add_TypeCafeProduct_close_button_item">
+                                <img src="{% static 'icon/cloose.png' %}" alt="" class="Add_TypeCafeProduct_close_button" id="Add_TypeCafeProduct_close_button">
+                            </li>
+                            <li class="Add_TypeCafeProduct_form_item">
+                                <form method="post" class="type_cafe_product_add_form" id="type_cafe_product-form">
+                                    {% csrf_token %}
+                                    {{ add_type_cafe_product_form.non_field_errors }}
+                                    <li class="Name_type_cafe_product">
+                                        <label for="id_name" class="label-form-control-type-cafe-product">Назва:</label>
+                                        {{ add_type_cafe_product_form.name }}
+                                        {% if add_type_cafe_product_form.name.errors %}
+                                            <div class="error">{{ add_type_cafe_product_form.name.errors }}</div>
+                                        {% endif %}
+                                    </li>
+                                    <li class="add_type_cafe_product_input_item">
+                                        <button type="submit" name="add_type_cafe_product" class="add_type_cafe_product_input">Додати</button>
+                                    </li>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <script src="{% static 'js/admin/type_cafe_products/flip_type_cafe_products.js' %}"></script>
+                    <script src="{% static 'js/admin/type_cafe_products/delete_type_cafe_product.js' %}"></script>
+                    <script src="{% static 'js/admin/type_cafe_products/add_type_cafe_product.js' %}"></script>
                 </li>
 
                 <script src="{% static 'js/admin/procedure/add_procedure.js' %}"></script>

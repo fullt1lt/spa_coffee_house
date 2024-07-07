@@ -1,5 +1,5 @@
 from django import forms
-from myspa.models import CATEGORY_TIME, CafeProduct, MassageTherapist, Position, Procedure, Review, Salon, Schedule, SpaUser, TypeCategories, SpaСategories
+from myspa.models import CATEGORY_TIME, CafeProduct, MassageTherapist, Position, Procedure, Review, Salon, Schedule, SpaUser, TypeCafeProduct, TypeCategories, SpaСategories
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate
 from django.core.exceptions import ValidationError  
@@ -219,4 +219,21 @@ class AddCafeProductForm(forms.ModelForm):
             'product_image': forms.FileInput(attrs={'class': 'add-form-control-file-cafe-product'}),
             'composition': forms.Textarea(attrs={'class': 'add-form-control-cafe-composition', 'placeholder': 'Введите состав'}),
             'type_cafe_product': forms.Select(attrs={'class': 'add-form-control-type-cafe-product'}),
+        }
+        
+
+class AddTypeCafeProductForm(forms.ModelForm):
+    class Meta:
+        model = TypeCafeProduct
+        fields = ['name']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'add-form-control-type-cafe-product', 'placeholder': 'Введите название типа продукта'}),
+        }
+
+class UpdateTypeCafeProductForm(forms.ModelForm):
+    class Meta:
+        model = TypeCafeProduct
+        fields = ['name']
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'update-form-control-type-cafe-product', 'placeholder': 'Введите название типа продукта'}),
         }

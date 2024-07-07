@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.contrib.auth import login, authenticate
-from forms.forms import AddCafeProductForm, CafeProductForm, CategoriesAddForm, CategoriesUpdateForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureAddForm, ProcedureEditForm, ProcedureForm, RegisterUserForm, ReviewForm, ScheduleForm, TherapistForm, TypeCategoryCustomForm, TypeCategoryForm
+from forms.forms import AddCafeProductForm, AddTypeCafeProductForm, CafeProductForm, CategoriesAddForm, CategoriesUpdateForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureAddForm, ProcedureEditForm, ProcedureForm, RegisterUserForm, ReviewForm, ScheduleForm, TherapistForm, TypeCategoryCustomForm, TypeCategoryForm, UpdateTypeCafeProductForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DeleteView, UpdateView, CreateView
 from django.utils.decorators import method_decorator
@@ -183,6 +183,10 @@ class DeleteProcedureView(SuperUserRequiredMixin, DeleteView):
 class DeleteCafeProductView(SuperUserRequiredMixin, DeleteView):
     model = CafeProduct
     success_url = '/admin-main-page/'
+    
+class DeleteTypeCafeProductView(SuperUserRequiredMixin, DeleteView):
+    model = TypeCafeProduct
+    success_url = '/admin-main-page/'
 
 
 class TypeCategoriesListView(ListView):
@@ -323,6 +327,9 @@ class AdminMainPage(SuperUserRequiredMixin, View):
             'cafe_product_form': kwargs.get('cafe_product_form', CafeProductForm()),
             'add_cafe_product_form': kwargs.get('add_cafe_product_form', AddCafeProductForm()),
             'cafe_products': CafeProduct.objects.all().order_by('type_cafe_product'),
+            'type_cafe_product_form': kwargs.get('type_cafe_product_form', UpdateTypeCafeProductForm()),
+            'add_type_cafe_product_form': kwargs.get('add_type_cafe_product_form', AddTypeCafeProductForm()),
+            'type_cafe_products': TypeCafeProduct.objects.all(),
         }
         context.update(kwargs)
         context.update(self.get_type_categories_data())
@@ -376,6 +383,11 @@ class AdminMainPage(SuperUserRequiredMixin, View):
         elif 'update_cafe_product' in request.POST:
             cafe_product_id = request.POST.get('cafe_product_id')
             return self.update_cafe_product(request, cafe_product_id)
+        elif 'add_type_cafe_product' in request.POST:
+            return self.add_type_cafe_product(request)
+        elif 'update_type_cafe_product' in request.POST:
+            type_cafe_product_id = request.POST.get('type_cafe_product_id')
+            return self.update_type_cafe_product(request, type_cafe_product_id)
         return self.get(request, *args, **kwargs)
 
 
@@ -534,6 +546,25 @@ class AdminMainPage(SuperUserRequiredMixin, View):
             return redirect('/admin-main-page/')
 
         context = self.get_context_data(cafe_product_form=cafe_product_form)
+        return render(request, self.template_name, context)
+    
+    def add_type_cafe_product(self, request):
+        type_cafe_product_form = AddTypeCafeProductForm(request.POST)
+        if type_cafe_product_form.is_valid():
+            type_cafe_product_form.save()
+            return redirect('/admin-main-page/')
+
+        context = self.get_context_data(add_type_cafe_product_form=type_cafe_product_form)
+        return render(request, self.template_name, context)
+
+    def update_type_cafe_product(self, request, type_cafe_product_id):
+        type_cafe_product = get_object_or_404(TypeCafeProduct, id=type_cafe_product_id)
+        type_cafe_product_form = UpdateTypeCafeProductForm(request.POST, instance=type_cafe_product)
+        if type_cafe_product_form.is_valid():
+            type_cafe_product_form.save()
+            return redirect('/admin-main-page/')
+
+        context = self.get_context_data(type_cafe_product_form=type_cafe_product_form)
         return render(request, self.template_name, context)
 
     def render_to_response(self, context, **response_kwargs):
