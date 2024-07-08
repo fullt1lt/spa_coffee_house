@@ -84,6 +84,33 @@
                                 {% endfor %}
                             </select>
                             <div id="therapist-schedule" class="therapist-schedule_block">
+                                <ul class="schedule_list">
+                                   {% for schedule in schedules %}
+                                   <li class="schedule_data_header">
+                                       <h1>{{ schedule.day }}</h1>
+                                   </li>
+                                   <li class="start_work_day">
+                                       <span class="start_work_time">{{ schedule.start_time }}</span>
+                                   </li>
+                                   <li class="schedule_list_records">
+                                       <ul class="schedule_list_records_list">
+                                           {% for record in schedule.records %}
+                                           <li class="schedule_list_records_item">
+                                               <span class="durations">{{ record.start_time }} - {{ record.end_time }}</span>
+                                               <span class="name_procedure">{{ record.procedure_name }}</span>
+                                               <div class="user_list">
+                                                   <span class="user_name">{{ record.client_first_name }}</span>
+                                                   <span class="user_lastname">{{ record.client_last_name }}</span>
+                                               </div>
+                                           </li>
+                                           {% endfor %}
+                                       </ul>
+                                   </li>
+                                   <li class="end_work_day">
+                                       <span class="end_work_time">{{ schedule.end_time }}</span>
+                                   </li>
+                                   {% endfor %}
+                                </ul>
                             </div>
                         </li>
                         <li class="Add_schedule_button_block">

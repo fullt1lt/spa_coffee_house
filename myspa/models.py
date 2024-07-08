@@ -94,6 +94,7 @@ class Record(models.Model):
     schedule = models.ForeignKey(Schedule, on_delete=models.CASCADE)
     procedure = models.ForeignKey(Procedure, on_delete=models.CASCADE)
     start_time = models.TimeField()
+    client = models.ForeignKey(SpaUser, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return f"Procedure duration: {self.procedure.duration}\n start time: {self.start_time}"

@@ -19,6 +19,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import FormView
 from django.utils import timezone
 from datetime import datetime, timedelta
+from django.utils.timezone import make_aware
 
         
 class Register(CreateView):
@@ -298,14 +299,35 @@ class TypeGalleryListView(ListView):
     
 
 def get_therapist_schedule(request, therapist_id):
+    therapist = get_object_or_404(MassageTherapist, id=therapist_id)
     today = timezone.now().date()
-    schedules = Schedule.objects.filter(therapist_id=therapist_id, day__gte=today).values('day', 'start_time', 'end_time')
-    schedule_list = list(schedules)
-    for item in schedule_list:
-        item['day'] = item['day'].strftime('%Y-%m-%d')
-        item['start_time'] = item['start_time'].strftime('%H:%M')
-        item['end_time'] = item['end_time'].strftime('%H:%M')
-    return JsonResponse({'schedule': schedule_list})
+    schedules = Schedule.objects.filter(therapist=therapist, day__gte=today).order_by('day', 'start_time')
+    schedule_data = []
+
+    for schedule in schedules:
+        records = Record.objects.filter(schedule=schedule).order_by('start_time')
+        records_data = []
+
+        for record in records:
+            start_time = record.start_time
+            duration = record.procedure.duration
+            end_time = (make_aware(datetime.combine(schedule.day, start_time)) + duration).time()
+            records_data.append({
+                'start_time': start_time.strftime('%H:%M'),
+                'end_time': end_time.strftime('%H:%M'),
+                'procedure_name': record.procedure.type_category.name,
+                'client_first_name': record.client.first_name if record.client else 'N/A',
+                'client_last_name': record.client.last_name if record.client else 'N/A',
+            })
+
+        schedule_data.append({
+            'day': schedule.day.strftime('%Y-%m-%d'),
+            'start_time': schedule.start_time.strftime('%H:%M'),
+            'end_time': schedule.end_time.strftime('%H:%M'),
+            'records': records_data,
+        })
+
+    return JsonResponse({'schedules': schedule_data})
 
 
 class AdminMainPage(SuperUserRequiredMixin, View):
@@ -673,6 +695,7 @@ class RecordView(View):
         if date and time:
             procedure = Procedure.objects.get(id=request.session['procedure_id'])
             therapist = MassageTherapist.objects.get(id=request.session['therapist_id'])
+            user = request.user
             date = datetime.strptime(date, '%Y-%m-%d').date()
             time = datetime.strptime(time, '%H:%M').time()
             start_time = datetime.combine(date, time)
@@ -699,8 +722,8 @@ class RecordView(View):
                 day=date,
                 defaults={'start_time': time, 'end_time': end_time.time()}
             )
-            Record.objects.create(schedule=schedule, procedure=procedure, start_time=time)
-            return redirect('/create-record/')  # Укажите URL-адрес успешного завершения
+            Record.objects.create(schedule=schedule, procedure=procedure, start_time=time, client=user)
+            return redirect('/create-record/')
 
         context = self.get_context_data('3', request)
         return render(request, self.template_name, context)
@@ -736,4 +759,3 @@ class RecordView(View):
                 })
 
         return therapists_with_slots
-

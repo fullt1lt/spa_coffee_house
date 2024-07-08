@@ -1,7 +1,6 @@
 .Admin_view_schedule_item {
   display: flex;
   width: 100%;
-  height: 50vh;
   .Admin_view_schedule__list {
     width: 100%;
     display: flex;
@@ -30,70 +29,146 @@
         letter-spacing: 0.16px;
       }
       .therapist-schedule_block {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        .schedule-list-items::-webkit-scrollbar {
-          width: 1px;
-          background-color: #f9f9fd;
-        }
-        .schedule-list-items::-webkit-scrollbar-thumb {
-          border-radius: 5px;
-          background-color: rgba(149, 154, 138, 0.8);
-        }
-        .schedule-list-items::-webkit-scrollbar-track {
-          -webkit-box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
-          border-radius: 5px;
-          background-color: #f9f9fd;
-        }
-        .schedule-list-items {
+        width: 80%;
+        display: none;
+        justify-content: flex-start;
+        margin-top: 20px;
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 10px 5px 5px rgb(192, 192, 192);
+        padding: 20px;
+        overflow-x: scroll;
+        .schedule_list {
+          min-width: 200px !important;
+          min-height: 220px !important;
           display: flex;
-          margin-top: 30px;
-          border: 1px gray solid;
-          padding: 10px;
-          overflow-x: auto;
-          background-color: #fff;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-start;
           border-radius: 16px;
-          font-family: var(--font-family-Manrope);
-          width: 80%;
-          box-shadow: 10px 5px 5px rgb(192, 192, 192);
-          animation: 5s show ease;
-          .schedule-list-item {
+          border: 1px solid black;
+          padding: 5px;
+          margin-right: 15px;
+          .schedule_data_header {
+            width: 100%;
             display: flex;
-            width: 100px;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            margin-right: 5px;
-            background-color: rgba(149, 154, 138, 0.8);
-            margin-top: 10px;
-            border-radius: 8px;
-            padding: 5px;
-            color: #181719;
-            font-size: 16px;
-            font-style: normal;
-            font-weight: 400;
-            line-height: 22px;
-            letter-spacing: 0.16px;
-            .schedule-date {
+            justify-content: center;
+            h1 {
+              color: #000;
               text-align: center;
-              font-size: 18px;
+              font-family: var(--font-family-Manrope);
+              font-size: 24px;
+              font-style: normal;
               font-weight: 600;
+              line-height: normal;
             }
-            .schedule-time-list {
-              display: flex;
-              justify-content: space-between;
+          }
+          .start_work_day {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 5px;
+            background-color: #8b62de;
+            .start_work_time {
+              color: #000;
+              text-align: center;
+              font-family: var(--font-family-Manrope);
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            }
+          }
+          .schedule_list_records {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            .schedule_list_records_list {
               width: 100%;
-              margin-top: 5px;
-              .schedule-time-item {
-                padding: 5px;
-                border: 1px solid #0c0c0c;
-                text-align: center;
-                border-radius: 5px;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              .schedule_list_records_item {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 5px;
+                .durations {
+                  width: 100%;
+                  color: #000;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 18px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                  background-color: #61cb80;
+                }
+                .name_procedure {
+                  width: 100%;
+                  color: #000;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                  background-color: #b2ecc6;
+                }
+                .user_list {
+                  width: 100%;
+                  display: flex;
+                  justify-content: center;
+                  background-color: #b2ecc6;
+                  color: #000;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                  background-color: #b2ecc6;
+                  .user_name {
+                    margin-right: 5px;
+                  }
+                }
               }
             }
           }
+          .end_work_day {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 5px;
+            background-color: #8b62de;
+            .end_work_time {
+              color: #000;
+              text-align: center;
+              font-family: var(--font-family-Manrope);
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+            }
+          }
         }
+      }
+      .therapist-schedule_block::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+        background-color: #f9f9fd;
+      }
+      .therapist-schedule_block::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #61cb80;
+      }
+
+      .therapist-schedule_block::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        background-color: #f9f9fd;
       }
     }
     .Add_schedule_button_block {
