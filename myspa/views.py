@@ -92,7 +92,7 @@ class MainPage(View):
             password = login_form.cleaned_data['password']
             user = authenticate(request, email=email, password=password)
             if user is not None:
-                login(request, user, backend='django.contrib.auth.backends.ModelBackend')  # Указываем бэкенд явно
+                login(request, user, backend='django.contrib.auth.backends.ModelBackend')
                 return redirect('/')
         # Передача формы с ошибками в контекст для вывода ошибок в шаблоне
         context = {
@@ -466,6 +466,7 @@ class AdminMainPage(SuperUserRequiredMixin, View):
             try:
                 user = register_form.save(commit=False)
                 user.username = user.email
+                user.is_staff = True
                 if 'profile_image' in register_form.cleaned_data and register_form.cleaned_data['profile_image']:
                     user.profile_image = register_form.cleaned_data['profile_image']
                 user.save()
