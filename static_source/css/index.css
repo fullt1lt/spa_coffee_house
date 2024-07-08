@@ -7908,6 +7908,9 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .schedule_data_header h1 {
   color: #000;
@@ -7917,6 +7920,17 @@ a {
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .schedule_data_header .delete_schedule_form {
+  margin-left: 15px;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .schedule_data_header .delete_schedule_form .delete_schedule_button {
+  background-color: transparent;
+  border: none;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .schedule_data_header .delete_schedule_form .delete_schedule_button .Basket_image {
+  width: 20px;
+  height: 20px;
 }
 .Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .start_work_day {
   width: 100%;

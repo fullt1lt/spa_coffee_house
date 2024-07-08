@@ -247,3 +247,11 @@ class AddGalleryForm(forms.ModelForm):
             'gallery_image': forms.FileInput(attrs={'class': 'form-control-file-gallery'}),
             'type_gallery': forms.Select(attrs={'class': 'form-control-type-gallery'}),
         }
+        
+
+class CreateScheduleForm(forms.ModelForm):
+    dates = forms.CharField(widget=forms.HiddenInput())
+
+    class Meta:
+        model = Schedule
+        fields = ['start_time', 'end_time']

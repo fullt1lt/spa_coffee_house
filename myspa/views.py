@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views import View
 from django.contrib.auth import login, authenticate
-from forms.forms import AddCafeProductForm, AddGalleryForm, AddTypeCafeProductForm, CafeProductForm, CategoriesAddForm, CategoriesUpdateForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureAddForm, ProcedureEditForm, ProcedureForm, RegisterUserForm, ReviewForm, ScheduleForm, TherapistForm, TypeCategoryCustomForm, TypeCategoryForm, UpdateTypeCafeProductForm
+from forms.forms import AddCafeProductForm, AddGalleryForm, AddTypeCafeProductForm, CafeProductForm, CategoriesAddForm, CategoriesUpdateForm, CreateScheduleForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureAddForm, ProcedureEditForm, ProcedureForm, RegisterUserForm, ReviewForm, ScheduleForm, TherapistForm, TypeCategoryCustomForm, TypeCategoryForm, UpdateTypeCafeProductForm
 from django.contrib.auth.views import LoginView
 from django.views.generic import ListView, DeleteView, UpdateView, CreateView
 from django.utils.decorators import method_decorator
@@ -762,7 +762,7 @@ class RecordView(View):
         return therapists_with_slots
     
     
-class TherapistScheduleView(TherapistRequiredMixin, View):
+class TherapistScheduleView(View):
     template_name = 'therapist_page.html'
 
     def get_context_data(self, **kwargs):
@@ -786,6 +786,7 @@ class TherapistScheduleView(TherapistRequiredMixin, View):
                     'client_last_name': record.client.last_name if record.client else 'N/A',
                 })
             schedule_data.append({
+                'id': schedule.id,
                 'day': schedule.day.strftime('%Y-%m-%d'),
                 'start_time': schedule.start_time.strftime('%H:%M'),
                 'end_time': schedule.end_time.strftime('%H:%M'),
@@ -795,6 +796,7 @@ class TherapistScheduleView(TherapistRequiredMixin, View):
         context = {
             'therapist': therapist,
             'schedules': schedule_data,
+            'schedule_form': ScheduleForm(),
         }
         context.update(kwargs)
         return context
@@ -802,3 +804,40 @@ class TherapistScheduleView(TherapistRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data()
         return render(request, self.template_name, context)
+
+    def post(self, request, *args, **kwargs):
+        if 'schedule' in request.POST:
+            return self.handle_schedule(request)
+        elif 'delete_schedule' in request.POST:
+            schedule_id = request.POST.get('schedule_pk')
+            return self.delete_schedule(request, schedule_id)
+
+        context = self.get_context_data()
+        return render(request, self.template_name, context)
+    
+    def handle_schedule(self, request):
+        form = CreateScheduleForm(request.POST)
+        if form.is_valid():
+            dates = form.cleaned_data['dates'].split(',')
+            start_time = form.cleaned_data['start_time']
+            end_time = form.cleaned_data['end_time']
+            therapist = get_object_or_404(MassageTherapist, user=request.user)
+
+            for date in dates:
+                day = datetime.strptime(date, '%Y-%m-%d').date()
+                if not Schedule.objects.filter(therapist=therapist, day=day).exists():
+                    Schedule.objects.create(
+                        therapist=therapist,
+                        day=day,
+                        start_time=start_time,
+                        end_time=end_time
+                    )
+            return redirect('therapist_schedule')
+        context = self.get_context_data(schedule_form=form)
+        return render(request, self.template_name, context)
+    
+    def delete_schedule(self, request, schedule_id):
+        schedule = get_object_or_404(Schedule, id=schedule_id)
+        if not Record.objects.filter(schedule=schedule).exists():
+            schedule.delete()
+        return redirect('therapist_schedule')

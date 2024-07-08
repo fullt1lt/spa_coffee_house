@@ -95,6 +95,7 @@
                       width: 100%;
                       display: flex;
                       justify-content: center;
+                      align-items: center;
                       h1 {
                         color: #000;
                         text-align: center;
@@ -103,6 +104,17 @@
                         font-style: normal;
                         font-weight: 600;
                         line-height: normal;
+                      }
+                      .delete_schedule_form {
+                        margin-left: 15px;
+                        .delete_schedule_button {
+                          background-color: transparent;
+                          border: none;
+                          .Basket_image {
+                            width: 20px;
+                            height: 20px;
+                          }
+                        }
                       }
                     }
                     .start_work_day {

@@ -2,6 +2,7 @@
 {% load static %}
 {% block style %}
     <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <style>
     </style>
 {% endblock %}
@@ -46,6 +47,14 @@
                                     <ul class="Schedule_list_item_list">
                                         <li class="schedule_data_header">
                                             <h1>{{ schedule.day }}</h1>
+                                             {% if not schedule.records %}
+                                            <form method="post" class="delete_schedule_form">
+                                                {% csrf_token %}
+                                                <span>{{schedule.pk}}</span>
+                                                <input type="hidden" name="schedule_pk" value="{{ schedule.id }}">
+                                                <button type="submit" class="delete_schedule_button" name="delete_schedule"><img src="{% static 'icon/basket.svg' %}" alt="" class="Basket_image"></button>
+                                            </form>
+                                            {% endif %}
                                         </li>
                                         <li class="start_work_day">
                                             <span class="start_work_time">{{ schedule.start_time }}</span>
@@ -72,10 +81,53 @@
                                 {% endfor %}
                             </ul>
                         </div>
-                    </li>                   
+                    </li>
+                    <li class="Add_schedule_button_block">
+                        <img src="{% static 'icon/add_button.png' %}" alt="" class="Add_schedule_button" id="Add_schedule_button">
+                    </li>
+                    <li class="Therapist_create_schedule" id="Therapist_create_schedule">
+                        <div class="Add_schedule_close_button_block">
+                             <img src="{% static 'icon/cloose.png' %}" alt="" class="Add_schedule_close_button" id="Add_schedule_close_button">
+                        </div>
+                        <div id="calendar-container">
+                            <input type="text" id="calendar" placeholder="Виберiть дату" readonly  class="calendar_input">
+                        </div>
+                        <form id="schedule-form" method="post" class="schedule-form">
+                            {% csrf_token %}
+                            {% if schedule_form.non_field_errors %}
+                                <div class="errors">
+                                    <ul class="errorlist">
+                                        {% for error in schedule_form.non_field_errors %}
+                                            <li>{{ error }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                            <ul class="time_list">
+                                <input type="hidden" name="dates" id="selected-dates">
+                                <li class="time_item">
+                                    <label for="start_time">Початок роботи:</label>
+                                    <input type="time" id="start_time" name="start_time" required min="08:00" max="22:00">
+                                </li>
+                                <li class="time_item">
+                                    <label for="end_time">Кiнець роботи:</label>
+                                    <input type="time" id="end_time" name="end_time" required min="08:00" max="22:00">
+                                </li>
+                            </ul>
+                            <div class="create_schedule_block_button">
+                                <button type="submit" class="create_schedule_button" name="schedule">Створити</button>
+                            </div>
+                        </form>
+                    </li>
                 </ul>
             </li>
         </ul>
     </li>
 </ul>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/uk.js"></script>
+    <script src="{% static 'js/admin/calendar.js' %}"></script>
+    <script src="{% static 'js/admin/create_time.js' %}"></script>
+    <script src="{% static 'js/admin/schedule/therapist_add_schedule.js' %}"></script>
 {% endblock %}
+
