@@ -7737,6 +7737,467 @@ a {
   background-color: transparent;
 }
 
+.Therapist_block_content_list {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 70vh;
+}
+.Therapist_block_content_list .Therapist_navigations {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 15%;
+  background-color: rgba(149, 154, 138, 0.8);
+  padding: 15px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px black solid;
+}
+.Therapist_block_content_list .Therapist_navigations .Therapist_navigations_header {
+  color: #111010;
+  font-family: var(--font-family-Manrope);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 30.4px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.Therapist_block_content_list .Therapist_navigations .Therapist_navigations_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Therapist_block_content_list .Therapist_navigations .Therapist_navigations_list .Therapist_navigations_item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+  cursor: pointer;
+}
+.Therapist_block_content_list .Therapist_navigations .Therapist_navigations_list .Therapist_navigations_item span {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30.4px;
+}
+.Therapist_block_content_list .Therapist_content {
+  width: 85%;
+  padding: 20px;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block {
+  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 16px;
+  -webkit-box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  padding: 20px;
+  overflow-x: scroll;
+  width: 100%;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item {
+  border-radius: 16px;
+  padding: 5px;
+  min-width: 200px !important;
+  min-height: 220px !important;
+  border: 1px solid black;
+  margin-right: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .schedule_data_header {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .schedule_data_header h1 {
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .start_work_day {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 5px;
+  background-color: #8b62de;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .start_work_day .start_work_time {
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .schedule_list_records {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100%;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .schedule_list_records .schedule_list_records_list {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .schedule_list_records .schedule_list_records_list .schedule_list_records_item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 5px;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .schedule_list_records .schedule_list_records_list .schedule_list_records_item .durations {
+  width: 100%;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #61cb80;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .schedule_list_records .schedule_list_records_list .schedule_list_records_item .name_procedure {
+  width: 100%;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #b2ecc6;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .schedule_list_records .schedule_list_records_list .schedule_list_records_item .user_list {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #b2ecc6;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #b2ecc6;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .schedule_list_records .schedule_list_records_list .schedule_list_records_item .user_list .user_name {
+  margin-right: 5px;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .end_work_day {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 5px;
+  background-color: #8b62de;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list .Schedule_list_item .Schedule_list_item_list .end_work_day .end_work_time {
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #f9f9fd;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #61cb80;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_view_schedule .Therapist-schedule_block .Schedule_list::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Add_schedule_button_block {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  margin-top: 30px;
+  -webkit-animation: 5s show ease;
+          animation: 5s show ease;
+  cursor: pointer;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_create_schedule {
+  display: none;
+  width: 380px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px gray solid;
+  padding: 5px;
+  background-color: #fff;
+  border-radius: 8px;
+  font-family: var(--font-family-Manrope);
+  -webkit-box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+  -webkit-animation: 5s show ease;
+          animation: 5s show ease;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_create_schedule .Add_schedule_close_button_block {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_create_schedule .Add_schedule_close_button_block .Add_schedule_close_button {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_create_schedule #calendar-container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-top: 20px;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_create_schedule #calendar-container .calendar_input {
+  color: #000;
+  font-family: var(--font-family-Manrope);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_create_schedule .schedule-form {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 20px;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_create_schedule .schedule-form select {
+  color: #000;
+  font-family: var(--font-family-Manrope);
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_create_schedule .schedule-form .time_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_create_schedule .schedule-form .time_list .time_item {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_create_schedule .schedule-form .time_list .time_item input {
+  width: 80px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #000;
+  font-family: var(--font-family-Manrope);
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_create_schedule .schedule-form .create_schedule_block_button {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px;
+}
+.Therapist_block_content_list .Therapist_content .Therapist_content_list .Therapist_view_schedule_item .Therapist_view_schedule__list .Therapist_create_schedule .schedule-form .create_schedule_block_button .create_schedule_button {
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.Therapist_active {
+  background-color: rgba(248, 246, 244, 0.5);
+}
+
 .Main_Footer {
   position: relative;
   -webkit-box-align: center;

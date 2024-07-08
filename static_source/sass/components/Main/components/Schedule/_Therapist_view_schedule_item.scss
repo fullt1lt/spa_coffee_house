@@ -1,0 +1,328 @@
+.Therapist_block_content_list {
+  width: 100%;
+  display: flex;
+  min-height: 70vh;
+  .Therapist_navigations {
+    display: flex;
+    width: 15%;
+    background-color: rgba(149, 154, 138, 0.8);
+    padding: 15px;
+    flex-direction: column;
+    align-items: center;
+    border: 2px black solid;
+    .Therapist_navigations_header {
+      color: #111010;
+      font-family: var(--font-family-Manrope);
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 30.4px;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .Therapist_navigations_list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      .Therapist_navigations_item {
+        width: 100%;
+        display: flex;
+        padding: 10px;
+        cursor: pointer;
+        span {
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 30.4px;
+        }
+      }
+    }
+  }
+
+  .Therapist_content {
+    width: 85%;
+    padding: 20px;
+    .Therapist_content_list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      .Therapist_view_schedule_item {
+        display: flex;
+        width: 100%;
+        .Therapist_view_schedule__list {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .Therapist_view_schedule {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            .Therapist-schedule_block {
+              width: 80%;
+              display: flex;
+              justify-content: flex-start;
+              margin-top: 20px;
+              background-color: #fff;
+              border-radius: 16px;
+              box-shadow: 10px 5px 5px rgb(192, 192, 192);
+              .Schedule_list {
+                display: flex;
+                justify-content: flex-start;
+                padding: 20px;
+                overflow-x: scroll;
+                width: 100%;
+                .Schedule_list_item {
+                  border-radius: 16px;
+                  padding: 5px;
+                  min-width: 200px !important;
+                  min-height: 220px !important;
+                  border: 1px solid black;
+                  margin-right: 15px;
+                  display: flex;
+                  .Schedule_list_item_list {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: space-between;
+                    .schedule_data_header {
+                      width: 100%;
+                      display: flex;
+                      justify-content: center;
+                      h1 {
+                        color: #000;
+                        text-align: center;
+                        font-family: var(--font-family-Manrope);
+                        font-size: 24px;
+                        font-style: normal;
+                        font-weight: 600;
+                        line-height: normal;
+                      }
+                    }
+                    .start_work_day {
+                      width: 100%;
+                      display: flex;
+                      justify-content: center;
+                      margin-top: 5px;
+                      background-color: #8b62de;
+                      .start_work_time {
+                        color: #000;
+                        text-align: center;
+                        font-family: var(--font-family-Manrope);
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                      }
+                    }
+                    .schedule_list_records {
+                      width: 100%;
+                      display: flex;
+                      justify-content: center;
+                      height: 100%;
+                      .schedule_list_records_list {
+                        width: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        .schedule_list_records_item {
+                          width: 100%;
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          margin-top: 5px;
+                          .durations {
+                            width: 100%;
+                            color: #000;
+                            text-align: center;
+                            font-family: var(--font-family-Manrope);
+                            font-size: 18px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: normal;
+                            background-color: #61cb80;
+                          }
+                          .name_procedure {
+                            width: 100%;
+                            color: #000;
+                            text-align: center;
+                            font-family: var(--font-family-Manrope);
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: normal;
+                            background-color: #b2ecc6;
+                          }
+                          .user_list {
+                            width: 100%;
+                            display: flex;
+                            justify-content: center;
+                            background-color: #b2ecc6;
+                            color: #000;
+                            text-align: center;
+                            font-family: var(--font-family-Manrope);
+                            font-size: 16px;
+                            font-style: normal;
+                            font-weight: 400;
+                            line-height: normal;
+                            background-color: #b2ecc6;
+                            .user_name {
+                              margin-right: 5px;
+                            }
+                          }
+                        }
+                      }
+                    }
+                    .end_work_day {
+                      width: 100%;
+                      display: flex;
+                      justify-content: center;
+                      margin-top: 5px;
+                      background-color: #8b62de;
+                      .end_work_time {
+                        color: #000;
+                        text-align: center;
+                        font-family: var(--font-family-Manrope);
+                        font-size: 20px;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                      }
+                    }
+                  }
+                }
+              }
+              .Schedule_list::-webkit-scrollbar {
+                width: 10px;
+                height: 10px;
+                background-color: #f9f9fd;
+              }
+              .Schedule_list::-webkit-scrollbar-thumb {
+                border-radius: 10px;
+                background-color: #61cb80;
+              }
+
+              .Schedule_list::-webkit-scrollbar-track {
+                -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+                border-radius: 10px;
+                background-color: #f9f9fd;
+              }
+            }
+          }
+          .Add_schedule_button_block {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 30px;
+            animation: 5s show ease;
+            cursor: pointer;
+          }
+          .Therapist_create_schedule {
+            display: none;
+            width: 380px;
+            flex-direction: column;
+            align-items: center;
+            border: 1px gray solid;
+            padding: 5px;
+            background-color: #fff;
+            border-radius: 8px;
+            font-family: var(--font-family-Manrope);
+            box-shadow: 10px 5px 5px rgb(192, 192, 192);
+            animation: 5s show ease;
+            .Add_schedule_close_button_block {
+              width: 100%;
+              display: flex;
+              justify-content: flex-end;
+              .Add_schedule_close_button {
+                width: 15px;
+                height: 15px;
+                cursor: pointer;
+              }
+            }
+            #calendar-container {
+              width: 100%;
+              display: flex;
+              justify-content: flex-start;
+              margin-top: 20px;
+              .calendar_input {
+                color: #000;
+                font-family: var(--font-family-Manrope);
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+              }
+            }
+            .schedule-form {
+              width: 100%;
+              display: flex;
+              flex-direction: column;
+              margin-top: 20px;
+              select {
+                color: #000;
+                font-family: var(--font-family-Manrope);
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+              }
+              .time_list {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin-top: 20px;
+                .time_item {
+                  width: 50%;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  input {
+                    width: 80px;
+                    font-size: 18px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: normal;
+                    color: #000;
+                    font-family: var(--font-family-Manrope);
+                  }
+                }
+              }
+              .create_schedule_block_button {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+                .create_schedule_button {
+                  border: 2px solid #0c0c0c;
+                  padding: 15px 30px;
+                  color: #141414;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 13px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: 19.5px;
+                  letter-spacing: 1.56px;
+                  text-transform: uppercase;
+                  cursor: pointer;
+                  // width: 200px;
+                  background-color: transparent;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.Therapist_active {
+  background-color: rgba(248, 246, 244, 0.5);
+}

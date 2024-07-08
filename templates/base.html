@@ -71,6 +71,10 @@
                                 <li class="Main_Footer_navigation_item">
                                     <a href="{% url 'admin_main_page' %}">Сторiнка Адмiнiстратора</a>
                                 </li>
+                            {% elif user.is_staff %}
+                                <li class="Main_Header_navigation_item">
+                                    <a href="{% url 'therapist_schedule' %}">Сторiнка Спеціаліста</a>
+                                </li>
                             {% endif %}
                         </ul>
                     </li>

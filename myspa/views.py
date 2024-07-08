@@ -13,7 +13,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from myspa.models import BlogAndNews, CafeProduct, Gallery, MassageTherapist, Position, Procedure, Record, Review, Schedule, SpaUser, TypeBlogAndNews, TypeCafeProduct, TypeCategories, TypeGallery, SpaСategories
 from myspa.units import SlotsValidator
-from spa.mixins import SuperUserRequiredMixin
+from spa.mixins import SuperUserRequiredMixin, TherapistRequiredMixin
 from django.utils.dateparse import parse_date
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import FormView
@@ -735,7 +735,7 @@ class RecordView(View):
         therapists = MassageTherapist.objects.filter(
         position__spa_categories=procedure.type_category.categories,
         schedule__day__gte=now.date()
-    ).distinct().order_by('-average_rating')
+        ).distinct().order_by('-average_rating')
 
         therapists_with_slots = []
 
@@ -760,3 +760,45 @@ class RecordView(View):
                 })
 
         return therapists_with_slots
+    
+    
+class TherapistScheduleView(TherapistRequiredMixin, View):
+    template_name = 'therapist_page.html'
+
+    def get_context_data(self, **kwargs):
+        therapist = get_object_or_404(MassageTherapist, user=self.request.user)
+        today = timezone.now().date()
+        schedules = Schedule.objects.filter(therapist=therapist, day__gte=today).order_by('day', 'start_time')
+
+        schedule_data = []
+        for schedule in schedules:
+            records = Record.objects.filter(schedule=schedule).order_by('start_time')
+            records_data = []
+            for record in records:
+                start_time = record.start_time
+                duration = record.procedure.duration
+                end_time = (make_aware(datetime.combine(schedule.day, start_time)) + duration).time()
+                records_data.append({
+                    'start_time': start_time.strftime('%H:%M'),
+                    'end_time': end_time.strftime('%H:%M'),
+                    'procedure_name': record.procedure.type_category.name,
+                    'client_first_name': record.client.first_name if record.client else 'N/A',
+                    'client_last_name': record.client.last_name if record.client else 'N/A',
+                })
+            schedule_data.append({
+                'day': schedule.day.strftime('%Y-%m-%d'),
+                'start_time': schedule.start_time.strftime('%H:%M'),
+                'end_time': schedule.end_time.strftime('%H:%M'),
+                'records': records_data,
+            })
+        
+        context = {
+            'therapist': therapist,
+            'schedules': schedule_data,
+        }
+        context.update(kwargs)
+        return context
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data()
+        return render(request, self.template_name, context)

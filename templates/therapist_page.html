@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <style>
+    </style>
+{% endblock %}
+
+{% block header %}
+    <li class="Main_Header_navigation_item">
+        <a href="{% url 'blog_news' %}">Новини i блог</a>
+    </li>
+    <li class="Main_Header_navigation_item">
+        <a href="{% url 'gallery' %}">Фотогалерея</a>
+    </li>
+    <li class="Main_Header_navigation_item">
+        <a href="{% url 'cafe' %}">Кав’ярня</a>
+    </li>
+    <li class="Main_Header_navigation_item">
+        <a href="{% url 'therapist_schedule' %}">Сторiнка Спеціаліста</a>
+    </li>
+{% endblock %}
+
+{% block content %}
+<ul class="Therapist_block_content_list">
+    <li class="Therapist_navigations">
+        <h1 class="Therapist_navigations_header">Панель управління</h1>
+        <ul class="Therapist_navigations_list">
+            <li class="Therapist_navigations_item Therapist_active" id="schedule">
+                <span>Графiк</span>
+            </li>
+        </ul>
+    </li>
+    <li class="Therapist_content">
+        <ul class="Therapist_content_list">
+            <li class="Therapist_view_schedule_item" id="schedule-list">
+                <ul class="Therapist_view_schedule__list">
+                    <li class="Therapist_view_schedule">
+                        <div class="Main_headers">
+                            <h1>Мій графiк</h1>
+                        </div>
+                        <div id="therapist-schedule" class="Therapist-schedule_block">
+                            <ul class="Schedule_list">
+                                {% for schedule in schedules %}
+                                <li class="Schedule_list_item">
+                                    <ul class="Schedule_list_item_list">
+                                        <li class="schedule_data_header">
+                                            <h1>{{ schedule.day }}</h1>
+                                        </li>
+                                        <li class="start_work_day">
+                                            <span class="start_work_time">{{ schedule.start_time }}</span>
+                                        </li>
+                                        <li class="schedule_list_records">
+                                            <ul class="schedule_list_records_list">
+                                                {% for record in schedule.records %}
+                                                <li class="schedule_list_records_item">
+                                                    <span class="durations">{{ record.start_time }} - {{ record.end_time }}</span>
+                                                    <span class="name_procedure">{{ record.procedure_name }}</span>
+                                                    <div class="user_list">
+                                                        <span class="user_name">{{ record.client_first_name }}</span>
+                                                        <span class="user_lastname">{{ record.client_last_name }}</span>
+                                                    </div>
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </li>
+                                        <li class="end_work_day">
+                                            <span class="end_work_time">{{ schedule.end_time }}</span>
+                                        </li>
+                                    </ul>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </li>                   
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ul>
+{% endblock %}
