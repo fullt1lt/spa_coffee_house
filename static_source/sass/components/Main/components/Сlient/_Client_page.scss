@@ -1,0 +1,308 @@
+.Client_block_content_list {
+  width: 100%;
+  display: flex;
+  min-height: 70vh;
+  font-family: var(--font-family-Manrope);
+
+  .Client_navigations {
+    display: flex;
+    width: 15%;
+    background-color: rgba(149, 154, 138, 0.8);
+    padding: 15px;
+    flex-direction: column;
+    align-items: center;
+    border: 2px black solid;
+    .Client_navigations_header {
+      color: #111010;
+      font-family: var(--font-family-Manrope);
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 30.4px;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .Client_navigations_list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      .Client_navigations_item {
+        width: 100%;
+        display: flex;
+        padding: 10px;
+        cursor: pointer;
+        span {
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 30.4px;
+        }
+      }
+    }
+  }
+
+  .Client_content {
+    width: 85%;
+    padding: 20px;
+    .Client_content_list {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      align-items: center;
+      .Client_view_records_item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 80%;
+        .Records_list {
+          width: 100%;
+          display: flex;
+          justify-content: flex-start;
+          margin-top: 20px;
+          background-color: #fff;
+          border-radius: 16px;
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          padding: 20px;
+          overflow-x: scroll;
+          width: 100%;
+          .Records_list_item {
+            border-radius: 16px;
+            padding: 5px;
+            min-width: 200px !important;
+            min-height: 220px !important;
+            border: 1px solid black;
+            margin-right: 15px;
+            .records_list_wrapper {
+              position: relative;
+              width: 100%;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              .front_records_list {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                align-items: center;
+                justify-content: center;
+                border-radius: 16px;
+                backface-visibility: hidden;
+                transition: all 0.5s ease;
+                .record_date {
+                  width: 100%;
+                  color: #000;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 24px;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: normal;
+                  background-color: #8b62de;
+                }
+                .record_time {
+                  width: 100%;
+                  color: #000;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 20px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                  background-color: #61cb80;
+                }
+                .record_therapist {
+                  width: 100%;
+                  background-color: #b2ecc6;
+                  color: #000;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                  background-color: #b2ecc6;
+                }
+                .record_procedore {
+                  width: 100%;
+                  background-color: #b2ecc6;
+                  color: #000;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                  background-color: #b2ecc6;
+                }
+                .record_price {
+                  width: 100%;
+                  background-color: #b2ecc6;
+                  color: #000;
+                  text-align: center;
+                  font-family: var(--font-family-Manrope);
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: 400;
+                  line-height: normal;
+                  background-color: #b2ecc6;
+                }
+                .record_delete {
+                  width: 100%;
+                  display: flex;
+                  justify-content: flex-end;
+                  margin-top: 5px;
+                  .Basket_record_image {
+                    width: 15px;
+                    height: 15px;
+                  }
+                }
+              }
+              .back_records_list {
+                display: none;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-color: #fff;
+                .record_delete_item_header {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  h2 {
+                    text-align: center;
+                    color: #000;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 22px;
+                    font-style: normal;
+                    font-weight: 600;
+                    line-height: normal;
+                  }
+                }
+                .record_delete_item_choice {
+                  display: flex;
+                  margin-top: 15px;
+                  flex-direction: column;
+                  .delete_record_form {
+                    width: 100%;
+                    .delete_record {
+                      border: medium none;
+                      background-image: none;
+                      background: transparent;
+                      background-color: transparent;
+                      border: 2px solid #0c0c0c;
+                      padding: 15px 30px;
+                      color: #141414;
+                      text-align: center;
+                      font-family: var(--font-family-Manrope);
+                      font-size: 13px;
+                      font-style: normal;
+                      font-weight: 400;
+                      line-height: 19.5px;
+                      letter-spacing: 1.56px;
+                      text-transform: uppercase;
+                      cursor: pointer;
+                    }
+                  }
+                  .cancel_delete {
+                    margin-top: 30px;
+                    border: 2px solid #0c0c0c;
+                    padding: 15px 30px;
+                    color: #141414;
+                    text-align: center;
+                    font-family: var(--font-family-Manrope);
+                    font-size: 13px;
+                    font-style: normal;
+                    font-weight: 400;
+                    line-height: 19.5px;
+                    letter-spacing: 1.56px;
+                    text-transform: uppercase;
+                    cursor: pointer;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .Records_list::-webkit-scrollbar {
+          width: 10px;
+          height: 10px;
+          background-color: #f9f9fd;
+        }
+        .Records_list::-webkit-scrollbar-thumb {
+          border-radius: 10px;
+          background-color: #61cb80;
+        }
+
+        .Records_list::-webkit-scrollbar-track {
+          -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+          border-radius: 10px;
+          background-color: #f9f9fd;
+        }
+        .Client_empty_records {
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-top: 30px;
+          position: relative;
+          .noorders {
+            width: 100%;
+            filter: blur(2px);
+          }
+          .Client_empty_add_records {
+            position: absolute;
+            top: 30%;
+            display: flex;
+            flex-direction: column;
+            height: 200px;
+            span {
+              margin-top: 20px;
+              font-size: 20px;
+              font-style: normal;
+              font-weight: 600;
+              line-height: 30.4px;
+            }
+            .Link_Sign_Up {
+              margin-top: 20px;
+              border: 2px solid #0c0c0c;
+              padding: 15px 30px;
+              color: #141414;
+              text-align: center;
+              font-family: var(--font-family-Manrope);
+              font-size: 13px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 19.5px;
+              letter-spacing: 1.56px;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+      .history-records {
+        display: none;
+      }
+      .close-history-button {
+        display: none;
+      }
+      .Client_history {
+        margin-top: 30px;
+        span {
+          font-size: 18px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 30.4px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+.Client_active {
+  background-color: rgba(248, 246, 244, 0.5);
+}

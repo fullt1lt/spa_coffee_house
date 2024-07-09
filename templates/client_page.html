@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<ul class="Client_block_content_list">
+    <li class="Client_navigations">
+        <h1 class="Client_navigations_header">Панель управління</h1>
+        <ul class="Client_navigations_list">
+            <li class="Client_navigations_item Client_active" id="current-records">
+                <span>Актуальні записи</span>
+            </li>
+        </ul>
+    </li>
+    <li class="Client_content">
+        <ul class="Client_content_list">
+            <li class="Client_view_records_item" id="current-records-list">
+                <div class="Main_headers">
+                    <h1>Актуальні записи</h1>
+                </div>
+                <ul class="Records_list">
+                    {% for record in current_records %}
+                    <li class="Records_list_item">
+                        <div class="records_list_wrapper">
+                            <div class="front_records_list" id="records_list_front_{{ record.id }}">
+                                <span class="record_date">{{ record.date }}</span>
+                                <span class="record_time">{{ record.start_time }} - {{ record.end_time }}</span>
+                                <span class="record_therapist">{{ record.therapist }}</span>
+                                <span class="record_procedore">{{ record.procedure }}</span>
+                                <span class="record_price">{{ record.price }}</span>
+                                <span class="record_delete"><img src="{% static 'icon/basket.svg' %}" alt="" class="Basket_record_image" delete-record-id="{{ record.id }}"></span>
+                            </div>
+                            <div class="back_records_list" id="records_list_delete_{{ record.id }}">
+                                <div class="record_delete_item_header">
+                                    <h2>Видалити запис?</h2>
+                                </div>
+                                <div class="record_delete_item_choice">
+                                    <form method="post" action="{% url 'record_delete' record.id %}" class="delete_record_form">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="delete_id" value="{{ record.id }}">
+                                        <input type="submit" value="Видалити" class="delete_record">
+                                    </form>
+                                    <span class="cancel_delete" cancel-delete-record-id="{{ record.id }}">Закрити</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </li>
+            <li class="Client_history" id="history-records-toggle">
+                <span>Показати історію записів</span>
+            </li>
+            <li class="Client_view_records_item history-records" id="history-records-list">
+                <div class="Main_headers">
+                    <h1>Історія записів</h1>
+                </div>
+                {% if history_records|length == 0%}
+                    <div class="Client_empty_records">
+                        <img src="{% static 'img/noorders.png' %}" alt="noorders" class="noorders">
+                        <div class="Client_empty_add_records">
+                            <span>У вас немає старих записів</span>
+                            <a href="{% url 'create_record' %}" class="Link_Sign_Up">Записатись</a>
+                        </div>
+                    </div>
+                {% else %}
+                <ul class="Records_list">
+                        {% for record in history_records %}
+                        <li class="Records_list_item">
+                            <span class="record_date">{{ record.date }}</span>
+                            <span class="record_time">{{ record.start_time }} - {{ record.end_time }}</span>
+                            <span class="record_therapist">{{ record.therapist }}</span>
+                            <span class="record_procedore">{{ record.procedure }}</span>
+                            <span class="record_price">{{ record.price }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+            <li class="Client_history close-history-button" id="close-history-records-toggle">
+                <span>Закрити історію</span>
+            </li>
+        </ul>
+    </li>
+</ul>
+<script src="{% static 'js/record/client_record_delete.js' %}"></script>
+<script src="{% static 'js/record/cliend_add_history_record.js' %}"></script>
+{% endblock %}

@@ -50,7 +50,7 @@ class MassageTherapist(models.Model):
 
     def __str__(self):
         positions = ', '.join([position.name for position in self.position.all()])
-        return f"{self.user.username} - {positions}"
+        return f"{self.user.first_name} {self.user.last_name} - {positions}"
     
 class SpaСategories(models.Model):
     name = models.CharField(max_length=100)

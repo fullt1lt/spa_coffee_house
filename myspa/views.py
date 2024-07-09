@@ -192,6 +192,10 @@ class DeleteTypeCafeProductView(SuperUserRequiredMixin, DeleteView):
 class DeleteGalleryView(SuperUserRequiredMixin, DeleteView):
     model = Gallery
     success_url = '/admin-main-page/'
+    
+class DeleteRecordView(DeleteView):
+    model = Record
+    success_url = '/admin-main-page/'
 
 
 class TypeCategoriesListView(ListView):
@@ -316,6 +320,7 @@ def get_therapist_schedule(request, therapist_id):
                 'start_time': start_time.strftime('%H:%M'),
                 'end_time': end_time.strftime('%H:%M'),
                 'procedure_name': record.procedure.type_category.name,
+                'procedure_price': int(record.procedure.price),
                 'client_first_name': record.client.first_name if record.client else 'N/A',
                 'client_last_name': record.client.last_name if record.client else 'N/A',
             })
@@ -782,6 +787,7 @@ class TherapistScheduleView(View):
                     'start_time': start_time.strftime('%H:%M'),
                     'end_time': end_time.strftime('%H:%M'),
                     'procedure_name': record.procedure.type_category.name,
+                    'procedure_price': int(record.procedure.price),
                     'client_first_name': record.client.first_name if record.client else 'N/A',
                     'client_last_name': record.client.last_name if record.client else 'N/A',
                 })
@@ -841,3 +847,96 @@ class TherapistScheduleView(View):
         if not Record.objects.filter(schedule=schedule).exists():
             schedule.delete()
         return redirect('therapist_schedule')
+    
+    
+
+    template_name = 'client_page.html'
+
+    def get_context_data(self, **kwargs):
+        client = get_object_or_404(SpaUser, id=self.request.user.id)
+        today = timezone.now().date()
+        current_records = Record.objects.filter(client=client, schedule__day__gte=today).order_by('schedule__day', 'start_time')
+        history_records = Record.objects.filter(client=client, schedule__day__lt=today).order_by('-schedule__day', '-start_time')
+
+        current_appointments = []
+        for record in current_records:
+            current_appointments.append({
+                'date': record.schedule.day.strftime('%Y-%m-%d'),
+                'start_time': record.start_time.strftime('%H:%M'),
+                'duration': record.procedure.duration,
+                'therapist': record.schedule.therapist.user.get_full_name(),
+                'price': record.procedure.price
+            })
+
+        history_appointments = []
+        for record in history_records:
+            history_appointments.append({
+                'date': record.schedule.day.strftime('%Y-%m-%d'),
+                'start_time': record.start_time.strftime('%H:%M'),
+                'duration': record.procedure.duration,
+                'therapist': record.schedule.therapist.user.get_full_name(),
+                'price': record.procedure.price
+            })
+
+        context = {
+            'client': client,
+            'current_records': current_appointments,
+            'history_records': history_appointments,
+        }
+        context.update(kwargs)
+        return context
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data()
+        return render(request, self.template_name, context)
+
+
+class ClientPageView(View):
+    template_name = 'client_page.html'
+
+    def get_context_data(self, **kwargs):
+        client = get_object_or_404(SpaUser, id=self.request.user.id)
+        today = timezone.now().date()
+        current_records = Record.objects.filter(client=client, schedule__day__gte=today).order_by('schedule__day', 'start_time')
+        history_records = Record.objects.filter(client=client, schedule__day__lt=today).order_by('-schedule__day', '-start_time')
+
+        current_appointments = []
+        for record in current_records:
+            start_time = record.start_time
+            duration = record.procedure.duration
+            end_time = (datetime.combine(record.schedule.day, start_time) + duration).time()
+            current_appointments.append({
+                'id' : record.id,
+                'date': record.schedule.day.strftime('%m-%d'),
+                'start_time': start_time.strftime('%H:%M'),
+                'end_time': end_time.strftime('%H:%M'),
+                'therapist': record.schedule.therapist.user.get_full_name(),
+                'procedure' : record.procedure.type_category.name,
+                'price': int(record.procedure.price)
+            })
+
+        history_appointments = []
+        for record in history_records:
+            start_time = record.start_time
+            duration = record.procedure.duration
+            end_time = (datetime.combine(record.schedule.day, start_time) + duration).time()
+            history_appointments.append({
+                'date': record.schedule.day.strftime('%m-%d'),
+                'start_time': start_time.strftime('%H:%M'),
+                'end_time': end_time.strftime('%H:%M'),
+                'therapist': record.schedule.therapist.user.get_full_name(),
+                'procedure' : record.procedure.type_category.name,
+                'price': int(record.procedure.price)
+            })
+
+        context = {
+            'client': client,
+            'current_records': current_appointments,
+            'history_records': history_appointments,
+        }
+        context.update(kwargs)
+        return context
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data()
+        return render(request, self.template_name, context)

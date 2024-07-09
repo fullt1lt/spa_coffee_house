@@ -8212,6 +8212,405 @@ a {
   background-color: rgba(248, 246, 244, 0.5);
 }
 
+.Client_block_content_list {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 70vh;
+  font-family: var(--font-family-Manrope);
+}
+.Client_block_content_list .Client_navigations {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 15%;
+  background-color: rgba(149, 154, 138, 0.8);
+  padding: 15px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 2px black solid;
+}
+.Client_block_content_list .Client_navigations .Client_navigations_header {
+  color: #111010;
+  font-family: var(--font-family-Manrope);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 30.4px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.Client_block_content_list .Client_navigations .Client_navigations_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Client_block_content_list .Client_navigations .Client_navigations_list .Client_navigations_item {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 10px;
+  cursor: pointer;
+}
+.Client_block_content_list .Client_navigations .Client_navigations_list .Client_navigations_item span {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30.4px;
+}
+.Client_block_content_list .Client_content {
+  width: 85%;
+  padding: 20px;
+}
+.Client_block_content_list .Client_content .Client_content_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 16px;
+  -webkit-box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+  padding: 20px;
+  overflow-x: scroll;
+  width: 100%;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item {
+  border-radius: 16px;
+  padding: 5px;
+  min-width: 200px !important;
+  min-height: 220px !important;
+  border: 1px solid black;
+  margin-right: 15px;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .front_records_list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 16px;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .front_records_list .record_date {
+  width: 100%;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  background-color: #8b62de;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .front_records_list .record_time {
+  width: 100%;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #61cb80;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .front_records_list .record_therapist {
+  width: 100%;
+  background-color: #b2ecc6;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #b2ecc6;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .front_records_list .record_procedore {
+  width: 100%;
+  background-color: #b2ecc6;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #b2ecc6;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .front_records_list .record_price {
+  width: 100%;
+  background-color: #b2ecc6;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #b2ecc6;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .front_records_list .record_delete {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-top: 5px;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .front_records_list .record_delete .Basket_record_image {
+  width: 15px;
+  height: 15px;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .back_records_list {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .back_records_list .record_delete_item_header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .back_records_list .record_delete_item_header h2 {
+  text-align: center;
+  color: #000;
+  font-family: var(--font-family-Manrope);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .back_records_list .record_delete_item_choice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 15px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .back_records_list .record_delete_item_choice .delete_record_form {
+  width: 100%;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .back_records_list .record_delete_item_choice .delete_record_form .delete_record {
+  border: medium none;
+  background-image: none;
+  background: transparent;
+  background-color: transparent;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list .Records_list_item .records_list_wrapper .back_records_list .record_delete_item_choice .cancel_delete {
+  margin-top: 30px;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: #f9f9fd;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #61cb80;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_list::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Client_empty_records {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 30px;
+  position: relative;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Client_empty_records .noorders {
+  width: 100%;
+  -webkit-filter: blur(2px);
+          filter: blur(2px);
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Client_empty_records .Client_empty_add_records {
+  position: absolute;
+  top: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 200px;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Client_empty_records .Client_empty_add_records span {
+  margin-top: 20px;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 30.4px;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Client_empty_records .Client_empty_add_records .Link_Sign_Up {
+  margin-top: 20px;
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+}
+.Client_block_content_list .Client_content .Client_content_list .history-records {
+  display: none;
+}
+.Client_block_content_list .Client_content .Client_content_list .close-history-button {
+  display: none;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_history {
+  margin-top: 30px;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_history span {
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30.4px;
+  cursor: pointer;
+}
+
+.Client_active {
+  background-color: rgba(248, 246, 244, 0.5);
+}
+
 .Main_Footer {
   position: relative;
   -webkit-box-align: center;

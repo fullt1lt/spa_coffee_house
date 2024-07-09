@@ -45,6 +45,11 @@ document.addEventListener("DOMContentLoaded", function () {
               procedureName.classList.add("name_procedure");
               procedureName.textContent = record.procedure_name;
               recordLi.appendChild(procedureName);
+              
+              const procedureprice = document.createElement("span");
+              procedureName.classList.add("price_procedure");
+              procedureName.textContent = record.procedure_price;
+              recordLi.appendChild(procedureprice);
 
               const userList = document.createElement("div");
               userList.classList.add("user_list");
