@@ -195,7 +195,7 @@ class DeleteGalleryView(SuperUserRequiredMixin, DeleteView):
     
 class DeleteRecordView(DeleteView):
     model = Record
-    success_url = '/admin-main-page/'
+    success_url = '/client-page/'
 
 
 class TypeCategoriesListView(ListView):
@@ -287,7 +287,7 @@ class GalleryView(ListView):
 
 class TypeGalleryListView(ListView):
     model = Gallery
-    paginate_by = 3
+    paginate_by = 4
     ordering = ['name']
     template_name = 'gallery_categories.html'
     context_object_name = 'type_gallery_categories'
@@ -848,47 +848,6 @@ class TherapistScheduleView(View):
             schedule.delete()
         return redirect('therapist_schedule')
     
-    
-
-    template_name = 'client_page.html'
-
-    def get_context_data(self, **kwargs):
-        client = get_object_or_404(SpaUser, id=self.request.user.id)
-        today = timezone.now().date()
-        current_records = Record.objects.filter(client=client, schedule__day__gte=today).order_by('schedule__day', 'start_time')
-        history_records = Record.objects.filter(client=client, schedule__day__lt=today).order_by('-schedule__day', '-start_time')
-
-        current_appointments = []
-        for record in current_records:
-            current_appointments.append({
-                'date': record.schedule.day.strftime('%Y-%m-%d'),
-                'start_time': record.start_time.strftime('%H:%M'),
-                'duration': record.procedure.duration,
-                'therapist': record.schedule.therapist.user.get_full_name(),
-                'price': record.procedure.price
-            })
-
-        history_appointments = []
-        for record in history_records:
-            history_appointments.append({
-                'date': record.schedule.day.strftime('%Y-%m-%d'),
-                'start_time': record.start_time.strftime('%H:%M'),
-                'duration': record.procedure.duration,
-                'therapist': record.schedule.therapist.user.get_full_name(),
-                'price': record.procedure.price
-            })
-
-        context = {
-            'client': client,
-            'current_records': current_appointments,
-            'history_records': history_appointments,
-        }
-        context.update(kwargs)
-        return context
-
-    def get(self, request, *args, **kwargs):
-        context = self.get_context_data()
-        return render(request, self.template_name, context)
 
 
 class ClientPageView(View):

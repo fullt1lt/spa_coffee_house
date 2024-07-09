@@ -8,11 +8,11 @@
 {% block header %}
         {% for item in another_model_list %}
             {% if category_pk == item.pk %}
-                    <li class="Main_Header_navigation_item Active">
+                    <li class="Main_Second_Header_navigation_item Active">
                         <a href="{% url 'categories' item.id %}">{{item.name}}</a>
                     </li>
                 {%else%}
-                    <li class="Main_Header_navigation_item">
+                    <li class="Main_Second_Header_navigation_item">
                         <a href="{% url 'categories' item.id %}">{{item.name}}</a>
                     </li>
                 {%endif%}

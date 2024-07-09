@@ -70,7 +70,7 @@
                                 <li class="Main_Header_navigation_item">
                                     <a href="{% url 'therapist_schedule' %}">Сторiнка Спеціаліста</a>
                                 </li>
-                            {% else %}
+                            {% elif request.user.is_authenticated  %}
                                 <li class="Main_Header_navigation_item">
                                     <a href="{% url 'client_page' %}">Сторiнка Клієнта</a>
                                 </li>

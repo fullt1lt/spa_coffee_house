@@ -328,11 +328,11 @@ a {
       -ms-flex-pack: center;
           justify-content: center;
 }
-.Header_Second .Header_Second_list .Header_Second_navigation .Header_Second_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Header_navigation_item {
+.Header_Second .Header_Second_list .Header_Second_navigation .Header_Second_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Second_Header_navigation_item {
   padding: 15px;
   margin-right: 80px;
 }
-.Header_Second .Header_Second_list .Header_Second_navigation .Header_Second_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Header_navigation_item a {
+.Header_Second .Header_Second_list .Header_Second_navigation .Header_Second_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Second_Header_navigation_item a {
   color: var(--black-color);
   color: #000;
   font-family: Manrope;
@@ -2802,7 +2802,7 @@ a {
     height: 50vh !important;
   }
   .Main_Header_text {
-    margin-top: 150px !important;
+    margin-top: 100px !important;
   }
   .Main_About_Us_info_gallery {
     margin-top: 50px;
@@ -2851,6 +2851,9 @@ a {
         -ms-flex-direction: column;
             flex-direction: column;
   }
+  .Main_Header_navigation_item {
+    margin-right: 15px !important;
+  }
   .Main_About_Us_info_text {
     width: 100% !important;
   }
@@ -2895,6 +2898,15 @@ a {
   }
 }
 @media screen and (max-width: 800px) {
+  .Main_Header {
+    background: rgba(149, 154, 138, 0.8) !important;
+  }
+  .Main_Header_navigation_item {
+    margin-right: 0px !important;
+  }
+  .Main_Header_navigation_item a {
+    font-size: 12px !important;
+  }
   .Main_Header_info_list {
     display: -webkit-box !important;
     display: -ms-flexbox !important;
@@ -4821,8 +4833,8 @@ a {
   overflow-x: scroll;
 }
 .Admin_view_schedule_item .Admin_view_schedule__list .Admin_view_schedule .therapist-schedule_block .schedule_list {
-  min-width: 200px !important;
-  min-height: 220px !important;
+  min-width: 300px !important;
+  min-height: 380px !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8611,6 +8623,98 @@ a {
   background-color: rgba(248, 246, 244, 0.5);
 }
 
+@media (min-width: 380px) and (max-width: 820px) {
+  .TypeCategory_item {
+    width: 100% !important;
+    font-size: 16px !important;
+  }
+  .TypeCafeCategories_item {
+    width: 100% !important;
+    font-size: 16px !important;
+  }
+  .Main_Second_Header_navigation_item {
+    margin-right: 10px !important;
+  }
+  .Main_Second_Header_navigation_item a {
+    font-size: 14px !important;
+  }
+  .item_description {
+    height: 140px !important;
+  }
+  .item_description span {
+    font-size: 14px !important;
+  }
+  .GalleryCategories_main_list {
+    height: 70vh !important;
+  }
+  .BlogNewsCategories_item_list {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+  }
+  .BlogNewsCategories_item_list .item_description {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .BlogNewsCategories_item_list .item_image {
+    width: 90% !important;
+    height: auto !important;
+  }
+  .Record_main_list {
+    min-height: 100vh !important;
+  }
+  .Admin_content {
+    width: 75% !important;
+  }
+  .view_therapist {
+    width: 200px !important;
+  }
+  .Admin_block_content_list {
+    width: 90% !important;
+  }
+  .schedule_list {
+    min-height: 300px !important;
+    min-width: 300px !important;
+  }
+}
+@media (min-width: 821px) and (max-width: 1120px) {
+  .Main_Second_Header_navigation_item {
+    margin-right: 10px !important;
+  }
+  .Main_Second_Header_navigation_item a {
+    font-size: 14px !important;
+  }
+  .TypeCategory_item_list .item_description {
+    height: 250px !important;
+  }
+  .BlogNewsCategories_item_list {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+  }
+  .BlogNewsCategories_item_list .item_description {
+    -webkit-box-orient: horizontal !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: row !important;
+            flex-direction: row !important;
+    width: 100% !important;
+  }
+  .Admin_navigations_item span {
+    text-wrap: wrap !important;
+  }
+}
 .Main_Footer {
   position: relative;
   -webkit-box-align: center;
