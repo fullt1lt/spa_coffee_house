@@ -171,3 +171,12 @@ SOCIALACCOUNT_PROVIDERS = {
 SOCIALACCOUNT_LOGIN_ON_GET = True 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'daniiltupikin98@gmail.com'
+EMAIL_HOST_PASSWORD = 'mmdz lnwd ggqf piym'
+DEFAULT_FROM_EMAIL = 'daniiltupikin98@gmail.com'

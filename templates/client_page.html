@@ -66,9 +66,9 @@
                         </div>
                     </div>
                 {% else %}
-                <ul class="Records_list">
+                <ul class="Records_all_list">
                         {% for record in history_records %}
-                        <li class="Records_list_item">
+                        <li class="Records_all_list_item">
                             <span class="record_date">{{ record.date }}</span>
                             <span class="record_time">{{ record.start_time }} - {{ record.end_time }}</span>
                             <span class="record_therapist">{{ record.therapist }}</span>

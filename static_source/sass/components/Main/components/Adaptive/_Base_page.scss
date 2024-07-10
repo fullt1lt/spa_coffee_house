@@ -7,7 +7,14 @@
     width: 100% !important;
     font-size: 16px !important;
   }
-
+  .Procedures_list {
+    align-items: center !important;
+    justify-content: center !important;
+    .Procedure_item {
+      width: 330px !important;
+      height: 180px !important;
+    }
+  }
   .Main_Second_Header_navigation_item {
     margin-right: 10px !important;
   }
@@ -43,8 +50,14 @@
   .Record_main_list {
     min-height: 100vh !important;
   }
+  .Admin_navigations {
+    width: 25% !important;
+    .Admin_navigations_header {
+      font-size: 16px !important;
+    }
+  }
   .Admin_content {
-    width: 75% !important;
+    width: 70% !important;
   }
   .view_therapist {
     width: 200px !important;
@@ -82,7 +95,26 @@
   }
   .Admin_navigations_item {
     span {
+      font-size: 14px !important;
       text-wrap: wrap !important;
     }
+  }
+  .CafeProduct_item {
+    width: 100% !important;
+  }
+  .TypeCafeProduct_item {
+    width: 100% !important;
+  }
+  .Procedure_item {
+    width: 100% !important;
+  }
+  .TypeCategory_item {
+    width: 100% !important;
+  }
+  .Massage_Therapist_content_item {
+    width: 80% !important;
+  }
+  #view_therapist {
+    width: 200px !important;
   }
 }

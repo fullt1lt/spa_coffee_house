@@ -46,6 +46,9 @@
 }
 
 @media screen and (max-width: 865px) {
+    .Massage_Therapist_content_item {
+    width: 80% !important;
+  }
   .Main_About_Us_info_list {
     flex-direction: column;
   }
@@ -88,6 +91,13 @@
 }
 
 @media screen and (max-width: 800px) {
+  .Massage_Therapist_content_item {
+    width: 80% !important;
+  }
+  .TypeCategory_item {
+    width: 100% !important;
+    font-size: 16px !important;
+  }
   .Main_Header {
     background: rgba(149, 154, 138, 0.8) !important;
   }
@@ -149,7 +159,10 @@
     margin-right: 15px;
   }
   .Main_Footer_navigation_item {
-    margin-right: 15px !important;
+    margin-right: 5px !important;
+    a {
+      font-size: 12px !important;
+    }
   }
   .Navigation_contacts_list {
     margin-top: 10px;
@@ -194,9 +207,21 @@
     width: 100% !important;
   }
   .Main_Massage_Therapist_content_list {
-    height: 580px !important;
-    overflow: scroll;
+    height: 530px !important;
     border-radius: 16px;
+  }
+  .Main_Massage_Therapist_content_list {
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .Main_Massage_Therapist_content_list::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  .Main_Spa_Categories_content_list ::-webkit-scrollbar {
+    display: none !important;
   }
   .Review_main_list {
     margin-top: 30px !important;

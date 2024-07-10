@@ -21,6 +21,8 @@ from django.utils import timezone
 from datetime import datetime, timedelta
 from django.utils.timezone import make_aware
 
+from spa.send_mail import SendMail
+
         
 class Register(CreateView):
     form_class = RegisterUserForm
@@ -645,7 +647,7 @@ class RecordView(View):
         }
         if step == '1':
             context['spa_categories'] = SpaСategories.objects.all()
-            context['procedures'] = Procedure.objects.all()
+            context['procedures'] = Procedure.objects.select_related('type_category').order_by('type_category__name')
         if step == '2':
             context['therapists'] = self.sorting_therapists(request)
         if step == '3':
@@ -728,7 +730,9 @@ class RecordView(View):
                 day=date,
                 defaults={'start_time': time, 'end_time': end_time.time()}
             )
-            Record.objects.create(schedule=schedule, procedure=procedure, start_time=time, client=user)
+            record = Record.objects.create(schedule=schedule, procedure=procedure, start_time=time, client=user)
+            SendMail.send_email_to_client(record)
+            SendMail.send_email_to_therapist(record)
             return redirect('/create-record/')
 
         context = self.get_context_data('3', request)
@@ -765,6 +769,7 @@ class RecordView(View):
                 })
 
         return therapists_with_slots
+
     
     
 class TherapistScheduleView(View):
@@ -848,7 +853,6 @@ class TherapistScheduleView(View):
             schedule.delete()
         return redirect('therapist_schedule')
     
-
 
 class ClientPageView(View):
     template_name = 'client_page.html'

@@ -1347,11 +1347,11 @@ a {
   font-weight: 600;
   line-height: normal;
 }
-.TypeCategories_main_list .TypeCategories_list .TypeCategory_item .TypeCategory_item_list .item_description {
+.TypeCategories_main_list .TypeCategories_list .TypeCategory_item .TypeCategory_item_list .item_type_category_description {
   margin-top: 20px;
-  height: 180px;
+  min-height: 180px;
 }
-.TypeCategories_main_list .TypeCategories_list .TypeCategory_item .TypeCategory_item_list .item_description span {
+.TypeCategories_main_list .TypeCategories_list .TypeCategory_item .TypeCategory_item_list .item_type_category_description span {
   color: #000;
   font-family: Manrope;
   font-size: 18px;
@@ -1661,10 +1661,10 @@ a {
   font-weight: 600;
   line-height: normal;
 }
-.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .Categories_content_item_list .item_description {
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .Categories_content_item_list .item_category_description {
   margin-top: 20px;
 }
-.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .Categories_content_item_list .item_description .item_description_text {
+.Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .Categories_content_item_list .item_category_description .item_description_text {
   color: #000;
   font-family: var(--font-family-Manrope);
   font-size: 18px;
@@ -2845,6 +2845,9 @@ a {
   }
 }
 @media screen and (max-width: 865px) {
+  .Massage_Therapist_content_item {
+    width: 80% !important;
+  }
   .Main_About_Us_info_list {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -2898,6 +2901,13 @@ a {
   }
 }
 @media screen and (max-width: 800px) {
+  .Massage_Therapist_content_item {
+    width: 80% !important;
+  }
+  .TypeCategory_item {
+    width: 100% !important;
+    font-size: 16px !important;
+  }
   .Main_Header {
     background: rgba(149, 154, 138, 0.8) !important;
   }
@@ -2978,7 +2988,10 @@ a {
     margin-right: 15px;
   }
   .Main_Footer_navigation_item {
-    margin-right: 15px !important;
+    margin-right: 5px !important;
+  }
+  .Main_Footer_navigation_item a {
+    font-size: 12px !important;
   }
   .Navigation_contacts_list {
     margin-top: 10px;
@@ -3029,9 +3042,20 @@ a {
     width: 100% !important;
   }
   .Main_Massage_Therapist_content_list {
-    height: 580px !important;
-    overflow: scroll;
+    height: 530px !important;
     border-radius: 16px;
+  }
+  .Main_Massage_Therapist_content_list {
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .Main_Massage_Therapist_content_list::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  .Main_Spa_Categories_content_list ::-webkit-scrollbar {
+    display: none !important;
   }
   .Review_main_list {
     margin-top: 30px !important;
@@ -4802,7 +4826,7 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 400px;
+  width: 200px;
   margin-top: 30px;
   padding: 15px 16px;
   -webkit-box-align: center;
@@ -8549,6 +8573,19 @@ a {
   border-radius: 10px;
   background-color: #f9f9fd;
 }
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+}
 .Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Client_empty_records {
   width: 50%;
   display: -webkit-box;
@@ -8602,6 +8639,116 @@ a {
   letter-spacing: 1.56px;
   text-transform: uppercase;
 }
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_all_list {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 16px;
+  -webkit-box-shadow: 10px 5px 5px rgb(192, 192, 192);
+          box-shadow: 10px 5px 5px rgb(192, 192, 192);
+  padding: 20px;
+  overflow-x: scroll;
+  width: 100%;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_all_list .Records_all_list_item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 16px;
+  padding: 5px;
+  min-width: 200px !important;
+  min-height: 220px !important;
+  border: 1px solid black;
+  margin-right: 15px;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_all_list .Records_all_list_item .record_date {
+  width: 100%;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  background-color: #8b62de;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_all_list .Records_all_list_item .record_time {
+  width: 100%;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #61cb80;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_all_list .Records_all_list_item .record_therapist {
+  width: 100%;
+  background-color: #b2ecc6;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #b2ecc6;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_all_list .Records_all_list_item .record_procedore {
+  width: 100%;
+  background-color: #b2ecc6;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #b2ecc6;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_all_list .Records_all_list_item .record_price {
+  width: 100%;
+  background-color: #b2ecc6;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  background-color: #b2ecc6;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_all_list .Records_all_list_item .record_delete {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin-top: 5px;
+}
+.Client_block_content_list .Client_content .Client_content_list .Client_view_records_item .Records_all_list .Records_all_list_item .record_delete .Basket_record_image {
+  width: 15px;
+  height: 15px;
+}
 .Client_block_content_list .Client_content .Client_content_list .history-records {
   display: none;
 }
@@ -8631,6 +8778,18 @@ a {
   .TypeCafeCategories_item {
     width: 100% !important;
     font-size: 16px !important;
+  }
+  .Procedures_list {
+    -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
+            align-items: center !important;
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+  }
+  .Procedures_list .Procedure_item {
+    width: 330px !important;
+    height: 180px !important;
   }
   .Main_Second_Header_navigation_item {
     margin-right: 10px !important;
@@ -8671,8 +8830,14 @@ a {
   .Record_main_list {
     min-height: 100vh !important;
   }
+  .Admin_navigations {
+    width: 25% !important;
+  }
+  .Admin_navigations .Admin_navigations_header {
+    font-size: 16px !important;
+  }
   .Admin_content {
-    width: 75% !important;
+    width: 70% !important;
   }
   .view_therapist {
     width: 200px !important;
@@ -8712,7 +8877,26 @@ a {
     width: 100% !important;
   }
   .Admin_navigations_item span {
+    font-size: 14px !important;
     text-wrap: wrap !important;
+  }
+  .CafeProduct_item {
+    width: 100% !important;
+  }
+  .TypeCafeProduct_item {
+    width: 100% !important;
+  }
+  .Procedure_item {
+    width: 100% !important;
+  }
+  .TypeCategory_item {
+    width: 100% !important;
+  }
+  .Massage_Therapist_content_item {
+    width: 80% !important;
+  }
+  #view_therapist {
+    width: 200px !important;
   }
 }
 .Main_Footer {
