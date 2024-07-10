@@ -69,12 +69,12 @@ class MainPage(View):
         return self.get(request, *args, **kwargs)
 
     def handle_register(self, request):
-        register_form = RegisterUserForm(request.POST)
+        register_form = RegisterUserForm(request.POST, request.FILES)
         if register_form.is_valid():
             user = register_form.save(commit=False)
             user.username = user.email
             user.save()
-            login(request, user, backend='django.contrib.auth.backends.ModelBackend') 
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('/')
         # Передача формы с ошибками в контекст для вывода ошибок в шаблоне
         context = {

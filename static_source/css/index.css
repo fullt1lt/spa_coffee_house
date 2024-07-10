@@ -1757,6 +1757,8 @@ a {
   width: 100%;
   border-radius: 15px;
   height: 357px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .Main_Massage_Therapist .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item .content_item_info_list {
   display: -webkit-box;
