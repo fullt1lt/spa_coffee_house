@@ -1663,6 +1663,7 @@ a {
 }
 .Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .Categories_content_item_list .item_category_description {
   margin-top: 20px;
+  min-height: 150px;
 }
 .Main_Spa_Categories .Main_Spa_Categories_list .Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .Categories_content_item_list .item_category_description .item_description_text {
   color: #000;
@@ -2391,10 +2392,11 @@ a {
   font-weight: 400;
   line-height: normal;
 }
-.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_description {
+.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_cafe_description {
   margin-top: 20px;
+  min-height: 50px;
 }
-.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_description span {
+.TypeCafeCategories_main_list .TypeCafeCategories_list .TypeCafeCategories_item .TypeCafeCategories_item_list .item_cafe_description span {
   color: #000;
   font-family: Manrope;
   font-size: 18px;

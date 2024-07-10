@@ -30,7 +30,7 @@
                             <img src="{%static 'icon/logo_black.svg'%}" alt="" class="logo">
                         </a>
                         <span class="Main_info_link">
-                            Theraphy Cup Spa
+                            Therapy Cup Spa
                         </span>
                     </li>
                     <li class="Main_Header_autorization">
@@ -129,6 +129,7 @@
                         </form>
                     </li>
                     <button class="cloose_button" id="cloose_button_login"><img src="{%static 'icon/cloose.png'%}" alt=""></button>
+                    <script src="{% static 'js/forms/redirect_login_form.js' %}"></script>
                     <script src="{% static 'js/forms/login_form.js' %}"></script>
                 </ul>
 
@@ -473,7 +474,7 @@
                 <hr>
             </li>
             <li class="Main_Footer_Info">
-                <span>Theraphy Cup Spa, s.r.o.</span>
+                <span>Therapy Cup Spa, s.r.o.</span>
                 <span>Recepce +420776652345</span>
                 <span>IČ: 05682606</span>
                 <span>DIČ: CZ05782303</span>
@@ -500,7 +501,7 @@
                                 <li class="Main_Footer_navigation_item">
                                     <a href="{% url 'therapist_schedule' %}">Сторiнка Спеціаліста</a>
                                 </li>
-                            {% else %}
+                            {% elif request.user.is_authenticated  %}
                                 <li class="Main_Footer_navigation_item">
                                     <a href="{% url 'client_page' %}">Сторiнка Клієнта</a>
                                 </li>
@@ -535,7 +536,7 @@
                             <img src="{%static 'icon/logo_black.svg'%}" alt="" class="logo">
                         </a>
                         <span class="Main_info_link">
-                            Theraphy Cup Spa
+                            Therapy Cup Spa
                         </span>
                     </li>
                 </ul>

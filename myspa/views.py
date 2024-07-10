@@ -1,5 +1,5 @@
 from django.db import IntegrityError
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
@@ -619,10 +619,14 @@ class AdminMainPage(SuperUserRequiredMixin, View):
         return render(self.request, self.template_name, context, **response_kwargs)
     
 
-class RecordView(View):
+class RecordView(LoginRequiredMixin, View):
     template_name = 'record.html'
+    login_url = 'index'
+    
 
     def get(self, request):
+        if not request.user.is_authenticated:
+            return HttpResponseRedirect(f"{reverse('index')}?next={request.path}")
         step = request.GET.get('step', '1')
         context = self.get_context_data(step, request)
         return render(request, self.template_name, context)
@@ -854,8 +858,9 @@ class TherapistScheduleView(View):
         return redirect('therapist_schedule')
     
 
-class ClientPageView(View):
+class ClientPageView(LoginRequiredMixin, View):
     template_name = 'client_page.html'
+    login_url = 'index'
 
     def get_context_data(self, **kwargs):
         client = get_object_or_404(SpaUser, id=self.request.user.id)
@@ -900,6 +905,9 @@ class ClientPageView(View):
         context.update(kwargs)
         return context
 
+
     def get(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return HttpResponseRedirect(f"{reverse('index')}?next={request.path}")
         context = self.get_context_data()
         return render(request, self.template_name, context)
