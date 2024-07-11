@@ -29,7 +29,7 @@
                                 <span class="record_time">{{ record.start_time }} - {{ record.end_time }}</span>
                                 <span class="record_therapist">{{ record.therapist }}</span>
                                 <span class="record_procedore">{{ record.procedure }}</span>
-                                <span class="record_price">{{ record.price }}</span>
+                                <span class="record_price">{{ record.price }} грн</span>
                                 <span class="record_delete"><img src="{% static 'icon/basket.svg' %}" alt="" class="Basket_record_image" delete-record-id="{{ record.id }}"></span>
                             </div>
                             <div class="back_records_list" id="records_list_delete_{{ record.id }}">
@@ -73,7 +73,7 @@
                             <span class="record_time">{{ record.start_time }} - {{ record.end_time }}</span>
                             <span class="record_therapist">{{ record.therapist }}</span>
                             <span class="record_procedore">{{ record.procedure }}</span>
-                            <span class="record_price">{{ record.price }}</span>
+                            <span class="record_price">{{ record.price }} грн</span>
                         </li>
                         {% endfor %}
                     </ul>

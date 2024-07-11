@@ -4830,7 +4830,7 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 200px;
+  width: 250px;
   margin-top: 30px;
   padding: 15px 16px;
   -webkit-box-align: center;
@@ -8844,7 +8844,7 @@ a {
     width: 70% !important;
   }
   .view_therapist {
-    width: 200px !important;
+    width: 250px !important;
   }
   .Admin_block_content_list {
     width: 90% !important;
@@ -8900,7 +8900,7 @@ a {
     width: 80% !important;
   }
   #view_therapist {
-    width: 200px !important;
+    width: 250px !important;
   }
 }
 .Main_Footer {
