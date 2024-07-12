@@ -5846,6 +5846,8 @@ a {
   height: 100%;
   -webkit-filter: blur(4px);
           filter: blur(4px);
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .Admin_view_cafe_products_item .CafeProducts_list .CafeProduct_item .CafeProduct_wrapper .CafeProduct_update_item_list .CafeProduct_update_item .CafeProduct_update_form .item_image .upload-button_list {
   top: -70%;

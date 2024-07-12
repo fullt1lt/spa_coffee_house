@@ -11,6 +11,7 @@ CATEGORY_TIME = (
     (timedelta(minutes=120), "120"),
 )
 
+
 class SpaUser(AbstractUser):
     phone = models.CharField(max_length=16, blank=True, null=True) 
     profile_image = models.ImageField(upload_to='profile_image/', blank=True, null=True)
@@ -26,10 +27,10 @@ class Salon(models.Model):
     name = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     phone_number = models.CharField(max_length=15)
-    # categories = models.ForeignKey('SpaСategories', on_delete=models.CASCADE, related_name='categories')
     
     def __str__(self):
         return self.name
+
 
 class Position(models.Model):
     name = models.CharField(max_length=20)
@@ -37,6 +38,7 @@ class Position(models.Model):
     
     def __str__(self):
         return self.name
+
 
 class MassageTherapist(models.Model):
     user = models.OneToOneField(SpaUser, on_delete=models.CASCADE)
@@ -51,6 +53,7 @@ class MassageTherapist(models.Model):
     def __str__(self):
         positions = ', '.join([position.name for position in self.position.all()])
         return f"{self.user.first_name} {self.user.last_name} - {positions}"
+    
     
 class SpaСategories(models.Model):
     name = models.CharField(max_length=100)

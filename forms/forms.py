@@ -2,7 +2,7 @@ from django import forms
 from myspa.models import CATEGORY_TIME, CafeProduct, Gallery, MassageTherapist, Position, Procedure, Review, Salon, Schedule, SpaUser, TypeCafeProduct, TypeCategories, SpaСategories
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import authenticate
-from django.core.exceptions import ValidationError  
+
     
 class RegisterUserForm(UserCreationForm):
     first_name = forms.CharField(label="Iм'я", widget=forms.TextInput(attrs={'class': 'form-input-name', 'placeholder': "Iм'я"}))
@@ -127,6 +127,7 @@ class ScheduleForm(forms.ModelForm):
 class ProcedureForm(forms.Form):
     procedure = forms.ModelChoiceField(queryset=Procedure.objects.all(), label="Процедура")
 
+
 class TherapistForm(forms.Form):
     therapist = forms.ModelChoiceField(queryset=MassageTherapist.objects.all(), label="Спеціаліст")
     
@@ -155,7 +156,6 @@ class TypeCategoryCustomForm(forms.ModelForm):
         }
         
         
-
 class ProcedureEditForm(forms.ModelForm):
     class Meta:
         model = Procedure
