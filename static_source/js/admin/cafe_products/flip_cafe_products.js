@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
         frontCard.style.transform = "rotateY(-180deg)";
         backCard.style.transform = "rotateY(0deg)";
       } else {
-        return; // Остановить выполнение, если карточки не найдены
+        return;
       }
 
       // Заполнение формы
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", function () {
         !imageUploadInput ||
         !imageUploadFilename
       ) {
-        return; // Остановить выполнение, если поля не найдены
+        return;
       }
 
       // Заполнение полей формы
@@ -91,7 +91,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
-      // Событие на изменение файла
       imageUploadInput.addEventListener("change", function (event) {
         const fileName = event.target.files[0]?.name;
         if (fileName) {
