@@ -69,9 +69,21 @@
     min-height: 300px !important;
     min-width: 300px !important;
   }
+  .CafeProduct_item {
+    width: 100% !important;
+  }
+  .TypeCafeProduct_item {
+    width: 100% !important;  
+    }
 }
 
 @media (min-width: 821px) and (max-width: 1120px) {
+  .CafeProduct_item {
+    width: 100% !important;
+  }
+    .TypeCafeProduct_item {
+    width: 100% !important;  
+    };
   .Main_Second_Header_navigation_item {
     margin-right: 10px !important;
   }
