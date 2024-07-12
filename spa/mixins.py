@@ -9,4 +9,4 @@ class SuperUserRequiredMixin(UserPassesTestMixin):
 class TherapistRequiredMixin(UserPassesTestMixin):
     
     def test_func(self):
-        return self.request.user.is_staff
+        return not self.request.user.is_superuser and self.request.user.is_staff

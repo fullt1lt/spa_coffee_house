@@ -22,183 +22,188 @@
 </head>
 <body>
     <header class="Main_Header">
-        <ul class="Main_Header_list">
-            <li class="Main_Header_info">
-                <ul class="Main_Header_info_list">
-                    <li class="Main_info_logo">
-                        <a href="{% url 'index' %}" class="Main_info_link">
-                            <img src="{%static 'icon/logo_black.svg'%}" alt="" class="logo">
-                        </a>
-                        <span class="Main_info_link">
-                            Therapy Cup Spa
-                        </span>
-                    </li>
-                    <li class="Main_Header_autorization">
-                        <ul class="authorization_list">
-                            {% if request.user.is_authenticated %}
-                                <li class="authorization"> 
-                                    <form method="post" action="{% url 'logout' %}">
-                                    {% csrf_token %}
-                                    <button type="submit" class="button_logout">Вийти</button>
-                                    </form>
-                                </li>
-                            {% else %}
-                                <li class="authorization"><button type="submit" class="button_login" id="active_button_login">Вхiд</button> | <button type="submit" class="button_register" id="active_button_register">Зареєструватися</button></li>
-                            {% endif %}
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="Main_Header_navigation">
-                <ul class="Main_Header_navigation_list">
-                    <li class="Navigation_list_nav">
-                        <ul class="navigation_list_nav_list">
-                            <li class="Main_Header_navigation_item">
-                                <a href="{% url 'blog_news' %}">Новини i блог</a>
-                            </li>
-                            <li class="Main_Header_navigation_item">
-                                <a href="{% url 'gallery' %}">Фотогалерея</a>
-                            </li>
-                            <li class="Main_Header_navigation_item">
-                                <a href="{% url 'cafe' %}">Кав’ярня</a>
-                            </li>
-                            {% if user.is_superuser %}
+        <div class="Main_Header_Substrate">
+            <ul class="Main_Header_list">
+                <li class="Main_Header_info">
+                    <ul class="Main_Header_info_list">
+                        <li class="Main_info_logo">
+                            <a href="{% url 'index' %}" class="Main_info_link">
+                                <img src="{%static 'icon/logo_black.svg'%}" alt="" class="logo">
+                            </a>
+                            <span class="Main_info_link">
+                                Therapy Cup Spa
+                            </span>
+                        </li>
+                        <li class="Main_Header_autorization">
+                            <ul class="authorization_list">
+                                {% if request.user.is_authenticated %}
+                                    <li class="authorization"> 
+                                        <form method="post" action="{% url 'logout' %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="button_logout">Вийти</button>
+                                        </form>
+                                    </li>
+                                {% else %}
+                                    <li class="authorization"><button type="submit" class="button_login" id="active_button_login">Вхiд</button> | <button type="submit" class="button_register" id="active_button_register">Зареєструватися</button></li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="Main_Header_navigation">
+                    <ul class="Main_Header_navigation_list">
+                        <li class="Navigation_list_nav">
+                            <ul class="navigation_list_nav_list">
                                 <li class="Main_Header_navigation_item">
-                                    <a href="{% url 'admin_main_page' %}">Сторiнка Адмiнiстратора</a>
+                                    <a href="{% url 'blog_news' %}">Новини i блог</a>
                                 </li>
-                            {% elif user.is_staff %}
                                 <li class="Main_Header_navigation_item">
-                                    <a href="{% url 'therapist_schedule' %}">Сторiнка Спеціаліста</a>
+                                    <a href="{% url 'gallery' %}">Фотогалерея</a>
                                 </li>
-                            {% elif request.user.is_authenticated  %}
                                 <li class="Main_Header_navigation_item">
-                                    <a href="{% url 'client_page' %}">Сторiнка Клієнта</a>
+                                    <a href="{% url 'cafe' %}">Кав’ярня</a>
                                 </li>
-                            {% endif %}
-                        </ul>
-                    </li>
-                    <li class="Main_Header_navigation_contacts">
-                        <ul class="Navigation_contacts_list">
-                            <li class="contacts_item">
-                                <a href="#" class="contacts_item_link">
-                                    <img src="{%static 'icon/facebook_black.svg'%}" alt="" class="contacts_item_img">
-                                </a>
-                            </li>
-                            <li class="contacts_item">
-                                <a href="#" class="contacts_item_link">
-                                    <img src="{%static 'icon/instagram_black.svg'%}" alt="" class="contacts_item_img">
-                                </a>
-                            </li>
-                            <li class="contacts_item">
-                                <a href="#" class="contacts_item_link">
-                                    <img src="{%static 'icon/wats_up_black.svg'%}" alt="" class="contacts_item_img">
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
-            <li class="Main_Header_login_form" id="login_form">
-                <ul class="login_list">
-                    <li class="login_header">
-                        <h1 class="login_header_name">Вхід</h1>
-                    </li>
-                    <li class="login_register_list">
-                        <span class="login_register_span">У вас немає акаунту, зайдіть</span>
-                        <button type="submit" class="button_login" id="active_button_register_in_login">тут</button>
-                    </li>
-                    <li class="login_form_list">
-                        <form method="post" class="login_form" action="{% url 'index' %}">
-                            {% csrf_token %}
-                            {{ form.errors}}
-                            {{ form.email }}
-                            <div>
-                                <label for="{{ form.email.id_for_label }}" class="form-label">{{ form.email.label }}</label>
-                            </div>
-                            {{ form.password }}
-                            <div>
-                                <label for="{{ form.password.id_for_label }}" class="form-label">{{ form.password.label }}</label>
-                            </div>
-                            <input type="submit" value="Вхiд" name="login" class="login_input">
-                        </form>
-                    </li>
-                    <li class="provider_list">
-                        <form action="{% provider_login_url 'google' %}" method="post" class="provider_form">
-                            {% csrf_token %}
-                        <button type="submit" class="provider_button"><span class="provider_text">Вхід через Google</span><img src="{%static 'icon/google.svg'%}" alt="" class="provider_img"></button>
-                        </form>
-                    </li>
-                    <button class="cloose_button" id="cloose_button_login"><img src="{%static 'icon/cloose.png'%}" alt=""></button>
-                    <script src="{% static 'js/forms/redirect_login_form.js' %}"></script>
-                    <script src="{% static 'js/forms/login_form.js' %}"></script>
-                </ul>
-
-            </li>
-            <li class="Main_Header_register_form" id="register_form">
-                <ul class="registration_list">
-                    <Li class="register_header">
-                        <h1 class="register_header_name">Реєстрація</h1>
-                    </Li>
-                    <li class="register_form_list">
-                        <form method="post" enctype="multipart/form-data" class="registration_form">
-                            {% csrf_token %}
-                            {{ register_form.errors}}
-                            <ul class="UserNameSurname_list">
-                                <li class="UserNameSurname_item">
-                                    {{ register_form.first_name }}
-                                    <div>
-                                        <label for="{{ form.first_name.id_for_label }}" class="form-label">{{ register_form.first_name.label }}</label>
-                                    </div>
+                                {% if user.is_superuser %}
+                                    <li class="Main_Header_navigation_item">
+                                        <a href="{% url 'admin_main_page' %}">Сторiнка Адмiнiстратора</a>
+                                    </li>
+                                {% elif user.is_staff %}
+                                    <li class="Main_Header_navigation_item">
+                                        <a href="{% url 'therapist_schedule' %}">Сторiнка Спеціаліста</a>
+                                    </li>
+                                {% elif request.user.is_authenticated  %}
+                                    <li class="Main_Header_navigation_item">
+                                        <a href="{% url 'client_page' %}">Сторiнка Клієнта</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        </li>
+                        <li class="Main_Header_navigation_contacts">
+                            <ul class="Navigation_contacts_list">
+                                <li class="contacts_item">
+                                    <a href="#" class="contacts_item_link">
+                                        <img src="{%static 'icon/facebook_black.svg'%}" alt="" class="contacts_item_img">
+                                    </a>
                                 </li>
-                                <li class="UserNameSurname_item">
-                                    {{ register_form.last_name }}
-                                    <div>
-                                        <label for="{{ form.last_name.id_for_label }}" class="form-label">{{ register_form.last_name.label }}</label>
-                                    </div>
+                                <li class="contacts_item">
+                                    <a href="#" class="contacts_item_link">
+                                        <img src="{%static 'icon/instagram_black.svg'%}" alt="" class="contacts_item_img">
+                                    </a>
+                                </li>
+                                <li class="contacts_item">
+                                    <a href="#" class="contacts_item_link">
+                                        <img src="{%static 'icon/wats_up_black.svg'%}" alt="" class="contacts_item_img">
+                                    </a>
                                 </li>
                             </ul>
-                            {{ register_form.phone }}
-                            <div>
-                                <label for="{{ form.phone.id_for_label }}" class="form-label">{{ register_form.phone.label }}</label>
-                            </div>
-                            {{ register_form.email }}
-                            <div>
-                                <label for="{{ form.email.id_for_label }}" class="form-label">{{ register_form.email.label }}</label>
-                            </div>
-                            <div class="custom-file-upload">
-                                <label for="id_profile_image" class="label_upload">Вибрати зображення</label>
-                                {{ register_form.profile_image }}
-                            </div>
-                            {{ register_form.password1 }}
-                            <div>
-                                <label for="{{ register_form.password.id_for_label }}" class="form-label">{{ register_form.password1.label }}</label>
-                            </div>
-                            {{ register_form.password2 }}
-                            <div>
-                                <label for="{{ register_form.password.id_for_label }}" class="form-label">{{ register_form.password2.label }}</label>
-                            </div>
-                            <input type="submit" value="Зареєструватися" name="register" class="register_input">
-                        </form>
-                    </li>
-                    <li class="register_login_list">
-                        <span class="register_login_span">У вас вже є акаунт? </span>
-                        <button type="submit" class="button_login" id="active_button_login_in_registr">Вхiд</button>
-                    </li>
-                    <button class="cloose_button" id="cloose_button_register"><img src="{%static 'icon/cloose.png'%}" alt=""></button>
-                    <script src="{% static 'js/forms/register_form.js' %}"></script>
-                </ul>
-            </li>
-            <li class="Main_Header_text">
-                <ul class="Main_Header_text_list">
-                    <li class="Main_Header_text_item">
-                        <h1>SPA-терапія</h1>
-                    </li>
-                    <li class="Main_Header_text_item">
-                        <h1>Подаруйте собі миті насолоди </h1>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="Main_Header_login_form" id="login_form">
+                    <ul class="login_list">
+                        <li class="login_header">
+                            <h1 class="login_header_name">Вхід</h1>
+                        </li>
+                        <li class="login_register_list">
+                            <span class="login_register_span">У вас немає акаунту, зайдіть</span>
+                            <button type="submit" class="button_login" id="active_button_register_in_login">тут</button>
+                        </li>
+                        <li class="login_form_list">
+                            <form method="post" class="login_form" action="{% url 'index' %}">
+                                {% csrf_token %}
+                                {{ form.errors}}
+                                {{ form.email }}
+                                <div>
+                                    <label for="{{ form.email.id_for_label }}" class="form-label">{{ form.email.label }}</label>
+                                </div>
+                                {{ form.password }}
+                                <div>
+                                    <label for="{{ form.password.id_for_label }}" class="form-label">{{ form.password.label }}</label>
+                                </div>
+                                <input type="submit" value="Вхiд" name="login" class="login_input">
+                            </form>
+                        </li>
+                        <li class="provider_list">
+                            <form action="{% provider_login_url 'google' %}" method="post" class="provider_form">
+                                {% csrf_token %}
+                            <button type="submit" class="provider_button"><span class="provider_text">Вхід через Google</span><img src="{%static 'icon/google.svg'%}" alt="" class="provider_img"></button>
+                            </form>
+                        </li>
+                        <button class="cloose_button" id="cloose_button_login"><img src="{%static 'icon/cloose.png'%}" alt=""></button>
+                        <script src="{% static 'js/forms/redirect_login_form.js' %}"></script>
+                        <script src="{% static 'js/forms/login_form.js' %}"></script>
+                    </ul>
+
+                </li>
+                <li class="Main_Header_register_form" id="register_form">
+                    <ul class="registration_list">
+                        <Li class="register_header">
+                            <h1 class="register_header_name">Реєстрація</h1>
+                        </Li>
+                        <li class="register_form_list">
+                            <form method="post" enctype="multipart/form-data" class="registration_form">
+                                {% csrf_token %}
+                                {{ register_form.errors}}
+                                <ul class="UserNameSurname_list">
+                                    <li class="UserNameSurname_item">
+                                        {{ register_form.first_name }}
+                                        <div>
+                                            <label for="{{ form.first_name.id_for_label }}" class="form-label">{{ register_form.first_name.label }}</label>
+                                        </div>
+                                    </li>
+                                    <li class="UserNameSurname_item">
+                                        {{ register_form.last_name }}
+                                        <div>
+                                            <label for="{{ form.last_name.id_for_label }}" class="form-label">{{ register_form.last_name.label }}</label>
+                                        </div>
+                                    </li>
+                                </ul>
+                                {{ register_form.phone }}
+                                <div>
+                                    <label for="{{ form.phone.id_for_label }}" class="form-label">{{ register_form.phone.label }}</label>
+                                </div>
+                                {{ register_form.email }}
+                                <div>
+                                    <label for="{{ form.email.id_for_label }}" class="form-label">{{ register_form.email.label }}</label>
+                                </div>
+                                <div class="custom-file-upload">
+                                    <label for="id_profile_image" class="label_upload">Вибрати зображення</label>
+                                    {{ register_form.profile_image }}
+                                </div>
+                                {{ register_form.password1 }}
+                                <div>
+                                    <label for="{{ register_form.password.id_for_label }}" class="form-label">{{ register_form.password1.label }}</label>
+                                </div>
+                                {{ register_form.password2 }}
+                                <div>
+                                    <label for="{{ register_form.password.id_for_label }}" class="form-label">{{ register_form.password2.label }}</label>
+                                </div>
+                                <input type="submit" value="Зареєструватися" name="register" class="register_input">
+                            </form>
+                        </li>
+                        <li class="register_login_list">
+                            <span class="register_login_span">У вас вже є акаунт? </span>
+                            <button type="submit" class="button_login" id="active_button_login_in_registr">Вхiд</button>
+                        </li>
+                        <button class="cloose_button" id="cloose_button_register"><img src="{%static 'icon/cloose.png'%}" alt=""></button>
+                        <script src="{% static 'js/forms/register_form.js' %}"></script>
+                    </ul>
+                </li>
+                <li class="Main_Header_text">
+                    <ul class="Main_Header_text_list">
+                        <li class="Main_Header_text_item">
+                            <a href="{% url 'create_record' %}" class="Header_Link_Sign_Up">Записатись</a>
+                        </li>
+                        <li class="Main_Header_text_item">
+                            <h1>SPA-терапія</h1>
+                        </li>
+                        <li class="Main_Header_text_item">
+                            <h1>Подаруйте собі миті насолоди </h1>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </header>
     <main class="Main_Page">
         <section class="Main_About_Us Block_content">

@@ -1,6 +1,6 @@
 @media screen and (max-width: 1330px) {
   .Main_Header {
-    height: 50vh !important;
+    height: 70vh !important;
   }
   .Main_Header_text {
     margin-top: 100px !important;
@@ -43,10 +43,13 @@
   .review_item {
     width: 100% !important;
   }
+  .Main_Header_text_item h1 {
+    font-size: 28px !important;
+  }
 }
 
 @media screen and (max-width: 865px) {
-    .Massage_Therapist_content_item {
+  .Massage_Therapist_content_item {
     width: 80% !important;
   }
   .Main_About_Us_info_list {
@@ -97,9 +100,6 @@
   .TypeCategory_item {
     width: 100% !important;
     font-size: 16px !important;
-  }
-  .Main_Header {
-    background: rgba(149, 154, 138, 0.8) !important;
   }
   .Main_Header_navigation_item {
     margin-right: 0px !important;
@@ -154,6 +154,10 @@
   }
   .Main_Header_text_item h1 {
     font-size: 24px !important;
+  }
+  .Main_Header_text_item {
+    margin-top: 30px;
+    margin-bottom: 0px !important ;
   }
   .navigation_list_nav_list {
     margin-right: 15px;

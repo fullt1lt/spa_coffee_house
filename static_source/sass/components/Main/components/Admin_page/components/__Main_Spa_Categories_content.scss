@@ -58,9 +58,9 @@
               line-height: normal;
             }
           }
-          .item_description {
+          .item_category_description {
             margin-top: 20px;
-            height: 150px;
+            min-height: 125px;
             .item_description_text {
               color: #000;
               font-family: var(--font-family-Manrope);

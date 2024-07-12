@@ -2803,7 +2803,7 @@ a {
 
 @media screen and (max-width: 1330px) {
   .Main_Header {
-    height: 50vh !important;
+    height: 70vh !important;
   }
   .Main_Header_text {
     margin-top: 100px !important;
@@ -2846,6 +2846,9 @@ a {
   }
   .review_item {
     width: 100% !important;
+  }
+  .Main_Header_text_item h1 {
+    font-size: 28px !important;
   }
 }
 @media screen and (max-width: 865px) {
@@ -2911,9 +2914,6 @@ a {
   .TypeCategory_item {
     width: 100% !important;
     font-size: 16px !important;
-  }
-  .Main_Header {
-    background: rgba(149, 154, 138, 0.8) !important;
   }
   .Main_Header_navigation_item {
     margin-right: 0px !important;
@@ -2987,6 +2987,10 @@ a {
   }
   .Main_Header_text_item h1 {
     font-size: 24px !important;
+  }
+  .Main_Header_text_item {
+    margin-top: 30px;
+    margin-bottom: 0px !important;
   }
   .navigation_list_nav_list {
     margin-right: 15px;
@@ -3732,6 +3736,8 @@ a {
   width: 100%;
   border-radius: 15px;
   height: 357px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .Admin_view_therapist_item .Main_Massage_Therapist_list .Main_Massage_Therapist_content .Main_Massage_Therapist_content_list .Massage_Therapist_content_item .Wrapper_Massage_Therapist_content_item .Massage_Therapist_info .content_item_info_list {
   display: -webkit-box;
@@ -4327,11 +4333,11 @@ a {
   font-weight: 600;
   line-height: normal;
 }
-.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_description {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_category_description {
   margin-top: 20px;
-  height: 150px;
+  min-height: 125px;
 }
-.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_description .item_description_text {
+.Admin_Main_Spa_Categories_content .Main_Spa_Categories_content_list .Main_Spa_Categories_content_item .spa_categories_wrapper .Categories_content_item_list .item_category_description .item_description_text {
   color: #000;
   font-family: var(--font-family-Manrope);
   font-size: 18px;
@@ -9062,7 +9068,12 @@ a {
   width: 100%;
   height: 100vh;
 }
-.Main_Header .Main_Header_list {
+.Main_Header .Main_Header_Substrate {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.24);
+}
+.Main_Header .Main_Header_Substrate .Main_Header_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9076,7 +9087,7 @@ a {
   width: 100%;
   height: 100%;
 }
-.Main_Header .Main_Header_list .Main_Header_info {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9085,11 +9096,11 @@ a {
           justify-content: center;
   width: 100%;
 }
-.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_info .Main_Header_info_list {
   display: block;
   width: 100%;
 }
-.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_info_logo {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_info_logo {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9101,7 +9112,7 @@ a {
       -ms-flex-align: center;
           align-items: center;
 }
-.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_info_logo .Main_info_link {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_info_logo .Main_info_link {
   margin-top: 10px;
   color: var(--black-color);
   font-family: "Playfair Display";
@@ -9110,18 +9121,18 @@ a {
   font-weight: 500;
   line-height: normal;
 }
-.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization {
   position: relative;
   top: -50px;
   float: right;
   margin-right: 50px;
 }
-.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9130,7 +9141,7 @@ a {
           align-items: center;
   color: var(--black-color);
 }
-.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_login {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_login {
   border: medium none;
   background-image: none;
   background: transparent;
@@ -9140,10 +9151,10 @@ a {
   margin-right: 15px;
   font-size: 20px;
 }
-.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_login:hover {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_login:hover {
   color: var(--button-hover);
 }
-.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_register {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_register {
   border: medium none;
   background-image: none;
   background: transparent;
@@ -9153,10 +9164,10 @@ a {
   margin-left: 15px;
   font-size: 20px;
 }
-.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_register:hover {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_register:hover {
   color: var(--button-hover);
 }
-.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_logout {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_logout {
   border: medium none;
   background-image: none;
   background: transparent;
@@ -9166,16 +9177,16 @@ a {
   margin-left: 15px;
   font-size: 20px;
 }
-.Main_Header .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_logout:hover {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_info .Main_Header_info_list .Main_Header_autorization .authorization_list .authorization .button_logout:hover {
   color: var(--button-hover);
 }
-.Main_Header .Main_Header_list .Main_Header_navigation {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_navigation {
   width: 100%;
   padding: 15px;
   border: 3px solid var(--black-color);
   margin-top: 16px;
 }
-.Main_Header .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9186,7 +9197,7 @@ a {
       -ms-flex-align: center;
           align-items: center;
 }
-.Main_Header .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Navigation_list_nav .navigation_list_nav_list {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Navigation_list_nav .navigation_list_nav_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9198,10 +9209,10 @@ a {
       -ms-flex-pack: center;
           justify-content: center;
 }
-.Main_Header .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Header_navigation_item {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Header_navigation_item {
   margin-right: 80px;
 }
-.Main_Header .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Header_navigation_item a {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Header_navigation_item a {
   color: var(--black-color);
   font-family: Manrope;
   font-size: 16px;
@@ -9209,23 +9220,23 @@ a {
   font-weight: 600;
   line-height: normal;
 }
-.Main_Header .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Header_navigation_item a:hover {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Navigation_list_nav .navigation_list_nav_list .Main_Header_navigation_item a:hover {
   color: var(--button-hover);
 }
-.Main_Header .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Main_Header_navigation_contacts {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Main_Header_navigation_contacts {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-.Main_Header .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Main_Header_navigation_contacts .Navigation_contacts_list {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Main_Header_navigation_contacts .Navigation_contacts_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
-.Main_Header .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Main_Header_navigation_contacts .Navigation_contacts_list .contacts_item {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_navigation .Main_Header_navigation_list .Main_Header_navigation_contacts .Navigation_contacts_list .contacts_item {
   margin-right: 25px;
 }
-.Main_Header .Main_Header_list .Main_Header_login_form {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_login_form {
   display: none;
   width: 100%;
   height: 100vh;
@@ -9234,7 +9245,7 @@ a {
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
 }
-.Main_Header .Main_Header_list .Main_Header_register_form {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_register_form {
   display: none;
   width: 100%;
   height: 100vh;
@@ -9243,11 +9254,11 @@ a {
   -webkit-backdrop-filter: blur(10px);
           backdrop-filter: blur(10px);
 }
-.Main_Header .Main_Header_list .Main_Header_text {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_text {
   width: 80%;
-  margin-top: 520px;
+  margin-top: 400px;
 }
-.Main_Header .Main_Header_list .Main_Header_text .Main_Header_text_list {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_text .Main_Header_text_list {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -9256,11 +9267,28 @@ a {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-.Main_Header .Main_Header_list .Main_Header_text .Main_Header_text_list .Main_Header_text_item h1 {
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_text .Main_Header_text_list .Main_Header_text_item {
+  margin-bottom: 30px;
+}
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_text .Main_Header_text_list .Main_Header_text_item h1 {
   color: #0b0b0a;
   font-family: "Playfair Display";
   font-size: 56px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+}
+.Main_Header .Main_Header_Substrate .Main_Header_list .Main_Header_text .Main_Header_text_list .Main_Header_text_item .Header_Link_Sign_Up {
+  border: 2px solid #0c0c0c;
+  padding: 15px 30px;
+  color: #141414;
+  text-align: center;
+  font-family: var(--font-family-Manrope);
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 19.5px;
+  letter-spacing: 1.56px;
+  text-transform: uppercase;
+  background-color: #adb59f;
 }

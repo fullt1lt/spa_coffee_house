@@ -1,13 +1,14 @@
 from django.db import IntegrityError
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.http import HttpResponseRedirect, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.views import View
 from django.contrib.auth import login, authenticate
-from forms.forms import AddCafeProductForm, AddGalleryForm, AddTypeCafeProductForm, CafeProductForm, CategoriesAddForm, CategoriesUpdateForm, CreateScheduleForm, LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureAddForm, ProcedureEditForm, ProcedureForm, RegisterUserForm, ReviewForm, ScheduleForm, TherapistForm, TypeCategoryCustomForm, TypeCategoryForm, UpdateTypeCafeProductForm
-from django.contrib.auth.views import LoginView
-from django.views.generic import ListView, DeleteView, UpdateView, CreateView
+from forms.forms import (AddCafeProductForm, AddGalleryForm, AddTypeCafeProductForm, CafeProductForm, CategoriesAddForm, CategoriesUpdateForm, CreateScheduleForm,
+                         LoginUserForm, MassageTherapistForm, MassageTherapistUpdateForm, ProcedureAddForm, ProcedureEditForm, ProcedureForm, RegisterUserForm,
+                         ReviewForm, ScheduleForm, TherapistForm, TypeCategoryCustomForm, TypeCategoryForm, UpdateTypeCafeProductForm)
+from django.views.generic import ListView, DeleteView, CreateView
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required 
 from django.core.paginator import Paginator
@@ -16,11 +17,9 @@ from myspa.units import SlotsValidator
 from spa.mixins import SuperUserRequiredMixin, TherapistRequiredMixin
 from django.utils.dateparse import parse_date
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.views.generic.edit import FormView
 from django.utils import timezone
-from datetime import datetime, timedelta
+from datetime import datetime
 from django.utils.timezone import make_aware
-
 from spa.send_mail import SendMail
 
         
@@ -187,14 +186,17 @@ class DeleteCafeProductView(SuperUserRequiredMixin, DeleteView):
     model = CafeProduct
     success_url = '/admin-main-page/'
     
+
 class DeleteTypeCafeProductView(SuperUserRequiredMixin, DeleteView):
     model = TypeCafeProduct
     success_url = '/admin-main-page/'
     
+
 class DeleteGalleryView(SuperUserRequiredMixin, DeleteView):
     model = Gallery
     success_url = '/admin-main-page/'
     
+
 class DeleteRecordView(DeleteView):
     model = Record
     success_url = '/client-page/'
@@ -339,6 +341,7 @@ def get_therapist_schedule(request, therapist_id):
 
 class AdminMainPage(SuperUserRequiredMixin, View):
     template_name = 'admin_page.html'
+    redirect_url = '/admin-main-page/'
 
     def get_context_data(self, **kwargs):
         context = {
@@ -393,9 +396,9 @@ class AdminMainPage(SuperUserRequiredMixin, View):
     def post(self, request, *args, **kwargs):
         if 'update_categories' in request.POST:
             category_id = request.POST.get('category_id')
-            return self.update_categories(request, category_id)
+            return self.handle_update(request, CategoriesUpdateForm, category_id, SpaСategories, 'categories_update_form')
         elif 'add_categories' in request.POST:
-            return self.add_categories(request)
+            return self.handle_form(request, CategoriesAddForm, 'categories_add_form')
         elif 'update_therapist' in request.POST:
             therapist_id = request.POST.get('therapist_id')
             return self.update_therapist(request, therapist_id)
@@ -405,48 +408,47 @@ class AdminMainPage(SuperUserRequiredMixin, View):
             return self.handle_schedule(request)
         elif 'update_type_category' in request.POST:
             type_category_id = request.POST.get('type_category_id')
-            return self.update_type_category(request, type_category_id)
+            return self.handle_update(request, TypeCategoryForm, type_category_id, TypeCategories, 'type_category_update_form')
         elif 'add_type_category' in request.POST:
-            return self.add_type_category(request)
+            return self.handle_form(request, TypeCategoryCustomForm, 'type_category_form')
         elif 'update_procedure' in request.POST:
             procedure_id = request.POST.get('procedure_id')
-            return self.update_procedure(request, procedure_id)
+            return self.handle_update(request, ProcedureEditForm, procedure_id, Procedure, 'procedure_form')
         elif 'add_procedure' in request.POST:
-            return self.add_procedure(request)
+            return self.handle_form(request, ProcedureAddForm, 'procedure_add_form')
         elif 'add_cafe_product' in request.POST:
-            return self.add_cafe_product(request)
+            return self.handle_form(request, CafeProductForm, 'cafe_product_form')
         elif 'update_cafe_product' in request.POST:
             cafe_product_id = request.POST.get('cafe_product_id')
-            return self.update_cafe_product(request, cafe_product_id)
+            return self.handle_update(request, CafeProductForm, cafe_product_id, CafeProduct, 'cafe_product_form')
         elif 'add_type_cafe_product' in request.POST:
-            return self.add_type_cafe_product(request)
+            return self.handle_form(request, AddTypeCafeProductForm, 'type_cafe_product_form')
         elif 'update_type_cafe_product' in request.POST:
             type_cafe_product_id = request.POST.get('type_cafe_product_id')
-            return self.update_type_cafe_product(request, type_cafe_product_id)
+            return self.handle_update(request, UpdateTypeCafeProductForm, type_cafe_product_id, TypeCafeProduct, 'type_cafe_product_form')
         elif 'add_gallery' in request.POST:
-            return self.add_gallery(request)
+            return self.handle_form(request, AddGalleryForm, 'add_gallery_form')
         return self.get(request, *args, **kwargs)
 
-
-    def update_categories(self, request, category_id):
-        category = get_object_or_404(SpaСategories, id=category_id)
-        categories_update_form = CategoriesUpdateForm(data=request.POST, files=request.FILES, instance=category)
-        if categories_update_form.is_valid():
-            categories_update_form.save()
-            return redirect('/admin-main-page/')
+    def handle_form(self, request, form_class, context_key):
+        form = form_class(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(self.redirect_url)
         
-        context = self.get_context_data(categories_update_form=categories_update_form)
+        context = self.get_context_data(**{context_key: form})
+        return render(request, self.template_name, context)
+    
+    def handle_update(self, request, form_class, instance_id, model_class, context_key):
+        instance = get_object_or_404(model_class, id=instance_id)
+        form = form_class(request.POST, request.FILES, instance=instance)
+        if form.is_valid():
+            form.save()
+            return redirect(self.redirect_url)
+        
+        context = self.get_context_data(**{context_key: form})
         return render(request, self.template_name, context)
 
-    def add_categories(self, request):
-        categories_add_form = CategoriesAddForm(request.POST, request.FILES)
-        if categories_add_form.is_valid():
-            categories_add_form.save()
-            return redirect('/admin-main-page/')
-        
-        context = self.get_context_data(categories_add_form=categories_add_form)
-        return render(request, self.template_name, context) 
-        
     def update_therapist(self, request, therapist_id):
         therapist = get_object_or_404(MassageTherapist, id=therapist_id)
         form = MassageTherapistUpdateForm(request.POST, request.FILES, instance=therapist)
@@ -525,94 +527,6 @@ class AdminMainPage(SuperUserRequiredMixin, View):
     
                 return redirect('/admin-main-page/')
         return self.render_to_response(self.get_context_data(schedule_form=form))
-
-    def update_type_category(self, request, type_category_id):
-        type_category = get_object_or_404(TypeCategories, id=type_category_id)
-        type_category_update_form = TypeCategoryForm(data=request.POST, files=request.FILES, instance=type_category)
-        if type_category_update_form.is_valid():
-            type_category_update_form.save()
-            return redirect('/admin-main-page/')
-
-        context = self.get_context_data(type_category_update_form=type_category_update_form)
-        return render(request, self.template_name, context)
-
-    def add_type_category(self, request):
-        if request.method == 'POST':
-            type_category_form = TypeCategoryCustomForm(request.POST, request.FILES)
-            if type_category_form.is_valid():
-                type_category_form.save()
-                return redirect('/admin-main-page/')
-            else:
-                print("Файл не загружен или невалиден:", type_category_form.errors)
-
-        context = self.get_context_data(type_category_form=type_category_form)
-        return render(request, self.template_name, context)
-    
-    def update_procedure(self, request, procedure_id):
-        procedure = get_object_or_404(Procedure, id=procedure_id)
-        procedure_form = ProcedureEditForm(data=request.POST, instance=procedure)
-        if procedure_form.is_valid():
-            procedure_form.save()
-            return redirect('/admin-main-page/')
-
-        context = self.get_context_data(procedure_form=procedure_form)
-        return render(request, self.template_name, context)
-    
-    def add_procedure(self, request):
-        procedure_add_form = ProcedureAddForm(request.POST)
-        if procedure_add_form.is_valid():
-            procedure_add_form.save()
-            return redirect('/admin-main-page/')
-
-        context = self.get_context_data(procedure_add_form=procedure_add_form)
-        return render(request, self.template_name, context)
-    
-    def add_cafe_product(self, request):
-        cafe_product_form = CafeProductForm(request.POST, request.FILES)
-        if cafe_product_form.is_valid():
-            cafe_product_form.save()
-            return redirect('/admin-main-page/')
-        
-        context = self.get_context_data(cafe_product_form=cafe_product_form)
-        return render(request, self.template_name, context)
-
-    def update_cafe_product(self, request, cafe_product_id):
-        cafe_product = get_object_or_404(CafeProduct, id=cafe_product_id)
-        cafe_product_form = CafeProductForm(request.POST, request.FILES, instance=cafe_product)
-        if cafe_product_form.is_valid():
-            cafe_product_form.save()
-            return redirect('/admin-main-page/')
-
-        context = self.get_context_data(cafe_product_form=cafe_product_form)
-        return render(request, self.template_name, context)
-    
-    def add_type_cafe_product(self, request):
-        type_cafe_product_form = AddTypeCafeProductForm(request.POST)
-        if type_cafe_product_form.is_valid():
-            type_cafe_product_form.save()
-            return redirect('/admin-main-page/')
-
-        context = self.get_context_data(add_type_cafe_product_form=type_cafe_product_form)
-        return render(request, self.template_name, context)
-
-    def update_type_cafe_product(self, request, type_cafe_product_id):
-        type_cafe_product = get_object_or_404(TypeCafeProduct, id=type_cafe_product_id)
-        type_cafe_product_form = UpdateTypeCafeProductForm(request.POST, instance=type_cafe_product)
-        if type_cafe_product_form.is_valid():
-            type_cafe_product_form.save()
-            return redirect('/admin-main-page/')
-
-        context = self.get_context_data(type_cafe_product_form=type_cafe_product_form)
-        return render(request, self.template_name, context)
-    
-    def add_gallery(self, request):
-        add_gallery_form = AddGalleryForm(request.POST, request.FILES)
-        if add_gallery_form.is_valid():
-            add_gallery_form.save()
-            return redirect('/admin-main-page/')
-        
-        context = self.get_context_data(add_gallery_form=add_gallery_form)
-        return render(request, self.template_name, context)
 
     def render_to_response(self, context, **response_kwargs):
         context.update(self.get_context_data())
@@ -775,8 +689,7 @@ class RecordView(LoginRequiredMixin, View):
         return therapists_with_slots
 
     
-    
-class TherapistScheduleView(View):
+class TherapistScheduleView(TherapistRequiredMixin, View):
     template_name = 'therapist_page.html'
 
     def get_context_data(self, **kwargs):
