@@ -11,17 +11,47 @@ CATEGORY_TIME = (
     (timedelta(minutes=120), "120"),
 )
 
+from django.contrib.auth.models import BaseUserManager
+
+
+class SpaUserManager(BaseUserManager):
+    use_in_migrations = True
+
+    def create_user(self, email, password=None, **extra_fields):
+        if not email:
+            raise ValueError("Email is required")
+        email = self.normalize_email(email)
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_superuser(self, email, password=None, **extra_fields):
+        extra_fields.setdefault("is_staff", True)
+        extra_fields.setdefault("is_superuser", True)
+
+        if extra_fields.get("is_staff") is not True:
+            raise ValueError("Superuser must have is_staff=True.")
+        if extra_fields.get("is_superuser") is not True:
+            raise ValueError("Superuser must have is_superuser=True.")
+
+        return self.create_user(email, password, **extra_fields)
+
 
 class SpaUser(AbstractUser):
-    phone = models.CharField(max_length=16, blank=True, null=True) 
-    profile_image = models.ImageField(upload_to='profile_image/', blank=True, null=True)
+    username = None  # <-- отключаем username полностью
+    phone = models.CharField(max_length=16, blank=True, null=True)
+    profile_image = models.ImageField(upload_to="profile_image/", blank=True, null=True)
     email = models.EmailField(unique=True)
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name']
-    
+
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["first_name", "last_name"]
+
+    objects = SpaUserManager()  # <-- подключаем менеджер
+
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
-    
+
 
 class Salon(models.Model):
     name = models.CharField(max_length=255)
@@ -53,8 +83,8 @@ class MassageTherapist(models.Model):
     def __str__(self):
         positions = ', '.join([position.name for position in self.position.all()])
         return f"{self.user.first_name} {self.user.last_name} - {positions}"
-    
-    
+
+
 class SpaСategories(models.Model):
     name = models.CharField(max_length=100)
     categories_image = models.ImageField(upload_to='categories_image/', blank=True, null=True)
@@ -123,7 +153,7 @@ class Review(models.Model):
 
     def __str__(self):
         return f"{self.therapist} - {self.rating}"
-    
+
 
 class CafeProduct(models.Model):
     name = models.CharField(max_length=100)
@@ -135,14 +165,14 @@ class CafeProduct(models.Model):
     
     def __str__(self):
         return self.name
-    
+
 
 class TypeCafeProduct(models.Model):
     name = models.CharField(max_length=100)
     
     def __str__(self):
         return self.name
-    
+
 
 class BlogAndNews(models.Model):
     name = models.CharField(max_length=100)
@@ -154,7 +184,7 @@ class BlogAndNews(models.Model):
     
     def __str__(self):
         return self.name
-    
+
 
 class TypeBlogAndNews(models.Model):
     name = models.CharField(max_length=100)
