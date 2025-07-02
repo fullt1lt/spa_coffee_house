@@ -22,7 +22,7 @@ from datetime import datetime
 from django.utils.timezone import make_aware
 from spa.send_mail import SendMail
 
-        
+
 class Register(CreateView):
     form_class = RegisterUserForm
     template_name = 'register.html'
@@ -33,7 +33,7 @@ class Register(CreateView):
         user = self.object
         login(self.request, user, backend='django.contrib.auth.backends.ModelBackend')
         return response
-    
+
 
 class MainPage(View):
     template_name = 'index.html'
@@ -91,7 +91,7 @@ class MainPage(View):
         if login_form.is_valid():
             email = login_form.cleaned_data['email']
             password = login_form.cleaned_data['password']
-            user = authenticate(request, email=email, password=password)
+            user = authenticate(request, username=email, password=password)
             if user is not None:
                 login(request, user, backend='django.contrib.auth.backends.ModelBackend')
                 return redirect('/')
@@ -111,7 +111,7 @@ class MainPage(View):
         therapist_id = request.POST.get('therapist')
         therapist = get_object_or_404(MassageTherapist, id=therapist_id)
         review_form = ReviewForm(request.POST)
-        
+
         if review_form.is_valid():
             rating = review_form.cleaned_data['rating']
             comment = review_form.cleaned_data['comment']
@@ -123,7 +123,7 @@ class MainPage(View):
             )
             review.save()
             return redirect('/')
-        
+
         # Передача формы с ошибками в контекст для вывода ошибок в шаблоне
         context = {
             'register_form': RegisterUserForm(),
@@ -165,37 +165,37 @@ class GetReviews(View):
 class DeleteSpaCategoriesView(SuperUserRequiredMixin, DeleteView):
     model = SpaСategories
     success_url = '/admin-main-page/'
-    
+
 
 class DeleteTherapistView(SuperUserRequiredMixin, DeleteView):
     model = MassageTherapist
     success_url = '/admin-main-page/'
-    
+
 
 class DeleteTypeCategoriesView(SuperUserRequiredMixin, DeleteView):
     model = TypeCategories
     success_url = '/admin-main-page/'
-    
-    
+
+
 class DeleteProcedureView(SuperUserRequiredMixin, DeleteView):
     model = Procedure
     success_url = '/admin-main-page/'
-    
+
 
 class DeleteCafeProductView(SuperUserRequiredMixin, DeleteView):
     model = CafeProduct
     success_url = '/admin-main-page/'
-    
+
 
 class DeleteTypeCafeProductView(SuperUserRequiredMixin, DeleteView):
     model = TypeCafeProduct
     success_url = '/admin-main-page/'
-    
+
 
 class DeleteGalleryView(SuperUserRequiredMixin, DeleteView):
     model = Gallery
     success_url = '/admin-main-page/'
-    
+
 
 class DeleteRecordView(DeleteView):
     model = Record
@@ -231,7 +231,7 @@ class TypeCategoriesListView(ListView):
     
     def get_queryset(self):
         return TypeCategories.objects.filter(categories__id=self.kwargs['pk']).prefetch_related('sessions')
-    
+
 
 class CafeView(ListView):
     model = CafeProduct
@@ -255,7 +255,7 @@ class CafeTypeProductListView(ListView):
 
     def get_queryset(self):
         return CafeProduct.objects.filter(type_cafe_product=self.kwargs['pk'])
-    
+
 
 class BlogNewsView(ListView):
     model = BlogAndNews
@@ -263,7 +263,7 @@ class BlogNewsView(ListView):
     ordering = ['name']
     template_name = 'blog_news.html'
     context_object_name = "type_blog_news"
-    
+
 
 class TypeBlogNewsViewListView(ListView):
     model = BlogAndNews
@@ -280,8 +280,8 @@ class TypeBlogNewsViewListView(ListView):
 
     def get_queryset(self):
         return BlogAndNews.objects.filter(type_blog_and_news=self.kwargs['pk'])
-    
-    
+
+
 class GalleryView(ListView):
     model = TypeGallery
     ordering = ['name']
@@ -304,7 +304,7 @@ class TypeGalleryListView(ListView):
 
     def get_queryset(self):
         return Gallery.objects.filter(type_gallery=self.kwargs['pk'])
-    
+
 
 def get_therapist_schedule(request, therapist_id):
     therapist = get_object_or_404(MassageTherapist, id=therapist_id)
@@ -531,7 +531,7 @@ class AdminMainPage(SuperUserRequiredMixin, View):
     def render_to_response(self, context, **response_kwargs):
         context.update(self.get_context_data())
         return render(self.request, self.template_name, context, **response_kwargs)
-    
+
 
 class RecordView(LoginRequiredMixin, View):
     template_name = 'record.html'
@@ -688,7 +688,7 @@ class RecordView(LoginRequiredMixin, View):
 
         return therapists_with_slots
 
-    
+
 class TherapistScheduleView(TherapistRequiredMixin, View):
     template_name = 'therapist_page.html'
 
@@ -769,7 +769,7 @@ class TherapistScheduleView(TherapistRequiredMixin, View):
         if not Record.objects.filter(schedule=schedule).exists():
             schedule.delete()
         return redirect('therapist_schedule')
-    
+
 
 class ClientPageView(LoginRequiredMixin, View):
     template_name = 'client_page.html'
