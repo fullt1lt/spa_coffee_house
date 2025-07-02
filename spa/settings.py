@@ -27,9 +27,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-=xp#7gcfuc3cvi93zdysq1he43)6kc%7g(wttbmur#dbl(&hcy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -126,13 +123,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static_source/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_ROOT = 'static'
-STATICFILES_DIRS = ['static_source']
 
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
@@ -180,3 +174,15 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'daniiltupikin98@gmail.com'
 EMAIL_HOST_PASSWORD = 'mmdz lnwd ggqf piym'
 DEFAULT_FROM_EMAIL = 'daniiltupikin98@gmail.com'
+
+
+if os.environ.get("PROD"):
+    try:
+        from .settings_prod import *
+    except ImportError:
+        pass
+else:
+    try:
+        from .settings_local import *
+    except ImportError:
+        pass
