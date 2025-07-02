@@ -20,3 +20,5 @@ ALLOWED_HOSTS = ["13.222.4.243"]
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "static"
 MEDIA_ROOT = "media"
+
+STATICFILES_DIRS = [BASE_DIR / "static_source"]
